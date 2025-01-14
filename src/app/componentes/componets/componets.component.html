@@ -1,0 +1,32 @@
+<nav class="navbar">
+  <div class="logo">
+    <img src="assets\img\Boneco_apamaiao.jpg" alt="Logo Apamaião" class="logo-img" />
+     <h1 style=" font-size: 1.2rem;
+    color: #e0e0e0; margin-left: 30px;"> Campeonato de Pais e Mestres do Abel</h1>
+  </div>
+  <div class="menu-btn" (click)="toggleMenu()">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+  <div class="menu" [ngClass]="{ 'show': isMenuOpen }">
+    <div class="menu-links">
+      <a routerLink="/home">Home</a>
+
+      <!-- Dropdown "Serie A" com Angular Material -->
+      <button mat-button [routerLink]="'/serie-a'" [matMenuTriggerFor]="serieAMenu">Serie A</button>
+      <mat-menu #serieAMenu="matMenu">
+        <button mat-menu-item routerLink="/serie-ajogos">Jogos</button>
+        <button mat-menu-item routerLink="/serie-aclassificacao">Classificação</button>
+      </mat-menu>
+
+      <!-- Dropdown "Serie B" com Angular Material -->
+      <button mat-button [matMenuTriggerFor]="serieBMenu">Serie B</button>
+      <mat-menu #serieBMenu="matMenu">
+        <button mat-menu-item routerLink="/serie-bjogos">Jogos</button>
+        <button mat-menu-item routerLink="/serie-bclassificacao">Classificação</button>
+      </mat-menu>
+
+      <a routerLink="/regulamento">Regulamento</a>
+      <a routerLink="/blog">Blog</a>
+    </div>
+  </div>
+</nav>

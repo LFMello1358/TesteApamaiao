@@ -1,0 +1,72 @@
+.padrao {
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%; /* Adiciona margem à direita */
+    margin-bottom: 20px; /* Adiciona margem na parte de baixo */
+    display: flex;
+    flex-direction: column; /* Organiza em coluna */
+    align-items: center; /* Centraliza a tabela */
+    width: 70%; /* Ocupa 70% da largura disponível */
+}
+
+body {
+    margin: 0; /* Remover margens do body */
+    padding: 0;
+    background-color: green;
+    box-sizing: border-box;
+}
+
+
+.conteudo {
+    margin-left: 200px; /* Ajusta para acomodar o menu fixo */
+    margin-right: 200px; /* Ajusta para acomodar o menu fixo */
+    padding: 20px; /* Espaçamento interno */
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Organiza em coluna */
+    align-items: center; /* Centraliza a tabela */
+    width: 70%; /* Ocupa toda a largura disponível */
+}
+
+
+
+h1 {
+    color: #333;
+}
+
+button {
+    background-color: darkgreen;
+    margin: 25px;
+    width: 200px;
+}
+
+/* Cor de fundo do cabeçalho da tabela */
+table.mat-elevation-z8 .mat-header-row {
+    background-color: green !important; /* Cor de fundo do cabeçalho */
+}
+
+table.mat-elevation-z8 .mat-header-cell {
+    color: white !important; /* Cor do texto no cabeçalho */
+}
+
+/* Cor de fundo do corpo da tabela */
+table.mat-elevation-z8 .mat-row {
+    background-color: lightgray !important; /* Cor de fundo das linhas */
+}
+
+table.mat-elevation-z8 .mat-cell {
+    color: black !important; /* Cor do texto nas células */
+}
+
+/* Estilo da tabela em geral */
+.largura-tabela {
+    width: 70%; /* Largura da tabela */
+    max-width: 1000px; /* Largura máxima da tabela */
+    margin: 25px auto; /* Centraliza a tabela */
+    padding: 15px; /* Espaçamento interno */
+    background-color: white; /* Cor de fundo da tabela */
+    border: 1px solid black; /* Borda */
+    border-radius: 8px; /* Bordas arredondadas */
+}

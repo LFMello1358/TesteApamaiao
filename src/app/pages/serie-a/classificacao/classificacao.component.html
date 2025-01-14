@@ -1,0 +1,212 @@
+<app-componets></app-componets>
+<div class="Padrao">
+    <div class="conteudo">
+        <h2>Tabela Geral</h2>
+        <table mat-table [dataSource]="dataSourceGeral" class="mat-elevation-z8 largura-tabela">
+        
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Time</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="points">
+            <th mat-header-cell *matHeaderCellDef>Pontos</th>
+            <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="games">
+            <th mat-header-cell *matHeaderCellDef>Jogos</th>
+            <td mat-cell *matCellDef="let element">{{ element.games }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="wins">
+            <th mat-header-cell *matHeaderCellDef>Vitórias</th>
+            <td mat-cell *matCellDef="let element">{{ element.wins }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="draws">
+            <th mat-header-cell *matHeaderCellDef>Empates</th>
+            <td mat-cell *matCellDef="let element">{{ element.draws }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="losses">
+            <th mat-header-cell *matHeaderCellDef>Derrotas</th>
+            <td mat-cell *matCellDef="let element">{{ element.losses }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="goalsFor">
+            <th mat-header-cell *matHeaderCellDef>Gols Feitos</th>
+            <td mat-cell *matCellDef="let element">{{ element.goalsFor }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="goalsAgainst">
+            <th mat-header-cell *matHeaderCellDef>Gols Tomados</th>
+            <td mat-cell *matCellDef="let element">{{ element.goalsAgainst }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="woLosses">
+            <th mat-header-cell *matHeaderCellDef>Jogos Perdidos por WO</th>
+            <td mat-cell *matCellDef="let element">{{ element.woLosses }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <h2>Tabela do 1° Turno</h2>
+        <table mat-table [dataSource]="dataSourceTurno1" class="mat-elevation-z8 largura-tabela">
+        
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Time</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="points">
+            <th mat-header-cell *matHeaderCellDef>Pontos</th>
+            <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="games">
+            <th mat-header-cell *matHeaderCellDef>Jogos</th>
+            <td mat-cell *matCellDef="let element">{{ element.games }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="wins">
+            <th mat-header-cell *matHeaderCellDef>Vitórias</th>
+            <td mat-cell *matCellDef="let element">{{ element.wins }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="draws">
+            <th mat-header-cell *matHeaderCellDef>Empates</th>
+            <td mat-cell *matCellDef="let element">{{ element.draws }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="losses">
+            <th mat-header-cell *matHeaderCellDef>Derrotas</th>
+            <td mat-cell *matCellDef="let element">{{ element.losses }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="goalsFor">
+            <th mat-header-cell *matHeaderCellDef>Gols Feitos</th>
+            <td mat-cell *matCellDef="let element">{{ element.goalsFor }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="goalsAgainst">
+            <th mat-header-cell *matHeaderCellDef>Gols Tomados</th>
+            <td mat-cell *matCellDef="let element">{{ element.goalsAgainst }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="woLosses">
+            <th mat-header-cell *matHeaderCellDef>Jogos Perdidos por WO</th>
+            <td mat-cell *matCellDef="let element">{{ element.woLosses }}</td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <h2>Tabela do 2° Turno</h2>
+        <table mat-table [dataSource]="dataSourceTurno2" class="mat-elevation-z8 largura-tabela">
+        
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Time</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="points">
+            <th mat-header-cell *matHeaderCellDef>Pontos</th>
+            <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="games">
+            <th mat-header-cell *matHeaderCellDef>Jogos</th>
+            <td mat-cell *matCellDef="let element">{{ element.games }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="wins">
+            <th mat-header-cell *matHeaderCellDef>Vitórias</th>
+            <td mat-cell *matCellDef="let element">{{ element.wins }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="draws">
+            <th mat-header-cell *matHeaderCellDef>Empates</th>
+            <td mat-cell *matCellDef="let element">{{ element.draws }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="losses">
+            <th mat-header-cell *matHeaderCellDef>Derrotas</th>
+            <td mat-cell *matCellDef="let element">{{ element.losses }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="goalsFor">
+            <th mat-header-cell *matHeaderCellDef>Gols Feitos</th>
+            <td mat-cell *matCellDef="let element">{{ element.goalsFor }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="goalsAgainst">
+            <th mat-header-cell *matHeaderCellDef>Gols Tomados</th>
+            <td mat-cell *matCellDef="let element">{{ element.goalsAgainst }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="woLosses">
+            <th mat-header-cell *matHeaderCellDef>Jogos Perdidos por WO</th>
+            <td mat-cell *matCellDef="let element">{{ element.woLosses }}</td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <h2>Tabela do 3° Turno</h2>
+        <table mat-table [dataSource]="dataSourceTurno3" class="mat-elevation-z8 largura-tabela">
+        
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Time</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="points">
+            <th mat-header-cell *matHeaderCellDef>Pontos</th>
+            <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="games">
+            <th mat-header-cell *matHeaderCellDef>Jogos</th>
+            <td mat-cell *matCellDef="let element">{{ element.games }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="wins">
+            <th mat-header-cell *matHeaderCellDef>Vitórias</th>
+            <td mat-cell *matCellDef="let element">{{ element.wins }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="draws">
+            <th mat-header-cell *matHeaderCellDef>Empates</th>
+            <td mat-cell *matCellDef="let element">{{ element.draws }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="losses">
+            <th mat-header-cell *matHeaderCellDef>Derrotas</th>
+            <td mat-cell *matCellDef="let element">{{ element.losses }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="goalsFor">
+            <th mat-header-cell *matHeaderCellDef>Gols Feitos</th>
+            <td mat-cell *matCellDef="let element">{{ element.goalsFor }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="goalsAgainst">
+            <th mat-header-cell *matHeaderCellDef>Gols Tomados</th>
+            <td mat-cell *matCellDef="let element">{{ element.goalsAgainst }}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="woLosses">
+            <th mat-header-cell *matHeaderCellDef>Jogos Perdidos por WO</th>
+            <td mat-cell *matCellDef="let element">{{ element.woLosses }}</td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

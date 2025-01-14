@@ -1,0 +1,248 @@
+/* Estilo geral */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Remove a barra de rolagem horizontal */
+}
+
+.padrao {
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1500px;
+}
+.Patrocinadores {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as imagens se ajustem em várias linhas */
+    gap: 16px; /* Espaçamento entre os retângulos */
+    justify-content: center; /* Centraliza as imagens */
+    align-items: center; /* Alinha as imagens verticalmente */
+    padding: 16px; /* Espaçamento interno do container */
+  }
+  
+  .patrocinador {
+    width: 150px; /* Largura fixa para os retângulos */
+    height: 100px; /* Altura fixa para os retângulos */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd; /* Borda ao redor do retângulo */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que as imagens não "vazem" */
+    background-color: #f9f9f9; /* Cor de fundo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.2s ease; /* Animação ao passar o mouse */
+  }
+  
+  .patrocinador:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+  }
+  
+  .patrocinador img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do retângulo */
+    max-height: 100%; /* Ajusta a altura da imagem ao container */
+  }
+  
+
+.campeonato-card {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(119, 177, 113); /* Fundo suave */
+    border: 2px solid black;
+    border-radius: 50px;
+}
+
+/* Estilo do cabeçalho do campeonato */
+.header-container {
+    display: flex;
+    text-align: center;
+    justify-content: space-between; /* Alinha os itens lado a lado */
+    align-items: center;
+    flex-wrap: wrap; /* Permite que os itens se reorganizem em telas pequenas */
+}
+
+.header-left {
+    flex: 1;
+}
+
+.header-left mat-card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.header-left mat-card-subtitle {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+.header-right {
+    display: flex;
+    gap: 20px; /* Espaçamento entre os cards */
+    flex-wrap: wrap; /* Permite que os cards se reorganizem em telas pequenas */
+}
+
+/* Estilo dos cards redondos */
+.mat-card-front {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(84, 160, 47, 0.819);
+    border: 1.6px solid black;
+    border-radius: 50%; /* Faz o card ficar redondo */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.centered {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 1000px;
+    text-align: center;
+}
+
+.centered h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.726);
+}
+
+.centered mat-icon {
+    font-size: 2rem;
+    color: darkgreen;
+}
+
+/* Estilo do card de torneios */
+.torneio-card {
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Novo layout para os torneios */
+.torneio-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que os itens se reorganizem em telas pequenas */
+}
+
+.torneio-info {
+    margin: 10px 0;
+    flex: 1;
+    min-width: 200px; /* Garante que os itens não fiquem muito pequenos */
+}
+
+.torneio-info h2 {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.torneio-info p {
+    font-size: 1.2rem;
+    color: black;
+}
+
+.lista-espera {
+    flex: 0.3; /* Ajuste para a lista de espera ocupar uma área menor */
+    margin-left: 20px;
+}
+
+/* Estilo do botão */
+.botao-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-ver-aqui {
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 20px; /* Botão arredondado */
+  text-transform: none;
+  font-weight: 500;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    background-color: transparent; /* Remove qualquer fundo */
+  }
+  
+  .logo-img {
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    border-radius: 50%; /* Deixa a imagem circular */
+    background-color: transparent; /* Garante que o fundo da imagem seja transparente */
+    box-shadow: none; /* Remove qualquer sombra */
+  }
+  
+/* Animação de hover */
+.mat-card-front:hover {
+    transform: translateY(-22px);
+    opacity: 2.3;
+}
+
+/* Responsividade */
+@media (max-width: 959px) {
+    .mat-card-front {
+        width: 150px; /* Reduz tamanho em telas menores */
+        height: 150px;
+    }
+
+    .header-container {
+        flex-direction: column; /* Coloca os itens um abaixo do outro em telas pequenas */
+        align-items: center;
+    }
+
+    .header-right {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .campeonato-card {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    .campeonato-card mat-card-title {
+        font-size: 1.5rem;
+    }
+
+    .campeonato-card mat-card-subtitle {
+        font-size: 1rem;
+    }
+
+    .torneio-card {
+        width: 95%;
+    }
+
+    .btn-ver-aqui {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    .torneio-container {
+        flex-direction: column; /* Alinha torneios em uma coluna */
+    }
+
+    .torneio-info {
+        flex: 1;
+        min-width: 100%; /* Torna os itens de torneios responsivos */
+    }
+
+    .logo-img {
+        width: 150px; /* Ajusta o tamanho da imagem para telas menores */
+    }
+}

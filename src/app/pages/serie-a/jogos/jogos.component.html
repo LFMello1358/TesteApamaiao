@@ -1,0 +1,94 @@
+<app-componets></app-componets>
+<div class="Padrao">
+  <div class="conteudo">
+    <div class="card">
+      <h3>Jogos</h3>
+      <div *ngIf="currentTurn && currentRound">
+        <p><strong>{{ currentTurn }} - Rodada {{ currentRound }}</strong></p>
+        
+        <!-- Exibe as partidas da rodada atual -->
+        <div *ngFor="let match of getCurrentRoundMatches()">
+          <p>{{ match.homeTeam }} vs {{ match.awayTeam }} - {{ match.date }}</p>
+          <p>Resultado: {{ match.homeGoals }} - {{ match.awayGoals }}</p>
+          <div><strong>Detalhes:</strong></div>
+          <div><strong>Real Madrid:</strong> Gols: {{ match.homeDetails | json }}</div>
+          <div><strong>Barcelona:</strong> Gols: {{ match.awayDetails | json }}</div>
+        </div>
+
+        <!-- Formulário para registrar o resultado do jogo -->
+        <div *ngIf="currentRound === 1">
+          <h4>Registrar Resultado: Real Madrid vs Barcelona</h4>
+
+          <!-- Gols e Cartões para Real Madrid -->
+          <mat-form-field appearance="fill">
+            <mat-label>Gols Real Madrid</mat-label>
+            <input matInput type="number" [(ngModel)]="homeGoals" min="0">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Jogador Real Madrid</mat-label>
+            <input matInput #homePlayer placeholder="Jogador">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Gols do Jogador</mat-label>
+            <input matInput #homeGoalsInput type="number" [(ngModel)]="homeGoals" min="0">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Cartão Amarelo</mat-label>
+            <input matInput type="number" [(ngModel)]="homeYellowCards" min="0">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Cartão Vermelho</mat-label>
+            <input matInput type="number" [(ngModel)]="homeRedCards" min="0">
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="addPlayerDetails('home', homePlayer.value, homeGoalsInput.value, homeYellowCards, homeRedCards)">
+            Adicionar Detalhes do Jogador
+          </button>
+
+          <!-- Gols e Cartões para Barcelona -->
+          <mat-form-field appearance="fill">
+            <mat-label>Gols Barcelona</mat-label>
+            <input matInput type="number" [(ngModel)]="awayGoals" min="0">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Jogador Barcelona</mat-label>
+            <input matInput #awayPlayer placeholder="Jogador">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Gols do Jogador</mat-label>
+            <input matInput #awayGoalsInput type="number" [(ngModel)]="awayGoals" min="0">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Cartão Amarelo</mat-label>
+            <input matInput type="number" [(ngModel)]="awayYellowCards" min="0">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Cartão Vermelho</mat-label>
+            <input matInput type="number" [(ngModel)]="awayRedCards" min="0">
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" (click)="addPlayerDetails('away', awayPlayer.value, awayGoalsInput.value, awayYellowCards, awayRedCards)">
+            Adicionar Detalhes do Jogador
+          </button>
+
+          <!-- Atualiza o resultado final -->
+          <button mat-raised-button color="accent" (click)="updateMatchResult()">Atualizar Resultado</button>
+        </div>
+
+        <!-- Navegação de rodadas -->
+        <div class="navigation-buttons">
+          <button mat-button (click)="previousRound()">Rodada Anterior</button>
+          <button mat-button (click)="nextRound()">Próxima Rodada</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

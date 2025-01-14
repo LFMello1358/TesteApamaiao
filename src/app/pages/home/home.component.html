@@ -1,0 +1,104 @@
+<app-componets></app-componets>
+<div class="padrao">
+  <div class="Patrocinadores">
+    <div class="patrocinador" *ngFor="let image of patrocinadores">
+      <img [src]="image.src" [alt]="image.alt" />
+    </div>
+  </div>
+  
+  <mat-card class="campeonato-card">
+    <mat-card-header>
+      <div class="header-container">
+        <div class="header-left">
+            <!-- <img src="assets\img\Boneco_apamaiao.jpg" alt="Logo Apamaião" class="logo-img" /> -->
+
+        </div>
+        <div class="header-right">
+          <mat-card class="widget mat-card-front cursor-pointer" [routerLink]="'/serie-a'" matRipple [matRippleCentered]="true" [matRippleUnbounded]="false" [matRippleRadius]="100" [matRippleColor]="'#003366'">
+            <div class="centered">
+              <!-- <mat-icon>sports_soccer</mat-icon> -->
+              <h1>Serie A</h1>
+            </div>
+          </mat-card>
+          <mat-card class="widget mat-card-front cursor-pointer" [routerLink]="'/serie-b'" matRipple [matRippleCentered]="true" [matRippleUnbounded]="false" [matRippleRadius]="100" [matRippleColor]="'#003366'">
+            <div class="centered">
+              <!-- <mat-icon>sports_soccer</mat-icon> -->
+              <h1>Serie B</h1>
+            </div>
+          </mat-card>
+          <mat-card class="widget mat-card-front cursor-pointer" [routerLink]="'/home'" matRipple [matRippleCentered]="true" [matRippleUnbounded]="false" [matRippleRadius]="100" [matRippleColor]="'#003366'">
+            <div class="centered">
+              <!-- <mat-icon>business</mat-icon> -->
+              <h1>Patrocinadores</h1>
+            </div>
+          </mat-card>
+          <mat-card 
+          class="widget mat-card-front cursor-pointer" 
+          (click)="openRegulamento()" 
+          matRipple 
+          [matRippleCentered]="true" 
+          [matRippleUnbounded]="false" 
+          [matRippleRadius]="100" 
+          [matRippleColor]="'#003366'">
+          <div class="centered">
+            <h1>Regulamento</h1>
+          </div>
+        </mat-card>        
+        <mat-card class="widget mat-card-front cursor-pointer" [routerLink]="'/home'" matRipple [matRippleCentered]="true" [matRippleUnbounded]="false" [matRippleRadius]="100" [matRippleColor]="'#003366'">
+          <div class="centered">
+            <!-- <mat-icon>business</mat-icon> -->
+            <h1>Blog</h1>
+          </div>
+        </mat-card>
+        </div>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card class="campeonato-card torneio-card">
+        <mat-card-header>
+          <mat-card-title>Torneios de 2024</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="torneio-container">
+            <div class="torneio-info">
+              <h2>Torneio A</h2>
+              <p>Campeão: Libertad</p>
+              <p>Vice: Inter Miami</p>
+              <p>Terceiro: Milionarios</p>
+            </div>
+            <div class="torneio-info">
+              <h2>Torneio B</h2>
+              <p>Campeão: Racing</p>
+              <p>Vice: Nacional</p>
+              <p>Terceiro: Atlético Nacional</p>
+            </div>
+            <div class="torneio-info lista-espera">
+              <h2>Lista de Espera A</h2>
+              <div class="botao-container">
+                <button mat-raised-button color="accent" class="btn-ver-aqui">Ver aqui</button>
+              </div>
+            </div>
+            <div class="torneio-info lista-espera">
+              <h2>Lista de Espera B</h2>
+              <div class="botao-container">
+                <button mat-raised-button color="accent" class="btn-ver-aqui">Ver aqui</button>
+              </div>
+            </div>
+            <div class="torneio-info lista-espera">
+              <h2>Lista de Jogadores A</h2>
+              <div class="botao-container">
+                <button mat-raised-button color="accent" class="btn-ver-aqui">Ver aqui</button>
+              </div>
+            </div>
+            <div class="torneio-info lista-espera">
+              <h2>Lista de Jogadores B</h2>
+              <div class="botao-container">
+                <button mat-raised-button color="accent" class="btn-ver-aqui">Ver aqui</button>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

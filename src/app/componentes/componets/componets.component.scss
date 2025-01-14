@@ -1,0 +1,135 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.521);
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.navbar {
+  height: 100px;
+  background-color: rgb(0, 0, 0);
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo i {
+  color: green;
+  font-size: 22px;
+}
+
+.navbar .logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgb(3, 214, 3);
+  margin-left: 12px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu-links {
+  display: flex;
+  gap: 24px;
+  border-right: 1px solid #999999;
+  padding-inline: 24px;
+}
+
+.menu-links a,
+.menu-links button {
+  font-weight: 500;
+  color: white;
+  background-color: green;
+  padding: 12px 24px;
+  border-radius: 25px;
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-block;
+}
+
+.menu-links a:hover,
+.menu-links button:hover {
+  background-color: darkgreen;
+  transform: scale(1.05);
+}
+
+.menu-links a:active,
+.menu-links button:active {
+  background-color: darkgreen;
+  transform: scale(0.98);
+}
+
+.menu-btn {
+  font-size: 32px;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 53rem) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  .menu-links {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .menu-links a,
+  .menu-links button {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  background-color: transparent; /* Remove qualquer fundo */
+}
+
+.logo-img {
+  width: 100px; /* Ajuste o tamanho conforme necessário */
+  height: auto;
+  border-radius: 50%; /* Deixa a imagem circular */
+  background-color: transparent; /* Garante que o fundo da imagem seja transparente */
+  box-shadow: none; /* Remove qualquer sombra */
+}
+
