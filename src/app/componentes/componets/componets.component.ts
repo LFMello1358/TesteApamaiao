@@ -16,4 +16,8 @@ export class ComponetsComponent {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+  openRegulamento(): void {
+    const url = 'assets/img/REGULAMENTO 2024-v2.pdf';
+    window.open(url, '_blank');
+  }
 }

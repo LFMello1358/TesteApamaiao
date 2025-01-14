@@ -1,8 +1,10 @@
 <app-componets></app-componets>
 <div class="Padrao">
-    <div>
-
-    </div>
+    <div class="Patrocinadores">
+        <div class="patrocinador" *ngFor="let image of patrocinadores">
+          <img [src]="image.src" [alt]="image.alt" />
+        </div>
+      </div>
     <br>
     <!-- Card de Jogos -->
     <div class="card jogos">
@@ -156,7 +158,9 @@
         </div>
     </div>
 
-
+    <br>
+    <br>
+    <br>
     <!-- Tabela do 1° Turno -->
     <div class="tabela">
         <h2>Tabela do 1° Turno</h2>
@@ -210,6 +214,9 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
+    <br>
+<br>
+<br>
 
     <!-- Tabela do 2° Turno -->
     <div class="tabela">
@@ -264,7 +271,9 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-
+<br>
+<br>
+<br>
     <!-- Tabela do 3° Turno -->
     <div class="tabela">
         <h2>Tabela do 3° Turno</h2>

@@ -14,19 +14,19 @@
       <!-- Dropdown "Serie A" com Angular Material -->
       <button mat-button [routerLink]="'/serie-a'" [matMenuTriggerFor]="serieAMenu">Serie A</button>
       <mat-menu #serieAMenu="matMenu">
-        <button mat-menu-item routerLink="/serie-ajogos">Jogos</button>
-        <button mat-menu-item routerLink="/serie-aclassificacao">Classificação</button>
+        <!-- <button mat-menu-item routerLink="/serie-ajogos">Jogos</button>
+        <button mat-menu-item routerLink="/serie-aclassificacao">Classificação</button> -->
       </mat-menu>
 
       <!-- Dropdown "Serie B" com Angular Material -->
       <button mat-button [matMenuTriggerFor]="serieBMenu">Serie B</button>
       <mat-menu #serieBMenu="matMenu">
-        <button mat-menu-item routerLink="/serie-bjogos">Jogos</button>
-        <button mat-menu-item routerLink="/serie-bclassificacao">Classificação</button>
+        <!-- <button mat-menu-item routerLink="/serie-bjogos">Jogos</button>
+        <button mat-menu-item routerLink="/serie-bclassificacao">Classificação</button> -->
       </mat-menu>
 
-      <a routerLink="/regulamento">Regulamento</a>
-      <a routerLink="/blog">Blog</a>
+      <a (click)="openRegulamento()"> Regulamento </a>
+      <!-- <a routerLink="/blog">Blog</a> -->
     </div>
   </div>
 </nav>
