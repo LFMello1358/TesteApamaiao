@@ -1,3 +1,4 @@
+/* Reset */
 *,
 *::before,
 *::after {
@@ -23,40 +24,50 @@ button {
   cursor: pointer;
 }
 
+/* Navbar */
 .navbar {
-  height: auto;
-  background-color: rgb(0, 0, 0);
-  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Permite quebra de linha para elementos */
+  padding: 10px 20px;
+  background-color: black;
+  position: relative; /* Importante para posicionar o menu corretamente */
+  flex-wrap: wrap;
 }
 
-.navbar .logo i {
-  color: green;
-  font-size: 22px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.navbar .logo a {
-  font-size: 24px;
-  font-weight: 700;
-  color: rgb(3, 214, 3);
-  margin-left: 12px;
+.logo img {
+  width: 100px;
+  height: auto;
+  max-width: 15vw;
 }
 
+.logo h1 {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Menu */
 .menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 20px;
   transition: all 0.3s ease-in-out;
 }
 
+/* Menu Links */
 .menu-links {
   display: flex;
-  gap: 24px;
-  border-right: 1px solid #999999;
-  padding-inline: 24px;
+  gap: 16px;
+  padding-inline: 16px;
 }
 
 .menu-links a,
@@ -64,8 +75,8 @@ button {
   font-weight: 500;
   color: white;
   background-color: green;
-  padding: 12px 24px;
-  border-radius: 25px;
+  padding: 8px 16px;
+  border-radius: 20px;
   transition: background-color 0.3s, transform 0.2s;
   display: inline-block;
 }
@@ -82,64 +93,102 @@ button {
   transform: scale(0.98);
 }
 
+/* Mobile Menu Button */
 .menu-btn {
-  font-size: 32px;
+  font-size: 28px;
   color: white;
   display: none;
   cursor: pointer;
 }
 
 /* Responsividade */
-@media (max-width: 53rem) {
+@media (max-width: 768px) {
   .navbar {
-    padding: 10px 20px;
-  }
-
-  .menu {
-    display: none;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    align-items: center;
     padding: 10px 20px;
-    border-radius: 8px;
+    width: 100%; /* Mantém a largura da navbar em 90% da tela */
+    margin: 0 auto;
+    margin-bottom: 20px; /* Espaço para o conteúdo que vem depois da navbar */
   }
 
-  .menu-links {
+  .logo {
     flex-direction: column;
-    gap: 16px;
-    border-right: none;
-    width: 100%;
-    padding-inline: 0;
-  }
-
-  .menu-links a,
-  .menu-links button {
-    font-size: 18px;
-    width: 100%;
     text-align: center;
-    padding: 10px 0;
+    width: 100%;
   }
 
-  .menu-btn {
-    display: block;
+  .logo img {
+    max-width: 30vw;
   }
 
-  .menu.show {
-    display: flex;
-  }
-}
-
-/* Logo */
-.logo {
+/* Ajuste do layout dos links e botões */
+.menu-links {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a linha seguinte se necessário */
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  gap: 12px; /* Espaçamento entre os botões */
+  width: 100%; /* Garante que ocupe toda a largura disponível */
+  padding: 0;
+  text-align: center;
 }
 
-.logo-img {
-  width: 80px; /* Tamanho ajustado */
-  height: auto;
-  border-radius: 50%;
-  background-color: transparent;
+/* Ajustes dos botões */
+.menu-links a,
+.menu-links button {
+  font-size: 14px; /* Diminui o tamanho da fonte */
+  padding: 10px 15px; /* Diminui o padding */
+  margin-right: 3px; /* Espaçamento entre os botões */
+  width: 160px; /* Ajusta a largura dos botões */
+  text-align: center; /* Garante que o texto fique centralizado */
+  white-space: nowrap; /* Evita que o texto quebre */
+  border-radius: 20px; /* Bordas arredondadas */
+  background-color: green; /* Cor de fundo dos botões */
+  color: white; /* Cor do texto */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+}
+
+/* Efeito hover e active */
+.menu-links a:hover,
+.menu-links button:hover {
+  background-color: darkgreen; /* Cor do botão ao passar o mouse */
+  transform: scale(1.05); /* Aumenta um pouco o botão ao passar o mouse */
+}
+
+.menu-links a:active,
+.menu-links button:active {
+  background-color: darkgreen; /* Cor do botão quando clicado */
+  transform: scale(0.98); /* Diminui um pouco o botão ao clicar */
+}
+
+/* Ajuste para o botão de menu */
+.menu-btn {
+  display: block;
+  align-self: flex-end;
+  margin: 10px 0;
+  font-size: 32px;
+}
+
+/* Impede a rolagem quando o menu está aberto */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Para telas menores, ainda usa flex com coluna para os botões não ficarem lado a lado */
+@media (max-width: 768px) {
+  .menu-links {
+    flex-direction: row; /* Coloca os botões lado a lado */
+    gap: 12px; /* Espaço entre os botões */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+  }
+}
+
+/* Para telas maiores que 768px */
+@media (min-width: 768px) {
+  .menu-links {
+    flex-direction: row; /* Coloca os botões lado a lado */
+    gap: 15px; /* Aumenta o espaço entre os botões */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+  }
+}
 }

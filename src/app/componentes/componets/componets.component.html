@@ -1,32 +1,43 @@
 <nav class="navbar">
   <div class="logo">
-    <img src="assets\img\Boneco_apamaiao.jpg" alt="Logo Apamaião" class="logo-img" />
-     <h1 style=" font-size: 1.2rem;
-    color: #e0e0e0; margin-left: 30px;"> Campeonato de Pais e Mestres do Abel</h1>
+    <img src="assets/img/Boneco_apamaiao.jpg" alt="Logo Apamaião" class="logo-img" />
+    <div>
+      <h1>Campeonato de Pais e Mestres do Abel</h1>
+      <p style="font-size: x-small; color: whitesmoke; margin: 0;">Atualizado 23/10/2025</p>
+    </div>
   </div>
+
+  <!-- Botão de menu para mobile -->
   <div class="menu-btn" (click)="toggleMenu()">
     <i class="fa-solid fa-bars"></i>
   </div>
+  <!-- Menu com binding de classe para mostrar/ocultar -->
   <div class="menu" [ngClass]="{ 'show': isMenuOpen }">
     <div class="menu-links">
-      <a routerLink="/home">Home</a>
+      <button mat-button (click)="goToForm()">Convite Festa  </button>
+      <button mat-button routerLink="/home">Home</button>
+      <button mat-button (click)="openRegulamento()">Regulamento</button>
 
-      <!-- Dropdown "Serie A" com Angular Material -->
-      <button mat-button [routerLink]="'/serie-a'" [matMenuTriggerFor]="serieAMenu">Serie A</button>
+      <!-- Dropdown "Categoria A" com Angular Material -->
+      <button mat-button [routerLink]="'/categoria-a'" [matMenuTriggerFor]="serieAMenu">
+        Categoria A
+      </button>
       <mat-menu #serieAMenu="matMenu">
-        <!-- <button mat-menu-item routerLink="/serie-ajogos">Jogos</button>
-        <button mat-menu-item routerLink="/serie-aclassificacao">Classificação</button> -->
+        <!-- Opções do dropdown -->
       </mat-menu>
 
-      <!-- Dropdown "Serie B" com Angular Material -->
-      <button mat-button [matMenuTriggerFor]="serieBMenu">Serie B</button>
+      <!-- Dropdown "Categoria B" com Angular Material -->
+      <button mat-button [routerLink]="'/categoria-b'" [matMenuTriggerFor]="serieBMenu">
+        Categoria B
+      </button>
       <mat-menu #serieBMenu="matMenu">
-        <!-- <button mat-menu-item routerLink="/serie-bjogos">Jogos</button>
-        <button mat-menu-item routerLink="/serie-bclassificacao">Classificação</button> -->
+        <!-- Opções do dropdown -->
       </mat-menu>
 
-      <a (click)="openRegulamento()"> Regulamento </a>
-      <!-- <a routerLink="/blog">Blog</a> -->
+
+
+      <button mat-button (click)="openJogosA()">Tabela de Jogos do A</button>
+      <button mat-button (click)="openJogosB()">Tabela de Jogos do B</button>
     </div>
   </div>
 </nav>

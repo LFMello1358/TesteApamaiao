@@ -1,0 +1,27 @@
+.image-modal {
+  position: relative;
+  text-align: center;
+}
+
+.image-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .image-modal img {
+    max-width: 95vw;
+    max-height: 80vh;
+  }
+}

@@ -14,6 +14,37 @@ body {
     width: 100%;
     max-width: 1500px;
 }
+.carousel-container {
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .carousel-wrapper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+  }
+  
+  .carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+  }
+  
 .Patrocinadores {
     display: flex;
     flex-wrap: wrap; /* Permite que as imagens se ajustem em várias linhas */
@@ -45,7 +76,25 @@ body {
     max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do retângulo */
     max-height: 100%; /* Ajusta a altura da imagem ao container */
   }
-  
+  .botao-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.torneio-info h2 {
+  text-align: center;
+}
+
+.torneio-info button {
+  font-size: 1rem;
+  padding: 20px 16px;
+  border-radius: 20px;
+  text-transform: none;
+  font-weight: 500;
+}
+
 
 .campeonato-card {
     width: 70%;

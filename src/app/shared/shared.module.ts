@@ -16,8 +16,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from "@angular/forms";
 import { MatRippleModule } from '@angular/material/core';
-
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { PdfViewerModule } from 'ng2-pdf-viewer'; // Importe aqui o módulo
 
 
 
@@ -36,9 +37,12 @@ import { MatRippleModule } from '@angular/material/core';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatCardModule,
     FormsModule,
-    MatRippleModule
+    MatRippleModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCardModule,
+    PdfViewerModule
 
   ],
   exports: [
@@ -51,10 +55,12 @@ import { MatRippleModule } from '@angular/material/core';
     MatSortModule,
     MatButtonModule,
     MatPaginatorModule,
-    MatCardModule,
     FormsModule,
-    MatRippleModule
-
+    MatRippleModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCardModule,
+    PdfViewerModule
 
 
   ],
