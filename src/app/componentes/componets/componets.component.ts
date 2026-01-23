@@ -3,39 +3,41 @@ import { SharedModule } from '../../shared/shared.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav'; // ✅ IMPORTAR Sidenav
 
 @Component({
   selector: 'app-componets',
-  imports: [SharedModule,],
+  standalone: true, 
+  imports: [SharedModule, MatMenuModule, MatButtonModule, MatIconModule, MatSidenavModule],
   templateUrl: './componets.component.html',
-  styleUrl: './componets.component.scss'
+  styleUrls: ['./componets.component.scss']
 })
 export class ComponetsComponent {
-  isMenuOpen = false;
+  isMenuOpen = true;
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    if (this.isMenuOpen) {
-      document.body.classList.add('menu-open');
-    } else {
-      document.body.classList.remove('menu-open');
-    }
+    document.body.classList.toggle('menu-open', this.isMenuOpen);
   }
+
   openRegulamento(): void {
-    const url = 'assets/img/Regulamento Apamaiao 25.pdf';
-    window.open(url, '_blank');
+    window.open('assets/img/Regulamento Apamaiao 25.pdf', '_blank');
   }
+
   openJogosA(): void {
-    const url = 'assets/img/TABELA_A_JOGOS.pdf';
-    window.open(url, '_blank');
+    window.open('assets/img/TABELA_A_JOGOS.pdf', '_blank');
   }
+
   openJogosB(): void {
-    const url = 'assets/img/TABELA_B_JOGOS.pdf';
-    window.open(url, '_blank');
+    window.open('assets/img/TABELA_B_JOGOS.pdf', '_blank');
   }
-  // ✅ Método para abrir o formulário do Google
-  goToForm(): void {
-    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeaidnANXRB1JniGQLvvW0B6mKsFOL6o-MWHiPUQhcGYYlbQA/viewform?usp=dialog';
-    window.open(formUrl, '_blank');
+
+  openListaA(): void {
+    window.open('assets/img/Lista 110 A.pdf', '_blank');
+  }
+
+  openListaB(): void {
+    window.open('assets/img/Lista 110 B.pdf', '_blank');
   }
 }
+

@@ -1,307 +1,289 @@
-/* Estilo geral */
+/* =========================
+   VARIÁVEIS / TEMA
+========================= */
+$black: #0d0f0f;
+$dark-gray: #1a1d1f;
+$gray: #2a2e31;
+$green: #175739;
+$green-light: #06924f;
+$white: #ffffff;
+
+/* Sombras otimizadas (menos repaint no mobile) */
+$shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.45);
+$shadow-strong: 0 12px 28px rgba(0, 0, 0, 0.65);
+
+/* =========================
+   RESET / BASE
+========================= */
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Remove a barra de rolagem horizontal */
-}
-table {
-  width: 60%;/* Reduz a largura da tabela */
-  margin: 0 auto; /* Centraliza a tabela */
-  table-layout: fixed; /* Faz com que as colunas tenham o mesmo tamanho */
+  background: linear-gradient(160deg, $black, $dark-gray);
+  color: $white;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  overflow-x: hidden;
 }
 
-th, td {
-  padding: 4px; /* Reduz o espaçamento das células */
-  text-align: center; /* Alinha o conteúdo ao centro */
-}
-
-mat-table {
-  transform: scale(0.8); /* Escala a tabela para reduzir seu tamanho geral */
-  transform-origin: top center; /* Garante que a tabela seja escalada a partir do topo */
-}
-
-
-.padrao {
-  margin: 5% auto;
+/* =========================
+   LAYOUT PRINCIPAL
+========================= */
+.Padrao {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 90%; /* Ajuste para telas menores */
-  max-width: 1200px; /* Limita a largura máxima */
+  gap: 28px;
+  padding: 24px 12px;
 }
 
-.Patrocinadores {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-}
-.carousel-container {
+/* =========================
+   IMAGEM TOPO
+========================= */
+.imagem-padrao {
+  max-width: 520px;
   width: 100%;
-  max-width: 900px;
-  overflow: hidden;
-  position: relative;
+  border-radius: 14px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
-.carousel-wrapper {
-  display: flex;
-  width: 100%;
-  overflow: hidden;
+/* =========================
+   CONTAINERS BASE
+========================= */
+.table-container,
+.tabela,
+.card,
+.time-card {
+  background: linear-gradient(160deg, lighten($gray, 6%), $dark-gray);
+  border-radius: 14px;
+  padding: 12px;
+  border: 1px solid rgba(47, 163, 107, 0.25);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-.carousel {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-}
-
-.carousel-item {
-  min-width: 100%;
-  box-sizing: border-box;
+/* =========================
+   TÍTULOS
+========================= */
+h2,
+h3 {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  font-size: 13px;
+  color: $green-light;
   text-align: center;
 }
 
-.carousel-item img {
+.time-title {
+  background: rgba(47, 163, 107, 0.22);
+  padding: 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+/* =========================
+   TABELAS HTML (NÃO MATERIAL)
+========================= */
+.time-table {
   width: 100%;
-  max-height: 150px;
-  object-fit: contain;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.patrocinador {
-  width: 150px;
-  height: 100px;
+.time-table th,
+.time-table td {
+  padding: 5px;
+  font-size: 11px;
+  text-align: center;
+  color: $white;
+}
+
+.time-table th {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.time-table td {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.time-table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* =========================
+   COLUNA DE NOME
+========================= */
+.nome-column {
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+/* =========================
+   ANGULAR MATERIAL TABLE
+========================= */
+.mat-mdc-table {
+  width: 100%;
+  background: transparent;
+}
+
+.mat-mdc-header-cell,
+.mat-mdc-cell {
+  padding: 6px 8px;
+  font-size: 11px;
+  text-align: center;
+  color: $white;
+}
+
+.mat-mdc-header-cell {
+  color: $green-light;
+  font-weight: 600;
+}
+
+/* =========================
+   ARTILHEIROS / GOLEIROS
+========================= */
+.cards-top {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.patrocinador:hover {
-  transform: scale(1.05);
-}
-
-.patrocinador img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.conteudo {
-  margin: 0 auto;
-  padding: 20px;
-  width: 80%; /* Ajuste para telas menores */
+  gap: 16px;
+  width: 100%;
   max-width: 1200px;
 }
 
-.tabela-e-card {
+.cards-top .table-container {
+  flex: 1;
+}
+
+/* =========================
+   3 TABELAS LADO A LADO
+========================= */
+.tabelas-lado {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
   gap: 20px;
-  flex-wrap: wrap;
   width: 100%;
+  max-width: 1400px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.tabela {
+.tabelas-lado .table-container {
   flex: 1;
-  max-width: 90%; /* Ajuste para responsividade */
-  min-width: 300px;
-  margin: 0 auto;
-  // border: 2px solid darkgreen;
-  // border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  border: 2px solid darkgreen;
-  border-radius: 5px;
+  min-width: 280px;
 }
 
-.card {
-  flex: 1;
-  max-width: 80%; /* Ajuste para responsividade */
-  min-width: 230px;
-  padding: 10px;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-}
-
-.card.jogos {
-  max-width: 80%; /* Ajuste para telas menores */
-  overflow: hidden; /* Remove a barra de rolagem */
-
-  text-align: center;
-  margin: 20px auto;
-  border: 2px solid darkgreen;
-  border-radius: 5px;
-  padding-right: 10px;
-  
-}
-
-.cards-container {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  padding: 20px;
-}
-
+/* =========================
+   TIMES – GRID DESKTOP
+========================= */
 .times-container {
-  display: flex;
-  flex-wrap: wrap; /* Permite que os itens quebrem a linha */
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-  max-width: 2000px;
-  margin: 0 auto;
-  width: 90%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  background: transparent;
-
-}
-.card-borda-Artilharia {
-  border: 2px solid darkgreen; /* Definindo borda verde */
-  border-radius: 5px; /* Mantém borda arredondada, como outras divs */
-  padding: 15px; /* Adiciona um pouco de espaço interno */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para melhorar a visualização */
-  background-color: #fff; /* Cor de fundo branca */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1300px;
+  justify-items: center;
 }
 
-
-.suspenso {
-  background-color: red !important;
-  color: white !important; /* Texto branco para melhor contraste */
-
-  
+.time-card {
+  width: 100%;
+  max-width: 320px;
 }
 
-
-.table-container {
-  width: 90%; /* Defina um tamanho fixo para garantir a disposição correta */
-  max-height: 750px;
-  background-color: white;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  border: 2px solid darkgreen;
-  border-radius: 5px;
-  margin: 0 auto;
-}
-
-
-/* Estilo para Tablets */
-@media (max-width: 1024px) {
-.largura-tabela th,
-.largura-tabela td {
-    width: 90%;
-    text-align: center;
-}
-
-/* Aumenta a largura da coluna de nome */
-.largura-tabela .first-column {
-    width: 40%; /* Ajuste conforme necessário */
-    text-align: left;
-}
-
-/* Diminui a largura das outras colunas */
-.largura-tabela th:nth-child(n+2),
-.largura-tabela td:nth-child(n+2) {
-    width: 15%; /* Ajuste conforme necessário */
-}
-}
-
-/* Estilo para Celulares */
+/* =========================
+   MOBILE – 2 POR FILEIRA
+========================= */
 @media (max-width: 768px) {
-.largura-tabela .first-column {
-    width: 30%; /* Coluna de nomes maior em telas menores */
-    text-align: left;
-}
 
-.largura-tabela th:nth-child(n+2),
-.largura-tabela td:nth-child(n+2) {
-    width: 20%; /* Colunas reduzidas igualmente */
-    font-size: 18px;
-}
-
-
-.time-table th:not(.nome-column),
-.time-table td:not(.nome-column) {
-  width: 6%; /* Reduz as outras colunas */
-  font-size: 8px;
-}
-}
-
-/* Estilo para Telas Muito Pequenas */
-@media (max-width: 480px) {
-.largura-tabela .first-column {
-    width: 75%; /* Aumenta ainda mais para telas pequenas */
-    text-align: left;
-}
-
-.largura-tabela th:nth-child(n+2),
-.largura-tabela td:nth-child(n+2) {
-    width: 25%; /* Ajuste para colunas menores */
-    font-size: 10px; /* Fonte menor para caber na tela */
-}
-.times-container {
-  font-size: 10px; /* Fonte menor para caber na tela */
-}
-.time-table th:not(.nome-column),
-.time-table td:not(.nome-column) {
-    width: 17%; /* Outras colunas bem pequenas */
-    font-size: 12px;
-    text-align: center;
-}
-}
-
-.borda {
-  border: 2px solid darkgreen;
-  border-radius: 5px;
-  /* Caso deseje manter um espaçamento interno */
-  padding: 10px;
-}
-
-.suspensao-row {
-  background-color: red !important;
-  color: white !important; /* Texto branco para melhor contraste */
-  font-weight: bold;
-}
-.pdf-container {
-  overflow: hidden; /* Remove a barra de rolagem */
-  width: 80vw;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 2%;
-  margin-top: -1%;
-}
-
-/* Ajustes para telas menores */
-@media (max-width: 768px) {
-  .pdf-container {
-    height: 100vh;
-    width: 80vw;
-
+  .times-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
-}
 
-@media (max-width: 480px) {
-  .pdf-container {
-    height: 80vh;
-    width: 80vw;
-
-
+  .cards-top,
+  .tabelas-lado {
+    flex-direction: column;
+    gap: 14px;
   }
-  .card-borda-Artilharia{
+
+  .time-card,
+  .tabelas-lado .table-container {
+    max-width: 100%;
+    padding: 8px;
+  }
+
+  .time-table th,
+  .time-table td,
+  .mat-mdc-header-cell,
+  .mat-mdc-cell {
+    font-size: 10px;
+    padding: 4px;
+  }
+
+  .nome-column {
     font-size: 10px;
   }
+
+  .time-title {
+    font-size: 11px;
+    padding: 5px;
+  }
 }
 
+/* =========================
+   MOBILE MUITO PEQUENO
+========================= */
+@media (max-width: 420px) {
+
+  .times-container {
+    gap: 12px;
+  }
+
+  .time-table th,
+  .time-table td,
+  .mat-mdc-header-cell,
+  .mat-mdc-cell {
+    font-size: 9.5px;
+    padding: 3px;
+  }
+
+  .nome-column {
+    font-size: 9.5px;
+  }
+}
+
+/* =========================
+   HEADER DO TIME (ÍCONE + NOME)
+========================= */
+.time-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.time-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* =========================
+   SUSPENSÃO
+========================= */
+.suspensao-text {
+  color: #ff6b6b;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.suspenso {
+  background: linear-gradient(135deg, #8b0000, #ff0000) !important;
+  color: #fff !important;
+  font-weight: 600;
+}

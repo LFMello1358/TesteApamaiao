@@ -1,194 +1,149 @@
-/* Reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* =========================================================
+   VARIÁVEIS / TEMA
+========================================================= */
+$black: #0d0f0f;
+$dark-gray: #1a1d1f;
+$green: #175739;
+$green-light: #06924f;
+$white: #ffffff;
+$shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.45);
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.521);
-  font-family: "Ubuntu", sans-serif;
-}
-
-a {
-  text-decoration: none;
-}
-
-button {
-  border: 0;
-  outline: none;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-}
-
-/* Navbar */
+/* =========================================================
+   NAVBAR BASE
+========================================================= */
 .navbar {
+  width: 97.9%;
+  background: linear-gradient(160deg, $black, $dark-gray);
+  border-bottom: 1px solid rgba($green-light, 0.25);
+  box-shadow: $shadow-soft;
+  padding: 12px 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: black;
-  position: relative; /* Importante para posicionar o menu corretamente */
+  justify-content: space-between;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+/* LOGO */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  min-width: 0;
+
+  .logo-img {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: $shadow-soft;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: $white;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  p {
+    margin-top: 2px;
+    font-size: 11px;
+    color: rgba($white, 0.75);
+  }
 }
 
-.logo img {
-  width: 100px;
-  height: auto;
-  max-width: 15vw;
-}
-
-.logo h1 {
-  font-size: 1.2rem;
-  color: #e0e0e0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Menu */
+/* MENU DESKTOP */
 .menu {
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: all 0.3s ease-in-out;
 }
 
-/* Menu Links */
 .menu-links {
   display: flex;
-  gap: 16px;
-  padding-inline: 16px;
+  gap: 14px;
 }
 
-.menu-links a,
-.menu-links button {
+.menu-links button,
+.menu-links a {
   font-weight: 500;
-  color: white;
-  background-color: green;
+  color: $white;
+  background-color: $green;
   padding: 8px 16px;
   border-radius: 20px;
   transition: background-color 0.3s, transform 0.2s;
-  display: inline-block;
 }
 
-.menu-links a:hover,
-.menu-links button:hover {
+.menu-links button:hover,
+.menu-links a:hover {
   background-color: darkgreen;
   transform: scale(1.05);
 }
 
-.menu-links a:active,
-.menu-links button:active {
-  background-color: darkgreen;
+.menu-links button:active,
+.menu-links a:active {
   transform: scale(0.98);
 }
 
-/* Mobile Menu Button */
+/* BOTÃO MOBILE - escondido no desktop */
 .menu-btn {
   font-size: 28px;
-  color: white;
-  display: none;
+  color: $white;
   cursor: pointer;
+  display: none;
 }
 
-/* Responsividade */
+/* =========================================================
+   MOBILE
+========================================================= */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     align-items: center;
-    padding: 10px 20px;
-    width: 100%; /* Mantém a largura da navbar em 90% da tela */
-    margin: 0 auto;
-    margin-bottom: 20px; /* Espaço para o conteúdo que vem depois da navbar */
   }
 
   .logo {
     flex-direction: column;
     text-align: center;
+
+    .logo-img {
+      max-width: 30vw;
+    }
+  }
+
+  .menu-btn {
+    display: none; // menu sempre aberto
+  }
+
+  /* Menu sempre visível no mobile */
+  .menu {
+    display: flex;
+    width: 95%;
+    margin-top: 12px;
+  }
+
+  .menu-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    /* auto-fit preenche 2 ou 3 botões por linha dependendo da largura */
+    gap: 20px;
+    padding: 10px 10px;
+    justify-items: center;
+    width: 80%;
+  }
+
+  .menu-links button,
+  .menu-links a {
     width: 100%;
+    max-width: 150px;  // largura do botão menor para caber na linha
+    padding: 8px 10px;
+    font-size: 14px;
   }
-
-  .logo img {
-    max-width: 30vw;
-  }
-
-/* Ajuste do layout dos links e botões */
-.menu-links {
-  display: flex;
-  flex-wrap: wrap; /* Permite que os itens quebrem para a linha seguinte se necessário */
-  justify-content: center; /* Centraliza os itens horizontalmente */
-  gap: 12px; /* Espaçamento entre os botões */
-  width: 100%; /* Garante que ocupe toda a largura disponível */
-  padding: 0;
-  text-align: center;
-}
-
-/* Ajustes dos botões */
-.menu-links a,
-.menu-links button {
-  font-size: 14px; /* Diminui o tamanho da fonte */
-  padding: 10px 15px; /* Diminui o padding */
-  margin-right: 3px; /* Espaçamento entre os botões */
-  width: 160px; /* Ajusta a largura dos botões */
-  text-align: center; /* Garante que o texto fique centralizado */
-  white-space: nowrap; /* Evita que o texto quebre */
-  border-radius: 20px; /* Bordas arredondadas */
-  background-color: green; /* Cor de fundo dos botões */
-  color: white; /* Cor do texto */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
-}
-
-/* Efeito hover e active */
-.menu-links a:hover,
-.menu-links button:hover {
-  background-color: darkgreen; /* Cor do botão ao passar o mouse */
-  transform: scale(1.05); /* Aumenta um pouco o botão ao passar o mouse */
-}
-
-.menu-links a:active,
-.menu-links button:active {
-  background-color: darkgreen; /* Cor do botão quando clicado */
-  transform: scale(0.98); /* Diminui um pouco o botão ao clicar */
-}
-
-/* Ajuste para o botão de menu */
-.menu-btn {
-  display: block;
-  align-self: flex-end;
-  margin: 10px 0;
-  font-size: 32px;
-}
-
-/* Impede a rolagem quando o menu está aberto */
-body.menu-open {
-  overflow: hidden;
-}
-
-/* Para telas menores, ainda usa flex com coluna para os botões não ficarem lado a lado */
-@media (max-width: 768px) {
-  .menu-links {
-    flex-direction: row; /* Coloca os botões lado a lado */
-    gap: 12px; /* Espaço entre os botões */
-    justify-content: center; /* Centraliza os itens horizontalmente */
-  }
-}
-
-/* Para telas maiores que 768px */
-@media (min-width: 768px) {
-  .menu-links {
-    flex-direction: row; /* Coloca os botões lado a lado */
-    gap: 15px; /* Aumenta o espaço entre os botões */
-    justify-content: center; /* Centraliza os botões horizontalmente */
-  }
-}
 }

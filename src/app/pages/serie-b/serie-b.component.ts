@@ -227,153 +227,10 @@ export class SerieBComponent {
 
     this.topArtillery = this.topArtillery.slice(0, 10); // Mantém apenas os 10 primeiros
 
+  
     this.topArtillery = [
-      {
-        name: 'SERGINHO', goals: 5, time: 'Blackpool',
-      },
-      {
-        name: 'GREGÓRIO', goals: 9, time: 'Blackpool',
-      },
-      {
-        name: 'MARCELO DENTISTA', goals: 5, time: 'Tottenham'
-      },
-      {
-        name: 'CALVO', goals: 5, time: 'Tottenham'
-      },
-      {
-        name: 'FABIO BARROS', goals: 2, time: 'Tottenham'
-      },
-      {
-        name: 'RICARDINHO', goals: 8, time: 'Tottenham'
-      },
-      {
-        name: 'MARCELO FERREIRA', goals: 7, time: 'Man. United'
-      },
-      {
-        name: 'MARCELLUS', goals: 24, time: 'Man. United'
-      },
-      {
-        name: 'DUDU SOARES', goals: 7, time: 'Newcastle'
-      },
-      {
-        name: 'TONINHO IMÓVEIS', goals: 3, time: 'Man. United'
-      },
-      {
-        name: 'PAULO MASSA', goals: 8, time: 'Newcastle'
-      },
-      {
-        name: 'CLAUDIO', goals: 7, time: 'Arsenal'
-      },
-      {
-        name: 'FRANK VIANNA', goals: 4, time: 'Arsenal'
-      },
-      {
-        name: 'ANDRÉ PORTUGAL', goals: 3, time: 'Arsenal'
-      },
-      {
-        name: 'JOSÉ LUIZ', goals: 1, time: 'Leeds'
-      },
-      {
-        name: 'ANDRÉ NICOLAU', goals: 2, time: 'Leeds'
-      },
-      {
-        name: 'CUPULILLE', goals: 15, time: 'Leeds'
-      },
-      {
-        name: 'SHAOLIN', goals: 2, time: 'Leeds'
-      },
-      {
-        name: 'SILVIO CAVALO', goals: 13, time: 'Leeds'
-      },
-      {
-        name: 'IVAN', goals: 8, time: 'Blackpool'
-      },
-      {
-        name: 'FRANÇA', goals: 17, time: 'Liverpool'
-      },
-      {
-        name: 'SANDRINHO', goals: 12, time: 'Liverpool'
-      },
-      {
-        name: 'JUCA', goals: 8, time: 'Arsenal'
-      },
-
-      {
-        name: 'BODINHO', goals: 23, time: 'Man. City'
-      },
-      {
-        name: 'FILÉ', goals: 2, time: 'Man. City'
-      },
-      {
-        name: 'SERGIO SOMOS', goals: 4, time: 'Man. City'
-      },
-      {
-        name: 'LUIZINHO', goals: 1, time: 'Man. City'
-      },
-      // {
-      //   name: 'DEDECO', goals: 11, time: 'Man. City'
-      // },
-      {
-        name: 'MAGRINHO', goals: 2, time: 'Man. City'
-      },
-      {
-        name: 'RICHARD', goals: 24, time: 'Aston Villa'
-      },
-      {
-        name: 'MARCIO LIMA', goals: 9, time: 'Blackpool'
-      },
-      {
-        name: 'ANDRÉ VILHENA', goals: 1, time: 'Blackpool'
-      },
-      {
-        name: 'ELOIR', goals: 7, time: 'Chelsea'
-      },
-      {
-        name: 'MARCELINHO CID', goals: 1, time: 'Chelsea'
-      },
-      {
-        name: 'JUNIOR LUCIO', goals: 1, time: 'Chelsea'
-      },
-      {
-        name: 'FRANK', goals: 10, time: 'Chelsea'
-      },
-          {
-        name: 'CARLOS ANDRÉ', goals: 4, time: 'Chelsea'
-      },
-      {
-        name: 'LATINI', goals: 4, time: 'Wolves'
-      },
-      {
-        name: 'JULIO CESAR', goals: 2, time: 'Arsenal'
-      },
-      {
-        name: 'CRISTIANO MOTTA', goals: 2, time: 'Liverpool'
-      },
-      {
-        name: 'JORGINHO', goals: 3, time: 'Chelsea'
-      },
-      {
-        name: 'WANILDO', goals: 4, time: 'Aston Villa'
-      },
-
-      { name: 'CACAU', goals: 1, time: 'Wolves' },
-      { name: 'AMIN', goals: 1, time: 'Wolves' },
-      { name: 'ALBERT', goals: 6, time: 'Wolves' },
-      { name: 'RIDOLFI', goals: 1, time: 'Blackpool' },
-      { name: 'NAVAL', goals: 7, time: 'Arsenal' },
-      { name: 'JACARÉ', goals: 10, time: 'Tottenham' },
-      { name: 'CARLOS CASTELO', goals: 1, time: 'Tottenham' },
-      { name: 'CAVEIRÃO', goals: 1, time: 'Man. United' },
-      { name: 'NENÉM', goals: 6, time: 'Man. United' },
-      { name: 'RUBINHO', goals: 2, time: 'Wolves' },
-      { name: 'NEY', goals: 14, time: 'Wolves' },
-      { name: 'CADU', goals: 4, time: 'Wolves' },
-      { name: 'FLAVIO CHAME', goals: 2, time: 'Newcastle' },
-      { name: 'MARIO GRILLO', goals: 12, time: 'Newcastle' },
-      { name: 'NALDO', goals: 10, time: 'Newcastle' },
-      { name: 'FABIO PINHEIRO', goals: 4, time: 'Newcastle' },
-
-    ];
+      // { name: 'FABIO PINHEIRO', goals: 4, time: 'Newcastle' },
+    ]
 
     // Ordenando e limitando a 11 jogadores
     this.topArtillery.sort((a, b) => {
@@ -387,20 +244,64 @@ export class SerieBComponent {
       .slice(0, 10);                      // Pegando apenas os 11 primeiros
 
 
-    // Dados fictícios de goleiros menos vazados
+
     this.topGoalkeepers = [
-      { name: 'FELIPE CORREA', goalsConceded: 34, time: 'Wolves' },
-      { name: 'JORGINHO', goalsConceded: 40, time: 'Newcastle' },
-      { name: 'LUIZINHO JANSEN', goalsConceded: 54, time: 'Man. United' },
-      { name: 'GABRIEL MARTINS', goalsConceded: 55, time: 'Arsenal' },
-      { name: 'BRAGA', goalsConceded: 34, time: 'Tottenham' },
-      { name: 'LEANDRO MANHÃES', goalsConceded: 25, time: 'Liverpool' },
-      { name: 'LEONARDO', goalsConceded: 60, time: 'Aston Villa' },
-      { name: 'AUGUSTO', goalsConceded: 41, time: 'Leeds' },
-      { name: 'ZUQUI ', goalsConceded: 60, time: 'Chelsea' },
-      { name: 'BRASIL', goalsConceded: 70, time: 'Blackpool' },
-      { name: 'JOFRE ', goalsConceded: 31, time: 'Man. City' },
-    ];
+      {
+        name: 'Jogador 1',
+        goalsConceded: 0,
+        time: 'Alemanha'
+      },
+      {
+        name: 'Jogador 2',
+        goalsConceded: 0,
+        time: 'Argentina'
+      },
+      {
+        name: 'Jogador 3',
+        goalsConceded: 0,
+        time: 'Brasil'
+      },
+      {
+        name: 'Jogador 4',
+        goalsConceded: 0,
+        time: 'Espanha'
+      },
+      {
+        name: 'Jogador 5',
+        goalsConceded: 0,
+        time: 'França'
+      },
+      {
+        name: 'Jogador 6',
+        goalsConceded: 0,
+        time: 'Holanda'
+      },
+      {
+        name: 'Jogador 7',
+        goalsConceded: 0,
+        time: 'Inglaterra'
+      },
+      {
+        name: 'Jogador 8',
+        goalsConceded: 0,
+        time: 'Itália'
+      },
+      {
+        name: 'Jogador 9',
+        goalsConceded: 0,
+        time: 'México'
+      },
+      {
+        name: 'Jogador 10',
+        goalsConceded: 0,
+        time: 'Portugal'
+      },
+      {
+        name: 'Jogador 11',
+        goalsConceded: 0,
+        time: 'Uruguai'
+      }
+    ];;
     this.topGoalkeepers.sort((a, b) => {
       if (a.goalsConceded !== b.goalsConceded) {
         return a.goalsConceded - b.goalsConceded; // Ordena por menor número de gols sofridos
@@ -533,27 +434,27 @@ export class SerieBComponent {
         players: []
       },
       {
-        name: 'Aston Villa', points: 9, games: 8, wins: 3, draws: 0, losses: 5, goalsFor: 16, goalsAgainst: 16, SaldoGols: 0, woLosses: 0,
+        name: 'Aston Villa', points: 9, games: 10, wins: 4, draws: 0, losses: 6, goalsFor: 18, goalsAgainst: 23, SaldoGols: -5, woLosses: 1,
         players: []
       },
       {
-        name: 'Blackpool', points: 13, games: 9, wins: 4, draws: 1, losses: 4, goalsFor: 19, goalsAgainst: 24, SaldoGols: -5, woLosses: 0,
+        name: 'Blackpool', points: 16, games: 10, wins: 5, draws: 1, losses: 4, goalsFor: 23, goalsAgainst: 27, SaldoGols: -4, woLosses: 0,
         players: []
       },
       {
-        name: 'Chelsea', points: 8, games: 9, wins: 2, draws: 2, losses: 5, goalsFor: 13, goalsAgainst: 25, SaldoGols: -12, woLosses: 0,
+        name: 'Chelsea', points: 8, games: 10, wins: 2, draws: 2, losses: 6, goalsFor: 14, goalsAgainst: 27, SaldoGols: -13, woLosses: 0,
         players: []
       },
       {
-        name: 'Leeds', points: 9, games: 8, wins: 3, draws: 0, losses: 5, goalsFor: 14, goalsAgainst: 9, SaldoGols: 5, woLosses: 0,
+        name: 'Leeds', points: 12, games: 10, wins: 4, draws: 0, losses: 6, goalsFor: 23, goalsAgainst: 13, SaldoGols: 10, woLosses: 0,
         players: []
       },
       {
-        name: 'Liverpool', points: 22, games: 8, wins: 7, draws: 1, losses: 0, goalsFor: 18, goalsAgainst: 5, SaldoGols: 13, woLosses: 0,
+        name: 'Liverpool', points: 27, games: 10, wins: 7, draws: 3, losses: 0, goalsFor: 19, goalsAgainst: 6, SaldoGols: 13, woLosses: 0,
         players: []
       },
       {
-        name: 'Man. City', points: 14, games: 9, wins: 4, draws: 2, losses: 3, goalsFor: 16, goalsAgainst: 11, SaldoGols: 5, woLosses: 0,
+        name: 'Man. City', points: 15, games: 10, wins: 4, draws: 3, losses: 3, goalsFor: 17, goalsAgainst: 12, SaldoGols: 5, woLosses: 0,
         players: []
       },
       {
@@ -561,15 +462,15 @@ export class SerieBComponent {
         players: []
       },
       {
-        name: 'Newcastle', points: 19, games: 9, wins: 6, draws: 1, losses: 2, goalsFor: 22, goalsAgainst: 5, SaldoGols: 17, woLosses: 0,
+        name: 'Newcastle', points: 21, games: 10, wins: 6, draws: 2, losses: 2, goalsFor: 22, goalsAgainst: 5, SaldoGols: 17, woLosses: 0,
         players: []
       },
       {
-        name: 'Tottenham', points: 15, games: 9, wins: 5, draws: 0, losses: 4, goalsFor: 15, goalsAgainst: 14, SaldoGols: 1, woLosses: 0,
+        name: 'Tottenham', points: 18, games: 10, wins: 6, draws: 0, losses: 4, goalsFor: 17, goalsAgainst: 14, SaldoGols: 3, woLosses: 0,
         players: []
       },
       {
-        name: 'Wolves', points: 7, games: 9, wins: 2, draws: 1, losses: 6, goalsFor: 7, goalsAgainst: 15, SaldoGols: -8, woLosses: 0,
+        name: 'Wolves', points: 7, games: 10, wins: 2, draws: 1, losses: 7, goalsFor: 7, goalsAgainst: 17, SaldoGols: -10, woLosses: 0,
         players: []
       },
     ];
@@ -771,12 +672,12 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'MITIDIERI', fouls: 3, yellowCard: 5, redCard: 0, goals: 0,
+          name: 'MITIDIERI', fouls: 5, yellowCard: 5, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'ALEX RANGEL', fouls: 0, yellowCard: 1, redCard: 0, goals: 2,
+          name: 'ALEX RANGEL', fouls: 0, yellowCard: 1, redCard: 0, goals: 3,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -791,32 +692,32 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'MARCELO STELLET', fouls: 2, yellowCard: 4, redCard: 0, goals: 3,
+          name: 'MARCELO STELLET', fouls: 3, yellowCard: 4, redCard: 0, goals: 3,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'RICHARD', fouls: 1, yellowCard: 2, redCard: 0, goals: 24,
+          name: 'RICHARD', fouls: 2, yellowCard: 2, redCard: 0, goals: 24,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'DIGÃO', fouls: 0, yellowCard: 0, redCard: 0, goals: 3,
+          name: 'DIGÃO', fouls: 0, yellowCard: 0, redCard: 0, goals: 4,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'CARLOS CASTELO', fouls: 3, yellowCard: 1, redCard: 0, goals: 1,
+          name: 'CARLOS CASTELO', fouls: 4, yellowCard: 1, redCard: 0, goals: 1,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'WANILDO', fouls: 2, yellowCard: 1, redCard: 0, goals: 5,
+          name: 'WANILDO', fouls: 3, yellowCard: 1, redCard: 0, goals: 5,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'DAYVISON', fouls: 2, yellowCard: 0, redCard: 1, goals: 2,
+          name: 'DAYVISON', fouls: 3, yellowCard: 0, redCard: 1, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -835,22 +736,22 @@ export class SerieBComponent {
       name: 'Blackpool',
       players: [
         {
-          name: 'BRASIL', fouls: 1, yellowCard: 2, redCard: 1, goals: 0,
+          name: 'BRASIL', fouls: 1, yellowCard: 1, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'CARLINHOS', fouls: 6, yellowCard: 4, redCard: 2, goals: 0,
+          name: 'CARLINHOS', fouls: 6, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'ANDRÉ VILHENA', fouls: 0, yellowCard: 2, redCard: 0, goals: 1,
+          name: 'ANDRÉ VILHENA', fouls: 0, yellowCard: 0, redCard: 0, goals: 1,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'VALDETARO', fouls: 0, yellowCard: 3, redCard: 0, goals: 6,
+          name: 'VALDETARO', fouls: 0, yellowCard: 1, redCard: 0, goals: 10,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -860,32 +761,32 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'MARCIO LIMA', fouls: 4, yellowCard: 2, redCard: 0, goals: 9,
+          name: 'MARCIO LIMA', fouls: 4, yellowCard: 0, redCard: 0, goals: 9,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'GREGÓRIO', fouls: 1, yellowCard: 3, redCard: 0, goals: 9,
+          name: 'GREGÓRIO', fouls: 1, yellowCard: 0, redCard: 0, goals: 13,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'IVAN', fouls: 5, yellowCard: 1, redCard: 1, goals: 8,
+          name: 'IVAN', fouls: 5, yellowCard: 1, redCard: 0, goals: 10,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'RIDOLFI', fouls: 4, yellowCard: 1, redCard: 0, goals: 1,
+          name: 'RIDOLFI', fouls: 4, yellowCard: 1, redCard: 0, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'SERGINHO', fouls: 1, yellowCard: 2, redCard: 0, goals: 6,
+          name: 'SERGINHO', fouls: 1, yellowCard: 0, redCard: 0, goals: 6,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'MADURO', fouls: 2, yellowCard: 4, redCard: 0, goals: 6,
+          name: 'MADURO', fouls: 2, yellowCard: 0, redCard: 0, goals: 6,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -919,7 +820,7 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'JUNIOR LUCIO', fouls: 2, yellowCard: 2, redCard: 0, goals: 1,
+          name: 'JUNIOR LUCIO', fouls: 3, yellowCard: 2, redCard: 0, goals: 1,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -929,12 +830,12 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'MACHADO', fouls: 1, yellowCard: 0, redCard: 0, goals: 1,
+          name: 'MACHADO', fouls: 1, yellowCard: 0, redCard: 0, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'MARCELO PACHECO', fouls: 2, yellowCard: 1, redCard: 0, goals: 1,
+          name: 'MARCELO PACHECO', fouls: 3, yellowCard: 1, redCard: 0, goals: 1,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -949,7 +850,7 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'FRANK', fouls: 5, yellowCard: 0, redCard: 0, goals: 10,
+          name: 'FRANK', fouls: 6, yellowCard: 0, redCard: 0, goals: 10,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -973,22 +874,22 @@ export class SerieBComponent {
       name: 'Leeds',
       players: [
         {
-          name: 'AUGUSTO', fouls: 2, yellowCard: 1, redCard: 0, goals: 0,
+          name: 'AUGUSTO', fouls: 2, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'GLAUBER', fouls: 0, yellowCard: 3, redCard: 0, goals: 0,
+          name: 'GLAUBER', fouls: 0, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'JOSÉ LUIZ', fouls: 2, yellowCard: 3, redCard: 0, goals: 2,
+          name: 'JOSÉ LUIZ', fouls: 2, yellowCard: 0, redCard: 0, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'RALF', fouls: 3, yellowCard: 0, redCard: 0, goals: 2,
+          name: 'RALF', fouls: 3, yellowCard: 0, redCard: 0, goals: 3,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -998,32 +899,32 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'NICOLAU', fouls: 3, yellowCard: 1, redCard: 0, goals: 6,
+          name: 'NICOLAU', fouls: 3, yellowCard: 0, redCard: 0, goals: 7,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'CUPULILLE', fouls: 2, yellowCard: 3, redCard: 0, goals: 15,
+          name: 'CUPULILLE', fouls: 2, yellowCard: 0, redCard: 0, goals: 17,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'RONALDO CUNHA', fouls: 0, yellowCard: 1, redCard: 0, goals: 3,
+          name: 'RONALDO CUNHA', fouls: 0, yellowCard: 0, redCard: 0, goals: 3,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'PACHEQUINHO', fouls: 0, yellowCard: 1, redCard: 0, goals: 0,
+          name: 'PACHEQUINHO', fouls: 0, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'SILVIO CAVALO', fouls: 1, yellowCard: 3, redCard: 1, goals: 13,
+          name: 'SILVIO CAVALO', fouls: 1, yellowCard: 1, redCard: 0, goals: 14,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'BIDO', fouls: 4, yellowCard: 1, redCard: 0, goals: 0,
+          name: 'BIDO', fouls: 6, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1042,7 +943,7 @@ export class SerieBComponent {
       name: 'Liverpool',
       players: [
         {
-          name: 'LEANDRO MANHÃES', fouls: 4, yellowCard: 2, redCard: 0, goals: 0,
+          name: 'LEANDRO MANHÃES', fouls: 4, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1052,7 +953,7 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'MAURICIO', fouls: 4, yellowCard: 1, redCard: 0, goals: 0,
+          name: 'MAURICIO', fouls: 4, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1067,32 +968,32 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'BAHIA', fouls: 2, yellowCard: 4, redCard: 1, goals: 5,
+          name: 'BAHIA', fouls: 2, yellowCard: 0, redCard: 0, goals: 5,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'FRANÇA', fouls: 4, yellowCard: 0, redCard: 0, goals: 17,
+          name: 'FRANÇA', fouls: 4, yellowCard: 0, redCard: 0, goals: 18,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'SANDRINHO', fouls: 1, yellowCard: 1, redCard: 0, goals: 12,
+          name: 'SANDRINHO', fouls: 1, yellowCard: 0, redCard: 0, goals: 14,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'ANDRINHO', fouls: 5, yellowCard: 3, redCard: 0, goals: 7,
-          suspensao: true,
-          jogosSuspensao: 1
-        },
-        {
-          name: 'CRISTIANO MOTTA', fouls: 3, yellowCard: 1, redCard: 0, goals: 6,
+          name: 'ANDRINHO', fouls: 5, yellowCard: 0, redCard: 0, goals: 8,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'BAZHUNI', fouls: 1, yellowCard: 0, redCard: 0, goals: 0,
+          name: 'CRISTIANO MOTTA', fouls: 4, yellowCard: 0, redCard: 0, goals: 6,
+          suspensao: false,
+          jogosSuspensao: 0
+        },
+        {
+          name: 'BAZHUNI', fouls: 2, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1116,52 +1017,52 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'PALUDO', fouls: 2, yellowCard: 3, redCard: 0, goals: 0,
+          name: 'PALUDO', fouls: 2, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'ECIR', fouls: 0, yellowCard: 0, redCard: 0, goals: 1,
+          name: 'ECIR', fouls: 0, yellowCard: 0, redCard: 0, goals: 5,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'CHICO LYRA', fouls: 3, yellowCard: 3, redCard: 0, goals: 1,
+          name: 'CHICO LYRA', fouls: 3, yellowCard: 0, redCard: 0, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'FILÉ', fouls: 3, yellowCard: 1, redCard: 0, goals: 3,
+          name: 'FILÉ', fouls: 3, yellowCard: 0, redCard: 0, goals: 3,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'LUIZINHO', fouls: 1, yellowCard: 2, redCard: 0, goals: 5,
+          name: 'LUISINHO', fouls: 2, yellowCard: 1, redCard: 0, goals: 5,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'BODINHO', fouls: 5, yellowCard: 3, redCard: 1, goals: 23,
+          name: 'BODINHO', fouls: 5, yellowCard: 0, redCard: 0, goals: 32,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'MAGRINHO', fouls: 1, yellowCard: 4, redCard: 1, goals: 3,
+          name: 'MAGRINHO', fouls: 1, yellowCard: 1, redCard: 0, goals: 4,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'SERGIO SOMOS', fouls: 3, yellowCard: 3, redCard: 0, goals: 5,
+          name: 'SERGIO SOMOS', fouls: 3, yellowCard: 1, redCard: 0, goals: 5,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'RENATINHO', fouls: 2, yellowCard: 1, redCard: 0, goals: 2,
+          name: 'RENATINHO', fouls: 2, yellowCard: 0, redCard: 0, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'LIGEIRINHO', fouls: 5, yellowCard: 4, redCard: 0, goals: 0,
+          name: 'LIGEIRINHO', fouls: 6, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1185,12 +1086,12 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'CAVEIRÃO', fouls: 2, yellowCard: 6, redCard: 2, goals: 1,
-          suspensao: true,
-          jogosSuspensao: 1
+          name: 'CAVEIRÃO', fouls: 2, yellowCard: 1, redCard: 0, goals: 1,
+          suspensao: false,
+          jogosSuspensao: 0
         },
         {
-          name: 'RATINHO', fouls: 2, yellowCard: 3, redCard: 0, goals: 0,
+          name: 'RATINHO', fouls: 2, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1200,37 +1101,37 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'PAULO LORIA', fouls: 2, yellowCard: 0, redCard: 0, goals: 2,
+          name: 'PAULO LORIA', fouls: 2, yellowCard: 0, redCard: 0, goals: 3,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'MARCELO FERREIRA', fouls: 4, yellowCard: 0, redCard: 0, goals: 8,
+          name: 'MARCELO FERREIRA', fouls: 4, yellowCard: 3, redCard: 0, goals: 8,
+          suspensao: true,
+          jogosSuspensao: 1
+        },
+        {
+          name: 'PALMIERI', fouls: 4, yellowCard: 0, redCard: 0, goals: 11,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'PALMIERI', fouls: 4, yellowCard: 1, redCard: 0, goals: 4,
+          name: 'TONINHO IMÓVEIS', fouls: 7, yellowCard: 1, redCard: 0, goals: 5,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'TONINHO IMÓVEIS', fouls: 7, yellowCard: 3, redCard: 0, goals: 4,
+          name: 'MELÃO', fouls: 2, yellowCard: 2, redCard: 0, goals: 3,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'MELÃO', fouls: 2, yellowCard: 4, redCard: 0, goals: 1,
+          name: 'MARCELLUS', fouls: 6, yellowCard: 1, redCard: 0, goals: 29,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'MARCELLUS', fouls: 6, yellowCard: 4, redCard: 0, goals: 24,
-          suspensao: false,
-          jogosSuspensao: 0
-        },
-        {
-          name: 'SERGIO CASTELO', fouls: 7, yellowCard: 1, redCard: 0, goals: 0,
+          name: 'SERGIO CASTELO', fouls: 7, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1249,42 +1150,42 @@ export class SerieBComponent {
       name: 'Newcastle',
       players: [
         {
-          name: 'JORGINHO GK', fouls: 6, yellowCard: 2, redCard: 0, goals: 0,
+          name: 'JORGINHO GK', fouls: 7, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'FABIO PINHEIRO', fouls: 0, yellowCard: 0, redCard: 0, goals: 6,
+          name: 'FABIO PINHEIRO', fouls: 0, yellowCard: 0, redCard: 0, goals: 7,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'PAULO MASSA', fouls: 4, yellowCard: 1, redCard: 0, goals: 8,
+          name: 'PAULO MASSA', fouls: 4, yellowCard: 0, redCard: 0, goals: 10,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'TIGRINHO', fouls: 2, yellowCard: 1, redCard: 0, goals: 0,
+          name: 'TIGRINHO', fouls: 2, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'JORGE MÉDICO', fouls: 2, yellowCard: 1, redCard: 0, goals: 0,
+          name: 'JORGE MÉDICO', fouls: 2, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'TONINHO', fouls: 0, yellowCard: 2, redCard: 0, goals: 0,
+          name: 'TONINHO', fouls: 0, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'NALDO', fouls: 0, yellowCard: 2, redCard: 0, goals: 10,
+          name: 'NALDO', fouls: 0, yellowCard: 0, redCard: 0, goals: 10,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'FLAVIO CHAME', fouls: 8, yellowCard: 2, redCard: 0, goals: 2,
+          name: 'FLAVIO CHAME', fouls: 8, yellowCard: 0, redCard: 0, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1294,7 +1195,7 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'CAROÇO', fouls: 0, yellowCard: 1, redCard: 0, goals: 0,
+          name: 'CAROÇO', fouls: 0, yellowCard: 0, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1323,7 +1224,7 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'KONTE', fouls: 2, yellowCard: 0, redCard: 0, goals: 0,
+          name: 'KONTE', fouls: 2, yellowCard: 1, redCard: 0, goals: 1,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1333,7 +1234,7 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'TATÁ', fouls: 3, yellowCard: 3, redCard: 0, goals: 6,
+          name: 'TATÁ', fouls: 3, yellowCard: 0, redCard: 0, goals: 8,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1348,27 +1249,27 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'MARCELO DENTISTA', fouls: 7, yellowCard: 4, redCard: 0, goals: 7,
+          name: 'MARCELO DENTISTA', fouls: 7, yellowCard: 0, redCard: 0, goals: 8,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'CALVO', fouls: 1, yellowCard: 3, redCard: 0, goals: 6,
+          name: 'CALVO', fouls: 1, yellowCard: 1, redCard: 0, goals: 7,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'RICARDINHO', fouls: 2, yellowCard: 0, redCard: 0, goals: 8,
+          name: 'RICARDINHO', fouls: 2, yellowCard: 1, redCard: 0, goals: 12,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'FABIO BARROS', fouls: 0, yellowCard: 1, redCard: 0, goals: 6,
+          name: 'FABIO BARROS', fouls: 0, yellowCard: 0, redCard: 0, goals: 9,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'BARATA', fouls: 3, yellowCard: 1, redCard: 0, goals: 1,
+          name: 'BARATA', fouls: 4, yellowCard: 1, redCard: 0, goals: 1,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1387,12 +1288,12 @@ export class SerieBComponent {
       name: 'Wolves',
       players: [
         {
-          name: 'FELIPE CORREA', fouls: 2, yellowCard: 4, redCard: 0, goals: 0,
+          name: 'FELIPE CORREA', fouls: 2, yellowCard: 1, redCard: 0, goals: 0,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'ZARRO', fouls: 3, yellowCard: 4, redCard: 0, goals: 2,
+          name: 'ZARRO', fouls: 3, yellowCard: 0, redCard: 0, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
@@ -1402,37 +1303,37 @@ export class SerieBComponent {
           jogosSuspensao: 0
         },
         {
-          name: 'GALO CEGO', fouls: 3, yellowCard: 2, redCard: 0, goals: 1,
+          name: 'GALO CEGO', fouls: 4, yellowCard: 0, redCard: 0, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'JUNIOR SAMARY', fouls: 2, yellowCard: 3, redCard: 0, goals: 1,
+          name: 'JUNIOR SAMARY', fouls: 2, yellowCard: 0, redCard: 0, goals: 1,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'RUBINHO', fouls: 2, yellowCard: 1, redCard: 0, goals: 2,
+          name: 'RUBINHO', fouls: 2, yellowCard: 0, redCard: 0, goals: 2,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'CADU', fouls: 0, yellowCard: 5, redCard: 0, goals: 4,
+          name: 'CADU', fouls: 0, yellowCard: 1, redCard: 0, goals: 4,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'LATINI', fouls: 2, yellowCard: 3, redCard: 0, goals: 6,
+          name: 'LATINI', fouls: 2, yellowCard: 0, redCard: 0, goals: 6,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'ALBERT', fouls: 2, yellowCard: 2, redCard: 0, goals: 7,
+          name: 'ALBERT', fouls: 2, yellowCard: 1, redCard: 0, goals: 8,
           suspensao: false,
           jogosSuspensao: 0
         },
         {
-          name: 'NEY', fouls: 5, yellowCard: 2, redCard: 0, goals: 14,
+          name: 'NEY', fouls: 6, yellowCard: 0, redCard: 0, goals: 16,
           suspensao: false,
           jogosSuspensao: 0
         },

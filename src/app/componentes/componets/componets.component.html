@@ -1,40 +1,30 @@
 <nav class="navbar">
   <div class="logo">
-    <img src="assets/img/Boneco_apamaiao.jpg" alt="Logo Apamaião" class="logo-img" />
+    <img src="assets/img/Boneco_apamaiao.jpeg" alt="Logo Apamaião" class="logo-img" />
     <div>
       <h1>Campeonato de Pais e Mestres do Abel</h1>
-      <p style="font-size: x-small; color: whitesmoke; margin: 0;">Atualizado 23/10/2025</p>
+      <p style="font-size: x-small; color: whitesmoke;">Atualizado 05/01/2026</p>
     </div>
   </div>
 
-  <!-- Botão de menu para mobile -->
+  <!-- BOTÃO MOBILE -->
   <div class="menu-btn" (click)="toggleMenu()">
     <i class="fa-solid fa-bars"></i>
   </div>
-  <!-- Menu com binding de classe para mostrar/ocultar -->
+
+  <!-- MENU -->
   <div class="menu" [ngClass]="{ 'show': isMenuOpen }">
     <div class="menu-links">
-      <button mat-button (click)="goToForm()">Convite Festa  </button>
+      <!-- <button mat-button (click)="openListaA()">Lista A</button>
+      <button mat-button (click)="openListaB()">Lista B</button> -->
       <button mat-button routerLink="/home">Home</button>
       <button mat-button (click)="openRegulamento()">Regulamento</button>
 
-      <!-- Dropdown "Categoria A" com Angular Material -->
-      <button mat-button [routerLink]="'/categoria-a'" [matMenuTriggerFor]="serieAMenu">
-        Categoria A
-      </button>
-      <mat-menu #serieAMenu="matMenu">
-        <!-- Opções do dropdown -->
-      </mat-menu>
+      <button mat-button [routerLink]="'/categoria-a'" [matMenuTriggerFor]="serieAMenu">Categoria A</button>
+      <mat-menu #serieAMenu="matMenu"></mat-menu>
 
-      <!-- Dropdown "Categoria B" com Angular Material -->
-      <button mat-button [routerLink]="'/categoria-b'" [matMenuTriggerFor]="serieBMenu">
-        Categoria B
-      </button>
-      <mat-menu #serieBMenu="matMenu">
-        <!-- Opções do dropdown -->
-      </mat-menu>
-
-
+      <button mat-button [routerLink]="'/categoria-b'" [matMenuTriggerFor]="serieBMenu">Categoria B</button>
+      <mat-menu #serieBMenu="matMenu"></mat-menu>
 
       <button mat-button (click)="openJogosA()">Tabela de Jogos do A</button>
       <button mat-button (click)="openJogosB()">Tabela de Jogos do B</button>

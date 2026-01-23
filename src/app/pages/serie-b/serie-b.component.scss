@@ -2,34 +2,52 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Remove a barra de rolagem horizontal */
-}
-table {
-  width: 60%;/* Reduz a largura da tabela */
-  margin: 0 auto; /* Centraliza a tabela */
-  table-layout: fixed; /* Faz com que as colunas tenham o mesmo tamanho */
+  overflow-x: hidden;
+  /* Remove a barra de rolagem horizontal */
 }
 
-th, td {
-  padding: 4px; /* Reduz o espaçamento das células */
-  text-align: center; /* Alinha o conteúdo ao centro */
+table {
+  width: 60%;
+  /* Reduz a largura da tabela */
+  margin: 0 auto;
+  /* Centraliza a tabela */
+  table-layout: fixed;
+  /* Faz com que as colunas tenham o mesmo tamanho */
+}
+
+th,
+td {
+  padding: 4px;
+  /* Reduz o espaçamento das células */
+  text-align: center;
+  /* Alinha o conteúdo ao centro */
 }
 
 mat-table {
-  transform: scale(0.8); /* Escala a tabela para reduzir seu tamanho geral */
-  transform-origin: top center; /* Garante que a tabela seja escalada a partir do topo */
+  transform: scale(0.8);
+  /* Escala a tabela para reduzir seu tamanho geral */
+  transform-origin: top center;
+  /* Garante que a tabela seja escalada a partir do topo */
 }
 
 
-.padrao {
-  margin: 5% auto;
+.Padrao {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 90%; /* Ajuste para telas menores */
-  max-width: 1200px; /* Limita a largura máxima */
+  margin-top: 20px;
 }
+
+/* imagem bem menor */
+.imagem-padrao {
+  width: 100%;
+  /* 🔹 ajuste o tamanho aqui */
+  max-width: 500px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
 
 .Patrocinadores {
   display: flex;
@@ -39,6 +57,7 @@ mat-table {
   align-items: center;
   padding: 16px;
 }
+
 .carousel-container {
   width: 100%;
   max-width: 900px;
@@ -95,7 +114,8 @@ mat-table {
 .conteudo {
   margin: 0 auto;
   padding: 20px;
-  width: 80%; /* Ajuste para telas menores */
+  width: 80%;
+  /* Ajuste para telas menores */
   max-width: 1200px;
 }
 
@@ -110,7 +130,8 @@ mat-table {
 
 .tabela {
   flex: 1;
-  max-width: 90%; /* Ajuste para responsividade */
+  max-width: 90%;
+  /* Ajuste para responsividade */
   min-width: 300px;
   margin: 0 auto;
   // border: 2px solid darkgreen;
@@ -123,7 +144,8 @@ mat-table {
 
 .card {
   flex: 1;
-  max-width: 80%; /* Ajuste para responsividade */
+  max-width: 80%;
+  /* Ajuste para responsividade */
   min-width: 230px;
   padding: 10px;
   background-color: white;
@@ -134,15 +156,17 @@ mat-table {
 }
 
 .card.jogos {
-  max-width: 80%; /* Ajuste para telas menores */
-  overflow: hidden; /* Remove a barra de rolagem */
+  max-width: 80%;
+  /* Ajuste para telas menores */
+  overflow: hidden;
+  /* Remove a barra de rolagem */
 
   text-align: center;
   margin: 20px auto;
   border: 2px solid darkgreen;
   border-radius: 5px;
   padding-right: 10px;
-  
+
 }
 
 .cards-container {
@@ -154,7 +178,8 @@ mat-table {
 
 .times-container {
   display: flex;
-  flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+  flex-wrap: wrap;
+  /* Permite que os itens quebrem a linha */
   justify-content: center;
   gap: 20px;
   padding: 20px;
@@ -166,25 +191,33 @@ mat-table {
   background: transparent;
 
 }
+
 .card-borda-Artilharia {
-  border: 2px solid darkgreen; /* Definindo borda verde */
-  border-radius: 5px; /* Mantém borda arredondada, como outras divs */
-  padding: 15px; /* Adiciona um pouco de espaço interno */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para melhorar a visualização */
-  background-color: #fff; /* Cor de fundo branca */
+  border: 2px solid darkgreen;
+  /* Definindo borda verde */
+  border-radius: 5px;
+  /* Mantém borda arredondada, como outras divs */
+  padding: 15px;
+  /* Adiciona um pouco de espaço interno */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Sombra suave para melhorar a visualização */
+  background-color: #fff;
+  /* Cor de fundo branca */
 }
 
 
 .suspenso {
   background-color: red !important;
-  color: white !important; /* Texto branco para melhor contraste */
+  color: white !important;
+  /* Texto branco para melhor contraste */
 
-  
+
 }
 
 
 .table-container {
-  width: 90%; /* Defina um tamanho fixo para garantir a disposição correta */
+  width: 90%;
+  /* Defina um tamanho fixo para garantir a disposição correta */
   max-height: 750px;
   background-color: white;
   padding: 15px;
@@ -198,67 +231,80 @@ mat-table {
 
 /* Estilo para Tablets */
 @media (max-width: 1024px) {
-.largura-tabela th,
-.largura-tabela td {
+
+  .largura-tabela th,
+  .largura-tabela td {
     width: 90%;
     text-align: center;
-}
+  }
 
-/* Aumenta a largura da coluna de nome */
-.largura-tabela .first-column {
-    width: 40%; /* Ajuste conforme necessário */
+  /* Aumenta a largura da coluna de nome */
+  .largura-tabela .first-column {
+    width: 40%;
+    /* Ajuste conforme necessário */
     text-align: left;
-}
+  }
 
-/* Diminui a largura das outras colunas */
-.largura-tabela th:nth-child(n+2),
-.largura-tabela td:nth-child(n+2) {
-    width: 15%; /* Ajuste conforme necessário */
-}
+  /* Diminui a largura das outras colunas */
+  .largura-tabela th:nth-child(n+2),
+  .largura-tabela td:nth-child(n+2) {
+    width: 15%;
+    /* Ajuste conforme necessário */
+  }
 }
 
 /* Estilo para Celulares */
 @media (max-width: 768px) {
-.largura-tabela .first-column {
-    width: 30%; /* Coluna de nomes maior em telas menores */
+  .largura-tabela .first-column {
+    width: 30%;
+    /* Coluna de nomes maior em telas menores */
     text-align: left;
-}
+  }
 
-.largura-tabela th:nth-child(n+2),
-.largura-tabela td:nth-child(n+2) {
-    width: 20%; /* Colunas reduzidas igualmente */
+  .largura-tabela th:nth-child(n+2),
+  .largura-tabela td:nth-child(n+2) {
+    width: 20%;
+    /* Colunas reduzidas igualmente */
     font-size: 18px;
-}
+  }
 
 
-.time-table th:not(.nome-column),
-.time-table td:not(.nome-column) {
-  width: 6%; /* Reduz as outras colunas */
-  font-size: 8px;
-}
+  .time-table th:not(.nome-column),
+  .time-table td:not(.nome-column) {
+    width: 6%;
+    /* Reduz as outras colunas */
+    font-size: 8px;
+  }
 }
 
 /* Estilo para Telas Muito Pequenas */
 @media (max-width: 480px) {
-.largura-tabela .first-column {
-    width: 75%; /* Aumenta ainda mais para telas pequenas */
+  .largura-tabela .first-column {
+    width: 75%;
+    /* Aumenta ainda mais para telas pequenas */
     text-align: left;
-}
+  }
 
-.largura-tabela th:nth-child(n+2),
-.largura-tabela td:nth-child(n+2) {
-    width: 25%; /* Ajuste para colunas menores */
-    font-size: 10px; /* Fonte menor para caber na tela */
-}
-.times-container {
-  font-size: 10px; /* Fonte menor para caber na tela */
-}
-.time-table th:not(.nome-column),
-.time-table td:not(.nome-column) {
-    width: 17%; /* Outras colunas bem pequenas */
+  .largura-tabela th:nth-child(n+2),
+  .largura-tabela td:nth-child(n+2) {
+    width: 25%;
+    /* Ajuste para colunas menores */
+    font-size: 10px;
+    /* Fonte menor para caber na tela */
+  }
+
+  .times-container {
+    font-size: 10px;
+    /* Fonte menor para caber na tela */
+  }
+
+  .time-table th:not(.nome-column),
+  .time-table td:not(.nome-column) {
+    width: 17%;
+    /* Outras colunas bem pequenas */
     font-size: 12px;
     text-align: center;
-}
+  }
 }
 
 .borda {
@@ -270,11 +316,14 @@ mat-table {
 
 .suspensao-row {
   background-color: red !important;
-  color: white !important; /* Texto branco para melhor contraste */
+  color: white !important;
+  /* Texto branco para melhor contraste */
   font-weight: bold;
 }
+
 .pdf-container {
-  overflow: hidden; /* Remove a barra de rolagem */
+  overflow: hidden;
+  /* Remove a barra de rolagem */
   width: 80vw;
   height: 70vh;
   display: flex;
@@ -300,8 +349,8 @@ mat-table {
 
 
   }
-  .card-borda-Artilharia{
+
+  .card-borda-Artilharia {
     font-size: 10px;
   }
 }
-

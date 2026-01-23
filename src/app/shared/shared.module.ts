@@ -19,6 +19,7 @@ import { MatRippleModule } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { PdfViewerModule } from 'ng2-pdf-viewer'; // Importe aqui o módulo
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -42,7 +43,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer'; // Importe aqui o módulo
     MatFormFieldModule,
     MatSelectModule,
     MatCardModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatSidenavModule,
 
   ],
   exports: [
