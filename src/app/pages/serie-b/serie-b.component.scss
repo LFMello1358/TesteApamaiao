@@ -1,356 +1,495 @@
-/* Estilo geral */
+/* =========================
+   VARIÁVEIS / TEMA
+========================= */
+$black: #0d0f0f;
+$dark-gray: #1a1d1f;
+$gray: #2a2e31;
+$green: #175739;
+$green-light: #06924f;
+$white: #ffffff;
+
+$shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.45);
+$shadow-strong: 0 12px 28px rgba(0, 0, 0, 0.65);
+
+/* =========================
+   RESET / BASE
+========================= */
 body {
   margin: 0;
   padding: 0;
+  background: linear-gradient(160deg, $black, $dark-gray);
+  color: $white;
+  font-family: "Inter", "Segoe UI", sans-serif;
   overflow-x: hidden;
-  /* Remove a barra de rolagem horizontal */
 }
 
-table {
-  width: 60%;
-  /* Reduz a largura da tabela */
-  margin: 0 auto;
-  /* Centraliza a tabela */
-  table-layout: fixed;
-  /* Faz com que as colunas tenham o mesmo tamanho */
-}
-
-th,
-td {
-  padding: 4px;
-  /* Reduz o espaçamento das células */
-  text-align: center;
-  /* Alinha o conteúdo ao centro */
-}
-
-mat-table {
-  transform: scale(0.8);
-  /* Escala a tabela para reduzir seu tamanho geral */
-  transform-origin: top center;
-  /* Garante que a tabela seja escalada a partir do topo */
-}
-
-
+/* =========================
+   LAYOUT PRINCIPAL
+========================= */
 .Padrao {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  gap: 28px;
+  padding: 24px 12px;
 }
 
-/* imagem bem menor */
+/* =========================
+   IMAGEM TOPO
+========================= */
 .imagem-padrao {
+  max-width: 520px;
   width: 100%;
-  /* 🔹 ajuste o tamanho aqui */
-  max-width: 500px;
-  height: auto;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
-
-.Patrocinadores {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
+/* =========================
+   CONTAINERS BASE
+========================= */
+.table-container,
+.tabela,
+.card,
+.time-card {
+  background: linear-gradient(160deg, lighten($gray, 6%), $dark-gray);
+  border-radius: 14px;
+  padding: 12px;
+  border: 1px solid rgba(47, 163, 107, 0.25);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-.carousel-container {
-  width: 100%;
-  max-width: 900px;
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-wrapper {
-  display: flex;
-  width: 100%;
-  overflow: hidden;
-}
-
-.carousel {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-}
-
-.carousel-item {
-  min-width: 100%;
-  box-sizing: border-box;
+/* =========================
+   TÍTULOS
+========================= */
+h2,
+h3 {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  font-size: 13px;
+  color: $green-light;
   text-align: center;
 }
 
-.carousel-item img {
+.time-title {
+  background: rgba(47, 163, 107, 0.22);
+  padding: 6px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-bottom: 6px;
+  text-align: center;
+  color: $white;
+}
+
+/* =========================
+   TABELAS HTML (NÃO MATERIAL)
+========================= */
+.time-table {
   width: 100%;
-  max-height: 150px;
-  object-fit: contain;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.patrocinador {
-  width: 150px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+.time-table th,
+.time-table td {
+  padding: 5px;
+  font-size: 11px;
+  text-align: center;
+  color: $white;
 }
 
-.patrocinador:hover {
-  transform: scale(1.05);
+.time-table th {
+  background: rgba(255, 255, 255, 0.18);
 }
 
-.patrocinador img {
-  max-width: 100%;
-  max-height: 100%;
+.time-table td {
+  background: rgba(255, 255, 255, 0.10);
 }
 
-.conteudo {
-  margin: 0 auto;
-  padding: 20px;
-  width: 80%;
-  /* Ajuste para telas menores */
+.time-table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* =========================
+   COLUNA DE NOME
+========================= */
+.nome-column {
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+/* =========================
+   ANGULAR MATERIAL TABLE
+========================= */
+.mat-mdc-table {
+  width: 100%;
+  background: transparent;
+}
+
+.mat-mdc-header-cell,
+.mat-mdc-cell {
+  padding: 6px 8px;
+  font-size: 11px;
+  text-align: center;
+  color: $white;
+}
+
+.mat-mdc-header-cell {
+  color: $green-light;
+  font-weight: 600;
+}
+
+/* =========================
+   ARTILHEIROS / GOLEIROS
+========================= */
+.cards-top {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 100%;
   max-width: 1200px;
 }
 
-.tabela-e-card {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
-  flex-wrap: wrap;
+.cards-top .table-container {
   width: 100%;
+  min-width: 0;
 }
 
-.tabela {
-  flex: 1;
-  max-width: 90%;
-  /* Ajuste para responsividade */
-  min-width: 300px;
-  margin: 0 auto;
-  // border: 2px solid darkgreen;
-  // border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  border: 2px solid darkgreen;
-  border-radius: 5px;
-}
-
-.card {
-  flex: 1;
-  max-width: 80%;
-  /* Ajuste para responsividade */
-  min-width: 230px;
-  padding: 10px;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-}
-
-.card.jogos {
-  max-width: 80%;
-  /* Ajuste para telas menores */
-  overflow: hidden;
-  /* Remove a barra de rolagem */
-
-  text-align: center;
-  margin: 20px auto;
-  border: 2px solid darkgreen;
-  border-radius: 5px;
-  padding-right: 10px;
-
-}
-
-.cards-container {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  padding: 20px;
-}
-
+/* =========================
+   TIMES / GRID DESKTOP
+========================= */
 .times-container {
-  display: flex;
-  flex-wrap: wrap;
-  /* Permite que os itens quebrem a linha */
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1300px;
+  justify-items: center;
+}
+
+.time-card {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* =========================
+   CLASSIFICAÇÃO 1º, 2º e 3º TURNO
+========================= */
+.classificacao-turnos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 colunas desktop */
   gap: 20px;
-  padding: 20px;
-  max-width: 2000px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  width: 90%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  background: transparent;
-
+  justify-items: center;
 }
 
-.card-borda-Artilharia {
-  border: 2px solid darkgreen;
-  /* Definindo borda verde */
-  border-radius: 5px;
-  /* Mantém borda arredondada, como outras divs */
-  padding: 15px;
-  /* Adiciona um pouco de espaço interno */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Sombra suave para melhorar a visualização */
-  background-color: #fff;
-  /* Cor de fundo branca */
+.classificacao-turnos .table-container {
+  width: 100%;
+  max-width: 380px;
 }
 
+/* =========================
+   HEADER DO TIME (ÍCONE + NOME)
+========================= */
+.time-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.time-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* =========================
+   SUSPENSÃO
+========================= */
+.suspensao-text {
+  color: #ff6b6b;
+  font-size: 10px;
+  font-weight: 600;
+}
 
 .suspenso {
-  background-color: red !important;
-  color: white !important;
-  /* Texto branco para melhor contraste */
-
-
+  background: linear-gradient(135deg, #8b0000, #ff0000) !important;
+  color: #fff !important;
+  font-weight: 600;
 }
 
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 768px) {
 
-.table-container {
-  width: 90%;
-  /* Defina um tamanho fixo para garantir a disposição correta */
-  max-height: 750px;
-  background-color: white;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  border: 2px solid darkgreen;
-  border-radius: 5px;
+  /* Classificação centralizada (1 coluna) */
+  .classificacao-turnos {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+
+  .classificacao-turnos .table-container {
+    width: 100%;
+    padding: 4px;
+  }
+
+  /* Grids de cards e times com 2 colunas */
+  .cards-top,
+  .times-container,
+  .tabelas-lado {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    justify-items: center;
+  }
+
+  .cards-top .table-container,
+  .tabelas-lado .table-container,
+  .time-card,
+  .classificacao-turnos .table-container {
+    padding: 4px;
+  }
+
+  .time-table th,
+  .time-table td,
+  .mat-mdc-header-cell,
+  .mat-mdc-cell {
+    font-size: 10px;
+    padding: 4px;
+  }
+
+  .nome-column {
+    font-size: 10px;
+  }
+
+  .time-title {
+    font-size: 11px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  /* Classificação única e centralizada */
+  .classificacao-turnos {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    gap: 10px;
+    margin: 0 auto;
+  }
+
+  /* Cards e times 1 coluna */
+  .cards-top,
+  .times-container,
+  .tabelas-lado {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+
+  .cards-top .table-container,
+  .tabelas-lado .table-container,
+  .classificacao-turnos .table-container {
+    padding: 6px;
+  }
+
+  .time-table th,
+  .time-table td,
+  .mat-mdc-header-cell,
+  .mat-mdc-cell {
+    font-size: 9.5px;
+    padding: 3px;
+  }
+
+  .nome-column {
+    font-size: 9.5px;
+  }
+}
+
+/* =========================
+   JOGOS / PDF (FOCO AQUI)
+========================= */
+.card.jogos {
+  width: 100%;
+  max-width: 900px; // 🔥 BEM MAIS LARGO NO DESKTOP
   margin: 0 auto;
 }
 
-
-/* Estilo para Tablets */
-@media (max-width: 1024px) {
-
-  .largura-tabela th,
-  .largura-tabela td {
-    width: 90%;
-    text-align: center;
-  }
-
-  /* Aumenta a largura da coluna de nome */
-  .largura-tabela .first-column {
-    width: 40%;
-    /* Ajuste conforme necessário */
-    text-align: left;
-  }
-
-  /* Diminui a largura das outras colunas */
-  .largura-tabela th:nth-child(n+2),
-  .largura-tabela td:nth-child(n+2) {
-    width: 15%;
-    /* Ajuste conforme necessário */
-  }
+/* Wrapper define largura máxima do PDF */
+.pdf-wrapper {
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
 }
 
-/* Estilo para Celulares */
-@media (max-width: 768px) {
-  .largura-tabela .first-column {
-    width: 30%;
-    /* Coluna de nomes maior em telas menores */
-    text-align: left;
-  }
-
-  .largura-tabela th:nth-child(n+2),
-  .largura-tabela td:nth-child(n+2) {
-    width: 20%;
-    /* Colunas reduzidas igualmente */
-    font-size: 18px;
-  }
-
-
-  .time-table th:not(.nome-column),
-  .time-table td:not(.nome-column) {
-    width: 6%;
-    /* Reduz as outras colunas */
-    font-size: 8px;
-  }
-}
-
-/* Estilo para Telas Muito Pequenas */
-@media (max-width: 480px) {
-  .largura-tabela .first-column {
-    width: 75%;
-    /* Aumenta ainda mais para telas pequenas */
-    text-align: left;
-  }
-
-  .largura-tabela th:nth-child(n+2),
-  .largura-tabela td:nth-child(n+2) {
-    width: 25%;
-    /* Ajuste para colunas menores */
-    font-size: 10px;
-    /* Fonte menor para caber na tela */
-  }
-
-  .times-container {
-    font-size: 10px;
-    /* Fonte menor para caber na tela */
-  }
-
-  .time-table th:not(.nome-column),
-  .time-table td:not(.nome-column) {
-    width: 17%;
-    /* Outras colunas bem pequenas */
-    font-size: 12px;
-    text-align: center;
-  }
-}
-
-.borda {
-  border: 2px solid darkgreen;
-  border-radius: 5px;
-  /* Caso deseje manter um espaçamento interno */
-  padding: 10px;
-}
-
-.suspensao-row {
-  background-color: red !important;
-  color: white !important;
-  /* Texto branco para melhor contraste */
-  font-weight: bold;
-}
-
+/* Viewer */
 .pdf-container {
-  overflow: hidden;
-  /* Remove a barra de rolagem */
-  width: 80vw;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 2%;
-  margin-top: -1%;
+  width: 100%;
+  height: 82vh;
+  overflow: auto;
+  display: block;
+
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Ajustes para telas menores */
+/* =========================
+   BOTÕES SELETOR DE PDF
+========================= */
+.botoes-pdf {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+
+  button {
+    background: linear-gradient(160deg, lighten($gray, 6%), $dark-gray);
+    border: 1px solid rgba(47, 163, 107, 0.35);
+    color: $white;
+
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+
+    padding: 8px 0;
+    border-radius: 10px;
+    cursor: pointer;
+
+    box-shadow:
+      0 6px 16px rgba(0, 0, 0, 0.45),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: linear-gradient(160deg, $green, darken($green, 6%));
+      border-color: $green-light;
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+}
+
+/* =========================
+   RESPONSIVIDADE – TABLET
+========================= */
 @media (max-width: 768px) {
-  .pdf-container {
-    height: 100vh;
-    width: 80vw;
+  tabelas-lado{
 
+    max-width: 90%;
+    }
+  .card.jogos {
+    max-width: 70%;
+    // margin-bottom: 50%;
+  }
+
+  .pdf-wrapper {
+    max-width: 100%;
+  }
+
+  .pdf-container {
+    height: 72vh; // 🔥 grande no tablet
+    border-radius: 12px;
+  }
+
+  .botoes-pdf {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+
+    button {
+      font-size: 10px;
+      padding: 7px 0;
+    }
+  }
+
+
+}
+
+/* =========================
+   RESPONSIVIDADE – MOBILE
+========================= */
+@media (max-width: 420px) {
+  
+ 
+  .Padrao {
+    padding: 16px 8px;
+  }
+
+  .card.jogos {
+    padding: 10px;
+    //margin-bottom: 100%;
+  }
+
+  .pdf-container {
+    height: 65vh; // 🔥 ocupa quase toda a tela
+    border-radius: 10px;
+  }
+
+  .botoes-pdf {
+    grid-template-columns: 1fr;
+    gap: 6px;
+
+    button {
+      font-size: 10px;
+      padding: 8px 0;
+    }
   }
 }
 
-@media (max-width: 480px) {
-  .pdf-container {
-    height: 80vh;
-    width: 80vw;
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.team-icon {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+@media (max-width: 768px) {
 
+  .classificacao-turnos {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+}
+@media (max-width: 768px) {
+
+  .classificacao-turnos {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    width: 100%;
+    max-width: 100%; // 🔥 REMOVE O ESTRANGULAMENTO
+    margin: 0 auto;
+    gap: 16px;
   }
 
-  .card-borda-Artilharia {
-    font-size: 10px;
+  .classificacao-turnos .table-container {
+    width: 100%;
+    max-width: 100%; // 🔥 FICA IGUAL À GERAL
   }
 }

@@ -44,9 +44,8 @@ body {
   gap: 28px;
 
 }
-
 /* =========================================================
-   CARROSSEL (LEVE E FLUIDO)
+   CARROSSEL RESPONSIVO – 1 / 2 / 3 ITENS
 ========================================================= */
 .carousel-container {
   width: 100%;
@@ -57,13 +56,15 @@ body {
   .carousel {
     display: flex;
     transition: transform 0.45s ease;
-    will-change: transform; // melhora performance
+    will-change: transform;
   }
 
   .carousel-item {
-    min-width: 100%;
+    flex: 0 0 33.3333%; // desktop default
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 10px;
 
     img {
       width: 100%;
@@ -72,6 +73,33 @@ body {
     }
   }
 }
+
+/* =====================
+   TABLET – 2 POR VEZ
+===================== */
+@media (max-width: 1024px) {
+  .carousel-container {
+    .carousel-item {
+      flex: 0 0 50%;
+    }
+  }
+}
+
+/* =====================
+   MOBILE – 1 POR VEZ
+===================== */
+@media (max-width: 600px) {
+  .carousel-container {
+    .carousel-item {
+      flex: 0 0 100%;
+    }
+
+    .carousel-item img {
+      max-height: 110px;
+    }
+  }
+}
+
 
 /* =========================================================
    PATROCINADORES (MOBILE FRIENDLY)

@@ -2,8 +2,8 @@
   <div class="logo">
     <img src="assets/img/Boneco_apamaiao.jpeg" alt="Logo Apamaião" class="logo-img" />
     <div>
-      <h1>Campeonato de Pais e Mestres do Abel</h1>
-      <p style="font-size: x-small; color: whitesmoke;">Atualizado 05/01/2026</p>
+      <h2>Campeonato de Pais e Mestres do Abel</h2>
+      <p style="font-size: x-small; color: whitesmoke;">Atualizado 16/03/2026</p>
     </div>
   </div>
 
@@ -26,8 +26,10 @@
       <button mat-button [routerLink]="'/categoria-b'" [matMenuTriggerFor]="serieBMenu">Categoria B</button>
       <mat-menu #serieBMenu="matMenu"></mat-menu>
 
-      <button mat-button (click)="openJogosA()">Tabela de Jogos do A</button>
-      <button mat-button (click)="openJogosB()">Tabela de Jogos do B</button>
+      <button mat-button (click)="openJogosA()">Tabela de Jogos A</button>
+      <button mat-button (click)="openJogosB()">Tabela de Jogos B</button>
+      <button mat-button (click)="Mandante()">Uniformes Mandante</button>
+      <button mat-button (click)="Visitante()">Uniformes Visitante</button>
     </div>
   </div>
 </nav>

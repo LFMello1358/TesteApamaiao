@@ -11,53 +11,66 @@
   </div>
 
 
-<mat-card>
-  <mat-card-header class="header-campeonato">
-  <div class="header-container-coluna">
 
-    <!-- 🔹 Título -->
-    <h1 class="titulo-principal">Campeonato 2026</h1>
 
-    <!-- 🔹 DIV CENTRALIZADA (mantida) -->
-    <div class="convite-container">
-      <h2>Lista do Campeonato 2026</h2>
+  <mat-card>
+    <mat-card-header class="header-campeonato">
+      <div class="header-container-coluna">
 
-      <div class="botoes-lista">
-        <button
-          mat-raised-button
-          color="accent"
-          (click)="openListaA()"
-        >
-          A
-        </button>
+        <!-- 🔹 Título -->
+        <h1 class="titulo-principal">Campeonato 2026</h1>
 
-        <button
-          mat-raised-button
-          color="accent"
-          (click)="openListaB()"
-        >
-          B
-        </button>
+        <!-- 🔹 DIV CENTRALIZADA (mantida) -->
+        <div class="convite-container">
+          <h2>Uniformes</h2>
+
+          <div class="botoes-lista">
+            <button mat-raised-button color="accent" (click)="Mandante()">
+              Mandante
+            </button>
+
+            <button mat-raised-button color="accent" (click)="Visitante()">
+              Visitante
+            </button>
+          </div>
+        </div>
+        <div class="convite-container">
+          <h2>Lista de Espera</h2>
+
+          <div class="botoes-lista">
+            <button mat-raised-button color="accent" (click)="openEsperaA()">
+              A
+            </button>
+
+            <button mat-raised-button color="accent" (click)="openEsperaB()">
+              B
+            </button>
+          </div>
+        </div>
+        <div class="convite-container">
+          <h2>Lista de By</h2>
+
+          <div class="botoes-lista">
+            <button mat-raised-button color="accent" (click)="openByA()">
+              A
+            </button>
+
+            <button mat-raised-button color="accent" (click)="openByB()">
+              B
+            </button>
+          </div>
+        </div>
+
+        <!-- 🔹 IMAGENS LADO A LADO -->
+        <div class="imagens-container">
+
+          <img src="assets/img/JogosMataMataA.jpg" alt="Campeão Categoria A" class="imagem-campeao" />
+
+          <img src="assets/img/JogosMataMataB.jpg" alt="Campeão Categoria B" class="imagem-campeao" />
+        </div>
+
       </div>
-    </div>
-
-    <!-- 🔹 IMAGENS LADO A LADO -->
-    <div class="imagens-container">
-      <img
-        src="assets/img/JogosMataMataA.jpg"
-        alt="Campeão Categoria A"
-        class="imagem-campeao"
-      />
-
-      <img
-        src="assets/img/JogosMataMataB.jpg"
-        alt="Campeão Categoria B"
-        class="imagem-campeao"
-      />
-    </div>
-
-  </div>
-</mat-card-header>
+    </mat-card-header>
 
   </mat-card>
 </div>

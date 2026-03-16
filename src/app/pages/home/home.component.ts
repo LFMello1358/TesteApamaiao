@@ -60,10 +60,33 @@ export class HomeComponent {
   translateX = 0;
   currentIndex = 0;
   interval: any;
+  itemsPorSlide = 3;
 
   ngOnInit(): void {
     this.shuffleArray(this.patrocinadores);
+    this.updateItemsPorSlide();
     this.startAutoSlide();
+    window.addEventListener('resize', this.onResize.bind(this));
+  }
+
+  onResize() {
+    this.updateItemsPorSlide();
+  }
+
+  updateItemsPorSlide() {
+    const width = window.innerWidth;
+
+    if (width <= 600) {
+      this.itemsPorSlide = 1;
+    } else if (width <= 1024) {
+      this.itemsPorSlide = 2;
+    } else {
+      this.itemsPorSlide = 3;
+    }
+
+    // evita bug ao redimensionar
+    this.currentIndex = 0;
+    this.translateX = 0;
   }
 
 
@@ -88,9 +111,22 @@ export class HomeComponent {
     window.open(formUrl, '_blank');
   }
   startAutoSlide() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+
     this.interval = setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.patrocinadores.length;
-      this.translateX = -this.currentIndex * 100;
+      const maxIndex =
+        this.patrocinadores.length - this.itemsPorSlide;
+
+      if (this.currentIndex < maxIndex) {
+        this.currentIndex++;
+      } else {
+        this.currentIndex = 0;
+      }
+
+      this.translateX =
+        -this.currentIndex * (100 / this.itemsPorSlide);
     }, 3000);
   }
 
@@ -101,7 +137,7 @@ export class HomeComponent {
   }
 
   openByA(): void {
-    const url = 'assets/img/GoleirosBYdoA.jpg';
+    const url = 'assets/img/LISTADEBYdoA.jpeg';
     window.open(url, '_blank');
   }
   openByB(): void {
@@ -114,16 +150,24 @@ export class HomeComponent {
     window.open(url, '_blank');
   }
   openEsperaA(): void {
-    const url = 'assets/img/LISTADEESPERAdoA.jpg';
+    const url = 'assets/img/LISTADEESPERAdoA.pdf';
     window.open(url, '_blank');
   }
 
   openListaA(): void {
-    const url = 'assets/img/Lista 110 A.pdf';
+    const url = 'assets/img/GradeA.jpeg';
     window.open(url, '_blank');
   }
   openListaB(): void {
     const url = 'assets/img/Lista 110 B.pdf';
+    window.open(url, '_blank');
+  }
+  Mandante(): void {
+    const url = 'assets/img/UniformeMandante.jpeg';
+    window.open(url, '_blank');
+  }
+  Visitante(): void {
+    const url = 'assets/img/UniformeVisitante.jpeg';
     window.open(url, '_blank');
   }
 

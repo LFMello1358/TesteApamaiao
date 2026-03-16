@@ -7,7 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav'; // ✅ IMPORTAR Si
 
 @Component({
   selector: 'app-componets',
-  standalone: true, 
+  standalone: true,
   imports: [SharedModule, MatMenuModule, MatButtonModule, MatIconModule, MatSidenavModule],
   templateUrl: './componets.component.html',
   styleUrls: ['./componets.component.scss']
@@ -21,7 +21,7 @@ export class ComponetsComponent {
   }
 
   openRegulamento(): void {
-    window.open('assets/img/Regulamento Apamaiao 25.pdf', '_blank');
+    window.open('assets/img/REGULAMENTO APAMAIA 2026 FINAL - 02022026.pdf', '_blank');
   }
 
   openJogosA(): void {
@@ -38,6 +38,14 @@ export class ComponetsComponent {
 
   openListaB(): void {
     window.open('assets/img/Lista 110 B.pdf', '_blank');
+  }
+  Mandante(): void {
+    const url = 'assets/img/UniformeMandante.jpeg';
+    window.open(url, '_blank');
+  }
+  Visitante(): void {
+    const url = 'assets/img/UniformeVisitante.jpeg';
+    window.open(url, '_blank');
   }
 }
 

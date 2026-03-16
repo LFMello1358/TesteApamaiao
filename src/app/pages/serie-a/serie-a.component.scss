@@ -8,7 +8,6 @@ $green: #175739;
 $green-light: #06924f;
 $white: #ffffff;
 
-/* Sombras otimizadas (menos repaint no mobile) */
 $shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.45);
 $shadow-strong: 0 12px 28px rgba(0, 0, 0, 0.65);
 
@@ -151,35 +150,20 @@ h3 {
    ARTILHEIROS / GOLEIROS
 ========================= */
 .cards-top {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   width: 100%;
   max-width: 1200px;
 }
 
 .cards-top .table-container {
-  flex: 1;
-}
-
-/* =========================
-   3 TABELAS LADO A LADO
-========================= */
-.tabelas-lado {
-  display: flex;
-  gap: 20px;
   width: 100%;
-  max-width: 1400px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.tabelas-lado .table-container {
-  flex: 1;
-  min-width: 280px;
+  min-width: 0;
 }
 
 /* =========================
-   TIMES – GRID DESKTOP
+   TIMES / GRID DESKTOP
 ========================= */
 .times-container {
   display: grid;
@@ -196,65 +180,22 @@ h3 {
 }
 
 /* =========================
-   MOBILE – 2 POR FILEIRA
+   CLASSIFICAÇÃO 1º, 2º e 3º TURNO
 ========================= */
-@media (max-width: 768px) {
-
-  .times-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .cards-top,
-  .tabelas-lado {
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .time-card,
-  .tabelas-lado .table-container {
-    max-width: 100%;
-    padding: 8px;
-  }
-
-  .time-table th,
-  .time-table td,
-  .mat-mdc-header-cell,
-  .mat-mdc-cell {
-    font-size: 10px;
-    padding: 4px;
-  }
-
-  .nome-column {
-    font-size: 10px;
-  }
-
-  .time-title {
-    font-size: 11px;
-    padding: 5px;
-  }
+.classificacao-turnos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 colunas desktop */
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
 }
 
-/* =========================
-   MOBILE MUITO PEQUENO
-========================= */
-@media (max-width: 420px) {
-
-  .times-container {
-    gap: 12px;
-  }
-
-  .time-table th,
-  .time-table td,
-  .mat-mdc-header-cell,
-  .mat-mdc-cell {
-    font-size: 9.5px;
-    padding: 3px;
-  }
-
-  .nome-column {
-    font-size: 9.5px;
-  }
+.classificacao-turnos .table-container {
+  width: 100%;
+  max-width: 380px;
 }
 
 /* =========================
@@ -286,4 +227,268 @@ h3 {
   background: linear-gradient(135deg, #8b0000, #ff0000) !important;
   color: #fff !important;
   font-weight: 600;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 768px) {
+
+  /* Classificação centralizada (1 coluna) */
+  .classificacao-turnos {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+
+  .classificacao-turnos .table-container {
+    width: 100%;
+    padding: 4px;
+  }
+
+  /* Grids de cards e times com 2 colunas */
+  .cards-top,
+  .times-container,
+  .tabelas-lado {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    justify-items: center;
+  }
+
+  .cards-top .table-container,
+  .tabelas-lado .table-container,
+  .time-card,
+  .classificacao-turnos .table-container {
+    padding: 4px;
+  }
+
+  .time-table th,
+  .time-table td,
+  .mat-mdc-header-cell,
+  .mat-mdc-cell {
+    font-size: 10px;
+    padding: 4px;
+  }
+
+  .nome-column {
+    font-size: 10px;
+  }
+
+  .time-title {
+    font-size: 11px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  /* Classificação única e centralizada */
+  .classificacao-turnos {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    gap: 10px;
+    margin: 0 auto;
+  }
+
+  /* Cards e times 1 coluna */
+  .cards-top,
+  .times-container,
+  .tabelas-lado {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+
+  .cards-top .table-container,
+  .tabelas-lado .table-container,
+  .classificacao-turnos .table-container {
+    padding: 6px;
+  }
+
+  .time-table th,
+  .time-table td,
+  .mat-mdc-header-cell,
+  .mat-mdc-cell {
+    font-size: 9.5px;
+    padding: 3px;
+  }
+
+  .nome-column {
+    font-size: 9.5px;
+  }
+}
+
+/* =========================
+   JOGOS / PDF (FOCO AQUI)
+========================= */
+.card.jogos {
+  width: 100%;
+  max-width: 900px; // 🔥 BEM MAIS LARGO NO DESKTOP
+  margin: 0 auto;
+}
+
+/* Wrapper define largura máxima do PDF */
+.pdf-wrapper {
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+/* Viewer */
+.pdf-container {
+  width: 100%;
+  height: 82vh;
+  overflow: auto;
+  display: block;
+
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* =========================
+   BOTÕES SELETOR DE PDF
+========================= */
+.botoes-pdf {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+
+  button {
+    background: linear-gradient(160deg, lighten($gray, 6%), $dark-gray);
+    border: 1px solid rgba(47, 163, 107, 0.35);
+    color: $white;
+
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+
+    padding: 8px 0;
+    border-radius: 10px;
+    cursor: pointer;
+
+    box-shadow:
+      0 6px 16px rgba(0, 0, 0, 0.45),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: linear-gradient(160deg, $green, darken($green, 6%));
+      border-color: $green-light;
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+}
+
+/* =========================
+   RESPONSIVIDADE – TABLET
+========================= */
+@media (max-width: 768px) {
+  tabelas-lado{
+
+    max-width: 90%;
+    }
+  .card.jogos {
+    max-width: 70%;
+    // margin-bottom: 50%;
+  }
+
+  .pdf-wrapper {
+    max-width: 100%;
+  }
+
+  .pdf-container {
+    height: 72vh; // 🔥 grande no tablet
+    border-radius: 12px;
+  }
+
+  .botoes-pdf {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+
+    button {
+      font-size: 10px;
+      padding: 7px 0;
+    }
+  }
+
+
+}
+
+/* =========================
+   RESPONSIVIDADE – MOBILE
+========================= */
+@media (max-width: 420px) {
+  
+ 
+  .Padrao {
+    padding: 16px 8px;
+  }
+
+  .card.jogos {
+    padding: 10px;
+    //margin-bottom: 100%;
+  }
+
+  .pdf-container {
+    height: 65vh; // 🔥 ocupa quase toda a tela
+    border-radius: 10px;
+  }
+
+  .botoes-pdf {
+    grid-template-columns: 1fr;
+    gap: 6px;
+
+    button {
+      font-size: 10px;
+      padding: 8px 0;
+    }
+  }
+}
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.team-icon {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+@media (max-width: 768px) {
+
+  .classificacao-turnos {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+}
+@media (max-width: 768px) {
+
+  .classificacao-turnos {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    width: 100%;
+    max-width: 100%; // 🔥 REMOVE O ESTRANGULAMENTO
+    margin: 0 auto;
+    gap: 16px;
+  }
+
+  .classificacao-turnos .table-container {
+    width: 100%;
+    max-width: 100%; // 🔥 FICA IGUAL À GERAL
+  }
 }
