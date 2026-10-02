@@ -141,7 +141,7 @@ export class HomeComponent {
     window.open(url, '_blank');
   }
   openByB(): void {
-    const url = 'assets/img/LISTADEBYdoB.pdf';
+    const url = 'assets/img/LISTADEBYdoB.jpeg';
 
     window.open(url, '_blank');
   }

@@ -492,3 +492,39 @@ h3 {
     max-width: 100%; // 🔥 FICA IGUAL À GERAL
   }
 }
+
+.nome-column {
+  text-align: center;
+}
+
+.nome-jogador {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Costela */
+.emoji-costela {
+  width: 50px;
+  height: 35px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Joker */
+.emoji-joker {
+  width: 45px;
+  height: 55px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+.emoji-coroa {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}

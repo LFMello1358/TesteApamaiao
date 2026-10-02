@@ -100,14 +100,47 @@
               </td>
             </ng-container>
 
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef class="nome-column">
-                Nome
-              </th>
-              <td mat-cell *matCellDef="let el" class="nome-column">
-                {{ el.name }}
-              </td>
-            </ng-container>
+<ng-container matColumnDef="name">
+
+  <th mat-header-cell *matHeaderCellDef class="nome-column">
+    Nome
+  </th>
+
+  <td mat-cell *matCellDef="let el; let i = index" class="nome-column">
+
+    <span class="nome-jogador">
+
+      {{ el.name }}
+
+      <!-- COSTELA: somente se Luizinho estiver em 1º -->
+      <img
+        *ngIf="i === 0 && el.name === 'Luizinho Costela'"
+        src="assets/img/Costela.jpeg"
+        class="emoji-costela"
+        alt="Costela"
+      />
+
+      <!-- JOKER: somente se Allan estiver em 1º -->
+      <img
+        *ngIf="i === 0 && el.name === 'Allan'"
+        src="assets/img/jokerAllan.png"
+        class="emoji-joker"
+        alt="Joker"
+      />
+
+      <!-- COROA: somente se Luiz Fellipe estiver em 1º -->
+      <img
+        *ngIf="i === 0 && el.name === 'Luiz Fellipe'"
+        src="assets/img/Coroa.png"
+        class="emoji-coroa"
+        alt="Coroa"
+      />
+
+    </span>
+
+  </td>
+
+</ng-container>
 
             <ng-container matColumnDef="time">
               <th mat-header-cell *matHeaderCellDef>
@@ -331,12 +364,27 @@
     <br>
 
     <!-- Tabela do 2° Turno -->
-    <!-- <div class="tabela table-container">
+    <div class="tabela table-container">
       <h2>Classificação do 2° Turno</h2>
       <table mat-table [dataSource]="dataSourceTurno2Ordenado">
+        <!-- POSIÇÃO -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            {{ i + 1 }}
+          </td>
+        </ng-container>
+
+        <!-- TIME -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class="first-column">Times</th>
-          <td mat-cell *matCellDef="let element" class="first-column">{{ element.name }}</td>
+          <th mat-header-cell *matHeaderCellDef class="first-column">
+            Times
+          </th>
+
+          <td mat-cell *matCellDef="let element" class="first-column team-cell">
+            <img [src]="element.icon" [alt]="element.name" class="team-icon" />
+            <span>{{ element.name }}</span>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="points">
@@ -390,15 +438,30 @@
     </div>
     <br>
     <br>
-    <br> -->
+    <br>
     <!-- Tabela do 3° Turno -->
 
-    <!-- <div class="tabela table-container">
+    <div class="tabela table-container">
       <h2>Classificação do 3° Turno</h2>
       <table mat-table [dataSource]="dataSourceTurno3Ordenado">
+
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            {{ i + 1 }}
+          </td>
+        </ng-container>
+
+
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class="first-column">Times</th>
-          <td mat-cell *matCellDef="let element" class="first-column">{{ element.name }}</td>
+          <th mat-header-cell *matHeaderCellDef class="first-column">
+            Times
+          </th>
+
+          <td mat-cell *matCellDef="let element" class="first-column team-cell">
+            <img [src]="element.icon" [alt]="element.name" class="team-icon" />
+            <span>{{ element.name }}</span>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="points">
@@ -449,7 +512,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-    </div> -->
+    </div>
   </div>
   <!-- =====================
      PDF JOGOS
