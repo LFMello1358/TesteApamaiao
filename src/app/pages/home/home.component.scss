@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /* =========================================================
    VARIÁVEIS / TEMA (BASE OFICIAL)
 ========================================================= */
@@ -114,7 +116,7 @@ body {
 
 .patrocinador {
   height: 90px;
-  background: linear-gradient(160deg, lighten($gray, 4%), $dark-gray);
+  background: linear-gradient(160deg, color.adjust($gray, $lightness: 4%), $dark-gray);
   border-radius: 12px;
   border: 1px solid rgba($green-light, 0.25);
   box-shadow: $shadow-soft;
@@ -153,7 +155,7 @@ body {
    HEADER PREMIUM
 ========================================================= */
 .header-campeonato {
-  background: linear-gradient(145deg, darken($gray, 4%), $dark-gray);
+  background: linear-gradient(145deg, color.adjust($gray, $lightness: -4%), $dark-gray);
   padding: 32px 20px;
   border-radius: 22px;
   box-shadow: $shadow-strong;
@@ -232,7 +234,7 @@ body {
    TORNEIOS
 ========================================================= */
 .torneio-card {
-  background: linear-gradient(160deg, lighten($gray, 6%), $dark-gray);
+  background: linear-gradient(160deg, color.adjust($gray, $lightness: 6%), $dark-gray);
   border-radius: 16px;
   padding: 16px;
   border: 1px solid rgba($green-light, 0.25);

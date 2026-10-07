@@ -264,7 +264,7 @@ export class SerieBComponent {
 
     this.topArtillery = [
       { name: 'Tevez', goals: 1, time: 'Espanha', icon: 'assets/img/espanha.png' },
-      { name: 'Igor Brasil', goals: 14, time: 'Espanha', icon: 'assets/img/espanha.png' },
+      { name: 'Igor Brasil', goals: 16, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Machado', goals: 4, time: 'Portugal', icon: 'assets/img/portugal.png' },
       { name: 'Juca', goals: 10, time: 'Portugal', icon: 'assets/img/portugal.png' },
       { name: 'Magrinho', goals: 3, time: 'Argentina', icon: 'assets/img/argentina.png' },
@@ -278,7 +278,7 @@ export class SerieBComponent {
       { name: 'Jorginho', goals: 5, time: 'Brasil', icon: 'assets/img/brasil.png' },
       { name: 'Ximbinha', goals: 7, time: 'México', icon: 'assets/img/mexico.png' },
       { name: 'Maduro', goals: 1, time: 'México', icon: 'assets/img/mexico.png' },
-      { name: 'Maguila', goals: 9, time: 'México', icon: 'assets/img/mexico.png' },
+      { name: 'Maguila', goals: 10, time: 'México', icon: 'assets/img/mexico.png' },
       { name: 'Cristiano Motta', goals: 4, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Ezequiel', goals: 9, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Marcelo Dentista', goals: 8, time: 'Brasil', icon: 'assets/img/brasil.png' },
@@ -305,7 +305,7 @@ export class SerieBComponent {
       { name: 'Alex Gomes', goals: 3, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Frank', goals: 4, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Cadu', goals: 2, time: 'Itália', icon: 'assets/img/italia.png' },
-      { name: 'Naval', goals: 10, time: 'Itália', icon: 'assets/img/italia.png' },
+      { name: 'Naval', goals: 11, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Luquinha', goals: 1, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Wanildo', goals: 9, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'França', goals: 10, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
@@ -377,25 +377,25 @@ export class SerieBComponent {
       },
       {
         name: 'Zuqui',
-        goalsConceded: 48,
+        goalsConceded: 52,
         time: 'Holanda',
         icon: 'assets/img/holanda.png'
       },
       {
         name: 'Rubano',
-        goalsConceded: 32,
+        goalsConceded: 33,
         time: 'Inglaterra',
         icon: 'assets/img/inglaterra.png'
       },
       {
         name: 'Leandro Manhaes',
-        goalsConceded: 29,
+        goalsConceded: 30,
         time: 'Itália',
         icon: 'assets/img/italia.png'
       },
       {
         name: 'Felipe',
-        goalsConceded: 36,
+        goalsConceded: 37,
         time: 'México',
         icon: 'assets/img/mexico.png'
       },
@@ -407,7 +407,7 @@ export class SerieBComponent {
       },
       {
         name: 'Braga',
-        goalsConceded: 45,
+        goalsConceded: 48,
         time: 'Uruguai',
         icon: 'assets/img/uruguai.png'
       }
@@ -472,15 +472,15 @@ export class SerieBComponent {
     const turno3: Team[] = [
       { name: 'Alemanha', points: 4, games: 7, wins: 1, draws: 1, losses: 5, goalsFor: 12, goalsAgainst: 26, SaldoGols: -14, woLosses: 0, players: [], icon: 'assets/img/alemanha.png' },
       { name: 'Argentina', points: 13, games: 6, wins: 4, draws: 1, losses: 1, goalsFor: 11, goalsAgainst: 3, SaldoGols: 8, woLosses: 0, players: [], icon: 'assets/img/argentina.png' },
-      { name: 'Brasil', points: 3, games: 4, wins: 1, draws: 0, losses: 3, goalsFor: 7, goalsAgainst: 10, SaldoGols: -3, woLosses: 0, players: [], icon: 'assets/img/brasil.png' },
-      { name: 'Espanha', points: 10, games: 5, wins: 3, draws: 1, losses: 1, goalsFor: 11, goalsAgainst: 6, SaldoGols: 5, woLosses: 0, players: [], icon: 'assets/img/espanha.png' },
+      { name: 'Brasil', points: 6, games: 5, wins: 2, draws: 0, losses: 3, goalsFor: 10, goalsAgainst: 10, SaldoGols: 0, woLosses: 0, players: [], icon: 'assets/img/brasil.png' },
+      { name: 'Espanha', points: 13, games: 6, wins: 4, draws: 1, losses: 1, goalsFor: 14, goalsAgainst: 6, SaldoGols: 8, woLosses: 0, players: [], icon: 'assets/img/espanha.png' },
       { name: 'França', points: 4, games: 7, wins: 1, draws: 1, losses: 5, goalsFor: 12, goalsAgainst: 19, SaldoGols: -7, woLosses: 0, players: [], icon: 'assets/img/frança.png' },
-      { name: 'Holanda', points: 4, games: 5, wins: 1, draws: 1, losses: 3, goalsFor: 8, goalsAgainst: 13, SaldoGols: -5, woLosses: 0, players: [], icon: 'assets/img/holanda.png' },
-      { name: 'Inglaterra', points: 15, games: 6, wins: 5, draws: 0, losses: 1, goalsFor: 20, goalsAgainst: 9, SaldoGols: 11, woLosses: 0, players: [], icon: 'assets/img/inglaterra.png' },
-      { name: 'Itália', points: 10, games: 6, wins: 3, draws: 1, losses: 2, goalsFor: 9, goalsAgainst: 6, SaldoGols: 3, woLosses: 0, players: [], icon: 'assets/img/italia.png' },
-      { name: 'México', points: 8, games: 5, wins: 2, draws: 2, losses: 1, goalsFor: 8, goalsAgainst: 8, SaldoGols: 0, woLosses: 0, players: [], icon: 'assets/img/mexico.png' },
+      { name: 'Holanda', points: 5, games: 7, wins: 1, draws: 2, losses: 4, goalsFor: 9, goalsAgainst: 17, SaldoGols: -8, woLosses: 0, players: [], icon: 'assets/img/holanda.png' },
+      { name: 'Inglaterra', points: 16, games: 7, wins: 5, draws: 1, losses: 1, goalsFor: 21, goalsAgainst: 10, SaldoGols: 11, woLosses: 0, players: [], icon: 'assets/img/inglaterra.png' },
+      { name: 'Itália', points: 11, games: 7, wins: 3, draws: 2, losses: 2, goalsFor: 10, goalsAgainst: 7, SaldoGols: 3, woLosses: 0, players: [], icon: 'assets/img/italia.png' },
+      { name: 'México', points: 9, games: 6, wins: 2, draws: 3, losses: 1, goalsFor: 9, goalsAgainst: 9, SaldoGols: 0, woLosses: 0, players: [], icon: 'assets/img/mexico.png' },
       { name: 'Portugal', points: 9, games: 6, wins: 2, draws: 3, losses: 1, goalsFor: 10, goalsAgainst: 7, SaldoGols: 3, woLosses: 0, players: [], icon: 'assets/img/portugal.png' },
-      { name: 'Uruguai', points: 7, games: 5, wins: 2, draws: 1, losses: 2, goalsFor: 10, goalsAgainst: 11, SaldoGols: -1, woLosses: 0, players: [], icon: 'assets/img/uruguai.png' }
+      { name: 'Uruguai', points: 7, games: 6, wins: 2, draws: 1, losses: 3, goalsFor: 10, goalsAgainst: 14, SaldoGols: -4, woLosses: 0, players: [], icon: 'assets/img/uruguai.png' }
     ];
 
     return turno3.sort((a, b) => b.points - a.points);  // Ordenando por pontos em ordem decrescente
@@ -750,13 +750,13 @@ export class SerieBComponent {
       name: 'Brasil',
       icon: 'assets/img/brasil.png',
       players: [
-        { name: 'Marquinho Country', position: 'Goleiro', fouls: 1, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Marquinho Country', position: 'Goleiro', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Alex Rangel', position: 'Zagueiro', fouls: 0, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Tatá', position: 'Lateral 1', fouls: 4, yellowCard: 2, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0 },
         { name: 'Carlos Castelo', position: 'Lateral 2', fouls: 0, yellowCard: 2, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Carlão', position: 'Volante', fouls: 1, yellowCard: 2, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Kiko', position: 'Meio Campo 1', fouls: 2, yellowCard: 1, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Fábinho', position: 'Meio Campo 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Kiko', position: 'Meio Campo 1', fouls: 2, yellowCard: 1, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Fábinho', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 0 },
         { name: 'Marcelo Dentista', position: 'Atacante', fouls: 2, yellowCard: 0, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
         { name: 'Amin', position: 'Flex 1', fouls: 5, yellowCard: 3, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'Luna', position: 'Flex 2', fouls: 1, yellowCard: 2, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 },
@@ -775,9 +775,9 @@ export class SerieBComponent {
         { name: 'Vitão', position: 'Lateral 1', fouls: 3, yellowCard: 3, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
         { name: 'Tevez', position: 'Lateral 2', fouls: 0, yellowCard: 2, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
         { name: 'André Freixo', position: 'Volante', fouls: 1, yellowCard: 3, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Igor Brasil', position: 'Meio Campo 1', fouls: 0, yellowCard: 3, redCard: 0, goals: 14, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Igor Brasil', position: 'Meio Campo 1', fouls: 0, yellowCard: 3, redCard: 0, goals: 16, suspensao: false, jogosSuspensao: 1 },
         { name: 'Latini', position: 'Meio Campo 2', fouls: 1, yellowCard: 1, redCard: 0, goals: 16, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Cristiano Motta', position: 'Atacante', fouls: 3, yellowCard: 1, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Cristiano Motta', position: 'Atacante', fouls: 3, yellowCard: 1, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 0 },
         { name: 'Ezequiel', position: 'Flex 1', fouls: 1, yellowCard: 3, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 0 },
         { name: 'Slow', position: 'Flex 2', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Bazhuni', position: 'Flex 3', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 }
@@ -814,13 +814,13 @@ export class SerieBComponent {
         { name: 'Dedeco', position: 'Zagueiro', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
         { name: 'Marco André', position: 'Lateral 1', fouls: 4, yellowCard: 3, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'Adrian', position: 'Lateral 2', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Bahia', position: 'Volante', fouls: 3, yellowCard: 4, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'José Marcio', position: 'Meio Campo 1', fouls: 2, yellowCard: 2, redCard: 0, goals: 17, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Valdetaro', position: 'Volante', fouls: 0, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 },
+        { name: 'José Marcio', position: 'Meio Campo 1', fouls: 4, yellowCard: 2, redCard: 0, goals: 17, suspensao: false, jogosSuspensao: 0 },
         { name: 'Almada', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Marcellus', position: 'Atacante', fouls: 5, yellowCard: 4, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Marcelo Dominó', position: 'Flex 1', fouls: 3, yellowCard: 2, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Pacheco', position: 'Flex 2', fouls: 5, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Lattanzi', position: 'Flex 3', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
+        { name: 'Marcellus', position: 'Atacante', fouls: 5, yellowCard: 6, redCard: 0, goals: 5, suspensao: true, jogosSuspensao: 1 },
+        { name: 'Marcelo Dominó', position: 'Flex 1', fouls: 5, yellowCard: 2, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Pacheco', position: 'Flex 2', fouls: 7, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Lattanzi', position: 'Flex 3', fouls: 4, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -835,11 +835,11 @@ export class SerieBComponent {
         { name: 'Melão ', position: 'Lateral 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Toninho', position: 'Lateral 2', fouls: 2, yellowCard: 5, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 },
         { name: 'Paludo', position: 'Volante', fouls: 2, yellowCard: 2, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Bodinho', position: 'Meio Campo 1', fouls: 3, yellowCard: 2, redCard: 0, goals: 26, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Romão', position: 'Meio Campo 2', fouls: 2, yellowCard: 1, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Neném', position: 'Atacante', fouls: 1, yellowCard: 3, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Blois', position: 'Flex 1', fouls: 3, yellowCard: 1, redCard: 1, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Castelinho', position: 'Flex 2', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Bodinho', position: 'Meio Campo 1', fouls: 3, yellowCard: 3, redCard: 0, goals: 26, suspensao: true, jogosSuspensao: 1 },
+        { name: 'Romão', position: 'Meio Campo 2', fouls: 2, yellowCard: 2, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Neném', position: 'Atacante', fouls: 1, yellowCard: 4, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Blois', position: 'Flex 1', fouls: 3, yellowCard: 1, redCard: 1, goals: 3, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Castelinho', position: 'Flex 2', fouls: 4, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Geraldinho', position: 'Flex 3', fouls: 3, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
@@ -852,15 +852,15 @@ export class SerieBComponent {
       players: [
         { name: 'Leandro Manhaes', position: 'Goleiro', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Zarro', position: 'Zagueiro', fouls: 2, yellowCard: 4, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Vilhena', position: 'Lateral 1', fouls: 2, yellowCard: 2, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Vilhena', position: 'Lateral 1', fouls: 2, yellowCard: 3, redCard: 0, goals: 2, suspensao: true, jogosSuspensao: 1 },
         { name: 'Glauber', position: 'Lateral 2', fouls: 1, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Toninho Imóveis', position: 'Volante', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Cadu', position: 'Meio Campo 1', fouls: 0, yellowCard: 7, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Naval', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Cadu', position: 'Meio Campo 1', fouls: 0, yellowCard: 8, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Naval', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 11, suspensao: false, jogosSuspensao: 0 },
         { name: 'Portugal', position: 'Atacante', fouls: 2, yellowCard: 3, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'Paulinho Loria', position: 'Flex 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 0 },
         { name: 'Dayvison', position: 'Flex 2', fouls: 0, yellowCard: 1, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Ronaldinho', position: 'Flex 3', fouls: 2, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 0 }
+        { name: 'Ronaldinho', position: 'Flex 3', fouls: 3, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 0 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -871,13 +871,13 @@ export class SerieBComponent {
       icon: 'assets/img/mexico.png',
       players: [
         { name: 'Felipe', position: 'Goleiro', fouls: 7, yellowCard: 2, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Mitidieri', position: 'Zagueiro', fouls: 1, yellowCard: 6, redCard: 1, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Mitidieri', position: 'Zagueiro', fouls: 1, yellowCard: 6, redCard: 2, goals: 0, suspensao: true, jogosSuspensao: 1 },
         { name: 'Ximbinha', position: 'Lateral 1', fouls: 0, yellowCard: 3, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
         { name: 'Maduro', position: 'Lateral 2', fouls: 0, yellowCard: 1, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 },
         { name: 'Francelino', position: 'Volante', fouls: 6, yellowCard: 4, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1 },
         { name: 'Cupulille', position: 'Meio Campo 1', fouls: 3, yellowCard: 3, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Léo Barbosa', position: 'Meio Campo 2', fouls: 6, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Maguila', position: 'Atacante', fouls: 3, yellowCard: 4, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Léo Barbosa', position: 'Meio Campo 2', fouls: 7, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Maguila', position: 'Atacante', fouls: 3, yellowCard: 4, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 1 },
         { name: 'Serginho', position: 'Flex 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 0 },
         { name: 'Ratinho', position: 'Flex 2', fouls: 1, yellowCard: 2, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Bido', position: 'Flex 3', fouls: 4, yellowCard: 2, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 }
@@ -910,9 +910,9 @@ export class SerieBComponent {
       name: 'Uruguai',
       icon: 'assets/img/uruguai.png',
       players: [
-        { name: 'Braga', position: 'Goleiro', fouls: 1, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Braga', position: 'Goleiro', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Konte', position: 'Zagueiro', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Valente', position: 'Lateral 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Valente', position: 'Lateral 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
         { name: 'Shaolin', position: 'Lateral 2', fouls: 5, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
         { name: 'Ricardinho', position: 'Volante', fouls: 1, yellowCard: 4, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
         { name: 'Daniel', position: 'Meio Campo 1', fouls: 0, yellowCard: 1, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
