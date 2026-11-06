@@ -2,8 +2,6 @@ import { Component, HostListener } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ComponetsComponent } from '../../componentes/componets/componets.component';
 import { SharedModule } from '../../shared/shared.module';
-import { AppComponent } from '../../app.component';
-
 interface Team {
   name: string;
   icon: string;
@@ -49,6 +47,36 @@ interface Goalkeeper {
   goalsConceded: number; // Gols sofridos (para goleiros menos vazados)
   time: string
   icon: string;
+}
+
+interface PlacarConfronto {
+  idaA: number | null;
+  idaB: number | null;
+  voltaA: number | null;
+  voltaB: number | null;
+}
+
+interface PlacarJogoUnico {
+  golsA: number | null;
+  golsB: number | null;
+}
+
+interface PlacaresMataMata {
+  quartas: {
+    q1: PlacarConfronto;
+    q2: PlacarConfronto;
+    q3: PlacarConfronto;
+    q4: PlacarConfronto;
+  };
+
+  semifinais: {
+    s1: PlacarConfronto;
+    s2: PlacarConfronto;
+  };
+
+  final: PlacarConfronto;
+
+  terceiroLugar: PlacarJogoUnico;
 }
 
 @Component({
@@ -217,31 +245,31 @@ export class SerieAComponent {
 
 
     this.topArtillery = [
-      { name: 'Luizinho Costela', goals: 26, time: 'Espanha', icon: 'assets/img/espanha.png' },
+      { name: 'Luizinho Costela', goals: 29, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Paulo Nunes', goals: 14, time: 'Portugal', icon: 'assets/img/portugal.png' },
-      { name: 'Rodrigo Vila Chã', goals: 10, time: 'Portugal', icon: 'assets/img/portugal.png' },
-      { name: 'Pedro Valente', goals: 15, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
+      { name: 'Rodrigo Vila Chã', goals: 11, time: 'Portugal', icon: 'assets/img/portugal.png' },
+      { name: 'Pedro Valente', goals: 16, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Villander', goals: 9, time: 'Espanha', icon: 'assets/img/espanha.png' },
-      { name: 'Allan', goals: 24, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
+      { name: 'Allan', goals: 26, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
       { name: 'Belladonna', goals: 1, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Rogerio Cordeiro', goals: 1, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'LF Pai Novo', goals: 1, time: 'Italia', icon: 'assets/img/italia.png' },
       { name: 'Berton', goals: 1, time: 'Italia', icon: 'assets/img/italia.png' },
-      { name: 'Ungerer', goals: 19, time: 'Italia', icon: 'assets/img/italia.png' },
+      { name: 'Ungerer', goals: 25, time: 'Italia', icon: 'assets/img/italia.png' },
       { name: 'Fabiano', goals: 1, time: 'Brasil', icon: 'assets/img/brasil.png' },
       { name: 'Zambrotti', goals: 1, time: 'Brasil', icon: 'assets/img/brasil.png' },
-      { name: 'Vinicius Reis', goals: 10, time: 'Mexico', icon: 'assets/img/mexico.png' },
+      { name: 'Vinicius Reis', goals: 12, time: 'Mexico', icon: 'assets/img/mexico.png' },
       { name: 'Hélio', goals: 12, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
       { name: 'Fred Gallo', goals: 2, time: 'Italia', icon: 'assets/img/italia.png' },
-      { name: 'Luiz Fellipe', goals: 25, time: 'França', icon: 'assets/img/frança.png' },
-      { name: 'Mauricio Batata', goals: 12, time: 'Espanha', icon: 'assets/img/espanha.png' },
+      { name: 'Luiz Fellipe', goals: 29, time: 'França', icon: 'assets/img/frança.png' },
+      { name: 'Mauricio Batata', goals: 13, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Felipe Cid', goals: 2, time: 'Holanda', icon: 'assets/img/holanda.png' },
-      { name: 'Aranha', goals: 13, time: 'Holanda', icon: 'assets/img/holanda.png' },
+      { name: 'Aranha', goals: 14, time: 'Holanda', icon: 'assets/img/holanda.png' },
       { name: 'Max Oliveira', goals: 2, time: 'Holanda', icon: 'assets/img/holanda.png' },
       { name: 'Jorge Martins', goals: 3, time: 'Brasil', icon: 'assets/img/brasil.png' },
       { name: 'Manarte', goals: 1, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
       { name: 'Léo Novarino', goals: 1, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
-      { name: 'Nando', goals: 10, time: 'França', icon: 'assets/img/frança.png' },
+      { name: 'Nando', goals: 11, time: 'França', icon: 'assets/img/frança.png' },
       { name: 'Victor Carlota', goals: 5, time: 'Italia', icon: 'assets/img/italia.png' },
       { name: 'Rafael Harduim', goals: 1, time: 'Mexico', icon: 'assets/img/mexico.png' },
       { name: 'Caleb', goals: 8, time: 'Mexico', icon: 'assets/img/mexico.png' },
@@ -250,17 +278,19 @@ export class SerieAComponent {
       { name: 'Felix', goals: 7, time: 'Portugal', icon: 'assets/img/portugal.png' },
       { name: 'Ítalo', goals: 7, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
       { name: 'Pinna', goals: 1, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
-      { name: 'Rodrigo Lima', goals: 12, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
-      { name: 'Clebinho', goals: 9, time: 'Brasil', icon: 'assets/img/brasil.png' },
-      { name: 'Oteciano', goals: 12, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
+      { name: 'Rodrigo Lima', goals: 14, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
+      { name: 'Clebinho', goals: 11, time: 'Brasil', icon: 'assets/img/brasil.png' },
+      { name: 'Oteciano', goals: 15, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Sigilião', goals: 1, time: 'Italia', icon: 'assets/img/italia.png' },
       { name: 'Flavinho', goals: 1, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Ricardo Rego', goals: 6, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Benito', goals: 1, time: 'Italia', icon: 'assets/img/italia.png' },
-      { name: 'Topiquinho', goals: 18, time: 'França', icon: 'assets/img/frança.png' },
-      { name: 'Eduardo Garcia', goals: 16, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
+      { name: 'Topiquinho', goals: 19, time: 'França', icon: 'assets/img/frança.png' },
+      { name: 'Eduardo Garcia', goals: 17, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Thiago Rangel', goals: 3, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
       { name: 'Lucas Siri', goals: 3, time: 'Alemanha', icon: 'assets/img/alemanha.png' },      
+      { name: 'Bernardo Filé', goals: 6, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
+      { name: 'Léo Rocha', goals: 12, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
 
 
 
@@ -282,67 +312,67 @@ export class SerieAComponent {
     this.topGoalkeepers = [
       {
         name: 'Luizinho Jansen',
-        goalsConceded: 58,
+        goalsConceded: 62,
         time: 'Alemanha',
         icon: 'assets/img/alemanha.png'
       },
       {
         name: 'Somália',
-        goalsConceded: 60,
+        goalsConceded: 67,
         time: 'Argentina',
         icon: 'assets/img/argentina.png'
       },
       {
         name: 'Enzo Merecci',
-        goalsConceded: 53,
+        goalsConceded: 67,
         time: 'Brasil',
         icon: 'assets/img/brasil.png'
       },
       {
         name: 'Lucas Milward',
-        goalsConceded: 49,
+        goalsConceded: 60,
         time: 'Espanha',
         icon: 'assets/img/espanha.png'
       },
       {
         name: 'Gilmar',
-        goalsConceded: 49,
+        goalsConceded: 59,
         time: 'França',
         icon: 'assets/img/frança.png'
       },
       {
         name: 'Markito',
-        goalsConceded: 61,
+        goalsConceded: 71,
         time: 'Holanda',
         icon: 'assets/img/holanda.png'
       },
       {
         name: 'Bacon',
-        goalsConceded: 47,
+        goalsConceded: 50,
         time: 'Inglaterra',
         icon: 'assets/img/inglaterra.png'
       },
       {
         name: 'Magela',
-        goalsConceded: 58,
+        goalsConceded: 62,
         time: 'Itália',
         icon: 'assets/img/italia.png'
       },
       {
         name: 'João Victor',
-        goalsConceded: 39,
+        goalsConceded: 49,
         time: 'México',
         icon: 'assets/img/mexico.png'
       },
       {
         name: 'Matheus Merecci',
-        goalsConceded: 69,
+        goalsConceded: 93,
         time: 'Portugal',
         icon: 'assets/img/portugal.png'
       },
       {
         name: 'Thomás',
-        goalsConceded: 37,
+        goalsConceded: 44,
         time: 'Uruguai',
         icon: 'assets/img/uruguai.png'
       }
@@ -405,17 +435,17 @@ export class SerieAComponent {
 
   initializeTurno3(): Team[] {
     const turno3: Team[] = [
-      { name: 'Alemanha', points: 12, games: 7, wins: 3, draws: 3, losses: 1, goalsFor: 23, goalsAgainst: 18, SaldoGols: 5, woLosses: 0, players: [], icon: 'assets/img/alemanha.png' },
-      { name: 'Argentina', points: 9, games: 6, wins: 3, draws: 0, losses: 3, goalsFor: 13, goalsAgainst: 11, SaldoGols: 2, woLosses: 0, players: [], icon: 'assets/img/argentina.png' },
-      { name: 'Brasil', points: 10, games: 5, wins: 3, draws: 1, losses: 1, goalsFor: 10, goalsAgainst: 8, SaldoGols: 2, woLosses: 0, players: [], icon: 'assets/img/brasil.png' },
-      { name: 'Espanha', points: 13, games: 6, wins: 4, draws: 1, losses: 1, goalsFor: 19, goalsAgainst: 10, SaldoGols: 9, woLosses: 0, players: [], icon: 'assets/img/espanha.png' },
-      { name: 'França', points: 13, games: 7, wins: 4, draws: 1, losses: 2, goalsFor: 20, goalsAgainst: 17, SaldoGols: 3, woLosses: 0, players: [], icon: 'assets/img/frança.png' },
-      { name: 'Holanda', points: 1, games: 7, wins: 0, draws: 1, losses: 6, goalsFor: 9, goalsAgainst: 22, SaldoGols: -13, woLosses: 0, players: [], icon: 'assets/img/holanda.png' },
-      { name: 'Inglaterra', points: 6, games: 7, wins: 2, draws: 0, losses: 5, goalsFor: 12, goalsAgainst: 16, SaldoGols: -4, woLosses: 0, players: [], icon: 'assets/img/inglaterra.png' },
-      { name: 'Itália', points: 5, games: 7, wins: 1, draws: 2, losses: 4, goalsFor: 15, goalsAgainst: 19, SaldoGols: -4, woLosses: 0, players: [], icon: 'assets/img/italia.png' },
-      { name: 'México', points: 7, games: 6, wins: 2, draws: 1, losses: 3, goalsFor: 10, goalsAgainst: 10, SaldoGols: 0, woLosses: 0, players: [], icon: 'assets/img/mexico.png' },
-      { name: 'Portugal', points: 10, games: 6, wins: 3, draws: 1, losses: 2, goalsFor: 18, goalsAgainst: 21, SaldoGols: -3, woLosses: 0, players: [], icon: 'assets/img/portugal.png' },
-      { name: 'Uruguai', points: 13, games: 6, wins: 4, draws: 1, losses: 1, goalsFor: 16, goalsAgainst: 9, SaldoGols: 7, woLosses: 0, players: [], icon: 'assets/img/uruguai.png' },
+      { name: 'Alemanha', points: 18, games: 10, wins: 5, draws: 3, losses: 2, goalsFor: 30, goalsAgainst: 22, SaldoGols: 8, woLosses: 0, players: [], icon: 'assets/img/alemanha.png' },
+      { name: 'Argentina', points: 22, games: 10, wins: 7, draws: 0, losses: 3, goalsFor: 25, goalsAgainst: 18, SaldoGols: 7, woLosses: 0, players: [], icon: 'assets/img/argentina.png' },
+      { name: 'Brasil', points: 16, games: 10, wins: 5, draws: 1, losses: 4, goalsFor: 24, goalsAgainst: 22, SaldoGols: 2, woLosses: 0, players: [], icon: 'assets/img/brasil.png' },
+      { name: 'Espanha', points: 19, games: 10, wins: 6, draws: 1, losses: 3, goalsFor: 30, goalsAgainst: 21, SaldoGols: 9, woLosses: 0, players: [], icon: 'assets/img/espanha.png' },
+      { name: 'França', points: 17, games: 10, wins: 5, draws: 2, losses: 3, goalsFor: 28, goalsAgainst: 27, SaldoGols: 1, woLosses: 0, players: [], icon: 'assets/img/frança.png' },
+      { name: 'Holanda', points: 2, games: 10, wins: 0, draws: 2, losses: 8, goalsFor: 15, goalsAgainst: 32, SaldoGols: -17, woLosses: 0, players: [], icon: 'assets/img/holanda.png' },
+      { name: 'Inglaterra', points: 11, games: 10, wins: 3, draws: 2, losses: 5, goalsFor: 18, goalsAgainst: 19, SaldoGols: -1, woLosses: 0, players: [], icon: 'assets/img/inglaterra.png' },
+      { name: 'Itália', points: 9, games: 10, wins: 2, draws: 3, losses: 5, goalsFor: 25, goalsAgainst: 25, SaldoGols: 0, woLosses: 0, players: [], icon: 'assets/img/italia.png' },
+      { name: 'México', points: 11, games: 10, wins: 3, draws: 2, losses: 5, goalsFor: 19, goalsAgainst: 20, SaldoGols: -1, woLosses: 0, players: [], icon: 'assets/img/mexico.png' },
+      { name: 'Portugal', points: 10, games: 10, wins: 3, draws: 1, losses: 6, goalsFor: 24, goalsAgainst: 45, SaldoGols: -21, woLosses: 0, players: [], icon: 'assets/img/portugal.png' },
+      { name: 'Uruguai', points: 25, games: 10, wins: 7, draws: 1, losses: 2, goalsFor: 29, goalsAgainst: 16, SaldoGols: 13, woLosses: 0, players: [], icon: 'assets/img/uruguai.png' },
     ];
 
     return turno3.sort((a, b) => b.points - a.points);  // Ordenando por pontos em ordem decrescente
@@ -534,6 +564,281 @@ constructor() {
       }
     });
   }
+  // ==========================================
+// MATA-MATA - SÉRIE A
+// ==========================================
+
+// Preencha os resultados diretamente neste objeto.
+// null significa que o resultado ainda não foi informado.
+//
+// A = time da esquerda
+// B = time da direita
+//
+// Os placares são independentes dos da Série B.
+
+placaresMataMata: PlacaresMataMata = {
+
+  quartas: {
+    q1: { idaA: null, idaB: null, voltaA: null, voltaB: null },
+    q2: { idaA: null, idaB: null, voltaA: null, voltaB: null },
+    q3: { idaA: null, idaB: null, voltaA: null, voltaB: null },
+    q4: { idaA: null, idaB: null, voltaA: null, voltaB: null }
+  },
+
+  semifinais: {
+    s1: { idaA: null, idaB: null, voltaA: null, voltaB: null },
+    s2: { idaA: null, idaB: null, voltaA: null, voltaB: null }
+  },
+
+  final: {
+    idaA: null,
+    idaB: null,
+    voltaA: null,
+    voltaB: null
+  },
+
+  terceiroLugar: {
+    golsA: null,
+    golsB: null
+  }
+
+};
+
+
+// ==========================================
+// CÁLCULO DOS RESULTADOS E CLASSIFICADOS
+// ==========================================
+
+private criarDuelo(
+  timeA: Team | null,
+  timeB: Team | null,
+  placar: PlacarConfronto,
+  dataIda: string,
+  dataVolta: string,
+  horarioIda: string = '21:00',
+  horarioVolta: string = '21:00'
+) {
+
+  const completo =
+    placar.idaA !== null &&
+    placar.idaB !== null &&
+    placar.voltaA !== null &&
+    placar.voltaB !== null;
+
+  const totalA = completo
+    ? Number(placar.idaA) + Number(placar.voltaA)
+    : null;
+
+  const totalB = completo
+    ? Number(placar.idaB) + Number(placar.voltaB)
+    : null;
+
+  let vencedor: Team | null = null;
+  let perdedor: Team | null = null;
+
+  if (
+    timeA &&
+    timeB &&
+    completo &&
+    totalA !== null &&
+    totalB !== null &&
+    totalA !== totalB
+  ) {
+    vencedor = totalA > totalB ? timeA : timeB;
+    perdedor = vencedor === timeA ? timeB : timeA;
+  }
+
+  let status = 'Aguardando resultados';
+
+  if (!timeA || !timeB) {
+    status = 'Aguardando classificação anterior';
+  } else if (completo && totalA === totalB) {
+    status = 'Empate no agregado';
+  } else if (vencedor) {
+    status = 'Classificado: ' + vencedor.name;
+  }
+
+  return {
+    timeA,
+    timeB,
+    placar,
+    totalA,
+    totalB,
+    vencedor,
+    perdedor,
+    status,
+    dataIda,
+    dataVolta,
+    horarioIda,
+    horarioVolta,
+    completo
+  };
+}
+
+
+// ==========================================
+// QUARTAS DE FINAL
+// 1º x 8º
+// 2º x 7º
+// 3º x 6º
+// 4º x 5º
+// ==========================================
+
+get confrontosQuartas() {
+  const tabela = this.dataSourceGeral;
+
+  const confrontos = [
+    {
+      // 4º x 5º - Alemanha x Argentina
+      posicaoA: 4,
+      posicaoB: 5,
+      dataIda: '09/11/2026',
+      dataVolta: '16/11/2026',
+      placar: this.placaresMataMata.quartas.q1
+    },
+    {
+      // 3º x 6º - Espanha x México
+      posicaoA: 3,
+      posicaoB: 6,
+      dataIda: '10/11/2026',
+      dataVolta: '17/11/2026',
+      placar: this.placaresMataMata.quartas.q2
+    },
+    {
+      // 2º x 7º - França x Brasil
+      posicaoA: 2,
+      posicaoB: 7,
+      dataIda: '11/11/2026',
+      dataVolta: '18/11/2026',
+      placar: this.placaresMataMata.quartas.q3
+    },
+    {
+      // 1º x 8º - Uruguai x Inglaterra
+      posicaoA: 1,
+      posicaoB: 8,
+      dataIda: '12/11/2026',
+      dataVolta: '19/11/2026',
+      placar: this.placaresMataMata.quartas.q4
+    }
+  ];
+
+  return confrontos.map(jogo =>
+    this.criarDuelo(
+      tabela[jogo.posicaoA - 1] || null,
+      tabela[jogo.posicaoB - 1] || null,
+      jogo.placar,
+      jogo.dataIda,
+      jogo.dataVolta
+    )
+  );
+}
+
+
+// ==========================================
+// SEMIFINAIS AUTOMÁTICAS
+// ==========================================
+
+get confrontosSemifinais() {
+
+  const quartas = this.confrontosQuartas;
+
+  return [
+
+    // Semifinal 1
+    this.criarDuelo(
+      quartas[0].vencedor,
+      quartas[3].vencedor,
+      this.placaresMataMata.semifinais.s1,
+      '24/11/2026',
+      '01/12/2026'
+    ),
+
+    // Semifinal 2 - Melhor colocado
+    this.criarDuelo(
+      quartas[1].vencedor,
+      quartas[2].vencedor,
+      this.placaresMataMata.semifinais.s2,
+      '25/11/2026',
+      '02/12/2026'
+    )
+
+  ];
+}
+
+
+// ==========================================
+// FINAL AUTOMÁTICA
+// ==========================================
+
+get confrontoFinal() {
+
+  const semifinais = this.confrontosSemifinais;
+
+  return this.criarDuelo(
+    semifinais[0].vencedor,
+    semifinais[1].vencedor,
+    this.placaresMataMata.final,
+    '10/12/2026',
+    '17/12/2026'
+  );
+
+}
+
+
+// ==========================================
+// DISPUTA DE TERCEIRO LUGAR
+// ==========================================
+
+get disputaTerceiroLugar() {
+
+  const semifinais = this.confrontosSemifinais;
+
+  const timeA = semifinais[0].perdedor;
+  const timeB = semifinais[1].perdedor;
+
+  const placar = this.placaresMataMata.terceiroLugar;
+
+  const completo =
+    placar.golsA !== null &&
+    placar.golsB !== null;
+
+  let vencedor: Team | null = null;
+  let perdedor: Team | null = null;
+
+  if (
+    timeA &&
+    timeB &&
+    completo &&
+    placar.golsA !== placar.golsB
+  ) {
+    vencedor =
+      placar.golsA! > placar.golsB!
+        ? timeA
+        : timeB;
+
+    perdedor = vencedor === timeA ? timeB : timeA;
+  }
+
+  return {
+    timeA,
+    timeB,
+    placar,
+    vencedor,
+    perdedor,
+    completo,
+    data: '17/12/2026',
+    horario: '20:00',
+
+    status: !timeA || !timeB
+      ? 'Aguardando semifinais'
+      : !completo
+        ? 'Aguardando resultado'
+        : vencedor
+          ? '3º lugar: ' + vencedor.name
+          : 'Empate'
+  };
+
+}
 
 
 
@@ -546,29 +851,29 @@ constructor() {
           name: 'Luizinho Jansen',
           position: 'Goleiro',
           fouls: 1,
-          yellowCard: 2,
+          yellowCard: 0,
           redCard: 0,
           goals: 0,
           suspensao: false,
-          jogosSuspensao: 0
+          jogosSuspensao: 1
         },
         {
           name: 'Bernardo Filé',
           position: 'Zagueiro',
-          fouls: 3,
-          yellowCard: 3,
+          fouls: 4,
+          yellowCard: 0,
           redCard: 0,
-          goals: 5,
+          goals: 6,
           suspensao: false,
-          jogosSuspensao: 0
+          jogosSuspensao: 1
         },
         {
           name: 'Ítalo',
           position: 'Lateral 1',
           fouls: 2,
-          yellowCard: 3,
+          yellowCard: 0,
           redCard: 0,
-          goals: 9,
+          goals: 10,
           suspensao: false,
           jogosSuspensao: 1
         },
@@ -576,18 +881,18 @@ constructor() {
           name: 'Gabriel Palmieri',
           position: 'Lateral 2',
           fouls: 2,
-          yellowCard: 6,
+          yellowCard: 0,
           redCard: 0,
-          goals: 2,
-          suspensao: true,
+          goals: 3,
+          suspensao: false,
           jogosSuspensao: 1
         },
         {
           name: 'Lucas Siri',
           position: 'Volante',
           fouls: 4,
-          yellowCard: 3,
-          redCard: 1,
+          yellowCard: 0,
+          redCard: 0,
           goals: 5,
           suspensao: false,
           jogosSuspensao: 1
@@ -596,37 +901,37 @@ constructor() {
           name: 'Rodrigo Lima',
           position: 'm1',
           fouls: 1,
-          yellowCard: 2,
+          yellowCard: 0,
           redCard: 0,
-          goals: 12,
+          goals: 14,
           suspensao: false,
-          jogosSuspensao: 0
+          jogosSuspensao: 1
         },
         {
           name: 'Pinna',
           position: 'M2',
           fouls: 4,
-          yellowCard: 2,
-          redCard: 1,
+          yellowCard: 0,
+          redCard: 0,
           goals: 4,
           suspensao: false,
-          jogosSuspensao: 0
+          jogosSuspensao: 1
         },
         {
           name: 'Allan',
           position: 'Atacante',
           fouls: 1,
-          yellowCard: 2,
-          redCard: 1,
-          goals: 24,
+          yellowCard: 0,
+          redCard: 0,
+          goals: 26,
           suspensao: false,
-          jogosSuspensao: 0
+          jogosSuspensao: 1
         },
         {
           name: 'Rodrigo Saramago',
           position: 'Flex 1',
           fouls: 5,
-          yellowCard: 4,
+          yellowCard: 0,
           redCard: 0,
           goals: 1,
           suspensao: false,
@@ -636,21 +941,21 @@ constructor() {
           name: 'Parrilha',
           position: 'Flex 2',
           fouls: 3,
-          yellowCard: 6,
+          yellowCard: 0,
           redCard: 0,
           goals: 2,
-          suspensao: true,
+          suspensao: false,
           jogosSuspensao: 1
         },
         {
           name: 'Leandro',
           position: 'Flex 3',
           fouls: 5,
-          yellowCard: 2,
+          yellowCard: 0,
           redCard: 0,
           goals: 0,
           suspensao: false,
-          jogosSuspensao: 0
+          jogosSuspensao: 1
         }
       ],
       points: 0,
@@ -666,17 +971,17 @@ constructor() {
       name: 'Argentina',
       icon: 'assets/img/argentina.png',
       players: [
-        { name: 'Somália', position: 'Goleiro', fouls: 8, yellowCard: 3, redCard: 1, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Rodrigo Pinheiro', position: 'Zagueiro', fouls: 0, yellowCard: 1, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Victor Careca', position: 'Lateral 1', fouls: 1, yellowCard: 2, redCard: 1, goals: 1, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Flavinho', position: 'Lateral 2', fouls: 1, yellowCard: 1, redCard: 0, goals: 3,suspensao: false, jogosSuspensao: 0 },
-        { name: 'Belladonna', position: 'Volante', fouls: 2, yellowCard: 4, redCard: 2, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Rafael Almeida', position: 'Meio Campo 1', fouls: 2, yellowCard: 5, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Alexandre', position: 'Meio Campo 2', fouls: 0, yellowCard: 2, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Thiago Pinheiro', position: 'Atacante', fouls: 0, yellowCard: 3, redCard: 0, goals: 0, suspensao: true, jogosSuspensao: 1 },
-        { name: 'Douglas', position: 'Flex 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Caroço', position: 'Flex 2', fouls: 2, yellowCard: 5, redCard: 1, goals: 1, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Ricardo Rego', position: 'Flex 3', fouls: 4, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 }
+        { name: 'Somália', position: 'Goleiro', fouls: 8, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Rodrigo Pinheiro', position: 'Zagueiro', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Victor Careca', position: 'Lateral 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Flavinho', position: 'Lateral 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 3,suspensao: false, jogosSuspensao: 1 },
+        { name: 'Belladonna', position: 'Volante', fouls: 3, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Rafael Almeida', position: 'Meio Campo 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Alexandre', position: 'Meio Campo 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Thiago Pinheiro', position: 'Atacante', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Douglas', position: 'Flex 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Caroço', position: 'Flex 2', fouls: 4, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Ricardo Rego', position: 'Flex 3', fouls: 6, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -685,17 +990,17 @@ constructor() {
       name: 'Brasil',
       icon: 'assets/img/brasil.png',
       players: [
-        { name: 'Enzo Merecci', position: 'Goleiro', fouls: 1, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Lucas Figueiredo', position: 'Zagueiro', fouls: 3, yellowCard: 3, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Paulinho Aldeia', position: 'Lateral 1', fouls: 1, yellowCard: 3, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Telles', position: 'Lateral 2', fouls: 1, yellowCard: 3, redCard: 1, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Fabiano', position: 'Volante', fouls: 1, yellowCard: 9, redCard: 0, goals: 4, suspensao: true, jogosSuspensao: 1 },
-        { name: 'Clebinho', position: 'Meio Campo 1', fouls: 0, yellowCard: 4, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Chalu', position: 'Meio Campo 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Rodrigo Silva', position: 'Atacante', fouls: 0, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Sergio', position: 'Flex 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Minha Joia', position: 'Flex 2', fouls: 2, yellowCard: 8, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1},
-        { name: 'Josué Campos', position: 'Flex 3', fouls: 3, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
+        { name: 'Enzo Merecci', position: 'Goleiro', fouls: 1, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Lucas Figueiredo', position: 'Zagueiro', fouls: 3, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Paulinho Aldeia', position: 'Lateral 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Telles', position: 'Lateral 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Fabiano', position: 'Volante', fouls: 2, yellowCard: 0, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Clebinho', position: 'Meio Campo 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 11, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Chalu', position: 'Meio Campo 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Rodrigo Silva', position: 'Atacante', fouls: 0, yellowCard: 0, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Sergio', position: 'Flex 1', fouls: 3, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Minha Joia', position: 'Flex 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1},
+        { name: 'Josué Campos', position: 'Flex 3', fouls: 6, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -705,17 +1010,17 @@ constructor() {
       name: 'Espanha',
       icon: 'assets/img/espanha.png',
       players: [
-        { name: 'Lucas Milward', position: 'Goleiro', fouls: 1, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Muniz', position: 'Zagueiro', fouls: 6, yellowCard: 1, redCard: 1, goals: 4, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Leleco', position: 'Lateral 1', fouls: 1, yellowCard: 3, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Guilherme Amaral', position: 'Lateral 2', fouls: 0, yellowCard: 2, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Leonardo Py', position: 'Volante', fouls: 2, yellowCard: 3, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Luizinho Costela', position: 'Meio Campo 1', fouls: 0, yellowCard: 3, redCard: 0, goals: 26, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Fred', position: 'Meio Campo 2', fouls: 2, yellowCard: 1, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Mauricio Batata', position: 'Atacante', fouls: 7, yellowCard: 3, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Villander', position: 'Flex 1', fouls: 2, yellowCard: 1, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Leco', position: 'Flex 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Francisco N.', position: 'Flex 3', fouls: 0, yellowCard: 2, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 }
+        { name: 'Lucas Milward', position: 'Goleiro', fouls: 1, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Muniz', position: 'Zagueiro', fouls: 8, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Leleco', position: 'Lateral 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Guilherme Amaral', position: 'Lateral 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Leonardo Py', position: 'Volante', fouls: 3, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Luizinho Costela', position: 'Meio Campo 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 29, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Fred', position: 'Meio Campo 2', fouls: 2, yellowCard: 0, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Mauricio Batata', position: 'Atacante', fouls: 8, yellowCard: 0, redCard: 0, goals: 13, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Villander', position: 'Flex 1', fouls: 3, yellowCard: 0, redCard: 0, goals: 11, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Leco', position: 'Flex 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Francisco N.', position: 'Flex 3', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -725,17 +1030,17 @@ constructor() {
       name: 'França',
       icon: 'assets/img/frança.png',
       players: [
-        { name: 'Gilmar', position: 'Goleiro', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Xingu', position: 'Zagueiro', fouls: 0, yellowCard: 7, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Reseck', position: 'Lateral 1', fouls: 1, yellowCard: 2, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Edson Ferreira', position: 'Lateral 2', fouls: 5, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Rico', position: 'Volante', fouls: 4, yellowCard: 1, redCard: 1, goals: 1, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Topiquinho', position: 'Meio Campo 1', fouls: 0, yellowCard: 4, redCard: 0, goals: 18, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Nando', position: 'Meio Campo 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Luiz Fellipe', position: 'Atacante', fouls: 1, yellowCard: 4, redCard: 0, goals: 25, suspensao: false, jogosSuspensao: 0},
-        { name: 'Pedro Tostes', position: 'Flex 1', fouls: 5, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Almiro', position: 'Flex 2', fouls: 2, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Vitor Coreixas', position: 'Flex 3', fouls: 3, yellowCard: 1, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 }
+        { name: 'Gilmar', position: 'Goleiro', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Xingu', position: 'Zagueiro', fouls: 1, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Reseck', position: 'Lateral 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Edson Ferreira', position: 'Lateral 2', fouls: 6, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Rico', position: 'Volante', fouls: 3, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Topiquinho', position: 'Meio Campo 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 19, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Nando', position: 'Meio Campo 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Luiz Fellipe', position: 'Atacante', fouls: 1, yellowCard: 0, redCard: 0, goals: 29, suspensao: false, jogosSuspensao: 1},
+        { name: 'Pedro Tostes', position: 'Flex 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Almiro', position: 'Flex 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Vitor Coreixas', position: 'Flex 3', fouls: 3, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -745,17 +1050,17 @@ constructor() {
       name: 'Holanda',
       icon: 'assets/img/holanda.png',
       players: [
-        { name: 'Markito', position: 'Goleiro', fouls: 1, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Netto', position: 'Zagueiro', fouls: 1, yellowCard: 2, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Markito', position: 'Goleiro', fouls: 1, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Netto', position: 'Zagueiro', fouls: 1, yellowCard: 2, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Bruno Fiuza', position: 'Lateral 1', fouls: 5, yellowCard: 6, redCard: 1, goals: 1, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Bruno Troia', position: 'Lateral 2', fouls: 3, yellowCard: 1, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Jonas', position: 'Volante', fouls: 2, yellowCard: 1, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Felipe Cid', position: 'Meio Campo 1', fouls: 0, yellowCard: 3, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Thomaz', position: 'Meio Campo 2', fouls: 7, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Aranha', position: 'Atacante', fouls: 1, yellowCard: 3, redCard: 0, goals: 13, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Bruno Troia', position: 'Lateral 2', fouls: 3, yellowCard: 1, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Jonas', position: 'Volante', fouls: 3, yellowCard: 1, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Felipe Cid', position: 'Meio Campo 1', fouls: 0, yellowCard: 3, redCard: 0, goals: 11, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Thomaz', position: 'Meio Campo 2', fouls: 8, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Aranha', position: 'Atacante', fouls: 1, yellowCard: 4, redCard: 0, goals: 14, suspensao: false, jogosSuspensao: 1 },
         { name: 'Modesto', position: 'Flex 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'João Alberto', position: 'Flex 2', fouls: 5, yellowCard: 4, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Leone', position: 'Flex 3', fouls: 7, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 }
+        { name: 'João Alberto', position: 'Flex 2', fouls: 5, yellowCard: 4, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Leone', position: 'Flex 3', fouls: 8, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -765,16 +1070,16 @@ constructor() {
       name: 'Inglaterra',
       icon: 'assets/img/inglaterra.png',
       players: [
-        { name: 'Bacon', position: 'Goleiro', fouls: 4, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Igor Natário', position: 'Zagueiro', fouls: 0, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Mariano', position: 'Lateral 1', fouls: 0, yellowCard: 2, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Eduardo Menezes', position: 'Lateral 2', fouls: 2, yellowCard: 7, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Thiago Rangel', position: 'Volante', fouls: 3, yellowCard: 4, redCard: 1, goals: 7, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Bruno Pão', position: 'Meio Campo 1', fouls: 1, yellowCard: 3, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Manarte', position: 'Meio Campo 2', fouls: 0, yellowCard: 5, redCard: 1, goals: 2, suspensao: true, jogosSuspensao: 1 },
-        { name: 'Hélio', position: 'Atacante', fouls: 4, yellowCard: 4, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Allan Titonelli', position: 'Flex 1', fouls: 5, yellowCard: 4, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Chicão', position: 'Flex 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
+        { name: 'Bacon', position: 'Goleiro', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Igor Natário', position: 'Zagueiro', fouls: 0, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Mariano', position: 'Lateral 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Eduardo Menezes', position: 'Lateral 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Thiago Rangel', position: 'Volante', fouls: 3, yellowCard: 0, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Bruno Pão', position: 'Meio Campo 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Ginho', position: 'Meio Campo 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Hélio', position: 'Atacante', fouls: 4, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Allan Titonelli', position: 'Flex 1', fouls: 6, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Chicão', position: 'Flex 2', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Léo Novarino', position: 'Flex 3', fouls: 4, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
@@ -785,17 +1090,17 @@ constructor() {
       name: 'Itália',
       icon: 'assets/img/italia.png',
       players: [
-        { name: 'Magela', position: 'Goleiro', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Fred Gallo', position: 'Zagueiro', fouls: 2, yellowCard: 6, redCard: 1, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Benito', position: 'Lateral 1', fouls: 6, yellowCard: 1, redCard: 2, goals: 2, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Pedro Carvalho', position: 'Lateral 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0, },
-        { name: 'Berton', position: 'Volante', fouls: 5, yellowCard: 5, redCard: 1, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Ungerer', position: 'Meio Campo 1', fouls: 0, yellowCard: 2, redCard: 0, goals: 19, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Victor Carlota', position: 'Meio Campo 2', fouls: 1, yellowCard: 5, redCard: 1, goals: 8, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Caio Assad', position: 'Atacante', fouls: 0, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Capelli', position: 'Flex 1', fouls: 5, yellowCard: 2, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Vittorio', position: 'Flex 2', fouls: 3, yellowCard: 2, redCard: 1, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Poiava', position: 'Flex 3', fouls: 7, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1}
+        { name: 'Magela', position: 'Goleiro', fouls: 2, yellowCard: 2, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Fred Gallo', position: 'Zagueiro', fouls: 2, yellowCard: 8, redCard: 1, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Benito', position: 'Lateral 1', fouls: 6, yellowCard: 2, redCard: 2, goals: 3, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Pedro Carvalho', position: 'Lateral 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1, },
+        { name: 'Berton', position: 'Volante', fouls: 5, yellowCard: 6, redCard: 1, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Ungerer', position: 'Meio Campo 1', fouls: 0, yellowCard: 2, redCard: 0, goals: 25, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Victor Carlota', position: 'Meio Campo 2', fouls: 1, yellowCard: 5, redCard: 1, goals: 10, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Caio Assad', position: 'Atacante', fouls: 0, yellowCard: 1, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Capelli', position: 'Flex 1', fouls: 5, yellowCard: 2, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Vittorio', position: 'Flex 2', fouls: 6, yellowCard: 2, redCard: 1, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Poiava', position: 'Flex 3', fouls: 8, yellowCard: 4, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1}
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -805,17 +1110,17 @@ constructor() {
       name: 'México',
       icon: 'assets/img/mexico.png',
       players: [
-        { name: 'João Victor', position: 'Goleiro', fouls: 4, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Renato Furtado', position: 'Zagueiro', fouls: 7, yellowCard: 9, redCard: 0, goals: 0, suspensao: true, jogosSuspensao: 1 },
-        { name: 'Messias', position: 'Lateral 1', fouls: 0, yellowCard: 2, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Rafael Harduim', position: 'Lateral 2', fouls: 0, yellowCard: 3, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Artur', position: 'Volante', fouls: 2, yellowCard: 4, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Caleb', position: 'Meio Campo 1', fouls: 4, yellowCard: 4, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Vinicius Reis', position: 'Meio Campo 2', fouls: 0, yellowCard: 1, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Coutinho', position: 'Atacante', fouls: 0, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Breno', position: 'Flex 1', fouls: 2, yellowCard: 1, redCard: 1, goals: 1, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Bruno Alfieri', position: 'Flex 2', fouls: 0, yellowCard: 1, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Pimentel', position: 'Flex 3', fouls: 2, yellowCard: 3, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 }
+        { name: 'João Victor', position: 'Goleiro', fouls: 5, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Renato Furtado', position: 'Zagueiro', fouls: 7, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Messias', position: 'Lateral 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Rafael Harduim', position: 'Lateral 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Artur', position: 'Volante', fouls: 4, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Caleb', position: 'Meio Campo 1', fouls: 4, yellowCard: 0, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Vinicius Reis', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Coutinho', position: 'Atacante', fouls: 0, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Breno', position: 'Flex 1', fouls: 3, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Bruno Alfieri', position: 'Flex 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Pimentel', position: 'Flex 3', fouls: 2, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -825,17 +1130,17 @@ constructor() {
       name: 'Portugal',
       icon: 'assets/img/portugal.png',
       players: [
-        { name: 'Matheus Merecci', position: 'Goleiro', fouls: 2, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Daniel Tessari', position: 'Zagueiro', fouls: 2, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Bruno Aquino', position: 'Lateral 1', fouls: 1, yellowCard: 3, redCard: 0, goals: 0, suspensao: true, jogosSuspensao: 1 },
-        { name: 'Bruno Filé', position: 'Lateral 2', fouls: 4, yellowCard: 1, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Gregório', position: 'Volante', fouls: 1, yellowCard: 5, redCard: 1, goals: 5, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Paulo Nunes', position: 'Meio Campo 1', fouls: 0, yellowCard: 3, redCard: 0, goals: 14, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Mourão', position: 'Meio Campo 2', fouls: 0, yellowCard: 3, redCard: 0, goals: 5, suspensao: true, jogosSuspensao: 1 },
-        { name: 'Rafa', position: 'Atacante', fouls: 2, yellowCard: 3, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Rodrigo Vila Chã', position: 'Flex 1', fouls: 1, yellowCard: 4, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Felix', position: 'Flex 2', fouls: 1, yellowCard: 1, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Angelo Russo', position: 'Flex 3', fouls: 4, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 }
+        { name: 'Matheus Merecci', position: 'Goleiro', fouls: 3, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Daniel Tessari', position: 'Zagueiro', fouls: 3, yellowCard: 4, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Bruno Aquino', position: 'Lateral 1', fouls: 1, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Bruno Filé', position: 'Lateral 2', fouls: 6, yellowCard: 1, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Gregório', position: 'Volante', fouls: 1, yellowCard: 5, redCard: 1, goals: 6, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Paulo Nunes', position: 'Meio Campo 1', fouls: 1, yellowCard: 4, redCard: 0, goals: 14, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Mourão', position: 'Meio Campo 2', fouls: 0, yellowCard: 4, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Rafa', position: 'Atacante', fouls: 3, yellowCard: 3, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Rodrigo Vila Chã', position: 'Flex 1', fouls: 3, yellowCard: 4, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Felix', position: 'Flex 2', fouls: 1, yellowCard: 1, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Angelo Russo', position: 'Flex 3', fouls: 5, yellowCard: 1, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -845,17 +1150,17 @@ constructor() {
       name: 'Uruguai',
       icon: 'assets/img/uruguai.png',
       players: [
-        { name: 'Thomás', position: 'Goleiro', fouls: 5, yellowCard: 3, redCard: 0, goals: 0, suspensao: true, jogosSuspensao: 1 },
-        { name: 'Renato Tostes', position: 'Zagueiro', fouls: 2, yellowCard: 3, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Diego Blois', position: 'Lateral 1', fouls: 1, yellowCard: 2, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Oteciano', position: 'Lateral 2', fouls: 5, yellowCard: 1, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Hugo Sillero', position: 'Volante', fouls: 2, yellowCard: 4, redCard: 1, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Léo Rocha', position: 'Meio Campo 1', fouls: 1, yellowCard: 7, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Eduardo Garcia', position: 'Meio Campo 2', fouls: 1, yellowCard: 1, redCard: 0, goals: 16, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Pedro Valente', position: 'Atacante', fouls: 3, yellowCard: 1, redCard: 0, goals: 15, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Gabriel Lima', position: 'Flex 1', fouls: 2, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Indiano', position: 'Flex 2', fouls: 1, yellowCard: 3, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 0 },
-        { name: 'Paura', position: 'Flex 3', fouls: 7, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 0 }
+        { name: 'Thomás', position: 'Goleiro', fouls: 8, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Renato Tostes', position: 'Zagueiro', fouls: 3, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Diego Blois', position: 'Lateral 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Oteciano', position: 'Lateral 2', fouls: 6, yellowCard: 0, redCard: 0, goals: 15, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Hugo Sillero', position: 'Volante', fouls: 2, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Léo Rocha', position: 'Meio Campo 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Eduardo Garcia', position: 'Meio Campo 2', fouls: 2, yellowCard: 0, redCard: 0, goals: 17, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Pedro Valente', position: 'Atacante', fouls: 3, yellowCard: 0, redCard: 0, goals: 16, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Gabriel Lima', position: 'Flex 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Indiano', position: 'Flex 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Paura', position: 'Flex 3', fouls: 8, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
