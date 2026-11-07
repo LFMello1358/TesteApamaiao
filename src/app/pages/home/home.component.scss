@@ -1,337 +1,532 @@
-@use "sass:color";
-
 /* =========================================================
-   VARIÁVEIS / TEMA (BASE OFICIAL)
+   TEMA
 ========================================================= */
 $black: #0d0f0f;
 $dark-gray: #1a1d1f;
-$gray: #2a2e31;
 $green: #175739;
+$green-deep: #0c3a25;
 $green-light: #06924f;
+$green-glow: #2fa36b;
+$lime: #b6f09c;
 $white: #ffffff;
+$ink: #14201a;
+$muted: #5b6b62;
+$page: #f3f6f4;
+$line: #e1e8e4;
 
-/* Sombras otimizadas (menos repaint no mobile) */
-$shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.45);
-$shadow-strong: 0 12px 28px rgba(0, 0, 0, 0.65);
+*, *::before, *::after { box-sizing: border-box; }
 
-/* =========================================================
-   RESET / BASE
-========================================================= */
-* {
-  box-sizing: border-box;
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $page; // fundo claro explícito (não depende do tema do aparelho)
+  color: $ink;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  border-radius: 14px;
-  overflow-x: hidden;
-  background: linear-gradient(160deg, $black, $dark-gray);
-  color: $white;
-  font-family: "Inter", "Segoe UI", sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* =========================================================
-   LAYOUT PADRÃO
-========================================================= */
-.padrao {
-  width: 100%;
-  max-width: 1500px;
-  margin: 4% auto;
-  padding: 0 12px;
+.home {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px clamp(16px, 3vw, 32px) 56px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 28px;
-
+  gap: 48px;
 }
+
 /* =========================================================
-   CARROSSEL RESPONSIVO – 1 / 2 / 3 ITENS
+   HERO – gramado com linhas do campo
 ========================================================= */
-.carousel-container {
-  width: 100%;
-  max-width: 900px;
+.hero {
+  position: relative;
   overflow: hidden;
+  isolation: isolate;
+  border-radius: 28px;
+  padding: clamp(32px, 6vw, 72px) clamp(20px, 5vw, 64px) 0;
+  color: $white;
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgba($green-glow, 0.35), transparent 60%),
+    repeating-linear-gradient(90deg, rgba($white, 0.035) 0 80px, transparent 80px 160px),
+    linear-gradient(160deg, $green 0%, $green-deep 55%, $black 100%);
+  box-shadow: 0 24px 60px rgba($green-deep, 0.35);
+}
+
+.hero-campo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  color: rgba($white, 0.12);
+}
+
+.hero-conteudo {
+  max-width: 720px;
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px 6px 10px;
+  border-radius: 999px;
+  background: rgba($white, 0.12);
+  border: 1px solid rgba($white, 0.18);
+  backdrop-filter: blur(6px);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: #f5c84c;
+  }
+}
+
+.hero h1 {
+  margin: 18px 0 12px;
+  font-size: clamp(32px, 6vw, 60px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -1.5px;
+
+  span {
+    color: $lime;
+  }
+}
+
+.hero-fase {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: clamp(15px, 2vw, 18px);
+  color: rgba($white, 0.82);
+
+  .ao-vivo {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $lime;
+    box-shadow: 0 0 0 0 rgba($lime, 0.6);
+    animation: pulso 2s infinite;
+  }
+}
+
+@keyframes pulso {
+  70% { box-shadow: 0 0 0 10px rgba($lime, 0); }
+  100% { box-shadow: 0 0 0 0 rgba($lime, 0); }
+}
+
+.hero-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
   border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
 
-  .carousel {
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &.primario {
+    background: $white;
+    color: $green-deep;
+    box-shadow: 0 8px 20px rgba($black, 0.25);
+  }
+
+  &.secundario {
+    color: $white;
+    background: rgba($white, 0.08);
+    border: 1px solid rgba($white, 0.3);
+  }
+
+  @media (hover: hover) {
+    &:hover { transform: translateY(-2px); }
+    &.primario:hover mat-icon { transform: translateX(3px); }
+  }
+
+  mat-icon { transition: transform 0.2s; }
+
+  &:focus-visible {
+    outline: 3px solid $lime;
+    outline-offset: 2px;
+  }
+}
+
+/* Placar da temporada – estilo painel de estádio */
+.placar-temporada {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: clamp(36px, 6vw, 64px) calc(-1 * clamp(20px, 5vw, 64px)) 0;
+  padding: 0;
+  background: rgba($black, 0.35);
+  border-top: 1px solid rgba($white, 0.1);
+  backdrop-filter: blur(8px);
+
+  li {
     display: flex;
-    transition: transform 0.45s ease;
-    will-change: transform;
+    flex-direction: column;
+    gap: 2px;
+    padding: 20px clamp(16px, 3vw, 32px);
+
+    & + li { border-left: 1px solid rgba($white, 0.1); }
   }
 
-  .carousel-item {
-    flex: 0 0 33.3333%; // desktop default
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-
-    img {
-      width: 100%;
-      max-height: 140px;
-      object-fit: contain;
-    }
+  strong {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: $white;
   }
-}
 
-/* =====================
-   TABLET – 2 POR VEZ
-===================== */
-@media (max-width: 1024px) {
-  .carousel-container {
-    .carousel-item {
-      flex: 0 0 50%;
-    }
+  span {
+    font-size: 13px;
+    color: rgba($white, 0.7);
   }
 }
-
-/* =====================
-   MOBILE – 1 POR VEZ
-===================== */
-@media (max-width: 600px) {
-  .carousel-container {
-    .carousel-item {
-      flex: 0 0 100%;
-    }
-
-    .carousel-item img {
-      max-height: 110px;
-    }
-  }
-}
-
 
 /* =========================================================
-   PATROCINADORES (MOBILE FRIENDLY)
+   SEÇÕES (títulos centralizados)
 ========================================================= */
-.Patrocinadores {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 14px;
-  width: 100%;
-  max-width: 900px;
+.secao-topo {
+  margin-bottom: 24px;
+  text-align: center;
+
+  h2 {
+    margin: 6px 0 0;
+    font-size: clamp(24px, 3.2vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: $ink;
+  }
 }
 
-.patrocinador {
-  height: 90px;
-  background: linear-gradient(160deg, color.adjust($gray, $lightness: 4%), $dark-gray);
-  border-radius: 12px;
-  border: 1px solid rgba($green-light, 0.25);
-  box-shadow: $shadow-soft;
+.secao-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: $green-light;
+
+  &::before,
+  &::after {
+    content: '';
+    width: 18px;
+    height: 3px;
+    border-radius: 2px;
+    background: currentColor;
+  }
+}
+
+/* =========================================================
+   PATROCINADORES – carrossel em destaque
+========================================================= */
+.patrocinio {
+  padding: clamp(24px, 4vw, 40px) clamp(12px, 3vw, 32px);
+  border-radius: 28px;
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba($green-light, 0.12), transparent 70%),
+    $white;
+  border: 1px solid $line;
+  box-shadow: 0 18px 44px rgba($ink, 0.08);
+}
+
+.carrossel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.carrossel-janela {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.carrossel-trilho {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.22, 0.8, 0.3, 1);
+  will-change: transform;
+}
+
+.carrossel-item {
+  flex: 0 0 33.3333%;
+  padding: 8px;
+}
+
+.logo-patrocinador {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s ease;
+  overflow: hidden;
+  height: 170px;
+  padding: 18px;
+  border-radius: 20px;
+  background: $white;
+  border: 1px solid $line;
+  box-shadow: 0 8px 20px rgba($ink, 0.06);
 
   img {
-    max-width: 85%;
-    max-height: 85%;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
   }
+}
 
-  /* Hover apenas desktop */
-  @media (hover: hover) {
-    &:hover {
-      transform: translateY(-4px);
-    }
+.carrossel-seta {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: $green;
+  color: $white;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba($green, 0.3);
+  transition: background-color 0.2s, transform 0.2s;
+
+  &:hover { background: $green-light; transform: scale(1.06); }
+
+  &:focus-visible {
+    outline: 3px solid $green-light;
+    outline-offset: 2px;
   }
 }
 
 /* =========================================================
-   CARD PRINCIPAL – CAMPEONATO
+   CAMPEÕES – centralizado
 ========================================================= */
-.campeonato-card {
-  width: 100%;
-  max-width: 1100px;
-  background: linear-gradient(160deg, $gray, $dark-gray);
-  border-radius: 22px;
-  box-shadow: $shadow-strong;
-  border: 1px solid rgba($green, 0.3);
-  overflow: hidden;
-}
-
-/* =========================================================
-   HEADER PREMIUM
-========================================================= */
-.header-campeonato {
-  background: linear-gradient(145deg, color.adjust($gray, $lightness: -4%), $dark-gray);
-  padding: 32px 20px;
-  border-radius: 22px;
-  box-shadow: $shadow-strong;
-  border: 1px solid rgba($green, 0.3);
-}
-
-.header-container-coluna {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.cartazes {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
-.titulo-principal {
-  font-size: clamp(24px, 4vw, 34px);
+.cartaz {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 22px;
+  background: $dark-gray;
+  box-shadow: 0 14px 36px rgba($ink, 0.18);
+  aspect-ratio: 4 / 5;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  @media (hover: hover) {
+    &:hover img { transform: scale(1.04); }
+  }
+
+  &:focus-visible {
+    outline: 3px solid $green-light;
+    outline-offset: 3px;
+  }
+}
+
+.cartaz-rotulo {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba($black, 0.7);
+  backdrop-filter: blur(8px);
+  color: $white;
+  font-size: 14px;
   font-weight: 700;
-  color: $green-light;
-}
 
-/* =========================================================
-   CONVITE CENTRAL
-========================================================= */
-.convite-container {
-  background: rgba($white, 0.06);
-  border-radius: 16px;
-  padding: 18px 22px;
-  backdrop-filter: blur(6px);
-  text-align: center;
-
-  h2 {
-    font-size: 16px;
-    font-weight: 500;
-    color: $white;
-    margin-bottom: 14px;
-  }
-}
-
-.botoes-lista {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-
-  button {
-    min-width: 80px;
-    font-weight: 700;
-    background: linear-gradient(135deg, $green, $green-light);
-    color: $white;
-    border-radius: 20px;
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
   }
 }
 
 /* =========================================================
-   IMAGENS DOS CAMPEÕES
+   ACESSO RÁPIDO – painel escuro igual às telas das categorias
 ========================================================= */
-.imagens-container {
+.painel-escuro {
+  padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 32px);
+  border-radius: 22px;
+  background: linear-gradient(160deg, #363b3f, $dark-gray);
+  border: 1px solid rgba($green-glow, 0.35);
+  box-shadow:
+    0 12px 32px rgba($black, 0.35),
+    inset 0 0 0 1px rgba($white, 0.05);
+
+  .secao-topo h2 { color: $white; }
+  .secao-tag { color: $green-glow; }
+}
+
+.atalhos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
-.imagem-campeao {
-  width: 100%;
+.atalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 20px;
   border-radius: 16px;
-  box-shadow: $shadow-soft;
-  transition: transform 0.3s ease;
+  border: 1px solid rgba($green-glow, 0.25);
+  background: linear-gradient(145deg, rgba($white, 0.08), rgba($black, 0.2));
+  transition: border-color 0.2s, transform 0.2s;
 
   @media (hover: hover) {
     &:hover {
-      transform: scale(1.04);
+      border-color: rgba($green-light, 0.8);
+      transform: translateY(-3px);
     }
   }
-}
 
-/* =========================================================
-   TORNEIOS
-========================================================= */
-.torneio-card {
-  background: linear-gradient(160deg, color.adjust($gray, $lightness: 6%), $dark-gray);
-  border-radius: 16px;
-  padding: 16px;
-  border: 1px solid rgba($green-light, 0.25);
-}
-
-.torneio-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.torneio-info {
-  text-align: center;
-
-  h2 {
+  h3 {
+    margin: 14px 0 4px;
     font-size: 18px;
-    color: $green-light;
-    margin-bottom: 6px;
+    font-weight: 800;
+    color: $white;
   }
 
   p {
+    margin: 0 0 18px;
     font-size: 14px;
-    color: $white;
+    color: rgba($white, 0.65);
   }
 }
 
-/* =========================================================
-   CARDS REDONDOS (3D LEVE)
-========================================================= */
-.mat-card-front {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: linear-gradient(160deg, $gray, $dark-gray);
-  border: 1px solid rgba($green-light, 0.4);
-  box-shadow: $shadow-soft;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: transform 0.3s ease;
+.atalho-icone {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, $green-light, $green);
+  color: $white;
+  box-shadow: 0 8px 18px rgba($black, 0.35);
+}
 
-  @media (hover: hover) {
-    &:hover {
-      transform: translateY(-16px);
+.atalho-botoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+
+  button {
+    min-height: 44px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, $green, $green-light);
+    color: $white;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba($black, 0.3);
+    transition: filter 0.2s, transform 0.2s;
+
+    &:hover { filter: brightness(1.15); transform: translateY(-1px); }
+
+    &:focus-visible {
+      outline: 3px solid $lime;
+      outline-offset: 2px;
     }
   }
 }
 
-/* =========================================================
-   LOGO
-========================================================= */
-.logo-img {
-  width: 90px;
-  border-radius: 50%;
+@media (prefers-reduced-motion: reduce) {
+  .hero-fase .ao-vivo { animation: none; }
 }
-
 /* =========================================================
-   MOBILE – AJUSTES FINOS
+   TABLET
 ========================================================= */
-@media (max-width: 768px) {
-  .padrao {
-    gap: 20px;
+@media (max-width: 900px) {
+  .atalhos {
+    grid-template-columns: 1fr;
   }
 
-  .carousel-item img {
-    max-height: 110px;
-  }
+  .placar-temporada {
+    grid-template-columns: repeat(2, 1fr);
 
-  .titulo-principal {
-    text-align: center;
-  }
-
-  .mat-card-front {
-    width: 120px;
-    height: 120px;
-  }
-
-  .convite-container {
-    padding: 14px;
+    li:nth-child(3) { border-left: 0; }
+    li:nth-child(n + 3) { border-top: 1px solid rgba($white, 0.1); }
   }
 }
 
 /* =========================================================
-   MOBILE MUITO PEQUENO
+   CELULAR
 ========================================================= */
-@media (max-width: 420px) {
-  .mat-card-front {
-    width: 105px;
-    height: 105px;
+@media (max-width: 600px) {
+  .home {
+    padding-top: 12px;
+    gap: 36px;
   }
 
-  .torneio-info h2 {
-    font-size: 16px;
+  .hero {
+    border-radius: 22px;
   }
 
-  .torneio-info p {
-    font-size: 13px;
+  .hero-acoes {
+    flex-direction: column;
+
+    .cta { width: 100%; }
+  }
+
+  .cartazes {
+    grid-template-columns: 1fr;
+  }
+
+  .atalho {
+    padding: 20px;
+  }
+
+  .logo-patrocinador {
+    height: 140px;
+  }
+
+  .carrossel-seta {
+    width: 40px;
+    height: 40px;
   }
 }

@@ -1,23 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, HostListener, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav'; // ✅ IMPORTAR Sidenav
 
 @Component({
   selector: 'app-componets',
   standalone: true,
-  imports: [SharedModule, MatMenuModule, MatButtonModule, MatIconModule, MatSidenavModule],
+  imports: [SharedModule, MatMenuModule, MatButtonModule, MatIconModule],
   templateUrl: './componets.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./componets.component.scss']
 })
 export class ComponetsComponent {
-  isMenuOpen = true;
+  private readonly router = inject(Router);
+
+  // No celular o menu começa fechado (o ☰ abre); no desktop ele fica sempre visível pelo CSS.
+  isMenuOpen = false;
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    document.body.classList.toggle('menu-open', this.isMenuOpen);
+  }
+
+  /** Destaca "Categoria A/B" no desktop quando a pessoa está em qualquer tela daquela categoria. */
+  secaoAtiva(prefixo: string): boolean {
+    return this.router.url.startsWith(prefixo);
+  }
+
+  @HostListener('document:keydown.escape')
+  fecharMenu(): void {
+    this.isMenuOpen = false;
   }
 
   openRegulamento(): void {
@@ -39,13 +52,12 @@ export class ComponetsComponent {
   openListaB(): void {
     window.open('assets/img/Lista 110 B.pdf', '_blank');
   }
+
   Mandante(): void {
-    const url = 'assets/img/UniformeMandante.jpeg';
-    window.open(url, '_blank');
+    window.open('assets/img/UniformeMandante.jpeg', '_blank');
   }
+
   Visitante(): void {
-    const url = 'assets/img/UniformeVisitante.jpeg';
-    window.open(url, '_blank');
+    window.open('assets/img/UniformeVisitante.jpeg', '_blank');
   }
 }
-

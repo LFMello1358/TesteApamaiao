@@ -1,0 +1,280 @@
+<app-componets></app-componets>
+
+<div class="Padrao scout">
+
+  <!-- ===================== REDES DO CAMPEONATO ===================== -->
+  <nav class="acoes" aria-label="Redes do campeonato">
+    <a class="botao" [href]="linkYoutube" target="_blank" rel="noopener">YouTube ↗</a>
+    <a class="botao" [href]="linkInstagram" target="_blank" rel="noopener">Instagram ↗</a>
+  </nav>
+
+  <!-- ===================== CHANCES DE TÍTULO ===================== -->
+  <section class="painel">
+    <h2>Chances na fase final</h2>
+    <div class="tabela-chances" role="table" aria-label="Chances de semifinal, final e título">
+      <div class="linha cabecalho" role="row">
+        <span role="columnheader">Seleção</span>
+        <span role="columnheader">Semi</span>
+        <span role="columnheader">Final</span>
+        <span role="columnheader" class="col-titulo">Título</span>
+      </div>
+      @for (c of chances; track c.time.name) {
+        <div class="linha" role="row">
+          <span class="time" role="cell"><img [src]="c.time.icon" [alt]="c.time.name" />{{ c.time.name }}</span>
+          <span role="cell">{{ c.semi | percent: '1.0-0' }}</span>
+          <span role="cell">{{ c.final | percent: '1.0-0' }}</span>
+          <span class="col-titulo" role="cell">
+            <span class="barra"><span [style.width.%]="(100 * c.titulo) / maxTitulo"></span></span>
+            <strong>{{ c.titulo | percent: '1.1-1' }}</strong>
+          </span>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- ===================== CONFRONTOS ===================== -->
+  <section class="painel" id="raio-x">
+    <h2>Raio-X dos confrontos</h2>
+
+    <div class="botoes-fase" role="tablist">
+      @for (f of fases; track f.id) {
+        <button type="button" role="tab" [class.ativo]="fase() === f.id" [attr.aria-selected]="fase() === f.id"
+          (click)="escolherFase(f.id)">{{ f.nome }}</button>
+      }
+    </div>
+
+    @if (duelos().length > 1) {
+      <div class="duelos">
+        @for (d of duelos(); track $index) {
+          <button type="button" [class.ativo]="indice() === $index" (click)="escolherDuelo($index)">
+            <small>{{ d.rotulo }}</small>
+            <span>{{ d.timeA?.name ?? 'A definir' }} × {{ d.timeB?.name ?? 'A definir' }}</span>
+          </button>
+        }
+      </div>
+    }
+
+    @if (analise(); as x) {
+      <article class="confronto">
+        <div class="cartao duelo-topo">
+          <div class="lado">
+            <img [src]="x.a.icon" [alt]="x.a.nome" />
+            <strong>{{ x.a.nome }}</strong>
+            <small>{{ x.a.posicao }}º · {{ x.a.pontos }} pts</small>
+          </div>
+          <div class="chance">
+            <span class="rotulo">Chance de avançar{{ simuladorAberto() ? ' (simulação)' : '' }}</span>
+            <div class="chance-barra">
+              <span class="a" [style.width.%]="100 * x.chanceA">{{ x.chanceA | percent: '1.0-0' }}</span>
+              <span class="b" [style.width.%]="100 * x.chanceB">{{ x.chanceB | percent: '1.0-0' }}</span>
+            </div>
+            <small>Empate no agregado classifica <strong>{{ x.vantagem }}</strong> (melhor TPG)</small>
+          </div>
+          <div class="lado">
+            <img [src]="x.b.icon" [alt]="x.b.nome" />
+            <strong>{{ x.b.nome }}</strong>
+            <small>{{ x.b.posicao }}º · {{ x.b.pontos }} pts</small>
+          </div>
+        </div>
+
+        <div class="grade">
+          <!-- placar oficial (somente leitura) + simulador opcional -->
+          <div class="cartao">
+            <h3>{{ simuladorAberto() ? 'Simulação de placar' : 'Placar do confronto' }}</h3>
+            <div class="placar">
+              <span></span><small>{{ x.a.nome }}</small><span></span><small>{{ x.b.nome }}</small>
+              @for (perna of [{ rotulo: 'Ida', a: 'idaA', b: 'idaB' }, { rotulo: 'Volta', a: 'voltaA', b: 'voltaB' }]; track perna.rotulo) {
+                <span class="perna">{{ perna.rotulo }}</span>
+                @if (simuladorAberto()) {
+                  <input type="number" min="0" inputmode="numeric" [attr.aria-label]="perna.rotulo + ', gols ' + x.a.nome"
+                    [value]="$any(placarUsado())[perna.a] ?? ''" (input)="simular($any(perna.a), $any($event.target).value)" />
+                  <span>×</span>
+                  <input type="number" min="0" inputmode="numeric" [attr.aria-label]="perna.rotulo + ', gols ' + x.b.nome"
+                    [value]="$any(placarUsado())[perna.b] ?? ''" (input)="simular($any(perna.b), $any($event.target).value)" />
+                } @else {
+                  <strong class="gols">{{ $any(placarOficial())[perna.a] ?? '-' }}</strong>
+                  <span>×</span>
+                  <strong class="gols">{{ $any(placarOficial())[perna.b] ?? '-' }}</strong>
+                }
+              }
+            </div>
+            @if (classificado(); as c) {
+              <p class="resultado">{{ c.ta }} × {{ c.tb }} no agregado: <strong>{{ c.nome }}</strong>
+                {{ simuladorAberto() ? 'avançaria' : 'avança' }}{{ c.porVantagem ? ' pela vantagem do empate' : '' }}</p>
+            } @else if (!simuladorAberto()) {
+              <p class="nota">Os placares aparecem aqui quando os jogos forem disputados.</p>
+            }
+            @if (simuladorAberto()) {
+              <p class="nota">Teste placares hipotéticos e veja quem passaria e como mudam as chances. Nada é salvo.</p>
+              <button type="button" class="botao" (click)="fecharSimulador()">Voltar ao placar oficial</button>
+            } @else {
+              <button type="button" class="botao" (click)="abrirSimulador()">Simular outro placar</button>
+            }
+          </div>
+
+          <!-- probabilidade por jogo -->
+          <div class="cartao">
+            <h3>Cada jogo (ida ou volta)</h3>
+            <div class="tres">
+              <div><strong>{{ x.jogo.vitoriaA | percent: '1.0-0' }}</strong><small>vitória {{ x.a.nome }}</small></div>
+              <div><strong>{{ x.jogo.empate | percent: '1.0-0' }}</strong><small>empate</small></div>
+              <div><strong>{{ x.jogo.vitoriaB | percent: '1.0-0' }}</strong><small>vitória {{ x.b.nome }}</small></div>
+            </div>
+            <p class="nota">
+              Gols esperados: {{ x.jogo.golsA | number: '1.1-1' }} × {{ x.jogo.golsB | number: '1.1-1' }} ·
+              placar mais provável {{ x.jogo.placarProvavel[0] }} × {{ x.jogo.placarProvavel[1] }}
+            </p>
+          </div>
+        </div>
+
+        <!-- comparativo -->
+        <div class="cartao">
+          <h3>Comparativo da 1ª fase</h3>
+          <div class="comparativo">
+            <span class="time-col">{{ x.a.nome }}</span><span></span><span class="time-col">{{ x.b.nome }}</span>
+            @for (l of x.comparativo; track l.rotulo) {
+              <span class="valor" [class.melhor]="l.maior ? l.a > l.b : l.a < l.b">
+                @switch (l.fmt) { @case ('pct') { {{ l.a | percent: '1.0-0' }} } @case ('dec') { {{ l.a | number: '1.1-1' }} } @default { {{ l.a }} } }
+              </span>
+              <span class="rotulo">{{ l.rotulo }}</span>
+              <span class="valor" [class.melhor]="l.maior ? l.b > l.a : l.b < l.a">
+                @switch (l.fmt) { @case ('pct') { {{ l.b | percent: '1.0-0' }} } @case ('dec') { {{ l.b | number: '1.1-1' }} } @default { {{ l.b }} } }
+              </span>
+            }
+          </div>
+          @if (x.disciplinaA.jogos) {
+            <p class="nota">Cartões e ausências contados nas súmulas ({{ x.disciplinaA.jogos }} e {{ x.disciplinaB.jogos }} jogos com súmula).</p>
+          }
+        </div>
+
+        <!-- destaques dos jogadores -->
+        @if (sumulasTranscritas) {
+          <div class="grade">
+            @for (d of [{ r: x.a, dz: x.destaquesA, adv: x.b.nome }, { r: x.b, dz: x.destaquesB, adv: x.a.nome }]; track d.r.nome) {
+              <div class="cartao">
+                <h3>Destaques — {{ d.r.nome }}</h3>
+                <ul class="fatos">
+                  @if (d.dz.artilheiro; as art) {
+                    <li><span>Artilheiro da 1ª fase</span><strong>{{ art.jogador }} · {{ art.gols }} gols em {{ art.jogos }} jogos</strong></li>
+                  }
+                  @if (d.dz.carrasco; as c) {
+                    <li><span>Artilheiro contra {{ d.adv }}</span><strong>{{ c.jogador }} · {{ c.gols }} {{ c.gols === 1 ? 'gol' : 'gols' }}</strong></li>
+                  } @else {
+                    <li><span>Artilheiro contra {{ d.adv }}</span><strong>Ninguém marcou nos confrontos da 1ª fase</strong></li>
+                  }
+                  @if (d.dz.regular; as rg) {
+                    <li><span>Mais regular (jogos marcando)</span><strong>{{ rg.jogador }} · marcou em {{ rg.jogos }} jogos</strong></li>
+                  }
+                  @if (d.dz.melhorAtuacao; as m) {
+                    <li><span>Melhor atuação</span><strong>{{ m.jogador }} · {{ m.gols }} gols em {{ m.jogo.mandante }} × {{ m.jogo.visitante }} ({{ dataBr(m.jogo.data) }})</strong></li>
+                  }
+                  @if (d.r.maiorVitoria; as mv) {
+                    <li><span>Maior vitória do time</span><strong>{{ mv.gp }} × {{ mv.gc }} contra {{ mv.adversario }}</strong></li>
+                  }
+                  <li><span>Campanha</span><strong>{{ d.r.vitorias }}V {{ d.r.empates }}E {{ d.r.derrotas }}D · {{ d.r.golsPro }} GP / {{ d.r.golsContra }} GC</strong></li>
+                </ul>
+              </div>
+            }
+          </div>
+
+          <div class="grade tres-colunas">
+            <div class="cartao">
+              <h3>Quem marcou neste confronto</h3>
+              <ul class="marcadores">
+                @for (m of x.marcadores; track m.time + m.jogador) {
+                  <li><span>{{ m.jogador }} <small>{{ m.time }}</small></span><strong>{{ m.gols }}</strong></li>
+                } @empty {
+                  <li class="vazio">Nenhum gol registrado nas súmulas destes jogos.</li>
+                }
+              </ul>
+              <p class="nota">Jogos da 1ª fase entre os dois, conforme as súmulas.</p>
+            </div>
+            @for (lado of [{ nome: x.a.nome, lista: x.ameacaParaA }, { nome: x.b.nome, lista: x.ameacaParaB }]; track lado.nome) {
+              <div class="cartao">
+                <h3>Quem mais marcou contra {{ lado.nome }}</h3>
+                <ul class="marcadores">
+                  @for (m of lado.lista; track m.time + m.jogador) {
+                    <li><span>{{ m.jogador }} <small>{{ m.time }}</small></span><strong>{{ m.gols }}</strong></li>
+                  }
+                </ul>
+                <p class="nota">Na 1ª fase inteira.</p>
+              </div>
+            }
+          </div>
+        }
+
+        <div class="grade">
+          <div class="cartao">
+            <h3>Retrospecto na 1ª fase</h3>
+            <p class="placar-resumo">
+              {{ x.a.nome }} <strong>{{ x.historico.vitoriasA }}</strong> V ·
+              <strong>{{ x.historico.empates }}</strong> E ·
+              <strong>{{ x.historico.vitoriasB }}</strong> V {{ x.b.nome }}
+            </p>
+            <ul class="lista-jogos">
+              @for (j of x.historico.jogos; track j.jogo.data) {
+                <li>
+                  <small>{{ j.jogo.turno }}º turno · {{ dataBr(j.jogo.data) }}</small>
+                  <span>{{ j.jogo.mandante }} <strong>{{ j.jogo.gols[0] }} × {{ j.jogo.gols[1] }}</strong> {{ j.jogo.visitante }}</span>
+                </li>
+              } @empty {
+                <li>Sem jogos registrados entre os dois.</li>
+              }
+            </ul>
+            <p class="nota">Gols no confronto: {{ x.a.nome }} {{ x.historico.golsA }} × {{ x.historico.golsB }} {{ x.b.nome }}</p>
+          </div>
+
+          <div class="cartao">
+            <h3>Últimos 5 jogos</h3>
+            @for (r of [x.a, x.b]; track r.nome) {
+              <div class="forma">
+                <span class="forma-time">{{ r.nome }}</span>
+                @for (j of r.forma; track j.jogo.data) {
+                  <span [class]="'bola ' + j.resultado"
+                    [title]="j.jogo.mandante + ' ' + j.jogo.gols[0] + ' x ' + j.jogo.gols[1] + ' ' + j.jogo.visitante">{{ j.resultado }}</span>
+                }
+              </div>
+            }
+            <p class="nota">Passe o mouse sobre a bolinha para ver o placar.</p>
+          </div>
+        </div>
+      </article>
+    } @else {
+      <p class="aguardando">Este confronto ainda depende dos resultados da fase anterior.</p>
+    }
+  </section>
+
+  <!-- ===================== RESENHA ===================== -->
+  <section class="painel">
+    <h2>Resenha da 1ª fase</h2>
+    <div class="curiosidades">
+      @for (c of curiosidades; track c.titulo) {
+        <div class="curiosidade">
+          <small>{{ c.titulo }}</small>
+          <strong>{{ c.valor }}</strong>
+          <span>{{ c.detalhe }}</span>
+        </div>
+      }
+    </div>
+    @if (maioresAtuacoes.length) {
+      <h3 class="subtitulo">Maiores atuações individuais</h3>
+      <ul class="marcadores atuacoes">
+        @for (m of maioresAtuacoes; track m.jogo.data + m.jogador) {
+          <li>
+            <span>{{ m.jogador }} <small>{{ m.jogo.mandante }} × {{ m.jogo.visitante }} · {{ dataBr(m.jogo.data) }}</small></span>
+            <strong>{{ m.gols }} gols</strong>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+
+  <p class="rodape">
+    Estimativas estatísticas, não oficiais. Modelo de Poisson com força de ataque e defesa calculada nos
+    {{ totalJogos }} jogos da 1ª fase (jogos mais recentes pesam um pouco mais); empate no agregado
+    classifica o melhor TPG, como diz o regulamento. Valem como palpite para a resenha, não como previsão.
+    @if (sumulasTranscritas) {
+      Gols por jogador, cartões e ausências transcritos de {{ sumulasTranscritas }} súmulas.
+    }
+  </p>
+</div>

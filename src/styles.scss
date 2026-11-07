@@ -17,3 +17,38 @@ html {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Menu das categorias (Categoria A / B) no tema escuro do site.
+   O painel do mat-menu fica fora do componente (overlay), por isso o estilo é global. */
+.mat-mdc-menu-panel.menu-categorias {
+  background: linear-gradient(160deg, #33393c, #1a1d1f);
+  border: 1px solid rgba(47, 163, 107, 0.45);
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+  min-width: 210px;
+  margin-top: 6px;
+
+  .mat-mdc-menu-content { padding: 6px; }
+
+  .mat-mdc-menu-item {
+    min-height: 40px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+
+    .mat-mdc-menu-item-text { color: #fff; }
+
+    &:hover,
+    &:focus-visible,
+    &.cdk-program-focused,
+    &.cdk-keyboard-focused {
+      background: linear-gradient(160deg, #175739, #0f4029);
+    }
+  }
+}
+
+
+/* No celular, evita que o iOS aumente o texto sozinho ao girar a tela. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }

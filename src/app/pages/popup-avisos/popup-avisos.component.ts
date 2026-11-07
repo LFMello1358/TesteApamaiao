@@ -1,10 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-popup-avisos',
   imports: [SharedModule],
   templateUrl: './popup-avisos.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './popup-avisos.component.scss'
 })
 export class PopupAvisosComponent implements OnInit {
