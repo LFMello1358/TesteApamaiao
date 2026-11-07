@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ComponetsComponent } from '../../componentes/componets/componets.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -83,6 +83,7 @@ interface PlacaresMataMata {
   selector: 'app-serie-a',
   imports: [SharedModule, ComponetsComponent],
   templateUrl: './serie-a.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './serie-a.component.scss'
 })
 export class SerieAComponent {

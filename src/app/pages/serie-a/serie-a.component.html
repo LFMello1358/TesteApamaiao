@@ -3,325 +3,319 @@
 <div class="Padrao">
 
   <!-- =====================
-       IMAGEM TOPO
+  IMAGEM TOPO
   ====================== -->
   <!-- <img src="assets/img/JogosMataMataA.jpg" alt="Jogos Mata-Mata" class="imagem-padrao" /> -->
 
   <!-- ==========================================
-     CLASSIFICAÇÃO MATA-MATA
-========================================== -->
+  CLASSIFICAÇÃO MATA-MATA
+  ========================================== -->
   <!-- ==========================================
-       FASE FINAL — MATA-MATA DA SÉRIE B
+  FASE FINAL — MATA-MATA DA SÉRIE B
   =========================================== -->
-<div class="mata-mata table-container">
+  <div class="mata-mata table-container">
 
-  <h2>FASE FINAL — MATA-MATA</h2>
-  <p class="mata-descricao">Campeonato 2026</p>
+    <h2>FASE FINAL — MATA-MATA</h2>
+    <p class="mata-descricao">Campeonato 2026</p>
 
-  <!-- QUARTAS DE FINAL -->
-  <section class="mata-fase">
+    <!-- QUARTAS DE FINAL -->
+    <section class="mata-fase">
 
-    <h3>QUARTAS DE FINAL</h3>
+      <h3>QUARTAS DE FINAL</h3>
 
-    <div class="mata-lista">
+      <div class="mata-lista">
 
-      <div class="mata-jogo"
-           *ngFor="let jogo of confrontosQuartas; let i = index">
+        @for (jogo of confrontosQuartas; track $index; let i = $index) {
+          <div class="mata-jogo"
+            >
+            <div class="mata-cabecalho">
+              CONFRONTO {{ i + 1 }}
+            </div>
+            <div class="mata-duelo">
+              <!-- TIME DA ESQUERDA -->
+              <div class="mata-equipe mata-equipe-a">
+                @if (jogo.timeA?.icon) {
+                  <img
+                    [src]="$safeNavigationMigration(jogo.timeA?.icon)"
+                    [alt]="$safeNavigationMigration(jogo.timeA?.name)"
+                    />
+                }
+                <strong>{{ jogo.timeA?.name || 'A definir' }}</strong>
+              </div>
+              <!-- PLACARES NO CENTRO -->
+              <div class="mata-placares">
+                <div class="mata-placar-linha">
+                  <small>IDA</small>
+                  <strong>
+                    {{ jogo.placar.idaA ?? '-' }}
+                    <span>X</span>
+                    {{ jogo.placar.idaB ?? '-' }}
+                  </strong>
+                </div>
+                <div class="mata-placar-linha">
+                  <small>VOLTA</small>
+                  <strong>
+                    {{ jogo.placar.voltaA ?? '-' }}
+                    <span>X</span>
+                    {{ jogo.placar.voltaB ?? '-' }}
+                  </strong>
+                </div>
+                @if (jogo.completo) {
+                  <div class="mata-agregado">
+                    AGREGADO:
+                    {{ jogo.totalA }} X {{ jogo.totalB }}
+                  </div>
+                }
+              </div>
+              <!-- TIME DA DIREITA -->
+              <div class="mata-equipe mata-equipe-b">
+                @if (jogo.timeB?.icon) {
+                  <img
+                    [src]="$safeNavigationMigration(jogo.timeB?.icon)"
+                    [alt]="$safeNavigationMigration(jogo.timeB?.name)"
+                    />
+                }
+                <strong>{{ jogo.timeB?.name || 'A definir' }}</strong>
+              </div>
+            </div>
+            <div class="mata-datas">
+              <span>IDA: {{ jogo.dataIda }} • 20:00</span>
+              <span>VOLTA: {{ jogo.dataVolta }} • 20:00</span>
+            </div>
+            <div class="mata-status">
+              {{ jogo.status }}
+            </div>
+          </div>
+        }
 
-        <div class="mata-cabecalho">
-          CONFRONTO {{ i + 1 }}
-        </div>
+      </div>
+    </section>
 
-        <div class="mata-duelo">
+    <!-- SEMIFINAIS -->
+    <section class="mata-fase">
 
-          <!-- TIME DA ESQUERDA -->
-          <div class="mata-equipe mata-equipe-a">
-            <img
-              *ngIf="jogo.timeA?.icon"
-              [src]="jogo.timeA?.icon"
-              [alt]="jogo.timeA?.name"
-            />
-            <strong>{{ jogo.timeA?.name || 'A definir' }}</strong>
+      <h3>SEMIFINAIS</h3>
+
+      <div class="mata-lista">
+
+        @for (jogo of confrontosSemifinais; track $index; let i = $index) {
+          <div class="mata-jogo"
+            >
+            <div class="mata-cabecalho">
+              SEMIFINAL {{ i + 1 }}
+              @if (i === 1) {
+                <span>• MELHOR COLOCADO</span>
+              }
+            </div>
+            <div class="mata-duelo">
+              <div class="mata-equipe mata-equipe-a">
+                @if (jogo.timeA?.icon) {
+                  <img
+                    [src]="$safeNavigationMigration(jogo.timeA?.icon)"
+                    [alt]="$safeNavigationMigration(jogo.timeA?.name)"
+                    />
+                }
+                <strong>{{ jogo.timeA?.name || 'A definir' }}</strong>
+              </div>
+              <div class="mata-placares">
+                <div class="mata-placar-linha">
+                  <small>IDA</small>
+                  <strong>
+                    {{ jogo.placar.idaA ?? '-' }}
+                    <span>X</span>
+                    {{ jogo.placar.idaB ?? '-' }}
+                  </strong>
+                </div>
+                <div class="mata-placar-linha">
+                  <small>VOLTA</small>
+                  <strong>
+                    {{ jogo.placar.voltaA ?? '-' }}
+                    <span>X</span>
+                    {{ jogo.placar.voltaB ?? '-' }}
+                  </strong>
+                </div>
+                @if (jogo.completo) {
+                  <div class="mata-agregado">
+                    AGREGADO:
+                    {{ jogo.totalA }} X {{ jogo.totalB }}
+                  </div>
+                }
+              </div>
+              <div class="mata-equipe mata-equipe-b">
+                @if (jogo.timeB?.icon) {
+                  <img
+                    [src]="$safeNavigationMigration(jogo.timeB?.icon)"
+                    [alt]="$safeNavigationMigration(jogo.timeB?.name)"
+                    />
+                }
+                <strong>{{ jogo.timeB?.name || 'A definir' }}</strong>
+              </div>
+            </div>
+            <div class="mata-datas">
+              <span>IDA: {{ jogo.dataIda }} • 20:00</span>
+              <span>VOLTA: {{ jogo.dataVolta }} • 20:00</span>
+            </div>
+            <div class="mata-status">
+              {{ jogo.status }}
+            </div>
+          </div>
+        }
+
+      </div>
+    </section>
+
+    <!-- GRANDE FINAL -->
+    <section class="mata-fase">
+
+      <h3>GRANDE FINAL</h3>
+
+      <div class="mata-lista">
+
+        <div class="mata-jogo mata-jogo-final">
+
+          <div class="mata-cabecalho">
+            DISPUTA DO TÍTULO
           </div>
 
-          <!-- PLACARES NO CENTRO -->
-          <div class="mata-placares">
+          <div class="mata-duelo">
 
-            <div class="mata-placar-linha">
-              <small>IDA</small>
+            <div class="mata-equipe mata-equipe-a">
+              @if (confrontoFinal.timeA?.icon) {
+                <img
+                  [src]="$safeNavigationMigration(confrontoFinal.timeA?.icon)"
+                  [alt]="$safeNavigationMigration(confrontoFinal.timeA?.name)"
+                  />
+              }
               <strong>
-                {{ jogo.placar.idaA ?? '-' }}
-                <span>X</span>
-                {{ jogo.placar.idaB ?? '-' }}
+                {{ confrontoFinal.timeA?.name || 'A definir' }}
               </strong>
             </div>
 
-            <div class="mata-placar-linha">
-              <small>VOLTA</small>
+            <div class="mata-placares">
+
+              <div class="mata-placar-linha">
+                <small>1º JOGO</small>
+                <strong>
+                  {{ confrontoFinal.placar.idaA ?? '-' }}
+                  <span>X</span>
+                  {{ confrontoFinal.placar.idaB ?? '-' }}
+                </strong>
+              </div>
+
+              <div class="mata-placar-linha">
+                <small>2º JOGO</small>
+                <strong>
+                  {{ confrontoFinal.placar.voltaA ?? '-' }}
+                  <span>X</span>
+                  {{ confrontoFinal.placar.voltaB ?? '-' }}
+                </strong>
+              </div>
+
+              @if (confrontoFinal.completo) {
+                <div class="mata-agregado">
+                  AGREGADO:
+                  {{ confrontoFinal.totalA }} X {{ confrontoFinal.totalB }}
+                </div>
+              }
+
+            </div>
+
+            <div class="mata-equipe mata-equipe-b">
+              @if (confrontoFinal.timeB?.icon) {
+                <img
+                  [src]="$safeNavigationMigration(confrontoFinal.timeB?.icon)"
+                  [alt]="$safeNavigationMigration(confrontoFinal.timeB?.name)"
+                  />
+              }
               <strong>
-                {{ jogo.placar.voltaA ?? '-' }}
-                <span>X</span>
-                {{ jogo.placar.voltaB ?? '-' }}
+                {{ confrontoFinal.timeB?.name || 'A definir' }}
               </strong>
             </div>
 
-            <div class="mata-agregado" *ngIf="jogo.completo">
-              AGREGADO:
-              {{ jogo.totalA }} X {{ jogo.totalB }}
-            </div>
-
           </div>
 
-          <!-- TIME DA DIREITA -->
-          <div class="mata-equipe mata-equipe-b">
-            <img
-              *ngIf="jogo.timeB?.icon"
-              [src]="jogo.timeB?.icon"
-              [alt]="jogo.timeB?.name"
-            />
-            <strong>{{ jogo.timeB?.name || 'A definir' }}</strong>
+          <div class="mata-datas">
+            <span>1º JOGO: 10/12/2026 • 20:00</span>
+            <span>2º JOGO: 16/12/2026 • 21:00</span>
           </div>
 
-        </div>
+          <div class="mata-status">
+            {{ confrontoFinal.status }}
+          </div>
 
-        <div class="mata-datas">
-          <span>IDA: {{ jogo.dataIda }} • 20:00</span>
-          <span>VOLTA: {{ jogo.dataVolta }} • 20:00</span>
-        </div>
-
-        <div class="mata-status">
-          {{ jogo.status }}
         </div>
 
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- TERCEIRO LUGAR -->
+    <section class="mata-fase">
 
-  <!-- SEMIFINAIS -->
-  <section class="mata-fase">
+      <h3>DISPUTA DE 3º LUGAR</h3>
 
-    <h3>SEMIFINAIS</h3>
+      <div class="mata-lista">
 
-    <div class="mata-lista">
+        <div class="mata-jogo mata-jogo-terceiro">
 
-      <div class="mata-jogo"
-           *ngFor="let jogo of confrontosSemifinais; let i = index">
-
-        <div class="mata-cabecalho">
-          SEMIFINAL {{ i + 1 }}
-          <span *ngIf="i === 1">• MELHOR COLOCADO</span>
-        </div>
-
-        <div class="mata-duelo">
-
-          <div class="mata-equipe mata-equipe-a">
-            <img
-              *ngIf="jogo.timeA?.icon"
-              [src]="jogo.timeA?.icon"
-              [alt]="jogo.timeA?.name"
-            />
-            <strong>{{ jogo.timeA?.name || 'A definir' }}</strong>
+          <div class="mata-cabecalho">
+            DISPUTA DO TERCEIRO LUGAR
           </div>
 
-          <div class="mata-placares">
+          <div class="mata-duelo">
 
-            <div class="mata-placar-linha">
-              <small>IDA</small>
+            <div class="mata-equipe mata-equipe-a">
+              @if (disputaTerceiroLugar.timeA?.icon) {
+                <img
+                  [src]="$safeNavigationMigration(disputaTerceiroLugar.timeA?.icon)"
+                  [alt]="$safeNavigationMigration(disputaTerceiroLugar.timeA?.name)"
+                  />
+              }
               <strong>
-                {{ jogo.placar.idaA ?? '-' }}
-                <span>X</span>
-                {{ jogo.placar.idaB ?? '-' }}
+                {{ disputaTerceiroLugar.timeA?.name || 'A definir' }}
               </strong>
             </div>
 
-            <div class="mata-placar-linha">
-              <small>VOLTA</small>
+            <div class="mata-placares">
+
+              <div class="mata-placar-linha">
+                <small>JOGO ÚNICO</small>
+                <strong>
+                  {{ disputaTerceiroLugar.placar.golsA ?? '-' }}
+                  <span>X</span>
+                  {{ disputaTerceiroLugar.placar.golsB ?? '-' }}
+                </strong>
+              </div>
+
+            </div>
+
+            <div class="mata-equipe mata-equipe-b">
+              @if (disputaTerceiroLugar.timeB?.icon) {
+                <img
+                  [src]="$safeNavigationMigration(disputaTerceiroLugar.timeB?.icon)"
+                  [alt]="$safeNavigationMigration(disputaTerceiroLugar.timeB?.name)"
+                  />
+              }
               <strong>
-                {{ jogo.placar.voltaA ?? '-' }}
-                <span>X</span>
-                {{ jogo.placar.voltaB ?? '-' }}
+                {{ disputaTerceiroLugar.timeB?.name || 'A definir' }}
               </strong>
             </div>
 
-            <div class="mata-agregado" *ngIf="jogo.completo">
-              AGREGADO:
-              {{ jogo.totalA }} X {{ jogo.totalB }}
-            </div>
-
           </div>
 
-          <div class="mata-equipe mata-equipe-b">
-            <img
-              *ngIf="jogo.timeB?.icon"
-              [src]="jogo.timeB?.icon"
-              [alt]="jogo.timeB?.name"
-            />
-            <strong>{{ jogo.timeB?.name || 'A definir' }}</strong>
+          <div class="mata-datas">
+            <span>16/12/2026 • 20:00</span>
           </div>
 
-        </div>
+          <div class="mata-status">
+            {{ disputaTerceiroLugar.status }}
+          </div>
 
-        <div class="mata-datas">
-          <span>IDA: {{ jogo.dataIda }} • 20:00</span>
-          <span>VOLTA: {{ jogo.dataVolta }} • 20:00</span>
-        </div>
-
-        <div class="mata-status">
-          {{ jogo.status }}
         </div>
 
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- GRANDE FINAL -->
-  <section class="mata-fase">
-
-    <h3>GRANDE FINAL</h3>
-
-    <div class="mata-lista">
-
-      <div class="mata-jogo mata-jogo-final">
-
-        <div class="mata-cabecalho">
-          DISPUTA DO TÍTULO
-        </div>
-
-        <div class="mata-duelo">
-
-          <div class="mata-equipe mata-equipe-a">
-            <img
-              *ngIf="confrontoFinal.timeA?.icon"
-              [src]="confrontoFinal.timeA?.icon"
-              [alt]="confrontoFinal.timeA?.name"
-            />
-            <strong>
-              {{ confrontoFinal.timeA?.name || 'A definir' }}
-            </strong>
-          </div>
-
-          <div class="mata-placares">
-
-            <div class="mata-placar-linha">
-              <small>1º JOGO</small>
-              <strong>
-                {{ confrontoFinal.placar.idaA ?? '-' }}
-                <span>X</span>
-                {{ confrontoFinal.placar.idaB ?? '-' }}
-              </strong>
-            </div>
-
-            <div class="mata-placar-linha">
-              <small>2º JOGO</small>
-              <strong>
-                {{ confrontoFinal.placar.voltaA ?? '-' }}
-                <span>X</span>
-                {{ confrontoFinal.placar.voltaB ?? '-' }}
-              </strong>
-            </div>
-
-            <div class="mata-agregado" *ngIf="confrontoFinal.completo">
-              AGREGADO:
-              {{ confrontoFinal.totalA }} X {{ confrontoFinal.totalB }}
-            </div>
-
-          </div>
-
-          <div class="mata-equipe mata-equipe-b">
-            <img
-              *ngIf="confrontoFinal.timeB?.icon"
-              [src]="confrontoFinal.timeB?.icon"
-              [alt]="confrontoFinal.timeB?.name"
-            />
-            <strong>
-              {{ confrontoFinal.timeB?.name || 'A definir' }}
-            </strong>
-          </div>
-
-        </div>
-
-        <div class="mata-datas">
-          <span>1º JOGO: 10/12/2026 • 20:00</span>
-          <span>2º JOGO: 16/12/2026 • 21:00</span>
-        </div>
-
-        <div class="mata-status">
-          {{ confrontoFinal.status }}
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- TERCEIRO LUGAR -->
-  <section class="mata-fase">
-
-    <h3>DISPUTA DE 3º LUGAR</h3>
-
-    <div class="mata-lista">
-
-      <div class="mata-jogo mata-jogo-terceiro">
-
-        <div class="mata-cabecalho">
-          DISPUTA DO TERCEIRO LUGAR
-        </div>
-
-        <div class="mata-duelo">
-
-          <div class="mata-equipe mata-equipe-a">
-            <img
-              *ngIf="disputaTerceiroLugar.timeA?.icon"
-              [src]="disputaTerceiroLugar.timeA?.icon"
-              [alt]="disputaTerceiroLugar.timeA?.name"
-            />
-            <strong>
-              {{ disputaTerceiroLugar.timeA?.name || 'A definir' }}
-            </strong>
-          </div>
-
-          <div class="mata-placares">
-
-            <div class="mata-placar-linha">
-              <small>JOGO ÚNICO</small>
-              <strong>
-                {{ disputaTerceiroLugar.placar.golsA ?? '-' }}
-                <span>X</span>
-                {{ disputaTerceiroLugar.placar.golsB ?? '-' }}
-              </strong>
-            </div>
-
-          </div>
-
-          <div class="mata-equipe mata-equipe-b">
-            <img
-              *ngIf="disputaTerceiroLugar.timeB?.icon"
-              [src]="disputaTerceiroLugar.timeB?.icon"
-              [alt]="disputaTerceiroLugar.timeB?.name"
-            />
-            <strong>
-              {{ disputaTerceiroLugar.timeB?.name || 'A definir' }}
-            </strong>
-          </div>
-
-        </div>
-
-        <div class="mata-datas">
-          <span>16/12/2026 • 20:00</span>
-        </div>
-
-        <div class="mata-status">
-          {{ disputaTerceiroLugar.status }}
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-</div>
+  </div>
 
 
 
@@ -400,7 +394,7 @@
   </div>
 
   <!-- =====================
-       ARTILHEIROS + GOLEIROS
+  ARTILHEIROS + GOLEIROS
   ====================== -->
   <div class="cards-container">
     <div class="cards-top">
@@ -409,87 +403,76 @@
       <div class="table-container">
         <h3>Artilheiros</h3>
 
-        <ng-container *ngIf="topArtillery?.length; else noDataArtilharia">
+        @if (topArtillery?.length) {
           <table mat-table [dataSource]="topArtillery.slice(0, 11)" class="time-table">
-
             <ng-container matColumnDef="rank">
               <th mat-header-cell *matHeaderCellDef>#</th>
               <td mat-cell *matCellDef="let el; let i = index">
                 {{ i + 1 }}
               </td>
             </ng-container>
-
             <ng-container matColumnDef="name">
-
               <th mat-header-cell *matHeaderCellDef class="nome-column">
                 Nome
               </th>
-
               <td mat-cell *matCellDef="let el; let i = index" class="nome-column">
-
                 <span class="nome-jogador">
-
                   {{ el.name }}
-
                   <!-- COSTELA: somente se Luizinho estiver em 1º -->
-                  <img *ngIf="i === 0 && el.name === 'Luizinho Costela'" src="assets/img/Costela.jpeg"
-                    class="emoji-costela" alt="Costela" />
-
+                  @if (i === 0 && el.name === 'Luizinho Costela') {
+                    <img src="assets/img/Costela.jpeg"
+                      class="emoji-costela" alt="Costela" />
+                  }
                   <!-- JOKER: somente se Allan estiver em 1º -->
-                  <img *ngIf="i === 0 && el.name === 'Allan'" src="assets/img/jokerAllan.png" class="emoji-joker"
-                    alt="Joker" />
-
+                  @if (i === 0 && el.name === 'Allan') {
+                    <img src="assets/img/jokerAllan.png" class="emoji-joker"
+                      alt="Joker" />
+                  }
                   <!-- COROA: somente se Luiz Fellipe estiver em 1º -->
-                  <img *ngIf="i === 0 && el.name === 'Luiz Fellipe'" src="assets/img/Coroa.png" class="emoji-coroa"
-                    alt="Coroa" />
-
+                  @if (i === 0 && el.name === 'Luiz Fellipe') {
+                    <img src="assets/img/Coroa.png" class="emoji-coroa"
+                      alt="Coroa" />
+                  }
                 </span>
-
               </td>
-
             </ng-container>
-
             <ng-container matColumnDef="time">
               <th mat-header-cell *matHeaderCellDef>
                 Time
               </th>
               <td mat-cell *matCellDef="let el">
-                <img *ngIf="el.icon" class="time-icon" [src]="el.icon" [alt]="el.time" />
+                @if (el.icon) {
+                  <img class="time-icon" [src]="el.icon" [alt]="el.time" />
+                }
               </td>
             </ng-container>
-
-
             <ng-container matColumnDef="goals">
               <th mat-header-cell *matHeaderCellDef>Gols</th>
               <td mat-cell *matCellDef="let el">
                 {{ el.goals }}
               </td>
             </ng-container>
-
             <tr mat-header-row *matHeaderRowDef="['rank','name','time','goals']"></tr>
             <tr mat-row *matRowDef="let row; columns: ['rank','name','time','goals']"></tr>
           </table>
-        </ng-container>
-
-        <ng-template #noDataArtilharia>
+        } @else {
           <p>Não há dados de artilharia disponíveis.</p>
-        </ng-template>
+        }
+
       </div>
 
       <!-- GOLEIROS -->
       <div class="table-container">
         <h3>Goleiros Menos Vazados</h3>
 
-        <ng-container *ngIf="topGoalkeepers?.length; else noDataGoleiros">
+        @if (topGoalkeepers?.length) {
           <table mat-table [dataSource]="topGoalkeepers.slice(0, 11)" class="time-table">
-
             <ng-container matColumnDef="rank">
               <th mat-header-cell *matHeaderCellDef>#</th>
               <td mat-cell *matCellDef="let el; let i = index">
                 {{ i + 1 }}
               </td>
             </ng-container>
-
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef class="nome-column">
                 Nome
@@ -498,17 +481,16 @@
                 {{ el.name }}
               </td>
             </ng-container>
-
             <ng-container matColumnDef="time">
               <th mat-header-cell *matHeaderCellDef>
                 Time
               </th>
               <td mat-cell *matCellDef="let el">
-                <img *ngIf="el.icon" class="time-icon" [src]="el.icon" [alt]="el.time" />
+                @if (el.icon) {
+                  <img class="time-icon" [src]="el.icon" [alt]="el.time" />
+                }
               </td>
             </ng-container>
-
-
             <ng-container matColumnDef="goalsConceded">
               <th mat-header-cell *matHeaderCellDef>
                 Gols Sofridos
@@ -517,77 +499,69 @@
                 {{ el.goalsConceded }}
               </td>
             </ng-container>
-
             <tr mat-header-row *matHeaderRowDef="['rank','name','time','goalsConceded']"></tr>
             <tr mat-row *matRowDef="let row; columns: ['rank','name','time','goalsConceded']"></tr>
           </table>
-        </ng-container>
-
-        <ng-template #noDataGoleiros>
+        } @else {
           <p>Não há dados de goleiros disponíveis.</p>
-        </ng-template>
+        }
+
       </div>
 
     </div>
   </div>
 
   <!-- =====================
-       TIMES / JOGADORES
+  TIMES / JOGADORES
   ====================== -->
   <div class="times-container">
 
-    <div class="table-container time-card" *ngFor="let team of teams">
-
-      <h3 class="time-title time-header">
-        <img class="time-icon" [src]="team.icon" [alt]="team.name" />
-        <span>{{ team.name }}</span>
-      </h3>
-
-
-      <!-- 🔥 Wrapper essencial pro mobile -->
-      <div class="time-table-wrapper">
-        <table mat-table [dataSource]="team.players" class="time-table">
-
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef class="nome-column">
-              Nome
-            </th>
-            <td mat-cell *matCellDef="let p" class="nome-column">
-              {{ p.name }}
-              <br />
-              <span *ngIf="p.suspensao" class="suspensao-text">
-                Suspenso ({{ p.jogosSuspensao }})
-              </span>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="fouls">
-            <th mat-header-cell *matHeaderCellDef>F</th>
-            <td mat-cell *matCellDef="let p">{{ p.fouls }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="yellowCard">
-            <th mat-header-cell *matHeaderCellDef>A</th>
-            <td mat-cell *matCellDef="let p">{{ p.yellowCard }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="redCard">
-            <th mat-header-cell *matHeaderCellDef>V</th>
-            <td mat-cell *matCellDef="let p">{{ p.redCard }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="goals">
-            <th mat-header-cell *matHeaderCellDef>G</th>
-            <td mat-cell *matCellDef="let p">{{ p.goals }}</td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumnsTimes"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumnsTimes" [class.suspenso]="row.suspensao">
-          </tr>
-
-        </table>
+    @for (team of teams; track team) {
+      <div class="table-container time-card">
+        <h3 class="time-title time-header">
+          <img class="time-icon" [src]="team.icon" [alt]="team.name" />
+          <span>{{ team.name }}</span>
+        </h3>
+        <!-- 🔥 Wrapper essencial pro mobile -->
+        <div class="time-table-wrapper">
+          <table mat-table [dataSource]="team.players" class="time-table">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef class="nome-column">
+                Nome
+              </th>
+              <td mat-cell *matCellDef="let p" class="nome-column">
+                {{ p.name }}
+                <br />
+                @if (p.suspensao) {
+                  <span class="suspensao-text">
+                    Suspenso ({{ p.jogosSuspensao }})
+                  </span>
+                }
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="fouls">
+              <th mat-header-cell *matHeaderCellDef>F</th>
+              <td mat-cell *matCellDef="let p">{{ p.fouls }}</td>
+            </ng-container>
+            <ng-container matColumnDef="yellowCard">
+              <th mat-header-cell *matHeaderCellDef>A</th>
+              <td mat-cell *matCellDef="let p">{{ p.yellowCard }}</td>
+            </ng-container>
+            <ng-container matColumnDef="redCard">
+              <th mat-header-cell *matHeaderCellDef>V</th>
+              <td mat-cell *matCellDef="let p">{{ p.redCard }}</td>
+            </ng-container>
+            <ng-container matColumnDef="goals">
+              <th mat-header-cell *matHeaderCellDef>G</th>
+              <td mat-cell *matCellDef="let p">{{ p.goals }}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsTimes"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsTimes" [class.suspenso]="row.suspensao">
+            </tr>
+          </table>
+        </div>
       </div>
-    </div>
+    }
 
   </div>
 
@@ -667,187 +641,187 @@
       </table>
     </div>
     <br>
-    <br>
-    <br>
+      <br>
+        <br>
 
-    <!-- Tabela do 2° Turno -->
-    <div class="tabela table-container">
-      <h2>Classificação do 2° Turno</h2>
-      <table mat-table [dataSource]="dataSourceTurno2Ordenado">
-        <!-- POSIÇÃO -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef>#</th>
-          <td mat-cell *matCellDef="let element; let i = index">
-            {{ i + 1 }}
-          </td>
-        </ng-container>
+          <!-- Tabela do 2° Turno -->
+          <div class="tabela table-container">
+            <h2>Classificação do 2° Turno</h2>
+            <table mat-table [dataSource]="dataSourceTurno2Ordenado">
+              <!-- POSIÇÃO -->
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef>#</th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                  {{ i + 1 }}
+                </td>
+              </ng-container>
 
-        <!-- TIME -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class="first-column">
-            Times
-          </th>
+              <!-- TIME -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef class="first-column">
+                  Times
+                </th>
 
-          <td mat-cell *matCellDef="let element" class="first-column team-cell">
-            <img [src]="element.icon" [alt]="element.name" class="team-icon" />
-            <span>{{ element.name }}</span>
-          </td>
-        </ng-container>
+                <td mat-cell *matCellDef="let element" class="first-column team-cell">
+                  <img [src]="element.icon" [alt]="element.name" class="team-icon" />
+                  <span>{{ element.name }}</span>
+                </td>
+              </ng-container>
 
-        <ng-container matColumnDef="points">
-          <th mat-header-cell *matHeaderCellDef>PG</th>
-          <td mat-cell *matCellDef="let element">{{ element.points }}</td>
-        </ng-container>
+              <ng-container matColumnDef="points">
+                <th mat-header-cell *matHeaderCellDef>PG</th>
+                <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+              </ng-container>
 
-        <ng-container matColumnDef="games">
-          <th mat-header-cell *matHeaderCellDef>JG</th>
-          <td mat-cell *matCellDef="let element">{{ element.games }}</td>
-        </ng-container>
+              <ng-container matColumnDef="games">
+                <th mat-header-cell *matHeaderCellDef>JG</th>
+                <td mat-cell *matCellDef="let element">{{ element.games }}</td>
+              </ng-container>
 
-        <ng-container matColumnDef="wins">
-          <th mat-header-cell *matHeaderCellDef>V</th>
-          <td mat-cell *matCellDef="let element">{{ element.wins }}</td>
-        </ng-container>
+              <ng-container matColumnDef="wins">
+                <th mat-header-cell *matHeaderCellDef>V</th>
+                <td mat-cell *matCellDef="let element">{{ element.wins }}</td>
+              </ng-container>
 
-        <ng-container matColumnDef="draws">
-          <th mat-header-cell *matHeaderCellDef>E</th>
-          <td mat-cell *matCellDef="let element">{{ element.draws }}</td>
-        </ng-container>
+              <ng-container matColumnDef="draws">
+                <th mat-header-cell *matHeaderCellDef>E</th>
+                <td mat-cell *matCellDef="let element">{{ element.draws }}</td>
+              </ng-container>
 
-        <ng-container matColumnDef="losses">
-          <th mat-header-cell *matHeaderCellDef>D</th>
-          <td mat-cell *matCellDef="let element">{{ element.losses }}</td>
-        </ng-container>
+              <ng-container matColumnDef="losses">
+                <th mat-header-cell *matHeaderCellDef>D</th>
+                <td mat-cell *matCellDef="let element">{{ element.losses }}</td>
+              </ng-container>
 
-        <ng-container matColumnDef="goalsFor">
-          <th mat-header-cell *matHeaderCellDef>GP</th>
-          <td mat-cell *matCellDef="let element">{{ element.goalsFor }}</td>
-        </ng-container>
+              <ng-container matColumnDef="goalsFor">
+                <th mat-header-cell *matHeaderCellDef>GP</th>
+                <td mat-cell *matCellDef="let element">{{ element.goalsFor }}</td>
+              </ng-container>
 
-        <ng-container matColumnDef="goalsAgainst">
-          <th mat-header-cell *matHeaderCellDef>GC</th>
-          <td mat-cell *matCellDef="let element">{{ element.goalsAgainst }}</td>
-        </ng-container>
+              <ng-container matColumnDef="goalsAgainst">
+                <th mat-header-cell *matHeaderCellDef>GC</th>
+                <td mat-cell *matCellDef="let element">{{ element.goalsAgainst }}</td>
+              </ng-container>
 
-        <ng-container matColumnDef="SaldoGols">
-          <th mat-header-cell *matHeaderCellDef>SLD</th>
-          <td mat-cell *matCellDef="let element">{{ element.SaldoGols }}</td>
-        </ng-container>
+              <ng-container matColumnDef="SaldoGols">
+                <th mat-header-cell *matHeaderCellDef>SLD</th>
+                <td mat-cell *matCellDef="let element">{{ element.SaldoGols }}</td>
+              </ng-container>
 
-        <ng-container matColumnDef="woLosses">
-          <th mat-header-cell *matHeaderCellDef>WO</th>
-          <td mat-cell *matCellDef="let element">{{ element.woLosses }}</td>
-        </ng-container>
+              <ng-container matColumnDef="woLosses">
+                <th mat-header-cell *matHeaderCellDef>WO</th>
+                <td mat-cell *matCellDef="let element">{{ element.woLosses }}</td>
+              </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </div>
-    <br>
-    <br>
-    <br>
-    <!-- Tabela do 3° Turno -->
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+          <br>
+            <br>
+              <br>
+                <!-- Tabela do 3° Turno -->
 
-    <div class="tabela table-container">
-      <h2>Classificação do 3° Turno</h2>
-      <table mat-table [dataSource]="dataSourceTurno3Ordenado">
+                <div class="tabela table-container">
+                  <h2>Classificação do 3° Turno</h2>
+                  <table mat-table [dataSource]="dataSourceTurno3Ordenado">
 
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef>#</th>
-          <td mat-cell *matCellDef="let element; let i = index">
-            {{ i + 1 }}
-          </td>
-        </ng-container>
-
-
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef class="first-column">
-            Times
-          </th>
-
-          <td mat-cell *matCellDef="let element" class="first-column team-cell">
-            <img [src]="element.icon" [alt]="element.name" class="team-icon" />
-            <span>{{ element.name }}</span>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="points">
-          <th mat-header-cell *matHeaderCellDef>PG</th>
-          <td mat-cell *matCellDef="let element">{{ element.points }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="games">
-          <th mat-header-cell *matHeaderCellDef>JG</th>
-          <td mat-cell *matCellDef="let element">{{ element.games }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="wins">
-          <th mat-header-cell *matHeaderCellDef>V</th>
-          <td mat-cell *matCellDef="let element">{{ element.wins }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="draws">
-          <th mat-header-cell *matHeaderCellDef>E</th>
-          <td mat-cell *matCellDef="let element">{{ element.draws }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="losses">
-          <th mat-header-cell *matHeaderCellDef>D</th>
-          <td mat-cell *matCellDef="let element">{{ element.losses }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="goalsFor">
-          <th mat-header-cell *matHeaderCellDef>GP</th>
-          <td mat-cell *matCellDef="let element">{{ element.goalsFor }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="goalsAgainst">
-          <th mat-header-cell *matHeaderCellDef>GC</th>
-          <td mat-cell *matCellDef="let element">{{ element.goalsAgainst }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="SaldoGols">
-          <th mat-header-cell *matHeaderCellDef>SLD</th>
-          <td mat-cell *matCellDef="let element">{{ element.SaldoGols }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="woLosses">
-          <th mat-header-cell *matHeaderCellDef>WO</th>
-          <td mat-cell *matCellDef="let element">{{ element.woLosses }}</td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </div>
-  </div>
-  <!-- =====================
-     PDF JOGOS
-====================== -->
-  <div class="card jogos">
-
-    <h3>Jogos de 2026</h3>
-
-    <!-- BOTÕES DE SELEÇÃO -->
-    <div class="botoes-pdf">
-      <button (click)="trocarPdf(pdfs.tabela1)">1º Turno</button>
-      <button (click)="trocarPdf(pdfs.tabela2)">2º Turno</button>
-      <button (click)="trocarPdf(pdfs.tabela3)">3º Turno</button>
-      <button (click)="trocarPdf(pdfs.tabelaFinal)">Finais</button>
-    </div>
-
-    <!-- CONTAINER EXTERNO (CONTROLA LARGURA) -->
-    <div class="pdf-wrapper">
-
-      <!-- PDF VIEWER -->
-      <pdf-viewer [src]="pdfAtual" [original-size]="true" [render-text]="true" [show-all]="true" [zoom]="zoomLevel"
-        [zoom-scale]="'page-width'" [fit-to-page]="false" [stick-to-page]="false" class="pdf-container">
-      </pdf-viewer>
-
-    </div>
-
-  </div>
+                    <ng-container matColumnDef="position">
+                      <th mat-header-cell *matHeaderCellDef>#</th>
+                      <td mat-cell *matCellDef="let element; let i = index">
+                        {{ i + 1 }}
+                      </td>
+                    </ng-container>
 
 
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef class="first-column">
+                        Times
+                      </th>
 
-</div>
+                      <td mat-cell *matCellDef="let element" class="first-column team-cell">
+                        <img [src]="element.icon" [alt]="element.name" class="team-icon" />
+                        <span>{{ element.name }}</span>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="points">
+                      <th mat-header-cell *matHeaderCellDef>PG</th>
+                      <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="games">
+                      <th mat-header-cell *matHeaderCellDef>JG</th>
+                      <td mat-cell *matCellDef="let element">{{ element.games }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="wins">
+                      <th mat-header-cell *matHeaderCellDef>V</th>
+                      <td mat-cell *matCellDef="let element">{{ element.wins }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="draws">
+                      <th mat-header-cell *matHeaderCellDef>E</th>
+                      <td mat-cell *matCellDef="let element">{{ element.draws }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="losses">
+                      <th mat-header-cell *matHeaderCellDef>D</th>
+                      <td mat-cell *matCellDef="let element">{{ element.losses }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="goalsFor">
+                      <th mat-header-cell *matHeaderCellDef>GP</th>
+                      <td mat-cell *matCellDef="let element">{{ element.goalsFor }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="goalsAgainst">
+                      <th mat-header-cell *matHeaderCellDef>GC</th>
+                      <td mat-cell *matCellDef="let element">{{ element.goalsAgainst }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="SaldoGols">
+                      <th mat-header-cell *matHeaderCellDef>SLD</th>
+                      <td mat-cell *matCellDef="let element">{{ element.SaldoGols }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="woLosses">
+                      <th mat-header-cell *matHeaderCellDef>WO</th>
+                      <td mat-cell *matCellDef="let element">{{ element.woLosses }}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                </div>
+              </div>
+              <!-- =====================
+              PDF JOGOS
+              ====================== -->
+              <div class="card jogos">
+
+                <h3>Jogos de 2026</h3>
+
+                <!-- BOTÕES DE SELEÇÃO -->
+                <div class="botoes-pdf">
+                  <button (click)="trocarPdf(pdfs.tabela1)">1º Turno</button>
+                  <button (click)="trocarPdf(pdfs.tabela2)">2º Turno</button>
+                  <button (click)="trocarPdf(pdfs.tabela3)">3º Turno</button>
+                  <button (click)="trocarPdf(pdfs.tabelaFinal)">Finais</button>
+                </div>
+
+                <!-- CONTAINER EXTERNO (CONTROLA LARGURA) -->
+                <div class="pdf-wrapper">
+
+                  <!-- PDF VIEWER -->
+                  <pdf-viewer [src]="pdfAtual" [original-size]="true" [render-text]="true" [show-all]="true" [zoom]="zoomLevel"
+                    [zoom-scale]="'page-width'" [fit-to-page]="false" [stick-to-page]="false" class="pdf-container">
+                  </pdf-viewer>
+
+                </div>
+
+              </div>
+
+
+
+            </div>

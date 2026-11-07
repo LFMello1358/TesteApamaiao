@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { AppComponent } from "../../app.component";
 import { ComponetsComponent } from "../../componentes/componets/componets.component";
@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
   selector: 'app-home',
   imports: [SharedModule, ComponetsComponent],
   templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {

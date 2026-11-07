@@ -1,4 +1,5 @@
-<div class="popup-container" *ngIf="visible">
+@if (visible) {
+  <div class="popup-container">
     <div class="popup-content">
       <div class="popup-header">
         <strong>Advertência:</strong>
@@ -16,4 +17,4 @@
       </p>
     </div>
   </div>
-  
+}

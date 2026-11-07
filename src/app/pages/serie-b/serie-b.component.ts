@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ComponetsComponent } from '../../componentes/componets/componets.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -86,6 +86,7 @@ interface PlacarJogoUnico {
   standalone: true,
   imports: [SharedModule, ComponetsComponent,],
   templateUrl: './serie-b.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './serie-b.component.scss'
 })
 export class SerieBComponent {

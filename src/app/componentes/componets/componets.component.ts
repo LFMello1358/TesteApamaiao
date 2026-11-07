@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav'; // ✅ IMPORTAR Si
   standalone: true,
   imports: [SharedModule, MatMenuModule, MatButtonModule, MatIconModule, MatSidenavModule],
   templateUrl: './componets.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./componets.component.scss']
 })
 export class ComponetsComponent {
