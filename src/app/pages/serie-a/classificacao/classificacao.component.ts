@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ComponetsComponent } from '../../../componentes/componets/componets.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { BehaviorSubject } from 'rxjs';
@@ -19,6 +19,7 @@ interface Team {
   selector: 'app-classificacao',
   imports: [SharedModule, ComponetsComponent],
   templateUrl: './classificacao.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './classificacao.component.scss'
 })
 export class ClassificacaoComponentA {

@@ -1038,3 +1038,158 @@ h3 {
   }
 
 }
+/* =========================
+   "VER MAIS" EM CADA CONFRONTO → abre o Scout já no confronto
+========================= */
+.mata-ver-mais {
+  display: block;
+  margin-top: 8px;
+  padding: 7px;
+  text-align: center;
+  text-decoration: none;
+
+  color: $white;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+
+  border-radius: 7px;
+  border: 1px solid rgba(47, 163, 107, 0.35);
+  background: linear-gradient(160deg, color.adjust($gray, $lightness: 6%), $dark-gray);
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: linear-gradient(160deg, $green, color.adjust($green, $lightness: -6%));
+    border-color: $green-light;
+  }
+}
+
+/* =========================================================
+   CELULAR — revisão mobile (até 768px)
+   Fica no fim do arquivo para prevalecer sobre as regras antigas.
+   Objetivo: letra mínima de 12px, alvos de toque de ~44px e
+   tabelas largas rolando de lado dentro do próprio card (com o
+   nome da seleção fixo à esquerda), sem esticar a página.
+========================================================= */
+@media (max-width: 768px) {
+  .Padrao {
+    gap: 20px;
+    padding: 16px 10px;
+  }
+
+  h2 { font-size: 14px; }
+  h3 { font-size: 13px; }
+
+  /* ---------- tabelas ---------- */
+  .tabelas-lado,
+  .cards-top,
+  .times-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    justify-items: stretch;
+  }
+
+  .table-container,
+  .tabela,
+  .time-card,
+  .cards-top .table-container,
+  .tabelas-lado .table-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .time-table th,
+  .time-table td,
+  .mat-mdc-header-cell,
+  .mat-mdc-cell,
+  .nome-column,
+  .nome-jogador {
+    font-size: 12px;
+    padding: 7px 6px;
+    white-space: nowrap;
+  }
+
+  .mat-mdc-header-cell,
+  .time-table th {
+    font-size: 11px;
+  }
+
+  .time-title {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  /* ---------- mata-mata ---------- */
+  .mata-mata {
+    padding: 14px 10px;
+  }
+
+  .mata-descricao,
+  .mata-cabecalho {
+    font-size: 12px;
+  }
+
+  .mata-equipe strong {
+    font-size: 13px;
+  }
+
+  .mata-placar-linha {
+    grid-template-columns: 46px minmax(0, 1fr);
+    padding: 10px 6px;
+
+    small { font-size: 11px; }
+    strong { font-size: 16px; }
+  }
+
+  .suspensao-text,
+  .mata-agregado,
+  .mata-datas span,
+  .mata-datas {
+    font-size: 12px;
+  }
+
+  .mata-status {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+
+  .mata-ver-mais {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 12px;
+  }
+
+  /* ---------- tabela de jogos (PDF) ---------- */
+  .botoes-pdf button {
+    min-height: 44px;
+    font-size: 12px;
+  }
+}
+
+/* Botão para abrir o PDF da tabela de jogos no leitor do aparelho (zoom com os dedos). */
+.abrir-pdf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(47, 163, 107, 0.35);
+  background: linear-gradient(160deg, $green, color.adjust($green, $lightness: -6%));
+  color: $white;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+}

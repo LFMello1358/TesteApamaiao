@@ -1,35 +1,74 @@
-<nav class="navbar">
-  <div class="logo">
+<header class="navbar">
+  <a class="logo" routerLink="/home" aria-label="Ir para a página inicial">
     <img src="assets/img/Boneco_apamaiao.jpeg" alt="Logo Apamaião" class="logo-img" />
-    <div>
-      <h2>Campeonato de Pais e Mestres do Abel</h2>
-      <p style="font-size: x-small; color: whitesmoke;">Atualizado 06/11/2026</p>
+    <span class="logo-texto">
+      <span class="titulo">Campeonato de Pais e Mestres do Abel</span>
+      <span class="atualizado"><span class="ponto" aria-hidden="true"></span>Atualizado 06/11/2026</span>
+    </span>
+  </a>
+
+  <!-- MENU DESKTOP: poucos itens, o resto agrupado em listas -->
+  <nav class="menu-desktop" aria-label="Menu principal">
+    <a class="nav-item" routerLink="/home" routerLinkActive="ativo">Home</a>
+
+    <button type="button" class="nav-item" [class.ativo]="secaoAtiva('/categoria-a')" [matMenuTriggerFor]="serieAMenu">
+      Categoria A <mat-icon aria-hidden="true">expand_more</mat-icon>
+    </button>
+    <button type="button" class="nav-item" [class.ativo]="secaoAtiva('/categoria-b')" [matMenuTriggerFor]="serieBMenu">
+      Categoria B <mat-icon aria-hidden="true">expand_more</mat-icon>
+    </button>
+
+    <button type="button" class="nav-item" (click)="openRegulamento()">Regulamento</button>
+
+    <button type="button" class="nav-item" [matMenuTriggerFor]="documentosMenu">
+      Tabelas e uniformes <mat-icon aria-hidden="true">expand_more</mat-icon>
+    </button>
+  </nav>
+
+  <mat-menu #serieAMenu="matMenu" class="menu-categorias">
+    <a mat-menu-item routerLink="/categoria-a">Classificação e jogos</a>
+    <a mat-menu-item routerLink="/categoria-a/scout">Mata-mata · Scout</a>
+  </mat-menu>
+  <mat-menu #serieBMenu="matMenu" class="menu-categorias">
+    <a mat-menu-item routerLink="/categoria-b">Classificação e jogos</a>
+    <a mat-menu-item routerLink="/categoria-b/scout">Mata-mata · Scout</a>
+  </mat-menu>
+  <mat-menu #documentosMenu="matMenu" class="menu-categorias">
+    <button mat-menu-item (click)="openJogosA()">Tabela de jogos A</button>
+    <button mat-menu-item (click)="openJogosB()">Tabela de jogos B</button>
+    <button mat-menu-item (click)="Mandante()">Uniformes mandante</button>
+    <button mat-menu-item (click)="Visitante()">Uniformes visitante</button>
+  </mat-menu>
+
+  <!-- BOTÃO MOBILE (☰ abre/fecha o menu; no desktop fica escondido) -->
+  <button type="button" class="menu-btn" (click)="toggleMenu()"
+    [attr.aria-expanded]="isMenuOpen" aria-controls="menu-mobile"
+    [attr.aria-label]="isMenuOpen ? 'Fechar menu' : 'Abrir menu'">
+    <mat-icon aria-hidden="true">{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+  </button>
+
+  <!-- MENU MOBILE: tudo à vista, separado por seção -->
+  <nav class="menu-mobile" id="menu-mobile" [class.show]="isMenuOpen" aria-label="Menu principal">
+    <div class="grupo">
+      <a class="nav-item largo" routerLink="/home" routerLinkActive="ativo">Home</a>
     </div>
-  </div>
-
-  <!-- BOTÃO MOBILE -->
-  <div class="menu-btn" (click)="toggleMenu()">
-    <i class="fa-solid fa-bars"></i>
-  </div>
-
-  <!-- MENU -->
-  <div class="menu" [ngClass]="{ 'show': isMenuOpen }">
-    <div class="menu-links">
-      <!-- <button mat-button (click)="openListaA()">Lista A</button>
-      <button mat-button (click)="openListaB()">Lista B</button> -->
-      <button mat-button routerLink="/home">Home</button>
-      <button mat-button (click)="openRegulamento()">Regulamento</button>
-
-      <button mat-button [routerLink]="'/categoria-a'" [matMenuTriggerFor]="serieAMenu">Categoria A</button>
-      <mat-menu #serieAMenu="matMenu"></mat-menu>
-
-      <button mat-button [routerLink]="'/categoria-b'" [matMenuTriggerFor]="serieBMenu">Categoria B</button>
-      <mat-menu #serieBMenu="matMenu"></mat-menu>
-
-      <button mat-button (click)="openJogosA()">Tabela de Jogos A</button>
-      <button mat-button (click)="openJogosB()">Tabela de Jogos B</button>
-      <button mat-button (click)="Mandante()">Uniformes Mandante</button>
-      <button mat-button (click)="Visitante()">Uniformes Visitante</button>
+    <div class="grupo">
+      <span class="grupo-titulo">Categoria A</span>
+      <a class="nav-item" routerLink="/categoria-a" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Classificação e jogos</a>
+      <a class="nav-item" routerLink="/categoria-a/scout" routerLinkActive="ativo">Mata-mata · Scout</a>
     </div>
-  </div>
-</nav>
+    <div class="grupo">
+      <span class="grupo-titulo">Categoria B</span>
+      <a class="nav-item" routerLink="/categoria-b" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Classificação e jogos</a>
+      <a class="nav-item" routerLink="/categoria-b/scout" routerLinkActive="ativo">Mata-mata · Scout</a>
+    </div>
+    <div class="grupo">
+      <span class="grupo-titulo">Documentos</span>
+      <button type="button" class="nav-item largo" (click)="openRegulamento()">Regulamento</button>
+      <button type="button" class="nav-item" (click)="openJogosA()">Tabela de jogos A</button>
+      <button type="button" class="nav-item" (click)="openJogosB()">Tabela de jogos B</button>
+      <button type="button" class="nav-item" (click)="Mandante()">Uniformes mandante</button>
+      <button type="button" class="nav-item" (click)="Visitante()">Uniformes visitante</button>
+    </div>
+  </nav>
+</header>

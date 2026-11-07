@@ -5,163 +5,271 @@ $black: #0d0f0f;
 $dark-gray: #1a1d1f;
 $green: #175739;
 $green-light: #06924f;
+$green-glow: #2fa36b;
 $white: #ffffff;
 $shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.45);
 
 /* =========================================================
-   NAVBAR BASE
+   BARRA
+   Uma linha só: marca à esquerda, navegação à direita.
 ========================================================= */
 .navbar {
-  width: 100%;
-  background: linear-gradient(160deg, $black, $dark-gray);
-  border-bottom: 1px solid rgba($green-light, 0.25);
-  box-shadow: $shadow-soft;
-
-padding-bottom: 1%;
-padding-top: 2%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  box-sizing: border-box; // padding não soma à largura (evitava estouro lateral no celular)
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
+  min-height: 72px;
+  padding: 10px clamp(16px, 3vw, 40px);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: linear-gradient(160deg, $black, $dark-gray);
+  border-bottom: 2px solid $green;
+  box-shadow: $shadow-soft;
 }
 
-/* LOGO */
+/* MARCA */
 .logo {
   display: flex;
   align-items: center;
   gap: 12px;
   min-width: 0;
+  color: inherit;
+  text-decoration: none;
 
   .logo-img {
-    width: 84px;
-    height: 84px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: $shadow-soft;
+    border: 2px solid rgba($green-glow, 0.6);
     flex-shrink: 0;
   }
-
-  h2 {
-    font-size: 22px;
-    font-weight: 600;
-    color: $white;
-    line-height: 1.2;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  p {
-    margin-top: 2px;
-    font-size: 11px;
-    color: rgba($white, 0.75);
-  }
 }
 
-/* MENU DESKTOP */
-.menu {
+.logo-texto {
   display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.titulo {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: $white;
+  letter-spacing: 0.2px;
+}
+
+.atualizado {
+  display: inline-flex;
   align-items: center;
-  gap: 20px;
-}
+  gap: 6px;
+  font-size: 12px;
+  color: rgba($white, 0.7);
 
-.menu-links {
-  display: flex;
-  gap: 14px;
-}
-
-.menu-links button,
-.menu-links a {
-  font-weight: 500;
-  color: $white;
-  background-color: $green;
-  padding: 8px 20px;
-  border-radius: 20px;
-  transition: background-color 0.3s, transform 0.2s;
-
-}
-
-.menu-links button:hover,
-.menu-links a:hover {
-  background-color: darkgreen;
-  transform: scale(1.05);
-}
-
-.menu-links button:active,
-.menu-links a:active {
-  transform: scale(0.98);
-}
-
-/* BOTÃO MOBILE - escondido no desktop */
-.menu-btn {
-  font-size: 28px;
-  color: $white;
-  cursor: pointer;
-  display: none;
+  .ponto {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $green-glow;
+    box-shadow: 0 0 0 3px rgba($green-glow, 0.2);
+  }
 }
 
 /* =========================================================
-   MOBILE
+   NAVEGAÇÃO DESKTOP
 ========================================================= */
-@media (max-width: 768px) {
+.menu-desktop {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.nav-item {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: rgba($white, 0.85);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: -4px;
+    opacity: 0.8;
+  }
+
+  &:hover {
+    background: rgba($white, 0.08);
+    color: $white;
+  }
+
+  &.ativo {
+    background: $green;
+    color: $white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $green-glow;
+    outline-offset: 2px;
+  }
+}
+
+/* ☰ e menu mobile ficam escondidos no desktop */
+.menu-btn,
+.menu-mobile {
+  display: none;
+}
+
+/* Telas médias: o título encolhe antes da navegação quebrar linha */
+@media (max-width: 1180px) {
+  .titulo {
+    font-size: 16px;
+  }
+
+  .nav-item {
+    padding: 0 10px;
+  }
+}
+
+/* =========================================================
+   CELULAR / TABLET (até 1024px)
+   Barra compacta (logo + título + ☰). O menu abre por cima
+   da página, separado por seção, com botões grandes.
+========================================================= */
+@media (max-width: 1024px) {
   .navbar {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    min-height: 0;
+    gap: 10px;
+    padding: 8px 12px;
   }
 
   .logo {
-    flex-direction: column;
-    text-align: center;
+    flex: 1;
+    gap: 10px;
 
     .logo-img {
-      max-width: 28vw;
-    }
-
-    h2 {
-      font-size: 14px;        // 🔽 menor no mobile
-      line-height: 1.2;
-      max-width: 90%;
-      margin: 4px auto 0;
-
-      display: -webkit-box;
-      -webkit-line-clamp: 2;  // 🔒 no máximo 2 linhas
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: normal;
-    }
-
-    p {
-      font-size: 10px;
-      margin-top: 2px;
+      width: 44px;
+      height: 44px;
     }
   }
 
-  .menu {
-    display: flex;
-    width: 98%;
-    margin-top: 12px;
+  .titulo {
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .menu-links {
+  .atualizado {
+    font-size: 11px;
+  }
+
+  .menu-desktop {
+    display: none;
+  }
+
+  .menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid rgba($green-light, 0.45);
+    border-radius: 12px;
+    background: $green;
+    color: $white;
+    cursor: pointer;
+
+    mat-icon {
+      font-size: 26px;
+      width: 26px;
+      height: 26px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+    }
+  }
+
+  .menu-mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 6px 12px 14px;
+    background: linear-gradient(160deg, $black, $dark-gray);
+    border-bottom: 2px solid $green;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.6);
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  .grupo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 14px;
-    padding: 10px 22px;
-    justify-items: center;
-    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px 0;
+
+    & + .grupo {
+      border-top: 1px solid rgba($white, 0.08);
+    }
   }
 
-  .menu-links button,
-  .menu-links a {
-    width: 100%;
-    max-width: 145px;
+  .grupo-titulo {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: $green-glow;
+  }
+
+  .menu-mobile .nav-item {
+    height: auto;
+    min-height: 48px;
     padding: 8px 10px;
-    font-size: 13px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+    background: rgba($white, 0.06);
+    border: 1px solid rgba($white, 0.08);
+    border-radius: 12px;
+
+    &.ativo {
+      background: $green;
+      border-color: $green-glow;
+    }
+
+    &.largo {
+      grid-column: 1 / -1;
+    }
   }
 }

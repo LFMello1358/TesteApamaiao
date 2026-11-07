@@ -16,6 +16,9 @@ export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'categoria-a', component: SerieAComponent },
     { path: 'categoria-b', component: SerieBComponent },
+    // Aba Scout do mata-mata (carregada só quando acessada)
+    { path: 'categoria-a/scout', data: { serie: 'A' }, loadComponent: () => import('./pages/scout/scout.component').then(m => m.ScoutComponent) },
+    { path: 'categoria-b/scout', data: { serie: 'B' }, loadComponent: () => import('./pages/scout/scout.component').then(m => m.ScoutComponent) },
     { path: 'regulamento', component: RegulamentoComponent },
     { path: 'blog', component: BlogComponent },
     { path: 'serie-aclassificacao', component: ClassificacaoComponentA },

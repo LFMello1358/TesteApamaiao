@@ -1,76 +1,123 @@
 <app-componets></app-componets>
-<div class="padrao">
-  <div class="carousel-container">
-    <div class="carousel-wrapper">
-      <div class="carousel" [style.transform]="'translateX(' + translateX + '%)'">
-        <div class="carousel-item" *ngFor="let patrocinador of patrocinadores">
-          <img [src]="patrocinador.src" [alt]="patrocinador.alt" />
+
+<main class="home">
+  <!-- PATROCINADORES: carrossel aleatório em destaque -->
+  <section class="secao patrocinio">
+    <header class="secao-topo">
+      <span class="secao-tag">Quem faz acontecer</span>
+      <h2>Patrocinadores</h2>
+    </header>
+
+    <div class="carrossel" (mouseenter)="pausado = true" (mouseleave)="pausado = false">
+      <button type="button" class="carrossel-seta" (click)="anterior()" aria-label="Patrocinadores anteriores">
+        <mat-icon aria-hidden="true">chevron_left</mat-icon>
+      </button>
+
+      <div class="carrossel-janela">
+        <div class="carrossel-trilho" [style.transform]="'translateX(' + deslocamento() + '%)'">
+          @for (p of patrocinadores; track p.src) {
+            <div class="carrossel-item" [style.flex-basis.%]="100 / itensPorSlide()">
+              <div class="logo-patrocinador"><img [src]="p.src" [alt]="p.alt" /></div>
+            </div>
+          }
         </div>
+      </div>
+
+      <button type="button" class="carrossel-seta" (click)="proximo()" aria-label="Próximos patrocinadores">
+        <mat-icon aria-hidden="true">chevron_right</mat-icon>
+      </button>
+    </div>
+  </section>
+
+  <!-- HERO: gramado com as linhas do campo ao fundo -->
+  <section class="hero">
+    <svg class="hero-campo" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="40" y="40" width="1120" height="520" rx="6" />
+        <line x1="600" y1="40" x2="600" y2="560" />
+        <circle cx="600" cy="300" r="92" />
+        <circle cx="600" cy="300" r="4" fill="currentColor" />
+        <rect x="40" y="170" width="150" height="260" />
+        <rect x="40" y="235" width="56" height="130" />
+        <path d="M190 245 A 70 70 0 0 1 190 355" />
+        <rect x="1010" y="170" width="150" height="260" />
+        <rect x="1104" y="235" width="56" height="130" />
+        <path d="M1010 245 A 70 70 0 0 0 1010 355" />
+      </g>
+    </svg>
+
+    <div class="hero-conteudo">
+      <span class="selo"><mat-icon aria-hidden="true">emoji_events</mat-icon> Temporada 2026</span>
+      <h1>Campeonato de Pais e Mestres <span>do Abel</span></h1>
+      <p class="hero-fase"><span class="ao-vivo" aria-hidden="true"></span> Fase final · mata-mata</p>
+
+      <div class="hero-acoes">
+        <a class="cta primario" routerLink="/categoria-a">Categoria A <mat-icon aria-hidden="true">arrow_forward</mat-icon></a>
+        <a class="cta primario" routerLink="/categoria-b">Categoria B <mat-icon aria-hidden="true">arrow_forward</mat-icon></a>
       </div>
     </div>
-  </div>
 
+    <ul class="placar-temporada" aria-label="Números da temporada">
+      @for (n of numeros; track n.rotulo) {
+        <li><strong>{{ n.valor }}</strong><span>{{ n.rotulo }}</span></li>
+      }
+    </ul>
+  </section>
 
+  <!-- ATALHOS (painel escuro igual às telas das categorias) -->
+  <section class="secao painel-escuro">
+    <header class="secao-topo">
+      <span class="secao-tag">Vestiário</span>
+      <h2>Acesso rápido</h2>
+    </header>
 
-
-  <mat-card>
-    <mat-card-header class="header-campeonato">
-      <div class="header-container-coluna">
-
-        <!-- 🔹 Título -->
-        <h1 class="titulo-principal">Campeonato 2026</h1>
-
-        <!-- 🔹 DIV CENTRALIZADA (mantida) -->
-        <div class="convite-container">
-          <h2>Uniformes</h2>
-
-          <div class="botoes-lista">
-            <button mat-raised-button color="accent" (click)="Mandante()">
-              Mandante
-            </button>
-
-            <button mat-raised-button color="accent" (click)="Visitante()">
-              Visitante
-            </button>
-          </div>
+    <div class="atalhos">
+      <article class="atalho">
+        <span class="atalho-icone"><mat-icon aria-hidden="true">checkroom</mat-icon></span>
+        <h3>Uniformes</h3>
+        <p>Modelos de mandante e visitante.</p>
+        <div class="atalho-botoes">
+          <button type="button" (click)="Mandante()">Mandante</button>
+          <button type="button" (click)="Visitante()">Visitante</button>
         </div>
-        <div class="convite-container">
-          <h2>Lista de Espera</h2>
+      </article>
 
-          <div class="botoes-lista">
-            <button mat-raised-button color="accent" (click)="openEsperaA()">
-              A
-            </button>
-
-            <button mat-raised-button color="accent" (click)="openEsperaB()">
-              B
-            </button>
-          </div>
+      <article class="atalho">
+        <span class="atalho-icone"><mat-icon aria-hidden="true">hourglass_top</mat-icon></span>
+        <h3>Lista de espera</h3>
+        <p>Confira a lista da sua categoria.</p>
+        <div class="atalho-botoes">
+          <button type="button" (click)="openEsperaA()">Categoria A</button>
+          <button type="button" (click)="openEsperaB()">Categoria B</button>
         </div>
-        <div class="convite-container">
-          <h2>Lista de By</h2>
+      </article>
 
-          <div class="botoes-lista">
-            <button mat-raised-button color="accent" (click)="openByA()">
-              A
-            </button>
-
-            <button mat-raised-button color="accent" (click)="openByB()">
-              B
-            </button>
-          </div>
+      <article class="atalho">
+        <span class="atalho-icone"><mat-icon aria-hidden="true">event_busy</mat-icon></span>
+        <h3>Lista de By</h3>
+        <p>Confira a lista da sua categoria.</p>
+        <div class="atalho-botoes">
+          <button type="button" (click)="openByA()">Categoria A</button>
+          <button type="button" (click)="openByB()">Categoria B</button>
         </div>
+      </article>
+    </div>
+  </section>
 
-        <!-- 🔹 IMAGENS LADO A LADO -->
-        <div class="imagens-container">
+  <!-- CAMPEÕES DA TEMPORADA ANTERIOR -->
+  <section class="secao">
+    <header class="secao-topo">
+      <span class="secao-tag">Galeria</span>
+      <h2>Campeões de 2025</h2>
+    </header>
 
-          <img src="assets/img/JogosMataMataA.jpg" alt="Campeão Categoria A" class="imagem-campeao" />
-
-          <img src="assets/img/JogosMataMataB.jpg" alt="Campeão Categoria B" class="imagem-campeao" />
-        </div>
-
-      </div>
-    </mat-card-header>
-
-  </mat-card>
-</div>
+    <div class="cartazes">
+      @for (c of cartazes; track c.categoria) {
+        <a class="cartaz" [href]="c.src" target="_blank" rel="noopener" [attr.aria-label]="'Abrir cartaz do campeão da ' + c.categoria">
+          <img [src]="c.src" [alt]="'Campeão de 2025 da ' + c.categoria" loading="lazy" />
+          <span class="cartaz-rotulo">{{ c.categoria }} <mat-icon aria-hidden="true">open_in_full</mat-icon></span>
+        </a>
+      }
+    </div>
+  </section>
+</main>
