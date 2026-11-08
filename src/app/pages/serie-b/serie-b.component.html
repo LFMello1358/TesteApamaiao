@@ -87,7 +87,7 @@
               {{ jogo.status }}
             </div>
             @if (jogo.timeA && jogo.timeB) {
-              <a class="mata-ver-mais" routerLink="/categoria-b/scout" [queryParams]="{ fase: 'quartas', confronto: i }">Ver mais →</a>
+              <a class="mata-ver-mais" routerLink="/categoria-b/scout" [queryParams]="{ fase: 'quartas', confronto: i }">Estatísticas →</a>
             }
           </div>
         }
@@ -163,7 +163,7 @@
               {{ jogo.status }}
             </div>
             @if (jogo.timeA && jogo.timeB) {
-              <a class="mata-ver-mais" routerLink="/categoria-b/scout" [queryParams]="{ fase: 'semifinais', confronto: i }">Ver mais →</a>
+              <a class="mata-ver-mais" routerLink="/categoria-b/scout" [queryParams]="{ fase: 'semifinais', confronto: i }">Estatísticas →</a>
             }
           </div>
         }
@@ -250,7 +250,7 @@
             {{ confrontoFinal.status }}
           </div>
           @if (confrontoFinal.timeA && confrontoFinal.timeB) {
-            <a class="mata-ver-mais" routerLink="/categoria-b/scout" [queryParams]="{ fase: 'final', confronto: 0 }">Ver mais →</a>
+            <a class="mata-ver-mais" routerLink="/categoria-b/scout" [queryParams]="{ fase: 'final', confronto: 0 }">Estatísticas →</a>
           }
 
         </div>

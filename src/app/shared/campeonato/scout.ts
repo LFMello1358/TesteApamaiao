@@ -1,6 +1,6 @@
 // Cálculos do Scout: classificação, mata-mata (regras do regulamento), modelo de
 // probabilidade (Poisson) e estatísticas por time. Funções puras, sem Angular.
-import { SumulaDoJogo, Jogo, PlacarConfronto, PlacaresMataMata, TimeElenco, TimeTurno } from '../models/campeonato.model';
+import { Artilheiro, SumulaDoJogo, Jogo, PlacarConfronto, PlacaresMataMata, TimeElenco, TimeTurno } from '../models/campeonato.model';
 
 export type Resultado = 'V' | 'E' | 'D';
 
@@ -404,6 +404,9 @@ export function curiosidades(jogos: Jogo[], geral: TimeTurno[]): Curiosidade[] {
 // Gols por jogador (a partir das súmulas transcritas)
 // ----------------------------------------------------------------------------
 
+/** Desempate das listas de jogadores: ordem alfabética, igual à artilharia e aos goleiros. */
+const alfabetica = (a: string, b: string) => a.localeCompare(b, 'pt-BR', { sensitivity: 'base' });
+
 export interface Marcador { jogador: string; time: string; gols: number; jogos: number; }
 
 function somarMarcadores(jogos: SumulaDoJogo[], filtro: (j: SumulaDoJogo, g: SumulaDoJogo['gols'][number]) => boolean): Marcador[] {
@@ -416,7 +419,7 @@ function somarMarcadores(jogos: SumulaDoJogo[], filtro: (j: SumulaDoJogo, g: Sum
     m.jogos++;
     mapa.set(k, m);
   }
-  return [...mapa.values()].sort((a, b) => b.gols - a.gols || a.jogos - b.jogos || a.jogador.localeCompare(b.jogador, 'pt-BR'));
+  return [...mapa.values()].sort((a, b) => b.gols - a.gols || alfabetica(a.jogador, b.jogador));
 }
 
 const entre = (j: SumulaDoJogo, a: string, b: string) =>
@@ -435,7 +438,7 @@ export function quemMaisMarcouContra(jogos: SumulaDoJogo[], time: string, limite
 /** Maiores atuações individuais (mais gols num único jogo). */
 export function maioresAtuacoes(jogos: SumulaDoJogo[], limite = 5): { jogador: string; time: string; gols: number; jogo: SumulaDoJogo }[] {
   return jogos.flatMap(j => j.gols.filter(g => !g.contra).map(g => ({ jogador: g.jogador, time: g.time, gols: g.gols, jogo: j })))
-    .sort((x, y) => y.gols - x.gols || x.jogo.data.localeCompare(y.jogo.data)).slice(0, limite);
+    .sort((x, y) => y.gols - x.gols || alfabetica(x.jogador, y.jogador) || x.jogo.data.localeCompare(y.jogo.data)).slice(0, limite);
 }
 
 // ----------------------------------------------------------------------------
@@ -457,8 +460,27 @@ export function disciplina(sumulas: SumulaDoJogo[], time: string): Disciplina {
   };
 }
 
+/**
+ * Artilheiro do time na 1ª fase. O total de gols vem da artilharia oficial (a tabela da
+ * página da categoria); presença e jogos com gol vêm das súmulas, que não cobrem todos os jogos.
+ */
+export interface ArtilheiroDaFase {
+  jogador: string;
+  gols: number;
+  /** true = total da artilharia oficial; false = soma das súmulas (time sem ninguém na artilharia). */
+  oficial: boolean;
+  /** Jogos do time na 1ª fase. */
+  jogosDoTime: number;
+  /** Jogos do time com súmula transcrita. */
+  comSumula: number;
+  /** Jogos com súmula em que ele não aparece como ausente. */
+  esteve: number;
+  /** Jogos com súmula em que ele marcou. */
+  marcouEm: number;
+}
+
 export interface Destaques {
-  artilheiro: Marcador | null;
+  artilheiro: ArtilheiroDaFase | null;
   /** Quem do time mais marcou no adversário do confronto (jogos da 1ª fase entre os dois). */
   carrasco: Marcador | null;
   /** Jogador do time que marcou em mais jogos diferentes. */
@@ -466,14 +488,38 @@ export interface Destaques {
   melhorAtuacao: { jogador: string; gols: number; jogo: SumulaDoJogo } | null;
 }
 
-export function destaques(sumulas: SumulaDoJogo[], time: string, adversario: string): Destaques {
+const semAcento = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+
+export function destaques(
+  sumulas: SumulaDoJogo[], time: string, adversario: string, artilharia: Artilheiro[], jogosDoTime: number,
+): Destaques {
   const doTime = (j: SumulaDoJogo, g: { time: string }) => (j.mandante === time || j.visitante === time) && g.time === time;
   const marcadores = somarMarcadores(sumulas, doTime);
+
+  // total oficial: mesma tabela de artilharia da página da categoria
+  const oficial = artilharia
+    .filter(a => semAcento(a.time) === semAcento(time))
+    .sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name, 'pt-BR'))[0];
+  const nome = oficial?.name ?? marcadores[0]?.jogador;
+  let artilheiro: ArtilheiroDaFase | null = null;
+  if (nome) {
+    const jogosTime = sumulas.filter(j => j.mandante === time || j.visitante === time);
+    const ele = (x: { time: string; jogador: string }) => x.time === time && semAcento(x.jogador) === semAcento(nome);
+    artilheiro = {
+      jogador: nome,
+      gols: oficial ? oficial.goals : marcadores[0].gols,
+      oficial: !!oficial,
+      jogosDoTime,
+      comSumula: jogosTime.length,
+      esteve: jogosTime.filter(j => !j.ausentes.some(ele)).length,
+      marcouEm: jogosTime.filter(j => j.gols.some(g => !g.contra && ele(g))).length,
+    };
+  }
   const carrasco = somarMarcadores(sumulas, (j, g) => entre(j, time, adversario) && g.time === time)[0] ?? null;
-  const regular = [...marcadores].sort((a, b) => b.jogos - a.jogos || b.gols - a.gols)[0] ?? null;
+  const regular = [...marcadores].sort((a, b) => b.jogos - a.jogos || alfabetica(a.jogador, b.jogador))[0] ?? null;
   const melhor = maioresAtuacoes(sumulas.filter(j => j.mandante === time || j.visitante === time), 50).find(a => a.time === time) ?? null;
   return {
-    artilheiro: marcadores[0] ?? null,
+    artilheiro,
     carrasco,
     regular,
     melhorAtuacao: melhor ? { jogador: melhor.jogador, gols: melhor.gols, jogo: melhor.jogo } : null,

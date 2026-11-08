@@ -143,7 +143,7 @@
             }
           </div>
           @if (x.disciplinaA.jogos) {
-            <p class="nota">Cartões e ausências contados nas súmulas ({{ x.disciplinaA.jogos }} e {{ x.disciplinaB.jogos }} jogos com súmula).</p>
+            <p class="nota">Médias por jogo na 1ª fase.</p>
           }
         </div>
 
@@ -155,16 +155,22 @@
                 <h3>Destaques — {{ d.r.nome }}</h3>
                 <ul class="fatos">
                   @if (d.dz.artilheiro; as art) {
-                    <li><span>Artilheiro da 1ª fase</span><strong>{{ art.jogador }} · {{ art.gols }} gols em {{ art.jogos }} jogos</strong></li>
+                    <li>
+                      <span>Artilheiro da 1ª fase</span>
+                      <strong>{{ art.jogador }} · {{ art.gols }} {{ art.gols === 1 ? 'gol' : 'gols' }}</strong>
+                      <small>
+                        @if (d.r.golsPro) {Fez {{ art.gols / d.r.golsPro | percent: '1.0-0' }} dos gols do time, que marcou {{ d.r.mediaGolsPro | number: '1.1-1' }} por jogo na 1ª fase.}
+                      </small>
+                    </li>
                   }
                   @if (d.dz.carrasco; as c) {
                     <li><span>Artilheiro contra {{ d.adv }}</span><strong>{{ c.jogador }} · {{ c.gols }} {{ c.gols === 1 ? 'gol' : 'gols' }}</strong></li>
                   } @else {
                     <li><span>Artilheiro contra {{ d.adv }}</span><strong>Ninguém marcou nos confrontos da 1ª fase</strong></li>
                   }
-                  @if (d.dz.regular; as rg) {
-                    <li><span>Mais regular (jogos marcando)</span><strong>{{ rg.jogador }} · marcou em {{ rg.jogos }} jogos</strong></li>
-                  }
+                  <!-- "Mais regular (jogos marcando)" fica fora por enquanto: depende de registros de jogo incompletos.
+                       O cálculo continua em destaques().regular para voltar depois. -->
+                  <li><span>Jogos sem sofrer gols</span><strong>{{ d.r.semSofrerGols }} de {{ d.r.jogos }} jogos</strong></li>
                   @if (d.dz.melhorAtuacao; as m) {
                     <li><span>Melhor atuação</span><strong>{{ m.jogador }} · {{ m.gols }} gols em {{ m.jogo.mandante }} × {{ m.jogo.visitante }} ({{ dataBr(m.jogo.data) }})</strong></li>
                   }
@@ -184,10 +190,10 @@
                 @for (m of x.marcadores; track m.time + m.jogador) {
                   <li><span>{{ m.jogador }} <small>{{ m.time }}</small></span><strong>{{ m.gols }}</strong></li>
                 } @empty {
-                  <li class="vazio">Nenhum gol registrado nas súmulas destes jogos.</li>
+                  <li class="vazio">Nenhum gol registrado nestes jogos.</li>
                 }
               </ul>
-              <p class="nota">Jogos da 1ª fase entre os dois, conforme as súmulas.</p>
+              <p class="nota">Jogos da 1ª fase entre os dois.</p>
             </div>
             @for (lado of [{ nome: x.a.nome, lista: x.ameacaParaA }, { nome: x.b.nome, lista: x.ameacaParaB }]; track lado.nome) {
               <div class="cartao">
@@ -258,14 +264,15 @@
     </div>
     @if (maioresAtuacoes.length) {
       <h3 class="subtitulo">Maiores atuações individuais</h3>
-      <ul class="marcadores atuacoes">
-        @for (m of maioresAtuacoes; track m.jogo.data + m.jogador) {
+      <ol class="marcadores atuacoes">
+        @for (m of maioresAtuacoes; track m.jogo.data + m.jogador; let i = $index) {
           <li>
-            <span>{{ m.jogador }} <small>{{ m.jogo.mandante }} × {{ m.jogo.visitante }} · {{ dataBr(m.jogo.data) }}</small></span>
+            <b class="pos">{{ i + 1 }}</b>
+            <span class="quem">{{ m.jogador }} <small>{{ m.jogo.mandante }} × {{ m.jogo.visitante }} · {{ dataBr(m.jogo.data) }}</small></span>
             <strong>{{ m.gols }} gols</strong>
           </li>
         }
-      </ul>
+      </ol>
     }
   </section>
 
@@ -273,8 +280,5 @@
     Estimativas estatísticas, não oficiais. Modelo de Poisson com força de ataque e defesa calculada nos
     {{ totalJogos }} jogos da 1ª fase (jogos mais recentes pesam um pouco mais); empate no agregado
     classifica o melhor TPG, como diz o regulamento. Valem como palpite para a resenha, não como previsão.
-    @if (sumulasTranscritas) {
-      Gols por jogador, cartões e ausências transcritos de {{ sumulasTranscritas }} súmulas.
-    }
   </p>
 </div>

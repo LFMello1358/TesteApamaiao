@@ -397,7 +397,32 @@ input:focus-visible {
 }
 
 .subtitulo { margin-top: 20px; }
-.atuacoes { max-width: 560px; margin: 0 auto !important; }
+// top 10 em duas colunas (1–5 à esquerda, 6–10 à direita); uma coluna no celular
+.atuacoes {
+  max-width: 920px;
+  margin: 0 auto !important;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+  column-gap: 32px;
+
+  li { justify-content: flex-start; }
+  .quem { flex: 1; }
+  .pos {
+    flex: 0 0 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($green-light, 0.15);
+    color: $green-light;
+    font-size: 12px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+}
 
 .rodape {
   color: $suave;
@@ -414,6 +439,7 @@ input:focus-visible {
 }
 
 @media (max-width: 720px) {
+  .atuacoes { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-flow: row; }
   .Padrao { gap: 20px; padding: 16px 10px; }
   .painel { padding: 14px 12px; }
   .grade { grid-template-columns: minmax(0, 1fr); }

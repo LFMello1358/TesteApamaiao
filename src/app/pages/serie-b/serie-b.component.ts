@@ -2,7 +2,7 @@ import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core'
 import { BehaviorSubject } from 'rxjs';
 import { ComponetsComponent } from '../../componentes/componets/componets.component';
 import { SharedModule } from '../../shared/shared.module';
-import { TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B, ELENCO_SERIE_B, PLACARES_MATA_MATA_SERIE_B } from '../../shared/data/serie-b.data';
+import { ARTILHARIA_SERIE_B, TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B, ELENCO_SERIE_B, PLACARES_MATA_MATA_SERIE_B } from '../../shared/data/serie-b.data';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 import { PopupAvisosComponent } from '../popup-avisos/popup-avisos.component';
@@ -294,77 +294,7 @@ export class SerieBComponent {
     this.atualizarZoom();
 
 
-    this.topArtillery = [
-      { name: 'Tevez', goals: 1, time: 'Espanha', icon: 'assets/img/espanha.png' },
-      { name: 'Igor Brasil', goals: 18, time: 'Espanha', icon: 'assets/img/espanha.png' },
-      { name: 'Machado', goals: 4, time: 'Portugal', icon: 'assets/img/portugal.png' },
-      { name: 'Juca', goals: 10, time: 'Portugal', icon: 'assets/img/portugal.png' },
-      { name: 'Magrinho', goals: 3, time: 'Argentina', icon: 'assets/img/argentina.png' },
-      { name: 'Sergio Somos', goals: 1, time: 'Argentina', icon: 'assets/img/argentina.png' },
-      { name: 'Luna', goals: 1, time: 'Brasil', icon: 'assets/img/brasil.png' },
-      { name: 'Paulo Massa', goals: 1, time: 'Holanda', icon: 'assets/img/holanda.png' },
-      { name: 'José Marcio', goals: 18, time: 'Holanda', icon: 'assets/img/holanda.png' },
-      { name: 'Bodinho', goals: 27, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
-      { name: 'Neném', goals: 1, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
-      { name: 'Fabio Pinheiro', goals: 8, time: 'Brasil', icon: 'assets/img/brasil.png' },
-      { name: 'Jorginho', goals: 5, time: 'Brasil', icon: 'assets/img/brasil.png' },
-      { name: 'Ximbinha', goals: 7, time: 'México', icon: 'assets/img/mexico.png' },
-      { name: 'Maduro', goals: 1, time: 'México', icon: 'assets/img/mexico.png' },
-      { name: 'Maguila', goals: 11, time: 'México', icon: 'assets/img/mexico.png' },
-      { name: 'Cristiano Motta', goals: 12, time: 'Espanha', icon: 'assets/img/espanha.png' },
-      { name: 'Ezequiel', goals: 12, time: 'Espanha', icon: 'assets/img/espanha.png' },
-      { name: 'Marcelo Dentista', goals: 8, time: 'Brasil', icon: 'assets/img/brasil.png' },
-      { name: 'Mauricio', goals: 1, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
-      { name: 'Romão', goals: 13, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
-      { name: 'Grillo', goals: 8, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
-      { name: 'Ferreira', goals: 12, time: 'França', icon: 'assets/img/frança.png' },
-      { name: 'Luisinho', goals: 2, time: 'França', icon: 'assets/img/frança.png' },
-      { name: 'Albert', goals: 1, time: 'França', icon: 'assets/img/frança.png' },
-      { name: 'Fabio Barros', goals: 1, time: 'França', icon: 'assets/img/frança.png' },
-      { name: 'Paulinho Loria', goals: 9, time: 'Itália', icon: 'assets/img/italia.png' },
-      { name: 'Portugal', goals: 1, time: 'Itália', icon: 'assets/img/italia.png' },
-      { name: 'Latini', goals: 19, time: 'Espanha', icon: 'assets/img/espanha.png' },
-      { name: 'Marcellus', goals: 5, time: 'Holanda', icon: 'assets/img/holanda.png' },
-      { name: 'Francelino', goals: 4, time: 'México', icon: 'assets/img/mexico.png' },
-      { name: 'Léo Barbosa', goals: 1, time: 'México', icon: 'assets/img/mexico.png' },
-      { name: 'Serginho', goals: 5, time: 'México', icon: 'assets/img/mexico.png' },
-      { name: 'Jun', goals: 2, time: 'Argentina', icon: 'assets/img/argentina.png' },
-      { name: 'Naldo', goals: 6, time: 'Argentina', icon: 'assets/img/argentina.png' },
-      { name: 'Silvio Cavalo', goals: 11, time: 'Portugal', icon: 'assets/img/portugal.png' },
-      { name: 'Andrinho', goals: 1, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
-      { name: 'Klebão', goals: 1, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
-      { name: 'Claudio', goals: 11, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
-      { name: 'Marcelinho', goals: 6, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
-      { name: 'Alex Gomes', goals: 3, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
-      { name: 'Frank', goals: 4, time: 'Itália', icon: 'assets/img/italia.png' },
-      { name: 'Cadu', goals: 2, time: 'Itália', icon: 'assets/img/italia.png' },
-      { name: 'Naval', goals: 13, time: 'Itália', icon: 'assets/img/italia.png' },
-      { name: 'Luquinha', goals: 1, time: 'Itália', icon: 'assets/img/italia.png' },
-      { name: 'Wanildo', goals: 9, time: 'Argentina', icon: 'assets/img/argentina.png' },
-      { name: 'França', goals: 12, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
-      { name: 'Sandrinho', goals: 5, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
-      { name: 'Jorginho Contador', goals: 7, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
-      { name: 'Bahia', goals: 1, time: 'Holanda', icon: 'assets/img/holanda.png' },
-      { name: 'Eloir', goals: 15, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
-      { name: 'Cupulille', goals: 12, time: 'México', icon: 'assets/img/mexico.png' },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ]
+    this.topArtillery = ARTILHARIA_SERIE_B.map(a => ({ ...a }));
     // 🔥 ordena por gols (desc) e nome (asc)
     this.topArtillery = this.topArtillery
       .sort((a, b) => {

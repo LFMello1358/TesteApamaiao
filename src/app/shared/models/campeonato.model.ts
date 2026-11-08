@@ -73,3 +73,11 @@ export interface PlacaresMataMata {
   final: PlacarConfronto;
   terceiroLugar: PlacarJogoUnico;
 }
+
+/** Linha da artilharia oficial exibida na página da categoria. */
+export interface Artilheiro {
+  name: string;
+  goals: number;
+  time: string;
+  icon: string;
+}

@@ -3,12 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { DecimalPipe, PercentPipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { ComponetsComponent } from '../../componentes/componets/componets.component';
-import { Jogo, PlacarConfronto, PlacaresMataMata, SumulaDoJogo, TimeElenco, TimeTurno } from '../../shared/models/campeonato.model';
+import { Artilheiro, Jogo, PlacarConfronto, PlacaresMataMata, SumulaDoJogo, TimeElenco, TimeTurno } from '../../shared/models/campeonato.model';
 import {
-  ELENCO_SERIE_A, PLACARES_MATA_MATA_SERIE_A, TURNO_1_SERIE_A, TURNO_2_SERIE_A, TURNO_3_SERIE_A,
+  ARTILHARIA_SERIE_A, ELENCO_SERIE_A, PLACARES_MATA_MATA_SERIE_A, TURNO_1_SERIE_A, TURNO_2_SERIE_A, TURNO_3_SERIE_A,
 } from '../../shared/data/serie-a.data';
 import {
-  ELENCO_SERIE_B, PLACARES_MATA_MATA_SERIE_B, TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B,
+  ARTILHARIA_SERIE_B, ELENCO_SERIE_B, PLACARES_MATA_MATA_SERIE_B, TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B,
 } from '../../shared/data/serie-b.data';
 import { JOGOS_SERIE_A } from '../../shared/data/jogos-serie-a';
 import { JOGOS_SERIE_B } from '../../shared/data/jogos-serie-b';
@@ -28,11 +28,12 @@ interface DadosSerie {
   elenco: TimeElenco[];
   placares: PlacaresMataMata;
   sumulas: SumulaDoJogo[];
+  artilharia: Artilheiro[];
 }
 
 const DADOS: Record<'A' | 'B', DadosSerie> = {
-  A: { turnos: [TURNO_1_SERIE_A, TURNO_2_SERIE_A, TURNO_3_SERIE_A], jogos: JOGOS_SERIE_A, elenco: ELENCO_SERIE_A, placares: PLACARES_MATA_MATA_SERIE_A, sumulas: SUMULAS_SERIE_A },
-  B: { turnos: [TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B], jogos: JOGOS_SERIE_B, elenco: ELENCO_SERIE_B, placares: PLACARES_MATA_MATA_SERIE_B, sumulas: SUMULAS_SERIE_B },
+  A: { turnos: [TURNO_1_SERIE_A, TURNO_2_SERIE_A, TURNO_3_SERIE_A], jogos: JOGOS_SERIE_A, elenco: ELENCO_SERIE_A, placares: PLACARES_MATA_MATA_SERIE_A, sumulas: SUMULAS_SERIE_A, artilharia: ARTILHARIA_SERIE_A },
+  B: { turnos: [TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B], jogos: JOGOS_SERIE_B, elenco: ELENCO_SERIE_B, placares: PLACARES_MATA_MATA_SERIE_B, sumulas: SUMULAS_SERIE_B, artilharia: ARTILHARIA_SERIE_B },
 };
 
 registerLocaleData(localePt, 'pt-BR');
@@ -62,14 +63,19 @@ export class ScoutComponent {
   readonly maxTitulo = Math.max(...this.chances.map(c => c.titulo), 0.0001);
   /** Jogos com súmula transcrita (gols por jogador, cartões, ausências). */
   readonly sumulasTranscritas = this.dados.sumulas.length;
-  readonly maioresAtuacoes = maioresAtuacoes(this.dados.sumulas);
+  readonly maioresAtuacoes = maioresAtuacoes(this.dados.sumulas, 10);
+
+  /** Jogos do time na 1ª fase (soma dos três turnos). */
+  private jogosNaFase(time: string): number {
+    return this.geral.find(t => t.name === time)?.games ?? 0;
+  }
 
   readonly fases: { id: Fase; nome: string }[] = [
     { id: 'quartas', nome: 'Quartas' },
     { id: 'semifinais', nome: 'Semifinais' },
     { id: 'final', nome: 'Final' },
   ];
-  // ?fase=quartas&confronto=2 (vindo do 'Ver mais' de um confronto na página da categoria)
+  // ?fase=quartas&confronto=2 (vindo do 'Estatísticas' de um confronto na página da categoria)
   private readonly faseInicial = (['quartas', 'semifinais', 'final'] as Fase[]).find(f => f === this.rota.queryParamMap.get('fase'));
   readonly fase = signal<Fase>(this.faseInicial ?? 'quartas');
   readonly indice = signal(Math.max(0, Number(this.rota.queryParamMap.get('confronto')) || 0));
@@ -118,8 +124,8 @@ export class ScoutComponent {
       b: rb,
       disciplinaA: da,
       disciplinaB: db,
-      destaquesA: destaques(this.dados.sumulas, a, b),
-      destaquesB: destaques(this.dados.sumulas, b, a),
+      destaquesA: destaques(this.dados.sumulas, a, b, this.dados.artilharia, this.jogosNaFase(a)),
+      destaquesB: destaques(this.dados.sumulas, b, a, this.dados.artilharia, this.jogosNaFase(b)),
       vantagem: vantagemA ? a : b,
       chanceA: pA,
       chanceB: 1 - pA,
