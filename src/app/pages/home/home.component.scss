@@ -35,6 +35,8 @@ $line: #e1e8e4;
 /* =========================================================
    REDES DO CAMPEONATO – dois cartões com as cores de cada marca
 ========================================================= */
+app-aviso-inscricao { margin-bottom: -32px; }
+
 .redes-home {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

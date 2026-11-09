@@ -1,0 +1,63 @@
+@if (ativo) {
+  <!-- FAIXA: fica no Home para reabrir o aviso -->
+  <button type="button" class="faixa" (click)="abrir()">
+    <span class="faixa-pulso" aria-hidden="true"></span>
+    <span class="faixa-texto">
+      <strong>Pré-inscrição APAMAIÃO 2027 aberta</strong>
+      <span>Prazo final: {{ prazo }}</span>
+    </span>
+    <span class="faixa-acao">Ver detalhes <mat-icon aria-hidden="true">chevron_right</mat-icon></span>
+  </button>
+
+  @if (aberto()) {
+    <div class="fundo" (click)="fechar()"></div>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="aviso-titulo">
+      <button type="button" class="fechar" (click)="fechar()" aria-label="Fechar aviso">
+        <mat-icon aria-hidden="true">close</mat-icon>
+      </button>
+
+      <header class="topo">
+        <span class="selo"><mat-icon aria-hidden="true">campaign</mat-icon> Aviso da Diretoria Geral</span>
+        <h2 id="aviso-titulo">Pré-inscrição <span>APAMAIÃO 2027</span></h2>
+        <div class="prazo">
+          <mat-icon aria-hidden="true">event</mat-icon>
+          <span>Prazo final <strong>{{ prazo }}</strong></span>
+        </div>
+      </header>
+
+      <div class="corpo">
+        <ul class="itens">
+          <li>
+            <mat-icon aria-hidden="true">assignment</mat-icon>
+            <span><strong>Obrigatória</strong> para quem quer jogar em 2027, feita só pelo formulário oficial.</span>
+          </li>
+          <li>
+            <mat-icon aria-hidden="true">badge</mat-icon>
+            <span>A condição de <strong>pai de aluno e representante financeiro</strong> precisa ser comprovada com os documentos pedidos no formulário, enviados ao e-mail indicado.</span>
+          </li>
+          <li>
+            <mat-icon aria-hidden="true">sports_soccer</mat-icon>
+            <span>Garante o direito de participar da <strong>peneira em dezembro de 2026</strong> (data a ser divulgada). Não garante vaga direta para quem não terminou o campeonato de 2026.</span>
+          </li>
+          <li>
+            <mat-icon aria-hidden="true">fact_check</mat-icon>
+            <span>Peneira <strong>obrigatória para pais novos</strong> e para atletas que estão descendo da Categoria A.</span>
+          </li>
+          <li>
+            <mat-icon aria-hidden="true">warning_amber</mat-icon>
+            <span>Informações incorretas ou preenchidas de forma irregular não serão aceitas.</span>
+          </li>
+        </ul>
+
+        <div class="acoes">
+          <a class="cta" [href]="link" target="_blank" rel="noopener">
+            Fazer pré-inscrição <mat-icon aria-hidden="true">arrow_outward</mat-icon>
+          </a>
+          <button type="button" class="secundario" (click)="fechar()">Agora não</button>
+        </div>
+
+        <p class="assinatura">Diretoria Geral do APAMAIÃO</p>
+      </div>
+    </div>
+  }
+}
