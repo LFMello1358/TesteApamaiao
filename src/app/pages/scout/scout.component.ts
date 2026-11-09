@@ -18,7 +18,6 @@ import {
   Duelo, chancesTitulo, classificacaoGeral, criarModelo, curiosidades, destaques, disciplina, historico,
   maioresAtuacoes, marcadoresDoConfronto, montarMataMata, posicao, probAvancar, probJogo, quemMaisMarcouContra, resumoTime,
 } from '../../shared/campeonato/scout';
-import { LINK_INSTAGRAM, LINK_YOUTUBE } from '../../shared/links';
 
 type Fase = 'quartas' | 'semifinais' | 'final';
 
@@ -50,8 +49,6 @@ registerLocaleData(localePt, 'pt-BR');
 export class ScoutComponent {
   private readonly rota = inject(ActivatedRoute).snapshot;
   readonly serie: 'A' | 'B' = this.rota.data['serie'] === 'B' ? 'B' : 'A';
-  readonly linkYoutube = LINK_YOUTUBE;
-  readonly linkInstagram = LINK_INSTAGRAM;
 
   private readonly dados = DADOS[this.serie];
   readonly totalJogos = this.dados.jogos.length;

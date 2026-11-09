@@ -120,13 +120,6 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
-.acoes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
 .botoes-fase {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -466,7 +459,6 @@ input:focus-visible {
     font-size: 12px;
   }
 
-  .acoes .botao { flex: 1; display: flex; align-items: center; justify-content: center; }
 
   .duelos button {
     min-height: 52px;

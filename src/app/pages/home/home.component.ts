@@ -3,6 +3,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { ComponetsComponent } from '../../componentes/componets/componets.component';
 import { TimeTurno } from '../../shared/models/campeonato.model';
 import { TURNO_1_SERIE_A, TURNO_2_SERIE_A, TURNO_3_SERIE_A } from '../../shared/data/serie-a.data';
+import { LINK_INSTAGRAM, LINK_YOUTUBE } from '../../shared/links';
 import { TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B } from '../../shared/data/serie-b.data';
 
 interface Patrocinador { src: string; alt: string; }
@@ -37,6 +38,8 @@ function numerosDaTemporada(): { valor: string; rotulo: string }[] {
 })
 export class HomeComponent implements OnInit, OnDestroy {
   readonly numeros = numerosDaTemporada();
+  readonly linkInstagram = LINK_INSTAGRAM;
+  readonly linkYoutube = LINK_YOUTUBE;
 
   readonly cartazes = [
     { categoria: 'Categoria A', src: 'assets/img/JogosMataMataA.jpg' },

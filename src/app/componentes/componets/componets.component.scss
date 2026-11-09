@@ -134,6 +134,40 @@ $shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.45);
   }
 }
 
+/* REDES SOCIAIS */
+.redes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding-left: 16px;
+  border-left: 1px solid rgba($white, 0.12);
+}
+
+.rede {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba($white, 0.08);
+  color: $white;
+  transition: background 0.2s, transform 0.2s;
+
+  svg { width: 18px; height: 18px; }
+
+  &:hover { transform: translateY(-1px); }
+  &.instagram:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+  &.youtube:hover { background: #ff0000; }
+
+  &:focus-visible {
+    outline: 2px solid $green-glow;
+    outline-offset: 2px;
+  }
+}
+
 /* ☰ e menu mobile ficam escondidos no desktop */
 .menu-btn,
 .menu-mobile {
@@ -186,6 +220,11 @@ $shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.45);
   }
 
   .menu-desktop {
+    display: none;
+  }
+
+  // no celular os ícones saem da barra (não apertam o nome) e vão para dentro do ☰
+  .redes {
     display: none;
   }
 
@@ -271,5 +310,14 @@ $shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.45);
     &.largo {
       grid-column: 1 / -1;
     }
+  }
+
+  .menu-mobile .rede-item {
+    gap: 8px;
+
+    svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    &.instagram svg { color: #f56040; }
+    &.youtube svg { color: #ff3b30; }
   }
 }

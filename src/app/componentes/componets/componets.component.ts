@@ -4,6 +4,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { LINK_INSTAGRAM, LINK_YOUTUBE } from '../../shared/links';
 
 @Component({
   selector: 'app-componets',
@@ -15,6 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ComponetsComponent {
   private readonly router = inject(Router);
+
+  readonly linkInstagram = LINK_INSTAGRAM;
+  readonly linkYoutube = LINK_YOUTUBE;
 
   // No celular o menu começa fechado (o ☰ abre); no desktop ele fica sempre visível pelo CSS.
   isMenuOpen = false;
