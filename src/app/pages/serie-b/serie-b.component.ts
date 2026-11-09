@@ -2,7 +2,7 @@ import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core'
 import { BehaviorSubject } from 'rxjs';
 import { ComponetsComponent } from '../../componentes/componets/componets.component';
 import { SharedModule } from '../../shared/shared.module';
-import { ARTILHARIA_SERIE_B, TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B, ELENCO_SERIE_B, PLACARES_MATA_MATA_SERIE_B } from '../../shared/data/serie-b.data';
+import { ARTILHARIA_SERIE_B, GOLEIROS_SERIE_B, TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B, ELENCO_SERIE_B, PLACARES_MATA_MATA_SERIE_B } from '../../shared/data/serie-b.data';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 import { PopupAvisosComponent } from '../popup-avisos/popup-avisos.component';
@@ -307,85 +307,11 @@ export class SerieBComponent {
         return a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' });
       })
       .slice(0, 10); // mantém apenas os 10 primeiros
-    this.topGoalkeepers = [
-      {
-        name: 'Marquinho Jr',
-        goalsConceded: 91,
-        time: 'Alemanha',
-        icon: 'assets/img/alemanha.png'
-      },
-      {
-        name: 'Andrézão',
-        goalsConceded: 42,
-        time: 'Argentina',
-        icon: 'assets/img/argentina.png'
-      },
-      {
-        name: 'Marquinho Country',
-        goalsConceded: 54,
-        time: 'Brasil',
-        icon: 'assets/img/brasil.png'
-      },
-      {
-        name: 'Xingu',
-        goalsConceded: 25,
-        time: 'Espanha',
-        icon: 'assets/img/espanha.png'
-      },
-      {
-        name: 'Brasil',
-        goalsConceded: 75,
-        time: 'França',
-        icon: 'assets/img/frança.png'
-      },
-      {
-        name: 'Zuqui',
-        goalsConceded: 57,
-        time: 'Holanda',
-        icon: 'assets/img/holanda.png'
-      },
-      {
-        name: 'Rubano',
-        goalsConceded: 43,
-        time: 'Inglaterra',
-        icon: 'assets/img/inglaterra.png'
-      },
-      {
-        name: 'Leandro Manhaes',
-        goalsConceded: 31,
-        time: 'Itália',
-        icon: 'assets/img/italia.png'
-      },
-      {
-        name: 'Felipe',
-        goalsConceded: 39,
-        time: 'México',
-        icon: 'assets/img/mexico.png'
-      },
-      {
-        name: 'Jofre',
-        goalsConceded: 33,
-        time: 'Portugal',
-        icon: 'assets/img/portugal.png'
-      },
-      {
-        name: 'Braga',
-        goalsConceded: 54,
-        time: 'Uruguai',
-        icon: 'assets/img/uruguai.png'
-      }
-    ];
-
-
-    // Ordena os goleiros por menos gols sofridos
-    this.topGoalkeepers.sort((a, b) => {
-      if (a.goalsConceded !== b.goalsConceded) {
-        return a.goalsConceded - b.goalsConceded; // Ordena por menor número de gols sofridos
-      }
-      return a.name.localeCompare(b.name); // Critério de desempate: ordem alfabética
-    });
-
-    this.topGoalkeepers.sort((a, b) => a.goalsConceded - b.goalsConceded);
+    // Goleiros menos vazados: dados em shared/data/serie-b.data.ts (GOLEIROS_SERIE_B).
+    // Menos gols sofridos primeiro; empate em ordem alfabética.
+    this.topGoalkeepers = GOLEIROS_SERIE_B
+      .map(g => ({ ...g }))
+      .sort((a, b) => a.goalsConceded - b.goalsConceded || a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' }));
   }
 
 

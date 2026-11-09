@@ -1,7 +1,7 @@
 // Dados oficiais da Série A: totais por turno (com bônus de campeão/vice já somados),
 // elenco com estatísticas individuais e placares do mata-mata.
 // Estes dados alimentam a página da categoria e a aba Scout.
-import { Artilheiro, PlacaresMataMata, TimeElenco, TimeTurno } from '../models/campeonato.model';
+import { Artilheiro, PlacaresMataMata, TimeElenco, TimeTurno, Goleiro } from '../models/campeonato.model';
 
 export const TURNO_1_SERIE_A: TimeTurno[] = [
     { name: 'Alemanha', points: 20, games: 10, wins: 6, draws: 2, losses: 2, goalsFor: 25, goalsAgainst: 18, SaldoGols: 7, woLosses: 0, players: [], icon: 'assets/img/alemanha.png' },
@@ -456,4 +456,74 @@ export const ARTILHARIA_SERIE_A: Artilheiro[] = [
 
 
 
+    ];
+
+/** Goleiros menos vazados (gols sofridos). A página da categoria ordena: menos gols primeiro, empate em ordem alfabética. */
+export const GOLEIROS_SERIE_A: Goleiro[] = [
+      {
+        name: 'Luizinho Jansen',
+        goalsConceded: 62,
+        time: 'Alemanha',
+        icon: 'assets/img/alemanha.png'
+      },
+      {
+        name: 'Somália',
+        goalsConceded: 67,
+        time: 'Argentina',
+        icon: 'assets/img/argentina.png'
+      },
+      {
+        name: 'Enzo Merecci',
+        goalsConceded: 67,
+        time: 'Brasil',
+        icon: 'assets/img/brasil.png'
+      },
+      {
+        name: 'Lucas Milward',
+        goalsConceded: 60,
+        time: 'Espanha',
+        icon: 'assets/img/espanha.png'
+      },
+      {
+        name: 'Gilmar',
+        goalsConceded: 59,
+        time: 'França',
+        icon: 'assets/img/frança.png'
+      },
+      {
+        name: 'Markito',
+        goalsConceded: 71,
+        time: 'Holanda',
+        icon: 'assets/img/holanda.png'
+      },
+      {
+        name: 'Bacon',
+        goalsConceded: 50,
+        time: 'Inglaterra',
+        icon: 'assets/img/inglaterra.png'
+      },
+      {
+        name: 'Magela',
+        goalsConceded: 62,
+        time: 'Itália',
+        icon: 'assets/img/italia.png'
+      },
+      {
+        name: 'João Victor',
+        goalsConceded: 49,
+        time: 'México',
+        icon: 'assets/img/mexico.png'
+      },
+      {
+        name: 'Matheus Merecci',
+        goalsConceded: 93,
+        time: 'Portugal',
+        icon: 'assets/img/portugal.png'
+      },
+      {
+        name: 'Thomás',
+        goalsConceded: 44,
+        time: 'Uruguai',
+        icon: 'assets/img/uruguai.png'
+      }
     ];

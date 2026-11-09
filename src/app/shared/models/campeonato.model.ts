@@ -81,3 +81,5 @@ export interface Artilheiro {
   time: string;
   icon: string;
 }
+
+export interface Goleiro { name: string; goalsConceded: number; time: string; icon: string; }

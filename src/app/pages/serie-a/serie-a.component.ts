@@ -2,7 +2,7 @@ import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core'
 import { BehaviorSubject } from 'rxjs';
 import { ComponetsComponent } from '../../componentes/componets/componets.component';
 import { SharedModule } from '../../shared/shared.module';
-import { ARTILHARIA_SERIE_A, TURNO_1_SERIE_A, TURNO_2_SERIE_A, TURNO_3_SERIE_A, ELENCO_SERIE_A, PLACARES_MATA_MATA_SERIE_A } from '../../shared/data/serie-a.data';
+import { ARTILHARIA_SERIE_A, GOLEIROS_SERIE_A, TURNO_1_SERIE_A, TURNO_2_SERIE_A, TURNO_3_SERIE_A, ELENCO_SERIE_A, PLACARES_MATA_MATA_SERIE_A } from '../../shared/data/serie-a.data';
 interface Team {
   name: string;
   icon: string;
@@ -260,85 +260,11 @@ export class SerieAComponent {
       })
       .slice(0, 10); // mantém apenas os 10 primeiros
 
-    this.topGoalkeepers = [
-      {
-        name: 'Luizinho Jansen',
-        goalsConceded: 62,
-        time: 'Alemanha',
-        icon: 'assets/img/alemanha.png'
-      },
-      {
-        name: 'Somália',
-        goalsConceded: 67,
-        time: 'Argentina',
-        icon: 'assets/img/argentina.png'
-      },
-      {
-        name: 'Enzo Merecci',
-        goalsConceded: 67,
-        time: 'Brasil',
-        icon: 'assets/img/brasil.png'
-      },
-      {
-        name: 'Lucas Milward',
-        goalsConceded: 60,
-        time: 'Espanha',
-        icon: 'assets/img/espanha.png'
-      },
-      {
-        name: 'Gilmar',
-        goalsConceded: 59,
-        time: 'França',
-        icon: 'assets/img/frança.png'
-      },
-      {
-        name: 'Markito',
-        goalsConceded: 71,
-        time: 'Holanda',
-        icon: 'assets/img/holanda.png'
-      },
-      {
-        name: 'Bacon',
-        goalsConceded: 50,
-        time: 'Inglaterra',
-        icon: 'assets/img/inglaterra.png'
-      },
-      {
-        name: 'Magela',
-        goalsConceded: 62,
-        time: 'Itália',
-        icon: 'assets/img/italia.png'
-      },
-      {
-        name: 'João Victor',
-        goalsConceded: 49,
-        time: 'México',
-        icon: 'assets/img/mexico.png'
-      },
-      {
-        name: 'Matheus Merecci',
-        goalsConceded: 93,
-        time: 'Portugal',
-        icon: 'assets/img/portugal.png'
-      },
-      {
-        name: 'Thomás',
-        goalsConceded: 44,
-        time: 'Uruguai',
-        icon: 'assets/img/uruguai.png'
-      }
-    ];
-
-
-    // Ordena os goleiros por menos gols sofridos
-    this.topGoalkeepers.sort((a, b) => {
-      if (a.goalsConceded !== b.goalsConceded) {
-        return a.goalsConceded - b.goalsConceded; // Ordena por menor número de gols sofridos
-      }
-      return a.name.localeCompare(b.name); // Critério de desempate: ordem alfabética
-    });
-
-    this.topGoalkeepers.sort((a, b) => a.goalsConceded - b.goalsConceded);
+    // Goleiros menos vazados: dados em shared/data/serie-a.data.ts (GOLEIROS_SERIE_A).
+    // Menos gols sofridos primeiro; empate em ordem alfabética.
+    this.topGoalkeepers = GOLEIROS_SERIE_A
+      .map(g => ({ ...g }))
+      .sort((a, b) => a.goalsConceded - b.goalsConceded || a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' }));
   }
 
 

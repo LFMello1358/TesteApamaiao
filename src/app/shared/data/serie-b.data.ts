@@ -1,7 +1,7 @@
 // Dados oficiais da Série B: totais por turno (com bônus de campeão/vice já somados),
 // elenco com estatísticas individuais e placares do mata-mata.
 // Estes dados alimentam a página da categoria e a aba Scout.
-import { Artilheiro, PlacaresMataMata, TimeElenco, TimeTurno } from '../models/campeonato.model';
+import { Artilheiro, PlacaresMataMata, TimeElenco, TimeTurno, Goleiro } from '../models/campeonato.model';
 
 export const TURNO_1_SERIE_B: TimeTurno[] = [
     { name: 'Alemanha', points: 5, games: 10, wins: 1, draws: 2, losses: 7, goalsFor: 14, goalsAgainst: 29, SaldoGols: -15, woLosses: 0, players: [], icon: 'assets/img/alemanha.png' },
@@ -473,4 +473,74 @@ export const ARTILHARIA_SERIE_B: Artilheiro[] = [
 
 
 
+    ];
+
+/** Goleiros menos vazados (gols sofridos). A página da categoria ordena: menos gols primeiro, empate em ordem alfabética. */
+export const GOLEIROS_SERIE_B: Goleiro[] = [
+      {
+        name: 'Marquinho Jr',
+        goalsConceded: 91,
+        time: 'Alemanha',
+        icon: 'assets/img/alemanha.png'
+      },
+      {
+        name: 'Andrézão',
+        goalsConceded: 42,
+        time: 'Argentina',
+        icon: 'assets/img/argentina.png'
+      },
+      {
+        name: 'Marquinho Country',
+        goalsConceded: 54,
+        time: 'Brasil',
+        icon: 'assets/img/brasil.png'
+      },
+      {
+        name: 'Xingu',
+        goalsConceded: 25,
+        time: 'Espanha',
+        icon: 'assets/img/espanha.png'
+      },
+      {
+        name: 'Brasil',
+        goalsConceded: 75,
+        time: 'França',
+        icon: 'assets/img/frança.png'
+      },
+      {
+        name: 'Zuqui',
+        goalsConceded: 57,
+        time: 'Holanda',
+        icon: 'assets/img/holanda.png'
+      },
+      {
+        name: 'Rubano',
+        goalsConceded: 43,
+        time: 'Inglaterra',
+        icon: 'assets/img/inglaterra.png'
+      },
+      {
+        name: 'Leandro Manhaes',
+        goalsConceded: 31,
+        time: 'Itália',
+        icon: 'assets/img/italia.png'
+      },
+      {
+        name: 'Felipe',
+        goalsConceded: 39,
+        time: 'México',
+        icon: 'assets/img/mexico.png'
+      },
+      {
+        name: 'Jofre',
+        goalsConceded: 33,
+        time: 'Portugal',
+        icon: 'assets/img/portugal.png'
+      },
+      {
+        name: 'Braga',
+        goalsConceded: 54,
+        time: 'Uruguai',
+        icon: 'assets/img/uruguai.png'
+      }
     ];
