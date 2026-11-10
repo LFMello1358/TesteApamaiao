@@ -1,0 +1,35 @@
+@if (transmissao(); as t) {
+  @if (aberto()) {
+    <div class="fundo" (click)="fechar()"></div>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ao-vivo-titulo">
+      <button type="button" class="fechar" (click)="fechar()" aria-label="Fechar">✕</button>
+
+      <span class="selo"><span class="pulso" aria-hidden="true"></span>Ao vivo agora</span>
+      <h2 id="ao-vivo-titulo">{{ t.titulo }}</h2>
+
+      <ul class="jogos">
+        @for (j of t.jogos; track j.categoria) {
+          <li>
+            <span class="cat">Cat. {{ j.categoria }} · {{ j.hora }}</span>
+            <div class="confronto">
+              <span class="time"><img [src]="escudos[j.mandante]" [alt]="" />{{ j.mandante }}</span>
+              <span class="x">×</span>
+              <span class="time"><img [src]="escudos[j.visitante]" [alt]="" />{{ j.visitante }}</span>
+            </div>
+          </li>
+        }
+      </ul>
+
+      <a class="cta" [href]="link(t)" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+        Assistir no YouTube
+      </a>
+      <button type="button" class="depois" (click)="fechar()">Agora não</button>
+    </div>
+  } @else {
+    <!-- depois de fechado: selo discreto no canto para voltar à transmissão -->
+    <a class="flutuante" [href]="link(t)" target="_blank" rel="noopener" aria-label="Assistir ao vivo no YouTube">
+      <span class="pulso" aria-hidden="true"></span>Ao vivo
+    </a>
+  }
+}

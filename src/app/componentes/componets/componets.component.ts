@@ -5,11 +5,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { LINK_INSTAGRAM, LINK_YOUTUBE } from '../../shared/links';
+import { AoVivoComponent } from '../ao-vivo/ao-vivo.component';
 
 @Component({
   selector: 'app-componets',
   standalone: true,
-  imports: [SharedModule, MatMenuModule, MatButtonModule, MatIconModule],
+  imports: [SharedModule, MatMenuModule, MatButtonModule, MatIconModule, AoVivoComponent],
   templateUrl: './componets.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./componets.component.scss']

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { LINK_PRE_INSCRICAO_2027, PRAZO_PRE_INSCRICAO_2027 } from '../../shared/links';
+import { transmissaoAgora } from '../../shared/data/transmissoes';
 
 const CHAVE_FECHADO = 'aviso-pre-inscricao-2027-fechado';
 
@@ -26,7 +27,9 @@ export class AvisoInscricaoComponent implements OnInit, OnDestroy {
     // Na mesma visita, quem já fechou não vê o modal de novo ao voltar para o Home.
     let jaFechou = false;
     try { jaFechou = sessionStorage.getItem(CHAVE_FECHADO) === '1'; } catch { /* sem storage */ }
-    if (!jaFechou) this.abrir();
+    // na hora do jogo quem abre é o pop-up "Ao vivo"; o aviso fica na faixa do Home
+    const aoVivo = transmissaoAgora() || new URLSearchParams(location.search).has('aovivo');
+    if (!jaFechou && !aoVivo) this.abrir();
   }
 
   ngOnDestroy(): void {
