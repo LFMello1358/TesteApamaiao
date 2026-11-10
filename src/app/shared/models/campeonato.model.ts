@@ -37,6 +37,9 @@ export interface Jogo {
   mandante: string;
   visitante: string;
   gols: [number, number];
+  /** Só nos jogos do mata-mata. */
+  fase?: SumulaDoJogo['fase'];
+  perna?: SumulaDoJogo['perna'];
 }
 
 export interface JogadorNaSumula { time: string; jogador: string; }
@@ -44,6 +47,9 @@ export interface JogadorNaSumula { time: string; jogador: string; }
 /** Dados de um jogo transcritos da súmula. confere = soma dos gols bate com o placar oficial. */
 export interface SumulaDoJogo {
   data: string;
+  /** Só no mata-mata (sem fase = jogo da 1ª fase). */
+  fase?: 'quartas' | 'semifinais' | 'final' | 'terceiro';
+  perna?: 'ida' | 'volta' | 'unico';
   mandante: string;
   visitante: string;
   confere: boolean;

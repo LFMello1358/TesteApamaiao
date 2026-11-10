@@ -92,11 +92,26 @@
                 }
               }
             </div>
+            @if (!simuladorAberto()) {
+              @for (j of jogosDoConfronto(); track j.rotulo) {
+                <div class="lances">
+                  <span class="perna">{{ j.rotulo }} · {{ j.data }}</span>
+                  @for (t of j.times; track t.nome) {
+                    <p>
+                      <strong>{{ t.nome }}:</strong>
+                      @if (t.gols.length) { ⚽ {{ t.gols.join(', ') }} } @else { <span class="suave">sem gols</span> }
+                      @if (t.amarelos.length) { <span class="cartao-am" aria-label="Cartão amarelo"></span> {{ t.amarelos.join(', ') }} }
+                      @if (t.vermelhos.length) { <span class="cartao-vm" aria-label="Cartão vermelho"></span> {{ t.vermelhos.join(', ') }} }
+                    </p>
+                  }
+                </div>
+              }
+            }
             @if (classificado(); as c) {
               <p class="resultado">{{ c.ta }} × {{ c.tb }} no agregado: <strong>{{ c.nome }}</strong>
                 {{ simuladorAberto() ? 'avançaria' : 'avança' }}{{ c.porVantagem ? ' pela vantagem do empate' : '' }}</p>
             } @else if (!simuladorAberto()) {
-              <p class="nota">Os placares aparecem aqui quando os jogos forem disputados.</p>
+              <p class="nota">{{ placarOficial().idaA === null ? 'Os placares aparecem aqui quando os jogos forem disputados.' : 'O placar da volta aparece aqui quando o jogo for disputado.' }}</p>
             }
             @if (simuladorAberto()) {
               <p class="nota">Teste placares hipotéticos e veja quem passaria e como mudam as chances. Nada é salvo.</p>
@@ -150,17 +165,17 @@
                 <ul class="fatos">
                   @if (d.dz.artilheiro; as art) {
                     <li>
-                      <span>Artilheiro da 1ª fase</span>
+                      <span>Artilheiro do time</span>
                       <strong>{{ art.jogador }} · {{ art.gols }} {{ art.gols === 1 ? 'gol' : 'gols' }}</strong>
                       <small>
-                        @if (d.r.golsPro) {Fez {{ art.gols / d.r.golsPro | percent: '1.0-0' }} dos gols do time, que marcou {{ d.r.mediaGolsPro | number: '1.1-1' }} por jogo na 1ª fase.}
+                        @if (d.r.golsPro) {Fez {{ art.gols / d.r.golsPro | percent: '1.0-0' }} dos gols do time, que marcou {{ d.r.mediaGolsPro | number: '1.1-1' }} por jogo em 2026.}
                       </small>
                     </li>
                   }
                   @if (d.dz.carrasco; as c) {
                     <li><span>Artilheiro contra {{ d.adv }}</span><strong>{{ c.jogador }} · {{ c.gols }} {{ c.gols === 1 ? 'gol' : 'gols' }}</strong></li>
                   } @else {
-                    <li><span>Artilheiro contra {{ d.adv }}</span><strong>Ninguém marcou nos confrontos da 1ª fase</strong></li>
+                    <li><span>Artilheiro contra {{ d.adv }}</span><strong>Ninguém marcou nos jogos entre os dois</strong></li>
                   }
                   <!-- "Mais regular (jogos marcando)" fica fora por enquanto: depende de registros de jogo incompletos.
                        O cálculo continua em destaques().regular para voltar depois. -->
@@ -187,7 +202,7 @@
                   <li class="vazio">Nenhum gol registrado nestes jogos.</li>
                 }
               </ul>
-              <p class="nota">Jogos da 1ª fase entre os dois.</p>
+              <p class="nota">Todos os jogos entre os dois em 2026.</p>
             </div>
             @for (lado of [{ nome: x.a.nome, lista: x.ameacaParaA }, { nome: x.b.nome, lista: x.ameacaParaB }]; track lado.nome) {
               <div class="cartao">
@@ -197,7 +212,7 @@
                     <li><span>{{ m.jogador }} <small>{{ m.time }}</small></span><strong>{{ m.gols }}</strong></li>
                   }
                 </ul>
-                <p class="nota">Na 1ª fase inteira.</p>
+                <p class="nota">Na temporada inteira.</p>
               </div>
             }
           </div>
@@ -205,7 +220,7 @@
 
         <div class="grade">
           <div class="cartao">
-            <h3>Retrospecto na 1ª fase</h3>
+            <h3>Retrospecto</h3>
             <p class="placar-resumo">
               {{ x.a.nome }} <strong>{{ x.historico.vitoriasA }}</strong> V ·
               <strong>{{ x.historico.empates }}</strong> E ·
@@ -214,7 +229,7 @@
             <ul class="lista-jogos">
               @for (j of x.historico.jogos; track j.jogo.data) {
                 <li>
-                  <small>{{ j.jogo.turno }}º turno · {{ dataBr(j.jogo.data) }}</small>
+                  <small>{{ quando(j.jogo) }} · {{ dataBr(j.jogo.data) }}</small>
                   <span>{{ j.jogo.mandante }} <strong>{{ j.jogo.gols[0] }} × {{ j.jogo.gols[1] }}</strong> {{ j.jogo.visitante }}</span>
                 </li>
               } @empty {
@@ -231,7 +246,7 @@
                 <span class="forma-time">{{ r.nome }}</span>
                 @for (j of r.forma; track j.jogo.data) {
                   <span [class]="'bola ' + j.resultado"
-                    [title]="j.jogo.mandante + ' ' + j.jogo.gols[0] + ' x ' + j.jogo.gols[1] + ' ' + j.jogo.visitante">{{ j.resultado }}</span>
+                    [title]="quando(j.jogo) + ': ' + j.jogo.mandante + ' ' + j.jogo.gols[0] + ' x ' + j.jogo.gols[1] + ' ' + j.jogo.visitante">{{ j.resultado }}</span>
                 }
               </div>
             }
@@ -272,7 +287,7 @@
 
   <p class="rodape">
     Estimativas estatísticas, não oficiais. Modelo de Poisson com força de ataque e defesa calculada nos
-    {{ totalJogos }} jogos da 1ª fase (jogos mais recentes pesam um pouco mais); empate no agregado
+    {{ totalJogos }} jogos de 2026, 1ª fase e mata-mata (jogos mais recentes pesam um pouco mais); empate no agregado
     classifica o melhor TPG, como diz o regulamento. Valem como palpite para a resenha, não como previsão.
   </p>
 </div>

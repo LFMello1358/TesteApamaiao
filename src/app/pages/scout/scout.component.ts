@@ -51,20 +51,51 @@ export class ScoutComponent {
   readonly serie: 'A' | 'B' = this.rota.data['serie'] === 'B' ? 'B' : 'A';
 
   private readonly dados = DADOS[this.serie];
-  readonly totalJogos = this.dados.jogos.length;
+  /** Classificação oficial da 1ª fase (posição e TPG não mudam no mata-mata). */
   readonly geral = classificacaoGeral(this.dados.turnos);
-  private readonly modelo = criarModelo(this.dados.jogos);
+  /** Súmulas da 1ª fase (Resenha da 1ª fase) e do mata-mata. */
+  private readonly sumulasFase1 = this.dados.sumulas.filter(s => !s.fase);
+  private readonly sumulasMataMata = this.dados.sumulas.filter(s => s.fase);
+  /** Temporada inteira: jogos da 1ª fase + jogos do mata-mata já disputados. */
+  private readonly jogosTemporada: Jogo[] = [
+    ...this.dados.jogos,
+    ...this.sumulasMataMata.map(s => {
+      const gols = (t: string) => s.gols.filter(g => g.time === t).reduce((x, g) => x + g.gols, 0);
+      return { turno: 3 as const, data: s.data, mandante: s.mandante, visitante: s.visitante, gols: [gols(s.mandante), gols(s.visitante)] as [number, number], fase: s.fase, perna: s.perna };
+    }),
+  ];
+  /** Campanha na temporada: totais da 1ª fase + resultados do mata-mata (pontos/TPG continuam os da 1ª fase). */
+  private readonly geralTemporada: TimeTurno[] = this.geral.map(t => {
+    const r = { ...t };
+    for (const j of this.jogosTemporada.filter(j => j.fase && (j.mandante === t.name || j.visitante === t.name))) {
+      const casa = j.mandante === t.name, gp = j.gols[casa ? 0 : 1], gc = j.gols[casa ? 1 : 0];
+      r.games++; r.goalsFor += gp; r.goalsAgainst += gc; r.SaldoGols += gp - gc;
+      if (gp > gc) r.wins++; else if (gp === gc) r.draws++; else r.losses++;
+    }
+    return r;
+  });
+  readonly totalJogos = this.jogosTemporada.length;
+  private readonly modelo = criarModelo(this.jogosTemporada);
   readonly mataMata = montarMataMata(this.geral, this.dados.placares);
   readonly chances = chancesTitulo(this.modelo, this.geral, this.mataMata);
   readonly curiosidades = curiosidades(this.dados.jogos, this.geral);
   readonly maxTitulo = Math.max(...this.chances.map(c => c.titulo), 0.0001);
   /** Jogos com súmula transcrita (gols por jogador, cartões, ausências). */
   readonly sumulasTranscritas = this.dados.sumulas.length;
-  readonly maioresAtuacoes = maioresAtuacoes(this.dados.sumulas, 10);
+  readonly maioresAtuacoes = maioresAtuacoes(this.sumulasFase1, 10);
 
-  /** Jogos do time na 1ª fase (soma dos três turnos). */
-  private jogosNaFase(time: string): number {
-    return this.geral.find(t => t.name === time)?.games ?? 0;
+  /** Gols de cada jogador pela tabela do time (elenco completo; a artilharia da página só lista parte dos jogadores). */
+  private readonly golsDoElenco: Artilheiro[] = this.dados.elenco.flatMap(t =>
+    t.players.map(p => ({ name: p.name.trim(), goals: p.goals, time: t.name, icon: t.icon })));
+
+  /** Jogos do time na temporada. */
+  private jogosNaTemporada(time: string): number {
+    return this.geralTemporada.find(t => t.name === time)?.games ?? 0;
+  }
+
+  /** Resumo do time na temporada, com a posição oficial da 1ª fase. */
+  private resumo(time: string) {
+    return { ...resumoTime(time, this.geralTemporada, this.jogosTemporada, this.dados.elenco), posicao: posicao(this.geral, time) + 1 };
   }
 
   readonly fases: { id: Fase; nome: string }[] = [
@@ -96,23 +127,30 @@ export class ScoutComponent {
     const a = d.timeA.name, b = d.timeB.name;
     const vantagemA = posicao(this.geral, a) <= posicao(this.geral, b);
     const pA = probAvancar(this.modelo, a, b, this.placarUsado(), vantagemA);
-    const ra = resumoTime(a, this.geral, this.dados.jogos, this.dados.elenco);
-    const rb = resumoTime(b, this.geral, this.dados.jogos, this.dados.elenco);
-    const da = disciplina(this.dados.sumulas, a);
-    const db = disciplina(this.dados.sumulas, b);
+    // Regra da página: o que diz "1ª fase" fica só com a 1ª fase; o resto é a temporada (1ª fase + mata-mata).
+    const ra = this.resumo(a);
+    const rb = this.resumo(b);
+    // "Comparativo da 1ª fase"
+    const fa = resumoTime(a, this.geral, this.dados.jogos, this.dados.elenco);
+    const fb = resumoTime(b, this.geral, this.dados.jogos, this.dados.elenco);
+    const da = disciplina(this.sumulasFase1, a);
+    const db = disciplina(this.sumulasFase1, b);
+    // gols nos jogos entre os dois na temporada (1ª fase + mata-mata)
+    const marcadores = marcadoresDoConfronto(this.dados.sumulas, a, b);
+    const carrasco = (t: string) => marcadores.find(m => m.time === t) ?? null;
     const comparativo = [
-      { rotulo: 'Pontos (TPG)', a: ra.pontos, b: rb.pontos, fmt: 'int', maior: true },
-      { rotulo: 'Aproveitamento', a: ra.aproveitamento, b: rb.aproveitamento, fmt: 'pct', maior: true },
-      { rotulo: 'Vitórias', a: ra.vitorias, b: rb.vitorias, fmt: 'int', maior: true },
-      { rotulo: 'Gols marcados por jogo', a: ra.mediaGolsPro, b: rb.mediaGolsPro, fmt: 'dec', maior: true },
-      { rotulo: 'Gols sofridos por jogo', a: ra.mediaGolsContra, b: rb.mediaGolsContra, fmt: 'dec', maior: false },
-      { rotulo: 'Jogos sem sofrer gol', a: ra.semSofrerGols, b: rb.semSofrerGols, fmt: 'int', maior: true },
-      { rotulo: 'Maior sequência invicta', a: ra.invencibilidade, b: rb.invencibilidade, fmt: 'int', maior: true },
+      { rotulo: 'Pontos (TPG)', a: fa.pontos, b: fb.pontos, fmt: 'int', maior: true },
+      { rotulo: 'Aproveitamento', a: fa.aproveitamento, b: fb.aproveitamento, fmt: 'pct', maior: true },
+      { rotulo: 'Vitórias', a: fa.vitorias, b: fb.vitorias, fmt: 'int', maior: true },
+      { rotulo: 'Gols marcados por jogo', a: fa.mediaGolsPro, b: fb.mediaGolsPro, fmt: 'dec', maior: true },
+      { rotulo: 'Gols sofridos por jogo', a: fa.mediaGolsContra, b: fb.mediaGolsContra, fmt: 'dec', maior: false },
+      { rotulo: 'Jogos sem sofrer gol', a: fa.semSofrerGols, b: fb.semSofrerGols, fmt: 'int', maior: true },
+      { rotulo: 'Maior sequência invicta', a: fa.invencibilidade, b: fb.invencibilidade, fmt: 'int', maior: true },
     ];
     if (da.jogos && db.jogos) {
       comparativo.push(
         { rotulo: 'Amarelos por jogo', a: da.amarelosPorJogo, b: db.amarelosPorJogo, fmt: 'dec', maior: false },
-        { rotulo: 'Expulsões na 1ª fase', a: da.vermelhos, b: db.vermelhos, fmt: 'int', maior: false },
+        { rotulo: 'Expulsões', a: da.vermelhos, b: db.vermelhos, fmt: 'int', maior: false },
         { rotulo: 'Ausências por jogo', a: da.ausenciasPorJogo, b: db.ausenciasPorJogo, fmt: 'dec', maior: false },
       );
     }
@@ -121,14 +159,14 @@ export class ScoutComponent {
       b: rb,
       disciplinaA: da,
       disciplinaB: db,
-      destaquesA: destaques(this.dados.sumulas, a, b, this.dados.artilharia, this.jogosNaFase(a)),
-      destaquesB: destaques(this.dados.sumulas, b, a, this.dados.artilharia, this.jogosNaFase(b)),
+      destaquesA: { ...destaques(this.dados.sumulas, a, b, this.golsDoElenco, this.jogosNaTemporada(a)), carrasco: carrasco(a) },
+      destaquesB: { ...destaques(this.dados.sumulas, b, a, this.golsDoElenco, this.jogosNaTemporada(b)), carrasco: carrasco(b) },
       vantagem: vantagemA ? a : b,
       chanceA: pA,
       chanceB: 1 - pA,
       jogo: probJogo(this.modelo, a, b),
-      historico: historico(this.dados.jogos, a, b),
-      marcadores: marcadoresDoConfronto(this.dados.sumulas, a, b),
+      historico: historico(this.jogosTemporada, a, b),
+      marcadores: marcadores,
       ameacaParaA: quemMaisMarcouContra(this.dados.sumulas, a),
       ameacaParaB: quemMaisMarcouContra(this.dados.sumulas, b),
       comparativo,
@@ -186,6 +224,31 @@ export class ScoutComponent {
     const vantagemA = posicao(this.geral, d.timeA.name) <= posicao(this.geral, d.timeB.name);
     return { nome: vantagemA ? d.timeA.name : d.timeB.name, porVantagem: true, ta, tb };
   });
+
+  /** Gols e cartões de cada jogo já disputado do confronto selecionado (ida, volta). */
+  readonly jogosDoConfronto = computed(() => {
+    const d = this.duelo(), f = this.fase();
+    if (!d.timeA || !d.timeB) return [];
+    const a = d.timeA.name, b = d.timeB.name;
+    const nomes = (l: { time: string; jogador: string }[], t: string) => l.filter(x => x.time === t).map(x => x.jogador.trim());
+    const gols = (s: SumulaDoJogo, t: string) => s.gols.filter(g => g.time === t)
+      .map(g => g.jogador.trim() + (g.contra ? ' (contra)' : '') + (g.gols > 1 ? ` (${g.gols})` : ''));
+    return this.sumulasMataMata
+      .filter(s => s.fase === f && [s.mandante, s.visitante].sort().join() === [a, b].sort().join())
+      .sort((x, y) => x.data.localeCompare(y.data))
+      .map(s => ({
+        rotulo: s.perna === 'volta' ? 'Volta' : s.perna === 'ida' ? 'Ida' : 'Jogo',
+        data: this.dataBr(s.data),
+        times: [a, b].map(t => ({ nome: t, gols: gols(s, t), amarelos: nomes(s.amarelos, t), vermelhos: nomes(s.vermelhos, t) })),
+      }));
+  });
+
+  /** "3º turno" ou "Quartas · ida". */
+  quando(j: Jogo): string {
+    if (!j.fase) return `${j.turno}º turno`;
+    const fase = { quartas: 'Quartas', semifinais: 'Semifinal', final: 'Final', terceiro: '3º lugar' }[j.fase];
+    return j.perna && j.perna !== 'unico' ? `${fase} · ${j.perna}` : fase;
+  }
 
   dataBr(iso: string): string {
     return iso.split('-').reverse().join('/');
