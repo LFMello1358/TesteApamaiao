@@ -1,5 +1,5 @@
 @if (transmissao(); as t) {
-  @if (aberto()) {
+  @if (visivel()) {
     <div class="fundo" (click)="fechar()"></div>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ao-vivo-titulo">
       <button type="button" class="fechar" (click)="fechar()" aria-label="Fechar">✕</button>
@@ -26,7 +26,7 @@
       </a>
       <button type="button" class="depois" (click)="fechar()">Agora não</button>
     </div>
-  } @else {
+  } @else if (!aberto()) {
     <!-- depois de fechado: selo discreto no canto para voltar à transmissão -->
     <a class="flutuante" [href]="link(t)" target="_blank" rel="noopener" aria-label="Assistir ao vivo no YouTube">
       <span class="pulso" aria-hidden="true"></span>Ao vivo

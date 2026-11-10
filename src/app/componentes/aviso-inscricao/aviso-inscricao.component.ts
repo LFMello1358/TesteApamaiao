@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { LINK_PRE_INSCRICAO_2027, PRAZO_PRE_INSCRICAO_2027 } from '../../shared/links';
-import { transmissaoAgora } from '../../shared/data/transmissoes';
+import { avisoInscricaoAberto } from '../../shared/pop-ups';
 
 const CHAVE_FECHADO = 'aviso-pre-inscricao-2027-fechado';
 
@@ -27,25 +27,33 @@ export class AvisoInscricaoComponent implements OnInit, OnDestroy {
     // Na mesma visita, quem já fechou não vê o modal de novo ao voltar para o Home.
     let jaFechou = false;
     try { jaFechou = sessionStorage.getItem(CHAVE_FECHADO) === '1'; } catch { /* sem storage */ }
-    // na hora do jogo quem abre é o pop-up "Ao vivo"; o aviso fica na faixa do Home
-    const aoVivo = transmissaoAgora() || new URLSearchParams(location.search).has('aovivo');
-    if (!jaFechou && !aoVivo) this.abrir();
+    // o aviso tem prioridade: na hora do jogo ele abre primeiro e o "Ao vivo" aparece depois que fechar
+    if (!jaFechou) this.abrir();
   }
 
   ngOnDestroy(): void {
+    avisoInscricaoAberto.set(false);
     this.travarRolagem(false);
   }
 
   abrir(): void {
     this.aberto.set(true);
+    avisoInscricaoAberto.set(true);
     this.travarRolagem(true);
   }
 
-  @HostListener('document:keydown.escape')
+  @HostListener('document:keydown.escape', ['$event'])
+  aoEsc(e: Event): void {
+    if (!this.aberto()) return;
+    e.preventDefault(); // o "Ao vivo" que estava esperando não fecha junto
+    this.fechar();
+  }
+
   fechar(): void {
     if (!this.aberto()) return;
     this.aberto.set(false);
     this.travarRolagem(false);
+    avisoInscricaoAberto.set(false);
     try { sessionStorage.setItem(CHAVE_FECHADO, '1'); } catch { /* sem storage */ }
   }
 

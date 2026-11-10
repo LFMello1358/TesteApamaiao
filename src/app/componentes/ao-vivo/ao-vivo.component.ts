@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, HostListener, OnDestroy, OnInit, signal } from '@angular/core';
 import { ESCUDOS, Transmissao, transmissaoAgora } from '../../shared/data/transmissoes';
+import { avisoInscricaoAberto } from '../../shared/pop-ups';
 
 /**
  * Pop-up "Ao vivo": na hora dos jogos (ver shared/data/transmissoes.ts) abre uma vez por visita
  * com os escudos e o link da transmissão do dia. Depois de fechado, fica um selo "Ao vivo" no canto.
+ * É secundário ao aviso da pré-inscrição: se o aviso estiver aberto, espera ele ser fechado.
  * Para testar fora do horário: abra qualquer página com ?aovivo=2026-11-10 (data da transmissão).
  */
 @Component({
@@ -16,16 +18,27 @@ export class AoVivoComponent implements OnInit, OnDestroy {
   readonly escudos = ESCUDOS;
   readonly transmissao = signal<Transmissao | null>(null);
   readonly aberto = signal(false);
+  readonly avisoInscricao = avisoInscricaoAberto;
+  /** O modal só aparece quando o aviso da pré-inscrição não está na tela. */
+  readonly visivel = computed(() => this.aberto() && !avisoInscricaoAberto());
   private timer?: ReturnType<typeof setInterval>;
+  private inicio?: ReturnType<typeof setTimeout>;
+
+  constructor() {
+    // quando o aviso da pré-inscrição fecha, o "Ao vivo" assume a tela e trava a rolagem
+    effect(() => { if (this.visivel()) document.body.style.overflow = 'hidden'; });
+  }
 
   ngOnInit(): void {
-    this.verificar();
+    // espera um instante para o aviso da pré-inscrição (Home) abrir primeiro
+    this.inicio = setTimeout(() => this.verificar(), 600);
     // confere de minuto em minuto: quem já está no site vê o pop-up quando o jogo começa
     this.timer = setInterval(() => this.verificar(), 60_000);
   }
 
   ngOnDestroy(): void {
     clearInterval(this.timer);
+    clearTimeout(this.inicio);
     if (this.aberto()) document.body.style.overflow = '';
   }
 
@@ -45,12 +58,15 @@ export class AoVivoComponent implements OnInit, OnDestroy {
 
   abrir(): void {
     this.aberto.set(true);
-    document.body.style.overflow = 'hidden';
   }
 
-  @HostListener('document:keydown.escape')
+  @HostListener('document:keydown.escape', ['$event'])
+  aoEsc(e: Event): void {
+    if (!e.defaultPrevented) this.fechar();
+  }
+
   fechar(): void {
-    if (!this.aberto()) return;
+    if (!this.visivel()) return;
     this.aberto.set(false);
     document.body.style.overflow = '';
     const t = this.transmissao();
