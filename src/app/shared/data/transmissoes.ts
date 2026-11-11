@@ -22,13 +22,13 @@ export interface Transmissao {
 export const PLAYLIST_2026 = 'https://www.youtube.com/playlist?list=PLmJ0lTVf6ojyNAqMQeW89KTJy1DuPyYmK';
 
 export const TRANSMISSOES: Transmissao[] = [
-  { data: '2026-11-09', inicio: '19:45', fim: '23:30', videoId: 'heslTfYa6FY', titulo: 'Quartas de final · ida',
+  { data: '2026-11-09', inicio: '19:45', fim: '22:30', videoId: 'heslTfYa6FY', titulo: 'Quartas de final · ida',
     jogos: [{ categoria: 'B', hora: '20h', mandante: 'México', visitante: 'Inglaterra' }, { categoria: 'A', hora: '21h', mandante: 'Alemanha', visitante: 'Argentina' }] },
-  { data: '2026-11-10', inicio: '19:45', fim: '23:30', videoId: 'f13tcCG2Q2c', titulo: 'Quartas de final · ida',
+  { data: '2026-11-10', inicio: '19:45', fim: '22:30', videoId: 'f13tcCG2Q2c', titulo: 'Quartas de final · ida',
     jogos: [{ categoria: 'B', hora: '20h', mandante: 'Itália', visitante: 'Uruguai' }, { categoria: 'A', hora: '21h', mandante: 'Espanha', visitante: 'México' }] },
-  { data: '2026-11-11', inicio: '19:45', fim: '23:30', videoId: 'V39niCZJVB0', titulo: 'Quartas de final · ida',
+  { data: '2026-11-11', inicio: '19:45', fim: '22:30', videoId: 'V39niCZJVB0', titulo: 'Quartas de final · ida',
     jogos: [{ categoria: 'B', hora: '20h', mandante: 'Portugal', visitante: 'Holanda' }, { categoria: 'A', hora: '21h', mandante: 'França', visitante: 'Brasil' }] },
-  { data: '2026-11-12', inicio: '19:45', fim: '23:30', videoId: 's7HF-998H_A', titulo: 'Quartas de final · ida',
+  { data: '2026-11-12', inicio: '19:45', fim: '22:30', videoId: 's7HF-998H_A', titulo: 'Quartas de final · ida',
     jogos: [{ categoria: 'B', hora: '20h', mandante: 'Espanha', visitante: 'Brasil' }, { categoria: 'A', hora: '21h', mandante: 'Uruguai', visitante: 'Inglaterra' }] },
 ];
 

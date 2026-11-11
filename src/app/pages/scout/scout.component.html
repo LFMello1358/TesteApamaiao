@@ -97,12 +97,16 @@
                 <div class="lances">
                   <span class="perna">{{ j.rotulo }} · {{ j.data }}</span>
                   @for (t of j.times; track t.nome) {
+                    @if (t.gols.length || t.amarelos.length || t.vermelhos.length) {
                     <p>
                       <strong>{{ t.nome }}:</strong>
-                      @if (t.gols.length) { ⚽ {{ t.gols.join(', ') }} } @else { <span class="suave">sem gols</span> }
-                      @if (t.amarelos.length) { <span class="cartao-am" aria-label="Cartão amarelo"></span> {{ t.amarelos.join(', ') }} }
-                      @if (t.vermelhos.length) { <span class="cartao-vm" aria-label="Cartão vermelho"></span> {{ t.vermelhos.join(', ') }} }
+                      @for (g of t.gols; track g.nome) {
+                        <span class="gol" [attr.aria-label]="g.nome + ': ' + g.qtd + (g.qtd > 1 ? ' gols' : ' gol')"><span class="bolas" aria-hidden="true">{{ g.bolas }}</span> {{ g.nome }}</span>
+                      }
+                      @for (n of t.amarelos; track n) { <span class="gol"><span class="cartao-am" role="img" aria-label="Cartão amarelo"></span> {{ n }}</span> }
+                      @for (n of t.vermelhos; track n) { <span class="gol"><span class="cartao-vm" role="img" aria-label="Cartão vermelho"></span> {{ n }}</span> }
                     </p>
+                    }
                   }
                 </div>
               }

@@ -231,8 +231,9 @@ export class ScoutComponent {
     if (!d.timeA || !d.timeB) return [];
     const a = d.timeA.name, b = d.timeB.name;
     const nomes = (l: { time: string; jogador: string }[], t: string) => l.filter(x => x.time === t).map(x => x.jogador.trim());
+    // uma bolinha por gol, na frente de cada jogador: "⚽ Costela", "⚽⚽ Fred"
     const gols = (s: SumulaDoJogo, t: string) => s.gols.filter(g => g.time === t)
-      .map(g => g.jogador.trim() + (g.contra ? ' (contra)' : '') + (g.gols > 1 ? ` (${g.gols})` : ''));
+      .map(g => ({ bolas: '⚽'.repeat(Math.max(1, g.gols)), nome: g.jogador.trim() + (g.contra ? ' (contra)' : ''), qtd: g.gols }));
     return this.sumulasMataMata
       .filter(s => s.fase === f && [s.mandante, s.visitante].sort().join() === [a, b].sort().join())
       .sort((x, y) => x.data.localeCompare(y.data))

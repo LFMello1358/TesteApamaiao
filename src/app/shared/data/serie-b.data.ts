@@ -279,7 +279,7 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
         { name: 'Toninho', position: 'Lateral 2', fouls: 2, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
         { name: 'Paludo', position: 'Volante', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Bodinho', position: 'Meio Campo 1', fouls: 3, yellowCard: 0, redCard: 0, goals: 27, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Romão', position: 'Meio Campo 2', fouls: 5, yellowCard: 0, redCard: 0, goals: 13, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Romão', position: 'Meio Campo 2', fouls: 6, yellowCard: 0, redCard: 0, goals: 13, suspensao: false, jogosSuspensao: 1 },
         { name: 'Neném', position: 'Atacante', fouls: 1, yellowCard: 1, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'Blois', position: 'Flex 1', fouls: 3, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'Castelinho', position: 'Flex 2', fouls: 6, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
@@ -354,12 +354,12 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
       icon: 'assets/img/uruguai.png',
       players: [
         { name: 'Braga', position: 'Goleiro', fouls: 3, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Konte', position: 'Zagueiro', fouls: 2, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Valente', position: 'Lateral 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Shaolin', position: 'Lateral 2', fouls: 8, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Konte', position: 'Zagueiro', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Valente', position: 'Lateral 1', fouls: 1, yellowCard: 1, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Shaolin', position: 'Lateral 2', fouls: 10, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Ricardinho', position: 'Volante', fouls: 1, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
         { name: 'Daniel', position: 'Meio Campo 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Eloir', position: 'Meio Campo 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 15, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Eloir', position: 'Meio Campo 2', fouls: 3, yellowCard: 1, redCard: 0, goals: 15, suspensao: false, jogosSuspensao: 1 },
         { name: 'França', position: 'Atacante', fouls: 3, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
         { name: 'Barata', position: 'Flex 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'Nilsão', position: 'Flex 2', fouls: 5, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
@@ -379,7 +379,7 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
 export const PLACARES_MATA_MATA_SERIE_B: PlacaresMataMata = {
     quartas: {
       q1: { idaA: 1, idaB: 0, voltaA: null, voltaB: null },
-      q2: { idaA: null, idaB: null, voltaA: null, voltaB: null },
+      q2: { idaA: 0, idaB: 0, voltaA: null, voltaB: null },
       q3: { idaA: null, idaB: null, voltaA: null, voltaB: null },
       q4: { idaA: null, idaB: null, voltaA: null, voltaB: null }
     },

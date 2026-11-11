@@ -282,6 +282,8 @@ input:focus-visible {
   p { margin: 4px 0 0; }
   strong { margin-right: 4px; }
   .suave { color: $suave; }
+  .gol { white-space: nowrap; margin-right: 10px; }
+  .bolas { letter-spacing: 1px; }
 }
 
 .cartao-am,
@@ -289,7 +291,7 @@ input:focus-visible {
   display: inline-block;
   width: 8px;
   height: 11px;
-  margin: 0 2px 0 8px;
+  margin: 0 2px 0 0;
   border-radius: 2px;
   vertical-align: -1px;
 }
