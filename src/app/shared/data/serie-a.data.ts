@@ -193,17 +193,17 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
       name: 'Brasil',
       icon: 'assets/img/brasil.png',
       players: [
-        { name: 'Enzo Merecci', position: 'Goleiro', fouls: 1, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Enzo Merecci', position: 'Goleiro', fouls: 1, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Lucas Figueiredo', position: 'Zagueiro', fouls: 3, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
         { name: 'Paulinho Aldeia', position: 'Lateral 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
         { name: 'Telles', position: 'Lateral 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
         { name: 'Fabiano', position: 'Volante', fouls: 2, yellowCard: 0, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1 },
         { name: 'Clebinho', position: 'Meio Campo 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 11, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Chalu', position: 'Meio Campo 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Chalu', position: 'Meio Campo 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
         { name: 'Rodrigo Silva', position: 'Atacante', fouls: 0, yellowCard: 0, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
         { name: 'Sergio', position: 'Flex 1', fouls: 3, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Minha Joia', position: 'Flex 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1},
-        { name: 'Josué Campos', position: 'Flex 3', fouls: 5, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
+        { name: 'Josué Campos', position: 'Flex 3', fouls: 6, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -237,10 +237,10 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
         { name: 'Xingu', position: 'Zagueiro', fouls: 1, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'Reseck', position: 'Lateral 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
         { name: 'Edson Ferreira', position: 'Lateral 2', fouls: 6, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Rico', position: 'Volante', fouls: 3, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Rico', position: 'Volante', fouls: 3, yellowCard: 1, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
         { name: 'Topiquinho', position: 'Meio Campo 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 19, suspensao: false, jogosSuspensao: 1 },
         { name: 'Nando', position: 'Meio Campo 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Luiz Fellipe', position: 'Atacante', fouls: 1, yellowCard: 0, redCard: 0, goals: 29, suspensao: false, jogosSuspensao: 1},
+        { name: 'Luiz Fellipe', position: 'Atacante', fouls: 1, yellowCard: 0, redCard: 0, goals: 30, suspensao: false, jogosSuspensao: 1},
         { name: 'Pedro Tostes', position: 'Flex 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Almiro', position: 'Flex 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
         { name: 'Vitor Coreixas', position: 'Flex 3', fouls: 3, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 }
@@ -381,7 +381,7 @@ export const PLACARES_MATA_MATA_SERIE_A: PlacaresMataMata = {
     quartas: {
       q1: { idaA: 2, idaB: 3, voltaA: null, voltaB: null },
       q2: { idaA: 3, idaB: 1, voltaA: null, voltaB: null },
-      q3: { idaA: null, idaB: null, voltaA: null, voltaB: null },
+      q3: { idaA: 1, idaB: 1, voltaA: null, voltaB: null },
       q4: { idaA: null, idaB: null, voltaA: null, voltaB: null }
     },
 
@@ -406,8 +406,8 @@ export const PLACARES_MATA_MATA_SERIE_A: PlacaresMataMata = {
 
 /** Artilharia oficial da 1ª fase: a mesma tabela da página da categoria (lá aparecem os 10 primeiros). */
 export const ARTILHARIA_SERIE_A: Artilheiro[] = [
+      { name: 'Luiz Fellipe', goals: 30, time: 'França', icon: 'assets/img/frança.png' },
       { name: 'Luizinho Costela', goals: 30, time: 'Espanha', icon: 'assets/img/espanha.png' },
-      { name: 'Luiz Fellipe', goals: 29, time: 'França', icon: 'assets/img/frança.png' },
       { name: 'Allan', goals: 27, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
       { name: 'Ungerer', goals: 25, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Topiquinho', goals: 19, time: 'França', icon: 'assets/img/frança.png' },
@@ -431,9 +431,9 @@ export const ARTILHARIA_SERIE_A: Artilheiro[] = [
       { name: 'Leleco', goals: 10, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Victor Carlota', goals: 10, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Bruno Alfieri', goals: 9, time: 'México', icon: 'assets/img/mexico.png' },
+      { name: 'Chalu', goals: 9, time: 'Brasil', icon: 'assets/img/brasil.png' },
       { name: 'Rafa', goals: 9, time: 'Portugal', icon: 'assets/img/portugal.png' },
       { name: 'Rodrigo Silva', goals: 9, time: 'Brasil', icon: 'assets/img/brasil.png' },
-      { name: 'Chalu', goals: 8, time: 'Brasil', icon: 'assets/img/brasil.png' },
       { name: 'Douglas', goals: 8, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Rafael Almeida', goals: 8, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Thiago Rangel', goals: 8, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
@@ -528,7 +528,7 @@ export const GOLEIROS_SERIE_A: Goleiro[] = [
       },
       {
         name: 'Enzo Merecci',
-        goalsConceded: 67,
+        goalsConceded: 68,
         time: 'Brasil',
         icon: 'assets/img/brasil.png'
       },
@@ -540,7 +540,7 @@ export const GOLEIROS_SERIE_A: Goleiro[] = [
       },
       {
         name: 'Gilmar',
-        goalsConceded: 59,
+        goalsConceded: 60,
         time: 'França',
         icon: 'assets/img/frança.png'
       },

@@ -255,15 +255,15 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
       players: [
         { name: 'Zuqui', position: 'Goleiro', fouls: 0, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Dedeco', position: 'Zagueiro', fouls: 1, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Marco André', position: 'Lateral 1', fouls: 4, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Marco André', position: 'Lateral 1', fouls: 4, yellowCard: 1, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'Adrian', position: 'Lateral 2', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Valdetaro', position: 'Volante', fouls: 0, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'José Marcio', position: 'Meio Campo 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 18, suspensao: false, jogosSuspensao: 1 },
         { name: 'Almada', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'Marcellus', position: 'Atacante', fouls: 5, yellowCard: 0, redCard: 0, goals: 5, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Marcelo Dominó', position: 'Flex 1', fouls: 8, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Marcelo Dominó', position: 'Flex 1', fouls: 10, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'Pacheco', position: 'Flex 2', fouls: 7, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Lattanzi', position: 'Flex 3', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
+        { name: 'Lattanzi', position: 'Flex 3', fouls: 4, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -336,13 +336,13 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
         { name: 'Jofre', position: 'Goleiro', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Cacau', position: 'Zagueiro', fouls: 7, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Machado', position: 'Lateral 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Juneco', position: 'Lateral 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Juneco', position: 'Lateral 2', fouls: 3, yellowCard: 1, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
         { name: 'Nicolau', position: 'Volante', fouls: 2, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Juca', position: 'Meio Campo 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Juca', position: 'Meio Campo 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 1 },
         { name: 'Orelha', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
         { name: 'Silvio Cavalo', position: 'Atacante', fouls: 1, yellowCard: 0, redCard: 0, goals: 11, suspensao: false, jogosSuspensao: 1 },
         { name: 'Junior Samary', position: 'Flex 1', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Tigrinho', position: 'Flex 2', fouls: 2, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Tigrinho', position: 'Flex 2', fouls: 2, yellowCard: 1, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
         { name: 'Filé', position: 'Flex 3', fouls: 2, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
@@ -380,7 +380,7 @@ export const PLACARES_MATA_MATA_SERIE_B: PlacaresMataMata = {
     quartas: {
       q1: { idaA: 1, idaB: 0, voltaA: null, voltaB: null },
       q2: { idaA: 0, idaB: 0, voltaA: null, voltaB: null },
-      q3: { idaA: null, idaB: null, voltaA: null, voltaB: null },
+      q3: { idaA: 0, idaB: 1, voltaA: null, voltaB: null },
       q4: { idaA: null, idaB: null, voltaA: null, voltaB: null }
     },
 
@@ -486,6 +486,7 @@ export const ARTILHARIA_SERIE_B: Artilheiro[] = [
       { name: 'Gustavo', goals: 1, time: 'França', icon: 'assets/img/frança.png' },
       { name: 'Juneco', goals: 1, time: 'Portugal', icon: 'assets/img/portugal.png' },
       { name: 'Klebão', goals: 1, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
+      { name: 'Lattanzi', goals: 1, time: 'Holanda', icon: 'assets/img/holanda.png' },
       { name: 'Leonardo', goals: 1, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Luiz Fernando', goals: 1, time: 'França', icon: 'assets/img/frança.png' },
       { name: 'Luna', goals: 1, time: 'Brasil', icon: 'assets/img/brasil.png' },
@@ -559,7 +560,7 @@ export const GOLEIROS_SERIE_B: Goleiro[] = [
       },
       {
         name: 'Jofre',
-        goalsConceded: 33,
+        goalsConceded: 34,
         time: 'Portugal',
         icon: 'assets/img/portugal.png'
       },
