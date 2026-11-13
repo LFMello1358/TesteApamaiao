@@ -76,9 +76,32 @@
       <h1>Campeonato de Pais e Mestres <span>do Abel</span></h1>
       <p class="hero-fase"><span class="ao-vivo" aria-hidden="true"></span> Fase final · mata-mata</p>
 
+      <!-- LETREIRO DE NOTÍCIAS: manchetes da A e da B correndo da direita para a esquerda (para no hover/foco) -->
+      @if (ultimas.length) {
+        <div class="ultima-noticia">
+          <a class="rotulo" routerLink="/noticias"><mat-icon aria-hidden="true">newspaper</mat-icon> Notícias</a>
+          <div class="letreiro" [style.--duracao.s]="duracaoLetreiro">
+            <div class="trilho">
+              @for (copia of [0, 1]; track copia) {
+                <ul class="manchetes" [attr.aria-hidden]="copia === 1 ? 'true' : null">
+                  @for (n of ultimas; track n.id) {
+                    <li>
+                      <a [routerLink]="['/noticias', n.id]" [attr.tabindex]="copia === 1 ? -1 : null">
+                        <b>Cat. {{ n.categoria }}</b> {{ n.titulo }}
+                      </a>
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
       <div class="hero-acoes">
         <a class="cta primario" routerLink="/categoria-a">Categoria A <mat-icon aria-hidden="true">arrow_forward</mat-icon></a>
         <a class="cta primario" routerLink="/categoria-b">Categoria B <mat-icon aria-hidden="true">arrow_forward</mat-icon></a>
+        <a class="cta secundario" routerLink="/noticias"><mat-icon aria-hidden="true">newspaper</mat-icon> Notícias</a>
       </div>
     </div>
 

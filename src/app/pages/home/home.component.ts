@@ -6,6 +6,7 @@ import { TimeTurno } from '../../shared/models/campeonato.model';
 import { TURNO_1_SERIE_A, TURNO_2_SERIE_A, TURNO_3_SERIE_A } from '../../shared/data/serie-a.data';
 import { LINK_INSTAGRAM, LINK_YOUTUBE } from '../../shared/links';
 import { TURNO_1_SERIE_B, TURNO_2_SERIE_B, TURNO_3_SERIE_B } from '../../shared/data/serie-b.data';
+import { NOTICIAS } from '../../shared/data/noticias';
 
 interface Patrocinador { src: string; alt: string; }
 
@@ -85,6 +86,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   private timer?: ReturnType<typeof setInterval>;
 
   readonly deslocamento = computed(() => -this.indice() * (100 / this.itensPorSlide()));
+
+  // Letreiro de notícias no hero: as manchetes mais recentes (A e B, mesmo peso) correndo da direita para a esquerda.
+  readonly ultimas = [...NOTICIAS]
+    .sort((x, y) => y.data.localeCompare(x.data) || x.categoria.localeCompare(y.categoria))
+    .slice(0, 6);
+  /** Velocidade constante: quanto mais texto, mais longa a volta (~7 caracteres por segundo). */
+  readonly duracaoLetreiro = Math.max(20, Math.round(this.ultimas.reduce((s, n) => s + n.titulo.length + 12, 0) / 7));
 
   ngOnInit(): void {
     this.ajustarItensPorSlide();

@@ -249,6 +249,87 @@ app-aviso-inscricao { margin-bottom: -32px; }
   }
 }
 
+// Letreiro de notícias: rótulo fixo à esquerda e as manchetes correndo da direita para a esquerda
+.ultima-noticia {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 680px;
+  margin-top: 14px;
+  padding: 6px;
+  border-radius: 12px;
+  background: rgba($black, 0.28);
+  border: 1px solid rgba($white, 0.14);
+  overflow: hidden;
+
+  .rotulo {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex: 0 0 auto;
+    padding: 6px 9px;
+    border-radius: 8px;
+    background: $lime;
+    color: $green-deep;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    mat-icon { font-size: 16px; width: 16px; height: 16px; }
+    &:focus-visible { outline: 2px solid $white; outline-offset: 2px; }
+  }
+}
+
+.letreiro {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  // some suave nas pontas
+  mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+}
+
+.trilho {
+  display: flex;
+  width: max-content;
+  animation: letreiro var(--duracao, 40s) linear infinite;
+}
+// para de correr para ler ou clicar
+.letreiro:hover .trilho,
+.letreiro:focus-within .trilho { animation-play-state: paused; }
+
+.manchetes {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li { flex: 0 0 auto; }
+  li::after { content: "•"; margin: 0 16px; color: rgba($white, 0.4); }
+  a {
+    color: $white;
+    font-size: 14px;
+    white-space: nowrap;
+    text-decoration: none;
+    b { margin-right: 4px; color: $lime; font-weight: 800; }
+    &:hover { text-decoration: underline; }
+    &:focus-visible { outline: 2px solid $lime; outline-offset: 2px; border-radius: 4px; }
+  }
+}
+
+// a 2ª cópia emenda na 1ª: andar meia faixa fecha o laço sem pulo
+@keyframes letreiro {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+// quem prefere menos movimento (ex.: Windows com animações desligadas): o letreiro corre um pouco mais devagar
+// e continua parando no hover/foco, para dar tempo de ler e clicar
+@media (prefers-reduced-motion: reduce) {
+  .trilho { animation-duration: calc(var(--duracao, 40s) * 1.4); }
+}
+
 @keyframes pulso {
   70% { box-shadow: 0 0 0 10px rgba($lime, 0); }
   100% { box-shadow: 0 0 0 0 rgba($lime, 0); }
