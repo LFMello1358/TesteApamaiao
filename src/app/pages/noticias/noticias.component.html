@@ -1,0 +1,94 @@
+<app-componets></app-componets>
+
+<main class="jornal">
+  @if (aberta(); as n) {
+    <!-- ===================== MATÉRIA ===================== -->
+    <article class="materia">
+      <a class="voltar" routerLink="/noticias">← Todas as notícias</a>
+
+      <span class="chapeu" [class.b]="n.categoria === 'B'">Cat. {{ n.categoria }} · {{ n.chapeu }}</span>
+      <h1>{{ n.titulo }}</h1>
+      <p class="linha-fina">{{ n.linhaFina }}</p>
+      <p class="assinatura">Redação APAMAIÃO · {{ dataBr(n.data) }}</p>
+
+      @if (n.jogo; as j) {
+        <div class="placar-grande" [attr.aria-label]="j.mandante + ' ' + j.placarMandante + ' a ' + j.placarVisitante + ' ' + j.visitante">
+          <span class="time"><img [src]="escudos[j.mandante]" alt="" />{{ j.mandante }}</span>
+          <span class="gols">{{ j.placarMandante }} <small>×</small> {{ j.placarVisitante }}</span>
+          <span class="time"><img [src]="escudos[j.visitante]" alt="" />{{ j.visitante }}</span>
+        </div>
+      }
+
+      @if (n.destaques.length) {
+        <ul class="destaques">
+          @for (d of n.destaques; track d) { <li>{{ d }}</li> }
+        </ul>
+      }
+
+      <div class="texto">
+        @for (p of n.corpo; track $index) { <p>{{ p }}</p> }
+      </div>
+
+      <div class="acoes">
+        <a class="botao" [routerLink]="scout(n)">Ver o confronto no Scout</a>
+        @if (video(n); as v) {
+          <a class="botao video" [href]="v" target="_blank" rel="noopener">Assistir à transmissão</a>
+        }
+      </div>
+    </article>
+
+    @if (relacionadas().length) {
+      <section class="mais">
+        <h2>Mais da Categoria {{ n.categoria }}</h2>
+        <div class="grade">
+          @for (r of relacionadas(); track r.id) {
+            <a class="card" [routerLink]="['/noticias', r.id]">
+              <span class="chapeu" [class.b]="r.categoria === 'B'">Cat. {{ r.categoria }} · {{ r.chapeu }}</span>
+              <strong>{{ r.titulo }}</strong>
+              <small>{{ dataBr(r.data) }}</small>
+            </a>
+          }
+        </div>
+      </section>
+    }
+  } @else {
+    <!-- ===================== CAPA ===================== -->
+    <header class="cabecalho">
+      <span class="selo">Mata-mata 2026</span>
+      <h1>Notícias do APAMAIÃO</h1>
+      <p>Os bastidores, os gols e o que está em jogo em cada confronto da fase final.</p>
+      <div class="filtros" role="group" aria-label="Filtrar por categoria">
+        <button type="button" [class.ativo]="filtro() === 'todas'" [attr.aria-pressed]="filtro() === 'todas'" (click)="filtrar('todas')">Todas</button>
+        <button type="button" [class.ativo]="filtro() === 'A'" [attr.aria-pressed]="filtro() === 'A'" (click)="filtrar('A')">Categoria A</button>
+        <button type="button" [class.ativo]="filtro() === 'B'" [attr.aria-pressed]="filtro() === 'B'" (click)="filtrar('B')">Categoria B</button>
+      </div>
+    </header>
+
+    @if (capa(); as c) {
+      <a class="manchete" [routerLink]="['/noticias', c.id]">
+        <span class="chapeu" [class.b]="c.categoria === 'B'">Cat. {{ c.categoria }} · {{ c.chapeu }}</span>
+        <h2>{{ c.titulo }}</h2>
+        <p>{{ c.linhaFina }}</p>
+        <span class="ler">Ler matéria →</span>
+      </a>
+    }
+
+    <div class="grade">
+      @for (n of demais(); track n.id) {
+        <a class="card" [routerLink]="['/noticias', n.id]">
+          <span class="chapeu" [class.b]="n.categoria === 'B'">Cat. {{ n.categoria }} · {{ n.chapeu }}</span>
+          @if (n.jogo; as j) {
+            <span class="mini-placar">
+              <img [src]="escudos[j.mandante]" alt="" /> {{ j.mandante }}
+              <b>{{ j.placarMandante }} × {{ j.placarVisitante }}</b>
+              {{ j.visitante }} <img [src]="escudos[j.visitante]" alt="" />
+            </span>
+          }
+          <strong>{{ n.titulo }}</strong>
+          <p>{{ n.linhaFina }}</p>
+          <small>{{ dataBr(n.data) }}</small>
+        </a>
+      }
+    </div>
+  }
+</main>

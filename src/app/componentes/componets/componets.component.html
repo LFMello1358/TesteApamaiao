@@ -3,13 +3,14 @@
     <img src="assets/img/Boneco_apamaiao.jpeg" alt="Logo Apamaião" class="logo-img" />
     <span class="logo-texto">
       <span class="titulo">Campeonato de Pais e Mestres do Abel</span>
-      <span class="atualizado"><span class="ponto" aria-hidden="true"></span>Atualizado 12/11/2026</span>
+      <span class="atualizado"><span class="ponto" aria-hidden="true"></span>Atualizado 13/11/2026</span>
     </span>
   </a>
 
   <!-- MENU DESKTOP: poucos itens, o resto agrupado em listas -->
   <nav class="menu-desktop" aria-label="Menu principal">
     <a class="nav-item" routerLink="/home" routerLinkActive="ativo">Home</a>
+    <a class="nav-item" routerLink="/noticias" routerLinkActive="ativo">Notícias</a>
 
     <button type="button" class="nav-item" [class.ativo]="secaoAtiva('/categoria-a')" [matMenuTriggerFor]="serieAMenu">
       Categoria A <mat-icon aria-hidden="true">expand_more</mat-icon>
@@ -60,7 +61,8 @@
   <!-- MENU MOBILE: tudo à vista, separado por seção -->
   <nav class="menu-mobile" id="menu-mobile" [class.show]="isMenuOpen" aria-label="Menu principal">
     <div class="grupo">
-      <a class="nav-item largo" routerLink="/home" routerLinkActive="ativo">Home</a>
+      <a class="nav-item" routerLink="/home" routerLinkActive="ativo">Home</a>
+      <a class="nav-item" routerLink="/noticias" routerLinkActive="ativo">Notícias</a>
     </div>
     <div class="grupo">
       <span class="grupo-titulo">Categoria A</span>
