@@ -199,7 +199,7 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
         { name: 'Carlos Castelo', position: 'Lateral 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Carlão', position: 'Volante', fouls: 2, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
         { name: 'Kiko', position: 'Meio Campo 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Fábinho', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Fábinho', position: 'Meio Campo 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
         { name: 'Marcelo Dentista', position: 'Atacante', fouls: 2, yellowCard: 0, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
         { name: 'Amin', position: 'Flex 1', fouls: 6, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'Luna', position: 'Flex 2', fouls: 2, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
@@ -219,11 +219,11 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
         { name: 'Tevez', position: 'Lateral 2', fouls: 2, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'André Freixo', position: 'Volante', fouls: 1, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'Igor Brasil', position: 'Meio Campo 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 18, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Latini', position: 'Meio Campo 2', fouls: 2, yellowCard: 0, redCard: 0, goals: 19, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Cristiano Motta', position: 'Atacante', fouls: 3, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Ezequiel', position: 'Flex 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Latini', position: 'Meio Campo 2', fouls: 2, yellowCard: 1, redCard: 0, goals: 19, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Cristiano Motta', position: 'Atacante', fouls: 3, yellowCard: 0, redCard: 0, goals: 13, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Ezequiel', position: 'Flex 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 13, suspensao: false, jogosSuspensao: 1 },
         { name: 'Slow', position: 'Flex 2', fouls: 3, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Bazhuni', position: 'Flex 3', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
+        { name: 'Bazhuni', position: 'Flex 3', fouls: 4, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -381,7 +381,7 @@ export const PLACARES_MATA_MATA_SERIE_B: PlacaresMataMata = {
       q1: { idaA: 1, idaB: 0, voltaA: null, voltaB: null },
       q2: { idaA: 0, idaB: 0, voltaA: null, voltaB: null },
       q3: { idaA: 0, idaB: 1, voltaA: null, voltaB: null },
-      q4: { idaA: null, idaB: null, voltaA: null, voltaB: null }
+      q4: { idaA: 2, idaB: 0, voltaA: null, voltaB: null }
     },
 
     semifinais: {
@@ -409,11 +409,11 @@ export const ARTILHARIA_SERIE_B: Artilheiro[] = [
       { name: 'Igor Brasil', goals: 18, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'José Marcio', goals: 18, time: 'Holanda', icon: 'assets/img/holanda.png' },
       { name: 'Eloir', goals: 15, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
+      { name: 'Cristiano Motta', goals: 13, time: 'Espanha', icon: 'assets/img/espanha.png' },
+      { name: 'Ezequiel', goals: 13, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Naval', goals: 13, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Romão', goals: 13, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
-      { name: 'Cristiano Motta', goals: 12, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Cupulille', goals: 12, time: 'México', icon: 'assets/img/mexico.png' },
-      { name: 'Ezequiel', goals: 12, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Ferreira', goals: 12, time: 'França', icon: 'assets/img/frança.png' },
       { name: 'França', goals: 12, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Maguila', goals: 12, time: 'México', icon: 'assets/img/mexico.png' },
@@ -518,7 +518,7 @@ export const GOLEIROS_SERIE_B: Goleiro[] = [
       },
       {
         name: 'Marquinho Country',
-        goalsConceded: 54,
+        goalsConceded: 56,
         time: 'Brasil',
         icon: 'assets/img/brasil.png'
       },
