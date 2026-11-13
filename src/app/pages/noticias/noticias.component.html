@@ -6,10 +6,10 @@
     <article class="materia">
       <a class="voltar" routerLink="/noticias">← Todas as notícias</a>
 
-      <span class="chapeu" [class.b]="n.categoria === 'B'">Cat. {{ n.categoria }} · {{ n.chapeu }}</span>
+      <span class="chapeu">Cat. {{ n.categoria }} · {{ n.chapeu }}</span>
       <h1>{{ n.titulo }}</h1>
       <p class="linha-fina">{{ n.linhaFina }}</p>
-      <p class="assinatura">Redação APAMAIÃO · {{ dataBr(n.data) }}</p>
+      <p class="assinatura"><img src="assets/img/Boneco_apamaiao.jpeg" alt="" />Redação APAMAIÃO · {{ dataBr(n.data) }}</p>
 
       @if (n.jogo; as j) {
         <div class="placar-grande" [attr.aria-label]="j.mandante + ' ' + j.placarMandante + ' a ' + j.placarVisitante + ' ' + j.visitante">
@@ -43,7 +43,7 @@
         <div class="grade">
           @for (r of relacionadas(); track r.id) {
             <a class="card" [routerLink]="['/noticias', r.id]">
-              <span class="chapeu" [class.b]="r.categoria === 'B'">Cat. {{ r.categoria }} · {{ r.chapeu }}</span>
+              <span class="chapeu">Cat. {{ r.categoria }} · {{ r.chapeu }}</span>
               <strong>{{ r.titulo }}</strong>
               <small>{{ dataBr(r.data) }}</small>
             </a>
@@ -54,9 +54,12 @@
   } @else {
     <!-- ===================== CAPA ===================== -->
     <header class="cabecalho">
-      <span class="selo">Mata-mata 2026</span>
-      <h1>Notícias do APAMAIÃO</h1>
-      <p>Os bastidores, os gols e o que está em jogo em cada confronto da fase final.</p>
+      <img class="mascote" src="assets/img/Boneco_apamaiao.jpeg" alt="Mascote do APAMAIÃO 2026" />
+      <div class="titulo">
+        <span class="selo">Mata-mata 2026</span>
+        <h1>Notícias do APAMAIÃO</h1>
+        <p>Os bastidores, os gols e o que está em jogo em cada confronto da fase final.</p>
+      </div>
       <div class="filtros" role="group" aria-label="Filtrar por categoria">
         <button type="button" [class.ativo]="filtro() === 'todas'" [attr.aria-pressed]="filtro() === 'todas'" (click)="filtrar('todas')">Todas</button>
         <button type="button" [class.ativo]="filtro() === 'A'" [attr.aria-pressed]="filtro() === 'A'" (click)="filtrar('A')">Categoria A</button>
@@ -64,19 +67,23 @@
       </div>
     </header>
 
-    @if (capa(); as c) {
-      <a class="manchete" [routerLink]="['/noticias', c.id]">
-        <span class="chapeu" [class.b]="c.categoria === 'B'">Cat. {{ c.categoria }} · {{ c.chapeu }}</span>
-        <h2>{{ c.titulo }}</h2>
-        <p>{{ c.linhaFina }}</p>
-        <span class="ler">Ler matéria →</span>
-      </a>
+    @if (manchetes().length) {
+      <div class="manchetes">
+        @for (c of manchetes(); track c.id) {
+          <a class="manchete" [routerLink]="['/noticias', c.id]">
+            <span class="chapeu">Cat. {{ c.categoria }} · {{ c.chapeu }}</span>
+            <h2>{{ c.titulo }}</h2>
+            <p>{{ c.linhaFina }}</p>
+            <span class="ler">Ler matéria →</span>
+          </a>
+        }
+      </div>
     }
 
     <div class="grade">
       @for (n of demais(); track n.id) {
         <a class="card" [routerLink]="['/noticias', n.id]">
-          <span class="chapeu" [class.b]="n.categoria === 'B'">Cat. {{ n.categoria }} · {{ n.chapeu }}</span>
+          <span class="chapeu">Cat. {{ n.categoria }} · {{ n.chapeu }}</span>
           @if (n.jogo; as j) {
             <span class="mini-placar">
               <img [src]="escudos[j.mandante]" alt="" /> {{ j.mandante }}

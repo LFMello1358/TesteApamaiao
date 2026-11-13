@@ -1,23 +1,18 @@
-@use "sass:color";
-
-// Mesma paleta do site (Scout / categorias): preto, cinzas, verde; azul-claro marca a Categoria B.
-$black: #0d0f0f;
-$dark-gray: #1a1d1f;
-$gray: #2a2e31;
+// Tema claro, no padrão do site (página branca, verde do campeonato), com ar de jornal.
 $green: #175739;
 $green-light: #06924f;
-$lime: #b6f09c;
-$cat-b: #8fd3ff;
-$white: #ffffff;
-$suave: rgba(255, 255, 255, 0.66);
-$linha: rgba(255, 255, 255, 0.08);
+$green-bg: #eef7f1;
+$texto: #1a1d1f;
+$suave: #5b6368;
+$linha: #e3e7e5;
+$papel: #ffffff;
+$fundo: #f6f8f7;
 
-// a página tem fundo escuro próprio (o body do site é branco)
 :host {
   display: block;
   min-height: 100vh;
-  color: $white;
-  background: radial-gradient(90% 50% at 50% 0%, rgba($green, 0.35), transparent 70%), $black;
+  color: $texto;
+  background: $fundo;
 }
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -33,86 +28,107 @@ $linha: rgba(255, 255, 255, 0.08);
 
 .chapeu {
   display: inline-block;
-  color: $lime;
+  color: $green-light;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.7px;
   text-transform: uppercase;
-  &.b { color: $cat-b; }
 }
 
 // ---------- capa ----------
 .cabecalho {
-  text-align: center;
-  padding: 8px 0 4px;
-  border-bottom: 1px solid $linha;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 4px 20px;
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: $papel;
+  border: 1px solid $linha;
+  border-top: 5px solid $green;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 
+  .mascote { width: 112px; height: 112px; object-fit: contain; }
   .selo {
     display: inline-block;
-    padding: 4px 12px;
-    border: 1px solid rgba($green-light, 0.6);
+    padding: 3px 10px;
     border-radius: 999px;
-    color: $lime;
+    background: $green-bg;
+    color: $green;
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.8px;
     text-transform: uppercase;
   }
   h1 {
-    margin: 12px 0 6px;
+    margin: 8px 0 6px;
+    color: $green;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(28px, 6vw, 44px);
+    font-size: clamp(28px, 5.5vw, 44px);
     line-height: 1.1;
   }
-  p { margin: 0 auto 16px; max-width: 560px; color: $suave; }
+  p { margin: 0; color: $suave; }
+  .filtros { grid-column: 1 / -1; margin-top: 14px; }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+    .mascote { width: 96px; height: 96px; margin: 0 auto; }
+    .filtros { justify-content: center; }
+  }
 }
 
 .filtros {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 8px;
-  margin-bottom: 16px;
 
   button {
     min-height: 40px;
     padding: 0 16px;
     border: 1px solid $linha;
     border-radius: 999px;
-    background: $dark-gray;
-    color: $white;
+    background: $papel;
+    color: $texto;
     font: inherit;
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
-    &:hover { border-color: rgba($green-light, 0.6); }
-    &.ativo { background: $green; border-color: $green-light; }
-    &:focus-visible { outline: 2px solid $lime; outline-offset: 2px; }
+    &:hover { border-color: $green-light; color: $green; }
+    &.ativo { background: $green; border-color: $green; color: #fff; }
+    &:focus-visible { outline: 2px solid $green-light; outline-offset: 2px; }
   }
 }
 
+.manchetes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+// mesmo fundo verde em todos os cards (manchetes e matérias)
 .manchete {
-  display: block;
-  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 24px;
   border-radius: 18px;
-  border: 1px solid rgba($green-light, 0.4);
-  background:
-    radial-gradient(120% 90% at 0% 0%, rgba($green-light, 0.35), transparent 60%),
-    linear-gradient(160deg, color.adjust($gray, $lightness: 6%), $dark-gray);
-  color: $white;
+  background: linear-gradient(135deg, $green, #0f4029);
+  color: #fff;
   text-decoration: none;
+  box-shadow: 0 10px 24px rgba(23, 87, 57, 0.25);
   transition: transform 0.2s ease;
 
+  .chapeu { color: #b6f09c; }
   h2 {
-    margin: 10px 0 10px;
+    margin: 10px 0;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(24px, 4.5vw, 36px);
+    font-size: clamp(22px, 3.4vw, 30px);
     line-height: 1.15;
   }
-  p { margin: 0 0 14px; max-width: 760px; color: $suave; font-size: 16px; line-height: 1.5; }
-  .ler { color: $lime; font-weight: 800; font-size: 14px; }
+  p { margin: 0 0 14px; color: rgba(255, 255, 255, 0.85); font-size: 16px; line-height: 1.5; }
+  .ler { margin-top: auto; color: #b6f09c; font-weight: 800; font-size: 14px; }
   @media (hover: hover) { &:hover { transform: translateY(-2px); } }
-  &:focus-visible { outline: 3px solid $lime; outline-offset: 3px; }
+  &:focus-visible { outline: 3px solid $green-light; outline-offset: 3px; }
 }
 
 .grade {
@@ -127,17 +143,20 @@ $linha: rgba(255, 255, 255, 0.08);
   gap: 8px;
   padding: 16px;
   border-radius: 14px;
-  border: 1px solid rgba($green-light, 0.22);
-  background: linear-gradient(160deg, color.adjust($gray, $lightness: 4%), $dark-gray);
-  color: $white;
+  background: linear-gradient(135deg, $green, #0f4029);
+  color: #fff;
   text-decoration: none;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 6px 16px rgba(23, 87, 57, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
+  .chapeu { color: #b6f09c; }
   strong { font-family: Georgia, "Times New Roman", serif; font-size: 19px; line-height: 1.25; }
-  p { margin: 0; color: $suave; font-size: 14px; line-height: 1.45; }
-  small { margin-top: auto; color: $suave; font-size: 12px; }
-  @media (hover: hover) { &:hover { border-color: rgba($green-light, 0.6); transform: translateY(-2px); } }
-  &:focus-visible { outline: 3px solid $lime; outline-offset: 2px; }
+  p { margin: 0; color: rgba(255, 255, 255, 0.82); font-size: 14px; line-height: 1.45; }
+  small { margin-top: auto; color: rgba(255, 255, 255, 0.7); font-size: 12px; }
+  @media (hover: hover) {
+    &:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(23, 87, 57, 0.3); }
+  }
+  &:focus-visible { outline: 3px solid $green-light; outline-offset: 2px; }
 }
 
 .mini-placar {
@@ -148,23 +167,29 @@ $linha: rgba(255, 255, 255, 0.08);
   font-size: 13px;
   font-weight: 700;
   img { width: 20px; height: 20px; object-fit: contain; }
-  b { padding: 2px 8px; border-radius: 6px; background: rgba(0, 0, 0, 0.35); font-variant-numeric: tabular-nums; }
+  b { padding: 2px 8px; border-radius: 6px; background: #fff; color: $green; font-variant-numeric: tabular-nums; }
 }
 
 // ---------- matéria ----------
 .materia {
   width: 100%;
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
+  padding: 24px 24px 28px;
+  border-radius: 18px;
+  background: $papel;
+  border: 1px solid $linha;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 
   .voltar {
     display: block;
     width: fit-content;
     margin-bottom: 18px;
-    color: $suave;
+    color: $green;
     font-size: 14px;
+    font-weight: 700;
     text-decoration: none;
-    &:hover { color: $white; }
+    &:hover { text-decoration: underline; }
   }
   h1 {
     margin: 10px 0 12px;
@@ -172,8 +197,20 @@ $linha: rgba(255, 255, 255, 0.08);
     font-size: clamp(28px, 6vw, 42px);
     line-height: 1.12;
   }
-  .linha-fina { margin: 0 0 12px; color: $suave; font-size: 18px; line-height: 1.45; }
-  .assinatura { margin: 0 0 20px; padding-bottom: 14px; border-bottom: 1px solid $linha; color: $suave; font-size: 13px; }
+  .linha-fina { margin: 0 0 14px; color: $suave; font-size: 18px; line-height: 1.45; }
+  .assinatura {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid $linha;
+    color: $suave;
+    font-size: 13px;
+    img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid $linha; }
+  }
+
+  @media (max-width: 560px) { padding: 18px 16px 22px; }
 }
 
 .placar-grande {
@@ -184,8 +221,8 @@ $linha: rgba(255, 255, 255, 0.08);
   margin-bottom: 16px;
   padding: 16px 12px;
   border-radius: 14px;
-  background: linear-gradient(160deg, color.adjust($gray, $lightness: 6%), $dark-gray);
-  border: 1px solid rgba($green-light, 0.3);
+  background: $green-bg;
+  border: 1px solid rgba($green-light, 0.25);
 
   .time {
     display: flex;
@@ -197,7 +234,7 @@ $linha: rgba(255, 255, 255, 0.08);
     text-align: center;
     img { width: 44px; height: 44px; object-fit: contain; }
   }
-  .gols { font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; small { color: $suave; font-size: 20px; } }
+  .gols { color: $green; font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; small { color: $suave; font-size: 20px; } }
 }
 
 .destaques {
@@ -207,7 +244,7 @@ $linha: rgba(255, 255, 255, 0.08);
   gap: 8px;
   margin: 0 0 20px;
   padding: 0;
-  li { padding: 6px 10px; border-radius: 8px; background: rgba(0, 0, 0, 0.3); font-size: 13px; }
+  li { padding: 6px 10px; border-radius: 8px; background: $fundo; border: 1px solid $linha; font-size: 13px; }
 }
 
 .texto p {
@@ -215,12 +252,12 @@ $linha: rgba(255, 255, 255, 0.08);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 18px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.92);
+  color: #2b2f31;
 }
 .texto p:first-child::first-letter {
   float: left;
   margin: 6px 8px 0 0;
-  color: $lime;
+  color: $green;
   font-size: 54px;
   line-height: 0.8;
   font-weight: 700;
@@ -239,22 +276,19 @@ $linha: rgba(255, 255, 255, 0.08);
   padding: 0 18px;
   border-radius: 12px;
   background: $green;
-  border: 1px solid $green-light;
-  color: $white;
+  color: #fff;
   font-size: 14px;
   font-weight: 800;
   text-decoration: none;
-  &.video { background: #c4302b; border-color: #ff3b30; }
-  &:focus-visible { outline: 3px solid $lime; outline-offset: 2px; }
+  &.video { background: #c4302b; }
+  &:focus-visible { outline: 3px solid $green-light; outline-offset: 2px; }
 }
 
 .mais {
   width: 100%;
-  max-width: 720px;
-  margin: 8px auto 0;
-  padding-top: 18px;
-  border-top: 1px solid $linha;
-  h2 { margin: 0 0 12px; color: $green-light; font-size: 14px; letter-spacing: 0.8px; text-transform: uppercase; }
+  max-width: 760px;
+  margin: 0 auto;
+  h2 { margin: 0 0 12px; color: $green; font-size: 14px; letter-spacing: 0.8px; text-transform: uppercase; }
 }
 
 @media (prefers-reduced-motion: reduce) {

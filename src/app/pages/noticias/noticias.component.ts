@@ -36,8 +36,9 @@ export class NoticiasComponent {
     const f = this.filtro();
     return this.ordenadas.filter(n => f === 'todas' || n.categoria === f);
   });
-  readonly capa = computed(() => this.lista()[0] ?? null);
-  readonly demais = computed(() => this.lista().slice(1));
+  /** Panoramas das duas categorias em destaque, lado a lado e do mesmo tamanho (sem diferença entre as ligas). */
+  readonly manchetes = computed(() => this.lista().filter(n => n.tipo === 'panorama').sort((x, y) => x.categoria.localeCompare(y.categoria)));
+  readonly demais = computed(() => this.lista().filter(n => n.tipo !== 'panorama'));
   /** Na matéria aberta: outras da mesma categoria. */
   readonly relacionadas = computed(() => {
     const a = this.aberta();
