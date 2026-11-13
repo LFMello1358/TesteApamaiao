@@ -228,7 +228,8 @@ input:focus-visible {
   font-size: 13px;
   font-variant-numeric: tabular-nums;
 
-  span { display: flex; align-items: center; min-width: 0; overflow: hidden; white-space: nowrap; }
+  // cada lado tem largura mínima para o número sempre aparecer (ex.: 99% × 1%)
+  span { display: flex; align-items: center; flex: 0 0 0; min-width: 46px; overflow: hidden; white-space: nowrap; }
   .a { justify-content: flex-start; padding-left: 8px; background: $green-light; }
   .b { justify-content: flex-end; padding-right: 8px; background: #3b4247; }
 }

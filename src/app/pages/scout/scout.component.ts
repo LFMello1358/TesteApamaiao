@@ -251,6 +251,13 @@ export class ScoutComponent {
     return j.perna && j.perna !== 'unico' ? `${fase} · ${j.perna}` : fase;
   }
 
+  /** Porcentagem da barra de chance: "<1%" quando é quase zero, para não mostrar "0%". */
+  pct(p: number): string {
+    if (p > 0 && p < 0.005) return '<1%';
+    if (p < 1 && p > 0.995) return '>99%';
+    return `${Math.round(p * 100)}%`;
+  }
+
   dataBr(iso: string): string {
     return iso.split('-').reverse().join('/');
   }

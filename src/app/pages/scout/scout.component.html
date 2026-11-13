@@ -59,8 +59,8 @@
           <div class="chance">
             <span class="rotulo">Chance de avançar{{ simuladorAberto() ? ' (simulação)' : '' }}</span>
             <div class="chance-barra">
-              <span class="a" [style.width.%]="100 * x.chanceA">{{ x.chanceA | percent: '1.0-0' }}</span>
-              <span class="b" [style.width.%]="100 * x.chanceB">{{ x.chanceB | percent: '1.0-0' }}</span>
+              <span class="a" [style.flex-grow]="x.chanceA">{{ pct(x.chanceA) }}</span>
+              <span class="b" [style.flex-grow]="x.chanceB">{{ pct(x.chanceB) }}</span>
             </div>
             <small>Empate no agregado classifica <strong>{{ x.vantagem }}</strong> (melhor TPG)</small>
           </div>
