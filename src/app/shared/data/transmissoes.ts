@@ -30,6 +30,15 @@ export const TRANSMISSOES: Transmissao[] = [
     jogos: [{ categoria: 'B', hora: '20h', mandante: 'Portugal', visitante: 'Holanda' }, { categoria: 'A', hora: '21h', mandante: 'França', visitante: 'Brasil' }] },
   { data: '2026-11-12', inicio: '19:45', fim: '22:30', videoId: 's7HF-998H_A', titulo: 'Quartas de final · ida',
     jogos: [{ categoria: 'B', hora: '20h', mandante: 'Espanha', visitante: 'Brasil' }, { categoria: 'A', hora: '21h', mandante: 'Uruguai', visitante: 'Inglaterra' }] },
+  // quartas · volta (lives agendadas na playlist)
+  { data: '2026-11-16', inicio: '19:45', fim: '22:30', videoId: 'C-6yQ7iPB7s', titulo: 'Quartas de final · volta',
+    jogos: [{ categoria: 'B', hora: '20h', mandante: 'México', visitante: 'Inglaterra' }, { categoria: 'A', hora: '21h', mandante: 'Alemanha', visitante: 'Argentina' }] },
+  { data: '2026-11-17', inicio: '19:45', fim: '22:30', videoId: '7sWxEQPcZ68', titulo: 'Quartas de final · volta',
+    jogos: [{ categoria: 'B', hora: '20h', mandante: 'Itália', visitante: 'Uruguai' }, { categoria: 'A', hora: '21h', mandante: 'Espanha', visitante: 'México' }] },
+  { data: '2026-11-18', inicio: '19:45', fim: '22:30', videoId: '_BZfNW8r1b8', titulo: 'Quartas de final · volta',
+    jogos: [{ categoria: 'B', hora: '20h', mandante: 'Portugal', visitante: 'Holanda' }, { categoria: 'A', hora: '21h', mandante: 'França', visitante: 'Brasil' }] },
+  { data: '2026-11-19', inicio: '19:45', fim: '22:30', videoId: '01h45rpmdLk', titulo: 'Quartas de final · volta',
+    jogos: [{ categoria: 'B', hora: '20h', mandante: 'Espanha', visitante: 'Brasil' }, { categoria: 'A', hora: '21h', mandante: 'Uruguai', visitante: 'Inglaterra' }] },
 ];
 
 /** Escudo de cada seleção. */
