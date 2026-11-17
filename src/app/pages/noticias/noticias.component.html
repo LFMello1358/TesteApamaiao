@@ -60,35 +60,60 @@
         <h1>Notícias do APAMAIÃO</h1>
         <p>Os bastidores, os gols e o que está em jogo em cada confronto da fase final.</p>
       </div>
-      <div class="filtros" role="group" aria-label="Filtrar por categoria">
-        <button type="button" [class.ativo]="filtro() === 'todas'" [attr.aria-pressed]="filtro() === 'todas'" (click)="filtrar('todas')">Todas</button>
-        <button type="button" [class.ativo]="filtro() === 'A'" [attr.aria-pressed]="filtro() === 'A'" (click)="filtrar('A')">Categoria A</button>
-        <button type="button" [class.ativo]="filtro() === 'B'" [attr.aria-pressed]="filtro() === 'B'" (click)="filtrar('B')">Categoria B</button>
-      </div>
     </header>
 
-    <!-- Categoria A de um lado e B do outro, cada uma com a sua cor (no celular, uma embaixo da outra) -->
-    <div class="colunas" [class.uma]="categorias().length === 1">
-      @for (cat of categorias(); track cat) {
-        <section class="coluna" [class.cat-b]="cat === 'B'" [attr.aria-label]="'Notícias da Categoria ' + cat">
-          <h2 class="coluna-titulo">Categoria {{ cat }}</h2>
-          @for (n of daCategoria(cat); track n.id) {
-            <a [class]="n.tipo === 'panorama' ? 'manchete' : 'card'" [routerLink]="['/noticias', n.id]">
-              <span class="chapeu">{{ n.chapeu }}</span>
-              @if (n.jogo; as j) {
-                <span class="mini-placar">
-                  <img [src]="escudos[j.mandante]" alt="" /> {{ j.mandante }}
-                  <b>{{ j.placarMandante }} × {{ j.placarVisitante }}</b>
-                  {{ j.visitante }} <img [src]="escudos[j.visitante]" alt="" />
-                </span>
-              }
-              @if (n.tipo === 'panorama') { <h3>{{ n.titulo }}</h3> } @else { <strong>{{ n.titulo }}</strong> }
-              <p>{{ n.linhaFina }}</p>
-              <small>{{ dataBr(n.data) }}</small>
-            </a>
-          }
-        </section>
+    <!-- celular: uma categoria por vez (no computador as duas ficam lado a lado e o seletor some) -->
+    <div class="seletor" role="tablist" aria-label="Escolher a categoria">
+      @for (c of categorias; track c) {
+        <button type="button" role="tab" [class.ativo]="abaMobile() === c" [class.cat-b]="c === 'B'"
+          [attr.aria-selected]="abaMobile() === c" (click)="escolherAba(c)">Categoria {{ c }}</button>
       }
     </div>
+
+    <!-- uma seção por rodada; a mais recente aberta, as anteriores recolhidas -->
+    @for (r of rodadas; track r.nome; let primeira = $first) {
+      <details class="rodada" [open]="primeira">
+        <summary>
+          <span class="rodada-nome">{{ r.nome }}</span>
+          <span class="rodada-info">{{ r.total }} matérias · até {{ dataBr(r.data) }}</span>
+        </summary>
+
+        <div class="colunas">
+          @for (c of categorias; track c) {
+            <section class="coluna" [class.cat-b]="c === 'B'" [class.oculta-mobile]="abaMobile() !== c"
+              [attr.aria-label]="r.nome + ' · Categoria ' + c">
+              <h2 class="coluna-titulo">Categoria {{ c }}</h2>
+
+              @if (r[c].destaque; as d) {
+                <a class="manchete" [routerLink]="['/noticias', d.id]">
+                  <span class="chapeu">Panorama</span>
+                  <h3>{{ d.titulo }}</h3>
+                  <p>{{ d.linhaFina }}</p>
+                  <span class="ler">Ler matéria →</span>
+                </a>
+              }
+
+              <ul class="lista-jogos">
+                @for (n of r[c].jogos; track n.id) {
+                  <li>
+                    <a [routerLink]="['/noticias', n.id]">
+                      @if (n.jogo; as j) {
+                        <span class="placar-linha">
+                          <span class="t"><img [src]="escudos[j.mandante]" alt="" />{{ j.mandante }}</span>
+                          <b>{{ j.placarMandante }} × {{ j.placarVisitante }}</b>
+                          <span class="t"><img [src]="escudos[j.visitante]" alt="" />{{ j.visitante }}</span>
+                          <small>{{ diaMes(n.data) }}</small>
+                        </span>
+                      }
+                      <strong>{{ n.titulo }}</strong>
+                    </a>
+                  </li>
+                }
+              </ul>
+            </section>
+          }
+        </div>
+      </details>
+    }
   }
 </main>

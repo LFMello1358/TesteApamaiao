@@ -6,7 +6,15 @@ import { ComponetsComponent } from '../../componentes/componets/componets.compon
 import { NOTICIAS, Noticia } from '../../shared/data/noticias';
 import { ESCUDOS, PLAYLIST_2026, TRANSMISSOES } from '../../shared/data/transmissoes';
 
-type Filtro = 'todas' | 'A' | 'B';
+type Categoria = 'A' | 'B';
+
+export interface Rodada {
+  nome: string;
+  data: string; // matéria mais recente da rodada
+  total: number;
+  A: { destaque: Noticia | null; jogos: Noticia[] };
+  B: { destaque: Noticia | null; jogos: Noticia[] };
+}
 
 /**
  * Notícias do mata-mata: capa com a matéria principal e a lista de matérias;
@@ -24,7 +32,8 @@ export class NoticiasComponent {
   private readonly rota = inject(ActivatedRoute);
 
   readonly escudos = ESCUDOS;
-  readonly filtro = signal<Filtro>('todas');
+  /** No celular aparece uma categoria por vez (seletor A | B); no computador, as duas lado a lado. */
+  readonly abaMobile = signal<Categoria>('A');
   private readonly id = toSignal(this.rota.paramMap.pipe(map(p => p.get('id'))), { initialValue: null });
 
   /** Mais recentes primeiro; no mesmo dia, panorama antes dos jogos e A antes de B. */
@@ -32,25 +41,36 @@ export class NoticiasComponent {
     y.data.localeCompare(x.data) || (x.tipo === y.tipo ? 0 : x.tipo === 'panorama' ? -1 : 1) || x.categoria.localeCompare(y.categoria));
 
   readonly aberta = computed(() => NOTICIAS.find(n => n.id === this.id()) ?? null);
-  readonly lista = computed(() => {
-    const f = this.filtro();
-    return this.ordenadas.filter(n => f === 'todas' || n.categoria === f);
-  });
-  /** Colunas da capa: A à esquerda e B à direita (ou só a do filtro). */
-  readonly categorias = computed<('A' | 'B')[]>(() => { const f = this.filtro(); return f === 'todas' ? ['A', 'B'] : [f]; });
-
-  /** Matérias da categoria: panorama primeiro, depois os jogos do mais recente para o mais antigo. */
-  daCategoria(cat: 'A' | 'B'): Noticia[] {
-    return this.ordenadas.filter(n => n.categoria === cat);
-  }
+  /**
+   * Capa organizada por rodada (quartas ida, quartas volta, semis...), da mais recente para a mais antiga.
+   * Em cada rodada e categoria: o panorama em destaque e os jogos numa lista compacta.
+   */
+  readonly rodadas: Rodada[] = (() => {
+    const mapa = new Map<string, Noticia[]>();
+    for (const n of this.ordenadas) mapa.set(n.rodada, [...(mapa.get(n.rodada) ?? []), n]);
+    const lado = (lista: Noticia[], c: Categoria) => {
+      const da = lista.filter(n => n.categoria === c);
+      return { destaque: da.find(n => n.tipo === 'panorama') ?? null, jogos: da.filter(n => n.tipo === 'jogo') };
+    };
+    return [...mapa.entries()]
+      .map(([nome, lista]) => ({ nome, data: lista[0].data, total: lista.length, A: lado(lista, 'A'), B: lado(lista, 'B') }))
+      .sort((x, y) => y.data.localeCompare(x.data));
+  })();
+  readonly categorias: Categoria[] = ['A', 'B'];
   /** Na matéria aberta: outras da mesma categoria. */
   readonly relacionadas = computed(() => {
     const a = this.aberta();
     return a ? this.ordenadas.filter(n => n.categoria === a.categoria && n.id !== a.id).slice(0, 4) : [];
   });
 
-  filtrar(f: Filtro): void {
-    this.filtro.set(f);
+  escolherAba(c: Categoria): void {
+    this.abaMobile.set(c);
+  }
+
+  /** "10/11" (sem o ano, para a lista compacta) */
+  diaMes(iso: string): string {
+    const [, m, d] = iso.split('-');
+    return `${d}/${m}`;
   }
 
   dataBr(iso: string): string {

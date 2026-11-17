@@ -7,6 +7,8 @@ export interface Noticia {
   id: string;
   categoria: 'A' | 'B';
   tipo: 'jogo' | 'panorama';
+  /** Rodada do mata-mata (agrupa a capa), ex.: "Quartas de final · ida". */
+  rodada: string;
   data: string; // AAAA-MM-DD
   titulo: string;
   linhaFina: string;
@@ -21,6 +23,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "a-panorama",
     "categoria": "A",
     "tipo": "panorama",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-13",
     "titulo": "Rumo às voltas: artilharia em chamas e quatro confrontos em aberto",
     "linhaFina": "Caça-Rato e Luizinho Costela dividem o topo com 30 gols, Allan corre atrás com 27 e as quartas da Categoria A seguem sem nenhum classificado garantido",
@@ -43,6 +46,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "a-q1-ida",
     "categoria": "A",
     "tipo": "jogo",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-09",
     "titulo": "Argentina vence a Alemanha e leva vantagem para a volta",
     "linhaFina": "Thiago Pinheiro marca o gol da vitória por 3 a 2 e deixa os argentinos jogando pelo empate; Lucas Siri e Allan marcaram para os alemães",
@@ -70,6 +74,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "a-q2-ida",
     "categoria": "A",
     "tipo": "jogo",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-10",
     "titulo": "Fred brilha, Costela faz golaço e Espanha abre dois gols sobre o México",
     "linhaFina": "Espanha vence por 3 a 1 com dois gols de Fred; Luizinho Costela ainda teve outro golaço anulado e chega aos 30 na artilharia",
@@ -97,6 +102,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "a-q3-ida",
     "categoria": "A",
     "tipo": "jogo",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-11",
     "titulo": "Caça-Rato empata de cabeça no fim e iguala a artilharia",
     "linhaFina": "França busca o 1 a 1 contra o Brasil quase no apito final; Luiz Fellipe chega a 30 gols e divide a liderança com Luizinho Costela",
@@ -124,6 +130,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "a-q4-ida",
     "categoria": "A",
     "tipo": "jogo",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-12",
     "titulo": "Uruguai e Inglaterra empatam e deixam tudo aberto para a volta",
     "linhaFina": "Pedro Valente e Bruno Pão marcam no primeiro tempo; Inglaterra precisa vencer no dia 19 para avançar",
@@ -151,6 +158,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "b-panorama",
     "categoria": "B",
     "tipo": "panorama",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-13",
     "titulo": "Rumo às voltas: Categoria B tem quatro confrontos em aberto",
     "linhaFina": "México, Holanda e Espanha levam vantagem; Itália e Uruguai recomeçam do zero. Decisões de 16 a 19/11, sempre às 20h",
@@ -174,6 +182,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "b-q1-ida",
     "categoria": "B",
     "tipo": "jogo",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-09",
     "titulo": "Maguila decide e México sai na frente contra a Inglaterra",
     "linhaFina": "Gol único garante o 1 a 0 na ida; com a vantagem do empate no agregado, mexicanos avançam até perdendo por um na volta",
@@ -199,6 +208,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "b-q2-ida",
     "categoria": "B",
     "tipo": "jogo",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-10",
     "titulo": "Itália e Uruguai empatam sem gols e deixam tudo para a volta",
     "linhaFina": "Leandro Manhães e Braga passam a noite sem ser vazados; empate mantém a vantagem italiana para a volta",
@@ -223,6 +233,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "b-q3-ida",
     "categoria": "B",
     "tipo": "jogo",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-11",
     "titulo": "Lattanzi marca o primeiro e Holanda vence Portugal",
     "linhaFina": "Gol inédito do holandês no campeonato e goleiro Zuqui sem ser vazado garantem o 1 a 0 sobre o vice-líder da 1ª fase",
@@ -249,6 +260,7 @@ export const NOTICIAS: Noticia[] = [
     "id": "b-q4-ida",
     "categoria": "B",
     "tipo": "jogo",
+    "rodada": "Quartas de final · ida",
     "data": "2026-11-12",
     "titulo": "Espanha vence o Brasil e leva vantagem para a volta",
     "linhaFina": "Cristiano Motta e Ezequiel marcam no 2 a 0; goleiro Xingu não é vazado e Brasil segue vivo na disputa",
@@ -269,6 +281,64 @@ export const NOTICIAS: Noticia[] = [
       "⚽ Ezequiel (ESP)",
       "🧤 Xingu (ESP) sem sofrer gol",
       "🟨 Latini, Bazhuni (ESP)"
+    ]
+  },
+  {
+    "id": "a-q1-volta",
+    "categoria": "A",
+    "tipo": "jogo",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-16",
+    "titulo": "Argentina vence de novo, despacha a Alemanha e é a primeira semifinalista",
+    "linhaFina": "Douglas e Ricardo Rego marcam no 2 a 0, o agregado termina 5 a 2 e a 5ª colocada derruba a 4ª numa noite de muito trabalho para o árbitro",
+    "chapeu": "Quartas · volta",
+    "jogo": {
+      "mandante": "Alemanha",
+      "visitante": "Argentina",
+      "placarMandante": 0,
+      "placarVisitante": 2
+    },
+    "corpo": [
+      "A Argentina fez o dever de casa duas vezes. Depois de vencer a ida por 3 a 2, voltou a campo na noite de 16 de novembro, bateu a Alemanha por 2 a 0 e fechou o agregado em 5 a 2. É a primeira vaga carimbada na semifinal da Categoria A, e com um detalhe que todo torcedor adora: a 5ª colocada da primeira fase eliminou a 4ª.",
+      "Douglas e Ricardo Rego marcaram os gols argentinos. Do outro lado, Somália passou a noite sem ser vazado e garantiu que a vantagem construída na ida nunca corresse risco. A Alemanha, que precisava vencer por qualquer placar, não conseguiu furar o bloqueio.",
+      "Foi também uma noite em que o apito trabalhou mais que o placar. Ricardo Rego, autor de um dos gols, recebeu o segundo amarelo e foi expulso. Lucas Siri e Bernardo Filé, da Alemanha, levaram vermelho direto. Com três expulsões, ninguém pode dizer que o jogo foi morno. Ricardo cumpre suspensão na ida da semifinal.",
+      "Na ida, Thiago Pinheiro tinha avisado que \"a pressão segue na gente\". Desta vez ele sentiu uma lesão e não conseguiu completar o tempo mínimo, mas viu o time transformar a pressão em classificação. Fica a torcida pela recuperação dele a tempo da semifinal.",
+      "Para a Alemanha, fim de uma campanha digna, que teve Allan como um dos grandes nomes do ano, com 27 gols. O ano de servir terminou mais cedo do que ele gostaria, mas a pressão, como ele mesmo ensina, sempre foi um privilégio. A Argentina agora espera o fim das quartas para conhecer o adversário da semifinal."
+    ],
+    "destaques": [
+      "⚽ Douglas, Ricardo Rego (ARG)",
+      "🟥 Ricardo Rego (ARG) — 2º amarelo",
+      "🟥 Lucas Siri, Bernardo Filé (ALE)",
+      "🟨 Ítalo, Rodrigo Lima (ALE) · Alexandre (ARG)",
+      "Agregado: Alemanha 2 × 5 Argentina"
+    ]
+  },
+  {
+    "id": "b-q1-volta",
+    "categoria": "B",
+    "tipo": "jogo",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-16",
+    "titulo": "Inglaterra vence, Bodinho brilha, mas o México segue vivo pela vantagem do empate",
+    "linhaFina": "Bodinho faz dois e chega a 29 gols; Cupulille marca o gol que vale a vaga, e o agregado de 2 a 2 classifica os mexicanos para a semifinal",
+    "chapeu": "Quartas · volta",
+    "jogo": {
+      "mandante": "México",
+      "visitante": "Inglaterra",
+      "placarMandante": 1,
+      "placarVisitante": 2
+    },
+    "corpo": [
+      "Teve emoção até o último minuto na volta entre México e Inglaterra, na noite de 16 de novembro. A Inglaterra venceu por 2 a 1, mas o agregado terminou empatado em 2 a 2, e aí o regulamento fala mais alto: o empate classifica quem fez a melhor campanha na primeira fase. Melhor para o México, 4º colocado, que está na semifinal da Categoria B.",
+      "O nome da noite foi Bodinho. O artilheiro da categoria marcou os dois gols ingleses, chegou a 29 no ano e segue isolado na ponta da artilharia. Precisava de mais um para mudar a história e ficou a um gol de levar a decisão para o lado inglês.",
+      "Do lado mexicano, o gol que valeu a vaga foi de Cupulille, que chegou a 13 no ano. Somado ao 1 a 0 da ida, com gol de Maguila, foi o suficiente para segurar a classificação. Marcio Lima e Blois receberam cartão amarelo. Com dois amarelos no mata-mata, Marcio Lima está pendurado para a semifinal.",
+      "A Inglaterra se despede com a cabeça erguida e com o artilheiro da categoria. O México segue em frente e aguarda o fim das quartas para conhecer o adversário da semifinal."
+    ],
+    "destaques": [
+      "⚽ Cupulille (MEX)",
+      "⚽⚽ Bodinho (ING)",
+      "🟨 Marcio Lima (MEX) · Blois (ING)",
+      "Agregado: México 2 × 2 Inglaterra (México avança pela melhor campanha)"
     ]
   }
 ];
