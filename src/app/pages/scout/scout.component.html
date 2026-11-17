@@ -13,8 +13,8 @@
         <span role="columnheader" class="col-titulo">Título</span>
       </div>
       @for (c of chances; track c.time.name) {
-        <div class="linha" role="row">
-          <span class="time" role="cell"><img [src]="c.time.icon" [alt]="c.time.name" />{{ c.time.name }}</span>
+        <div class="linha" role="row" [class.eliminado]="c.eliminado">
+          <span class="time" role="cell"><img [src]="c.time.icon" [alt]="c.time.name" />{{ c.time.name }}@if (c.eliminado) { <small class="elim">eliminado</small> }</span>
           <span role="cell">{{ c.semi | percent: '1.0-0' }}</span>
           <span role="cell">{{ c.final | percent: '1.0-0' }}</span>
           <span class="col-titulo" role="cell">
@@ -51,7 +51,7 @@
     @if (analise(); as x) {
       <article class="confronto">
         <div class="cartao duelo-topo">
-          <div class="lado">
+          <div class="lado" [class.eliminado]="duelo().perdedor?.name === x.a.nome">
             <img [src]="x.a.icon" [alt]="x.a.nome" />
             <strong>{{ x.a.nome }}</strong>
             <small>{{ x.a.posicao }}º · {{ x.a.pontos }} pts</small>
@@ -64,7 +64,7 @@
             </div>
             <small>Empate no agregado classifica <strong>{{ x.vantagem }}</strong> (melhor TPG)</small>
           </div>
-          <div class="lado">
+          <div class="lado" [class.eliminado]="duelo().perdedor?.name === x.b.nome">
             <img [src]="x.b.icon" [alt]="x.b.nome" />
             <strong>{{ x.b.nome }}</strong>
             <small>{{ x.b.posicao }}º · {{ x.b.pontos }} pts</small>

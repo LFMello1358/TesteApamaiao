@@ -170,6 +170,55 @@ $fundo: #f6f8f7;
   b { padding: 2px 8px; border-radius: 6px; background: #fff; color: $green; font-variant-numeric: tabular-nums; }
 }
 
+// ---------- colunas: Categoria A (verde) à esquerda, Categoria B (azul) à direita ----------
+$azul: #1d4f91;
+$azul-escuro: #12345f;
+
+.colunas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+  &.uma { grid-template-columns: minmax(0, 1fr); }
+  @media (max-width: 760px) { grid-template-columns: minmax(0, 1fr); }
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+
+  .coluna-titulo {
+    margin: 0;
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: $green;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .manchete h3 {
+    margin: 10px 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(21px, 2.6vw, 26px);
+    line-height: 1.2;
+  }
+  .manchete small { display: block; margin-top: 10px; color: rgba(255, 255, 255, 0.7); font-size: 12px; }
+
+  // Categoria B em azul
+  &.cat-b {
+    .coluna-titulo { background: $azul; }
+    .manchete, .card {
+      background: linear-gradient(135deg, $azul, $azul-escuro);
+      box-shadow: 0 6px 16px rgba($azul-escuro, 0.25);
+    }
+    .chapeu, .manchete .ler { color: #9fd0ff; }
+    .mini-placar b { color: $azul; }
+  }
+}
+
 // ---------- matéria ----------
 .materia {
   width: 100%;

@@ -14,6 +14,7 @@ import { JOGOS_SERIE_A } from '../../shared/data/jogos-serie-a';
 import { JOGOS_SERIE_B } from '../../shared/data/jogos-serie-b';
 import { SUMULAS_SERIE_A } from '../../shared/data/sumulas-serie-a';
 import { SUMULAS_SERIE_B } from '../../shared/data/sumulas-serie-b';
+import { TRANSMISSOES } from '../../shared/data/transmissoes';
 import {
   Duelo, chancesTitulo, classificacaoGeral, criarModelo, curiosidades, destaques, disciplina, historico,
   maioresAtuacoes, marcadoresDoConfronto, montarMataMata, posicao, probAvancar, probJogo, quemMaisMarcouContra, resumoTime,
@@ -77,7 +78,15 @@ export class ScoutComponent {
   readonly totalJogos = this.jogosTemporada.length;
   private readonly modelo = criarModelo(this.jogosTemporada);
   readonly mataMata = montarMataMata(this.geral, this.dados.placares);
-  readonly chances = chancesTitulo(this.modelo, this.geral, this.mataMata);
+  /** Eliminados no mata-mata (perderam um confronto já decidido). */
+  private readonly eliminados = new Set(
+    [...this.mataMata.quartas, ...this.mataMata.semifinais, this.mataMata.final].map(d => d.perdedor?.name).filter((n): n is string => !!n));
+  /** Chances na fase final: quem segue vivo primeiro; os eliminados vão para o fim, em cinza (ordem alfabética). */
+  readonly chances = (() => {
+    const todas = chancesTitulo(this.modelo, this.geral, this.mataMata).map(c => ({ ...c, eliminado: this.eliminados.has(c.time.name) }));
+    return [...todas.filter(c => !c.eliminado),
+      ...todas.filter(c => c.eliminado).sort((a, b) => a.time.name.localeCompare(b.time.name, 'pt-BR'))];
+  })();
   readonly curiosidades = curiosidades(this.dados.jogos, this.geral);
   readonly maxTitulo = Math.max(...this.chances.map(c => c.titulo), 0.0001);
   /** Jogos com súmula transcrita (gols por jogador, cartões, ausências). */
@@ -105,8 +114,29 @@ export class ScoutComponent {
   ];
   // ?fase=quartas&confronto=2 (vindo do 'Estatísticas' de um confronto na página da categoria)
   private readonly faseInicial = (['quartas', 'semifinais', 'final'] as Fase[]).find(f => f === this.rota.queryParamMap.get('fase'));
-  readonly fase = signal<Fase>(this.faseInicial ?? 'quartas');
-  readonly indice = signal(Math.max(0, Number(this.rota.queryParamMap.get('confronto')) || 0));
+  /** Sem ?confronto na URL, o Raio-X abre no jogo do dia (ou no próximo jogo agendado) desta categoria. */
+  private readonly jogoDoDia = this.rota.queryParamMap.has('confronto') ? null : this.acharJogoDoDia();
+  readonly fase = signal<Fase>(this.faseInicial ?? this.jogoDoDia?.fase ?? 'quartas');
+  readonly indice = signal(this.jogoDoDia?.indice ?? Math.max(0, Number(this.rota.queryParamMap.get('confronto')) || 0));
+
+  private acharJogoDoDia(): { fase: Fase; indice: number } | null {
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const d = new Date();
+    const hoje = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    // hoje; se não houver jogo hoje, o próximo agendado
+    const proximas = TRANSMISSOES.filter(t => t.data >= hoje).sort((a, b) => a.data.localeCompare(b.data));
+    for (const t of proximas) {
+      const j = t.jogos.find(x => x.categoria === this.serie);
+      if (!j) continue;
+      const par = [j.mandante, j.visitante].sort().join();
+      const fases: [Fase, Duelo[]][] = [['quartas', this.mataMata.quartas], ['semifinais', this.mataMata.semifinais], ['final', [this.mataMata.final]]];
+      for (const [fase, lista] of fases) {
+        const i = lista.findIndex(x => x.timeA && x.timeB && [x.timeA.name, x.timeB.name].sort().join() === par);
+        if (i >= 0) return { fase, indice: i };
+      }
+    }
+    return null;
+  }
   /** Simulador aberto? Por padrão a página mostra só o placar oficial. */
   readonly simuladorAberto = signal(false);
   /** Placar hipotético do simulador (null = ainda igual ao oficial). */

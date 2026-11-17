@@ -67,34 +67,27 @@
       </div>
     </header>
 
-    @if (manchetes().length) {
-      <div class="manchetes">
-        @for (c of manchetes(); track c.id) {
-          <a class="manchete" [routerLink]="['/noticias', c.id]">
-            <span class="chapeu">Cat. {{ c.categoria }} · {{ c.chapeu }}</span>
-            <h2>{{ c.titulo }}</h2>
-            <p>{{ c.linhaFina }}</p>
-            <span class="ler">Ler matéria →</span>
-          </a>
-        }
-      </div>
-    }
-
-    <div class="grade">
-      @for (n of demais(); track n.id) {
-        <a class="card" [routerLink]="['/noticias', n.id]">
-          <span class="chapeu">Cat. {{ n.categoria }} · {{ n.chapeu }}</span>
-          @if (n.jogo; as j) {
-            <span class="mini-placar">
-              <img [src]="escudos[j.mandante]" alt="" /> {{ j.mandante }}
-              <b>{{ j.placarMandante }} × {{ j.placarVisitante }}</b>
-              {{ j.visitante }} <img [src]="escudos[j.visitante]" alt="" />
-            </span>
+    <!-- Categoria A de um lado e B do outro, cada uma com a sua cor (no celular, uma embaixo da outra) -->
+    <div class="colunas" [class.uma]="categorias().length === 1">
+      @for (cat of categorias(); track cat) {
+        <section class="coluna" [class.cat-b]="cat === 'B'" [attr.aria-label]="'Notícias da Categoria ' + cat">
+          <h2 class="coluna-titulo">Categoria {{ cat }}</h2>
+          @for (n of daCategoria(cat); track n.id) {
+            <a [class]="n.tipo === 'panorama' ? 'manchete' : 'card'" [routerLink]="['/noticias', n.id]">
+              <span class="chapeu">{{ n.chapeu }}</span>
+              @if (n.jogo; as j) {
+                <span class="mini-placar">
+                  <img [src]="escudos[j.mandante]" alt="" /> {{ j.mandante }}
+                  <b>{{ j.placarMandante }} × {{ j.placarVisitante }}</b>
+                  {{ j.visitante }} <img [src]="escudos[j.visitante]" alt="" />
+                </span>
+              }
+              @if (n.tipo === 'panorama') { <h3>{{ n.titulo }}</h3> } @else { <strong>{{ n.titulo }}</strong> }
+              <p>{{ n.linhaFina }}</p>
+              <small>{{ dataBr(n.data) }}</small>
+            </a>
           }
-          <strong>{{ n.titulo }}</strong>
-          <p>{{ n.linhaFina }}</p>
-          <small>{{ dataBr(n.data) }}</small>
-        </a>
+        </section>
       }
     </div>
   }

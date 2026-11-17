@@ -518,3 +518,16 @@ input:focus-visible {
   .marcadores li,
   .lista-jogos li { font-size: 14px; }
 }
+
+/* time eliminado no confronto: escudo em preto e branco */
+.lado.eliminado {
+  img { filter: grayscale(1); opacity: 0.55; }
+  strong { opacity: 0.6; }
+}
+
+/* chances na fase final: eliminados no fim, em cinza */
+.tabela-chances .linha.eliminado {
+  opacity: 0.45;
+  img { filter: grayscale(1); }
+  .elim { margin-left: 6px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.4px; }
+}

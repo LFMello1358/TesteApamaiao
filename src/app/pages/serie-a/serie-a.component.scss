@@ -1227,3 +1227,9 @@ h3 {
   letter-spacing: 0.6px;
   text-decoration: none;
 }
+
+/* time eliminado no mata-mata: escudo em preto e branco */
+.mata-equipe.eliminado {
+  img { filter: grayscale(1); opacity: 0.55; }
+  strong { opacity: 0.6; }
+}

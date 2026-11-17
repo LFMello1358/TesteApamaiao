@@ -36,9 +36,13 @@ export class NoticiasComponent {
     const f = this.filtro();
     return this.ordenadas.filter(n => f === 'todas' || n.categoria === f);
   });
-  /** Panoramas das duas categorias em destaque, lado a lado e do mesmo tamanho (sem diferença entre as ligas). */
-  readonly manchetes = computed(() => this.lista().filter(n => n.tipo === 'panorama').sort((x, y) => x.categoria.localeCompare(y.categoria)));
-  readonly demais = computed(() => this.lista().filter(n => n.tipo !== 'panorama'));
+  /** Colunas da capa: A à esquerda e B à direita (ou só a do filtro). */
+  readonly categorias = computed<('A' | 'B')[]>(() => { const f = this.filtro(); return f === 'todas' ? ['A', 'B'] : [f]; });
+
+  /** Matérias da categoria: panorama primeiro, depois os jogos do mais recente para o mais antigo. */
+  daCategoria(cat: 'A' | 'B'): Noticia[] {
+    return this.ordenadas.filter(n => n.categoria === cat);
+  }
   /** Na matéria aberta: outras da mesma categoria. */
   readonly relacionadas = computed(() => {
     const a = this.aberta();

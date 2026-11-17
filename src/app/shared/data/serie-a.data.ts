@@ -64,8 +64,8 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
           name: 'Bernardo Filé',
           position: 'Zagueiro',
           fouls: 4,
-          yellowCard: 0,
-          redCard: 0,
+          yellowCard: 1,
+          redCard: 1,
           goals: 6,
           suspensao: false,
           jogosSuspensao: 1
@@ -74,7 +74,7 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
           name: 'Ítalo',
           position: 'Lateral 1',
           fouls: 2,
-          yellowCard: 0,
+          yellowCard: 1,
           redCard: 0,
           goals: 10,
           suspensao: false,
@@ -94,8 +94,8 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
           name: 'Lucas Siri',
           position: 'Volante',
           fouls: 4,
-          yellowCard: 0,
-          redCard: 0,
+          yellowCard: 1,
+          redCard: 1,
           goals: 6,
           suspensao: false,
           jogosSuspensao: 1
@@ -104,7 +104,7 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
           name: 'Rodrigo Lima',
           position: 'm1',
           fouls: 1,
-          yellowCard: 0,
+          yellowCard: 1,
           redCard: 0,
           goals: 14,
           suspensao: false,
@@ -133,7 +133,7 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
         {
           name: 'Rodrigo Saramago',
           position: 'Flex 1',
-          fouls: 5,
+          fouls: 7,
           yellowCard: 0,
           redCard: 0,
           goals: 1,
@@ -180,11 +180,11 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
         { name: 'Flavinho', position: 'Lateral 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 3,suspensao: false, jogosSuspensao: 1 },
         { name: 'Belladonna', position: 'Volante', fouls: 3, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
         { name: 'Rafael Almeida', position: 'Meio Campo 1', fouls: 2, yellowCard: 1, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Alexandre', position: 'Meio Campo 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Thiago Pinheiro', position: 'Atacante', fouls: 0, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Douglas', position: 'Flex 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 8, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Alexandre', position: 'Meio Campo 2', fouls: 0, yellowCard: 1, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Thiago Pinheiro', position: 'Atacante', fouls: 2, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Douglas', position: 'Flex 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
         { name: 'Caroço', position: 'Flex 2', fouls: 4, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Ricardo Rego', position: 'Flex 3', fouls: 6, yellowCard: 0, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 }
+        { name: 'Ricardo Rego', position: 'Flex 3', fouls: 6, yellowCard: 0, redCard: 1, goals: 7, suspensao: true, jogosSuspensao: 1 }
       ],
       points: 0, games: 0, wins: 0, draws: 0, losses: 0,
       goalsFor: 0, goalsAgainst: 0, woLosses: 0, SaldoGols: 0
@@ -379,7 +379,7 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
 export const PLACARES_MATA_MATA_SERIE_A: PlacaresMataMata = {
 
     quartas: {
-      q1: { idaA: 2, idaB: 3, voltaA: null, voltaB: null },
+      q1: { idaA: 2, idaB: 3, voltaA: 0, voltaB: 2 },
       q2: { idaA: 3, idaB: 1, voltaA: null, voltaB: null },
       q3: { idaA: 1, idaB: 1, voltaA: null, voltaB: null },
       q4: { idaA: 1, idaB: 1, voltaA: null, voltaB: null }
@@ -432,15 +432,16 @@ export const ARTILHARIA_SERIE_A: Artilheiro[] = [
       { name: 'Victor Carlota', goals: 10, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Bruno Alfieri', goals: 9, time: 'México', icon: 'assets/img/mexico.png' },
       { name: 'Chalu', goals: 9, time: 'Brasil', icon: 'assets/img/brasil.png' },
+      { name: 'Douglas', goals: 9, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Rafa', goals: 9, time: 'Portugal', icon: 'assets/img/portugal.png' },
       { name: 'Rodrigo Silva', goals: 9, time: 'Brasil', icon: 'assets/img/brasil.png' },
-      { name: 'Douglas', goals: 8, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Rafael Almeida', goals: 8, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Thiago Rangel', goals: 8, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
       { name: 'Artur', goals: 7, time: 'México', icon: 'assets/img/mexico.png' },
       { name: 'Bruno Pão', goals: 7, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
       { name: 'Felix', goals: 7, time: 'Portugal', icon: 'assets/img/portugal.png' },
       { name: 'Fred', goals: 7, time: 'Espanha', icon: 'assets/img/espanha.png' },
+      { name: 'Ricardo Rego', goals: 7, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Alexandre', goals: 6, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Bernardo Filé', goals: 6, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
       { name: 'Coutinho', goals: 6, time: 'México', icon: 'assets/img/mexico.png' },
@@ -448,7 +449,6 @@ export const ARTILHARIA_SERIE_A: Artilheiro[] = [
       { name: 'Lucas Siri', goals: 6, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
       { name: 'Paulinho Aldeia', goals: 6, time: 'Brasil', icon: 'assets/img/brasil.png' },
       { name: 'Reseck', goals: 6, time: 'França', icon: 'assets/img/frança.png' },
-      { name: 'Ricardo Rego', goals: 6, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Fabiano', goals: 5, time: 'Brasil', icon: 'assets/img/brasil.png' },
       { name: 'Mariano', goals: 5, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
       { name: 'Mourão', goals: 5, time: 'Portugal', icon: 'assets/img/portugal.png' },
@@ -516,7 +516,7 @@ export const ARTILHARIA_SERIE_A: Artilheiro[] = [
 export const GOLEIROS_SERIE_A: Goleiro[] = [
       {
         name: 'Luizinho Jansen',
-        goalsConceded: 65,
+        goalsConceded: 67,
         time: 'Alemanha',
         icon: 'assets/img/alemanha.png'
       },
