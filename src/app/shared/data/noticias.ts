@@ -340,5 +340,63 @@ export const NOTICIAS: Noticia[] = [
       "🟨 Marcio Lima (MEX) · Blois (ING)",
       "Agregado: México 2 × 2 Inglaterra (México avança pela melhor campanha)"
     ]
+  },
+  {
+    "id": "a-q2-volta",
+    "categoria": "A",
+    "tipo": "jogo",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-17",
+    "titulo": "Empate com gosto de vitória: Espanha segura o México e Costela vira artilheiro isolado",
+    "linhaFina": "Leleco e Luizinho Costela marcam no 2 a 2, o agregado fecha em 5 a 3 e o meio-campista mais artilheiro do campeonato chega a 31 gols",
+    "chapeu": "Quartas · volta",
+    "jogo": {
+      "mandante": "Espanha",
+      "visitante": "México",
+      "placarMandante": 2,
+      "placarVisitante": 2
+    },
+    "corpo": [
+      "A Espanha foi para a volta com dois gols de vantagem no bolso e voltou para casa com a vaga na semifinal. O 2 a 2 com o México, na noite de 17 de novembro, fechou o agregado em 5 a 3 e confirmou os espanhóis entre os quatro melhores da Categoria A.",
+      "O México, que precisava vencer por três gols de diferença, foi valente do começo ao fim. Artur e Coutinho marcaram e fizeram a torcida mexicana sonhar por alguns minutos. Do lado espanhol, Leleco deixou o dele, e Luizinho Costela fez o que já virou rotina: balançou a rede.",
+      "E que gol importante. Com ele, Costela chegou a 31 e passou a ser o artilheiro isolado do campeonato, um à frente do Caça-Rato. Detalhe que nunca cansa de ser repetido: ele é meio-campista. Os atacantes da Categoria A já devem estar pedindo à organização para conferir a posição dele na ficha de inscrição.",
+      "E o Batata Airlines? Seguiu decolando pelo meio-campo, distribuiu passes, mas o voo do gol no mata-mata ainda não saiu do portão de embarque. A boa notícia para os passageiros é que a Espanha está na semifinal. Tem mais voos marcados, e a tripulação garante que o gol do Batata está só aguardando autorização da torre.",
+      "Francisco recebeu cartão amarelo. Agora a Espanha espera o fim das quartas para conhecer o adversário da semifinal. Ao México, que caiu de pé, fica o mérito de ter feito dois gols na volta e de ter vendido caro a eliminação."
+    ],
+    "destaques": [
+      "⚽ Leleco, Luizinho Costela (ESP)",
+      "⚽ Artur, Coutinho (MEX)",
+      "🟨 Francisco N. (ESP)",
+      "Agregado: Espanha 5 × 3 México",
+      "🥇 Luizinho Costela: 31 gols, artilheiro isolado"
+    ]
+  },
+  {
+    "id": "b-q2-volta",
+    "categoria": "B",
+    "tipo": "jogo",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-17",
+    "titulo": "Ricardinho faz dois, Uruguai vence a Itália e a zebra passeia pela Categoria B",
+    "linhaFina": "Depois do 0 a 0 na ida, os uruguaios ganham por 3 a 1 e o 6º colocado da primeira fase despacha o 3º",
+    "chapeu": "Quartas · volta",
+    "jogo": {
+      "mandante": "Itália",
+      "visitante": "Uruguai",
+      "placarMandante": 1,
+      "placarVisitante": 3
+    },
+    "corpo": [
+      "O 0 a 0 da ida deixou tudo em aberto, e o Uruguai resolveu a conversa na volta. Na noite de 17 de novembro, venceu a Itália por 3 a 1 e garantiu a vaga na semifinal da Categoria B. Como a Itália tinha a vantagem do empate, os uruguaios sabiam que só a vitória servia, e entregaram exatamente isso.",
+      "O homem da noite foi Ricardinho, autor de dois gols. Daniel completou a festa uruguaia. Pela Itália, Naval marcou o gol de honra e chegou a 14 no ano.",
+      "Foi uma volta de respeito para quem terminou a primeira fase em 6º lugar: eliminou a 3ª colocada e mostrou que o mata-mata tem regras próprias. Toninho Imóveis, da Itália, e Daniel e França, do Uruguai, receberam cartão amarelo.",
+      "A Itália se despede depois de uma campanha sólida, e o Uruguai segue sonhando. A organização agora espera o fim das quartas para montar as semifinais."
+    ],
+    "destaques": [
+      "⚽ Naval (ITA)",
+      "⚽⚽ Ricardinho, ⚽ Daniel (URU)",
+      "🟨 Toninho Imóveis (ITA) · Daniel, França (URU)",
+      "Agregado: Itália 1 × 3 Uruguai"
+    ]
   }
 ];

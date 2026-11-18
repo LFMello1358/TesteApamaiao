@@ -297,9 +297,9 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
         { name: 'Zarro', position: 'Zagueiro', fouls: 2, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
         { name: 'Vilhena', position: 'Lateral 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
         { name: 'Glauber', position: 'Lateral 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Toninho Imóveis', position: 'Volante', fouls: 1, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Cadu', position: 'Meio Campo 1', fouls: 1, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Naval', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 13, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Toninho Imóveis', position: 'Volante', fouls: 1, yellowCard: 1, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Cadu', position: 'Meio Campo 1', fouls: 3, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Naval', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 14, suspensao: false, jogosSuspensao: 1 },
         { name: 'Portugal', position: 'Atacante', fouls: 2, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'Paulinho Loria', position: 'Flex 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
         { name: 'Dayvison', position: 'Flex 2', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
@@ -357,10 +357,10 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
         { name: 'Konte', position: 'Zagueiro', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Valente', position: 'Lateral 1', fouls: 1, yellowCard: 1, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
         { name: 'Shaolin', position: 'Lateral 2', fouls: 10, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Ricardinho', position: 'Volante', fouls: 1, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Daniel', position: 'Meio Campo 1', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Ricardinho', position: 'Volante', fouls: 1, yellowCard: 0, redCard: 0, goals: 9, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Daniel', position: 'Meio Campo 1', fouls: 0, yellowCard: 1, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'Eloir', position: 'Meio Campo 2', fouls: 3, yellowCard: 1, redCard: 0, goals: 15, suspensao: false, jogosSuspensao: 1 },
-        { name: 'França', position: 'Atacante', fouls: 3, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
+        { name: 'França', position: 'Atacante', fouls: 3, yellowCard: 1, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
         { name: 'Barata', position: 'Flex 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
         { name: 'Nilsão', position: 'Flex 2', fouls: 5, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Waltinho', position: 'Flex 3', fouls: 0, yellowCard: 0, redCard: 0, goals: 2, suspensao: false, jogosSuspensao: 1 }
@@ -379,7 +379,7 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
 export const PLACARES_MATA_MATA_SERIE_B: PlacaresMataMata = {
     quartas: {
       q1: { idaA: 1, idaB: 0, voltaA: 1, voltaB: 2 },
-      q2: { idaA: 0, idaB: 0, voltaA: null, voltaB: null },
+      q2: { idaA: 0, idaB: 0, voltaA: 1, voltaB: 3 },
       q3: { idaA: 0, idaB: 1, voltaA: null, voltaB: null },
       q4: { idaA: 2, idaB: 0, voltaA: null, voltaB: null }
     },
@@ -409,10 +409,10 @@ export const ARTILHARIA_SERIE_B: Artilheiro[] = [
       { name: 'Igor Brasil', goals: 18, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'José Marcio', goals: 18, time: 'Holanda', icon: 'assets/img/holanda.png' },
       { name: 'Eloir', goals: 15, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
+      { name: 'Naval', goals: 14, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Cristiano Motta', goals: 13, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Cupulille', goals: 13, time: 'México', icon: 'assets/img/mexico.png' },
       { name: 'Ezequiel', goals: 13, time: 'Espanha', icon: 'assets/img/espanha.png' },
-      { name: 'Naval', goals: 13, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Romão', goals: 13, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
       { name: 'Ferreira', goals: 12, time: 'França', icon: 'assets/img/frança.png' },
       { name: 'França', goals: 12, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
@@ -425,6 +425,7 @@ export const ARTILHARIA_SERIE_B: Artilheiro[] = [
       { name: 'Jorginho Contador', goals: 9, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
       { name: 'Marcelo Dentista', goals: 9, time: 'Brasil', icon: 'assets/img/brasil.png' },
       { name: 'Paulinho Loria', goals: 9, time: 'Itália', icon: 'assets/img/italia.png' },
+      { name: 'Ricardinho', goals: 9, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Wanildo', goals: 9, time: 'Argentina', icon: 'assets/img/argentina.png' },
       { name: 'Fábinho', goals: 8, time: 'Brasil', icon: 'assets/img/brasil.png' },
       { name: 'Fabio Pinheiro', goals: 8, time: 'Brasil', icon: 'assets/img/brasil.png' },
@@ -433,7 +434,6 @@ export const ARTILHARIA_SERIE_B: Artilheiro[] = [
       { name: 'Albert', goals: 7, time: 'França', icon: 'assets/img/frança.png' },
       { name: 'Machado', goals: 7, time: 'Portugal', icon: 'assets/img/portugal.png' },
       { name: 'Orelha', goals: 7, time: 'Portugal', icon: 'assets/img/portugal.png' },
-      { name: 'Ricardinho', goals: 7, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Sandrinho', goals: 7, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
       { name: 'Serginho', goals: 7, time: 'México', icon: 'assets/img/mexico.png' },
       { name: 'Fabio Barros', goals: 6, time: 'França', icon: 'assets/img/frança.png' },
@@ -461,6 +461,7 @@ export const ARTILHARIA_SERIE_B: Artilheiro[] = [
       { name: 'Baiano', goals: 3, time: 'Alemanha', icon: 'assets/img/alemanha.png' },
       { name: 'Barata', goals: 3, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Blois', goals: 3, time: 'Inglaterra', icon: 'assets/img/inglaterra.png' },
+      { name: 'Daniel', goals: 3, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Dedeco', goals: 3, time: 'Holanda', icon: 'assets/img/holanda.png' },
       { name: 'Ecir', goals: 3, time: 'França', icon: 'assets/img/frança.png' },
       { name: 'Galo Cego', goals: 3, time: 'Argentina', icon: 'assets/img/argentina.png' },
@@ -469,7 +470,6 @@ export const ARTILHARIA_SERIE_B: Artilheiro[] = [
       { name: 'Ronaldinho', goals: 3, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Tevez', goals: 3, time: 'Espanha', icon: 'assets/img/espanha.png' },
       { name: 'Carlão', goals: 2, time: 'Brasil', icon: 'assets/img/brasil.png' },
-      { name: 'Daniel', goals: 2, time: 'Uruguai', icon: 'assets/img/uruguai.png' },
       { name: 'Dayvison', goals: 2, time: 'Itália', icon: 'assets/img/italia.png' },
       { name: 'Maduro', goals: 2, time: 'México', icon: 'assets/img/mexico.png' },
       { name: 'Sergio Somos', goals: 2, time: 'Argentina', icon: 'assets/img/argentina.png' },
@@ -548,7 +548,7 @@ export const GOLEIROS_SERIE_B: Goleiro[] = [
       },
       {
         name: 'Leandro Manhaes',
-        goalsConceded: 31,
+        goalsConceded: 34,
         time: 'Itália',
         icon: 'assets/img/italia.png'
       },
@@ -566,7 +566,7 @@ export const GOLEIROS_SERIE_B: Goleiro[] = [
       },
       {
         name: 'Braga',
-        goalsConceded: 54,
+        goalsConceded: 55,
         time: 'Uruguai',
         icon: 'assets/img/uruguai.png'
       }
