@@ -1,0 +1,24 @@
+# APAMAIÃO — configuração do servidor (Hostinger / Apache)
+# Faz o Angular funcionar ao recarregar a página ou abrir um link direto
+# (ex.: /categoria-a, /noticias/a-q3-volta). Sem isso, a Hostinger mostra "404 This Page Does Not Exist".
+# Este arquivo é copiado para a pasta do build (dist/apamaiao/browser) — veja "assets" no angular.json.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # arquivos e pastas que existem (js, css, imagens, PDFs) são servidos normalmente
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # todo o resto vai para o index.html, e o Angular abre a página certa
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# o index.html não fica em cache: quem entra sempre recebe a versão nova do site
+<IfModule mod_headers.c>
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+</IfModule>
