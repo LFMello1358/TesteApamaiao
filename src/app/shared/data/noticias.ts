@@ -398,5 +398,64 @@ export const NOTICIAS: Noticia[] = [
       "🟨 Toninho Imóveis (ITA) · Daniel, França (URU)",
       "Agregado: Itália 1 × 3 Uruguai"
     ]
+  },
+  {
+    "id": "a-q3-volta",
+    "categoria": "A",
+    "tipo": "jogo",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-18",
+    "titulo": "Todos saúdam o Rei: Caça-Rato faz três, França atropela e a coroa da artilharia volta para casa",
+    "linhaFina": "Hat-trick de Luiz Fellipe no 5 a 1 sobre o Brasil, agregado de 6 a 2 e o autoproclamado Rei do campeonato de volta ao trono com 33 gols",
+    "chapeu": "Quartas · volta",
+    "jogo": {
+      "mandante": "França",
+      "visitante": "Brasil",
+      "placarMandante": 5,
+      "placarVisitante": 1
+    },
+    "corpo": [
+      "Tem jogador que pede a bola. E tem jogador que pede a coroa. Na noite de 18 de novembro, Luiz Fellipe, o Caça-Rato, fez as duas coisas: marcou três vezes no 5 a 1 da França sobre o Brasil, fechou o agregado em 6 a 2 e carimbou a vaga francesa na semifinal da Categoria A. O autoproclamado Rei do campeonato entrou em campo, olhou para o trono e disse \"com licença, isso aqui é meu\".",
+      "Os súditos que se cuidem, porque o Rei não perde a majestade. Na ida, ele já tinha empatado de cabeça no fim. Na volta, resolveu não deixar dúvida: gol, gol e gol, cada um recebido com a reverência que a realeza exige. Edson e Nando completaram o placar, como bons ministros da corte.",
+      "O efeito na artilharia foi imediato. O Caça-Rato chegou a 33 gols e retomou a liderança, agora dois à frente de Luizinho Costela, que tinha passado a dormir no topo depois da volta de terça. Costela, meio-campista que insiste em brigar com atacantes, já mandou avisar que a disputa pelo trono não acabou. A semifinal promete corte nova toda semana.",
+      "Na terra que um dia teve Luís XIV, o Rei Sol, o futebol do APAMAIÃO ganhou o seu Rei Gol. Vive le Roi!",
+      "Ao Brasil, todo o respeito: foi o time que aplicou 6 a 1 na França no primeiro turno e que, nesta volta, ainda teve gol de Telles para deixar a sua marca. Fica a torcida pela recuperação de Minha Joia, que se machucou durante a partida. Pedro Tostes, da França, recebeu cartão amarelo. A França agora espera o adversário da semifinal."
+    ],
+    "destaques": [
+      "⚽⚽⚽ Luiz Fellipe, ⚽ Edson Ferreira, ⚽ Nando (FRA)",
+      "⚽ Telles (BRA)",
+      "🟨 Pedro Tostes (FRA)",
+      "Agregado: França 6 × 2 Brasil",
+      "👑 Luiz Fellipe: 33 gols, artilheiro isolado"
+    ]
+  },
+  {
+    "id": "b-q3-volta",
+    "categoria": "B",
+    "tipo": "jogo",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-18",
+    "titulo": "Silvio Cavalo decide, Portugal empata o agregado e avança pela vantagem da campanha",
+    "linhaFina": "Vitória por 1 a 0 sobre a Holanda deixa o confronto em 1 a 1 e garante os portugueses na semifinal; Jofre passa a noite sem ser vazado",
+    "chapeu": "Quartas · volta",
+    "jogo": {
+      "mandante": "Portugal",
+      "visitante": "Holanda",
+      "placarMandante": 1,
+      "placarVisitante": 0
+    },
+    "corpo": [
+      "Portugal precisava vencer por qualquer placar, e foi exatamente o que fez. Na noite de 18 de novembro, bateu a Holanda por 1 a 0, empatou o agregado em 1 a 1 e avançou à semifinal da Categoria B graças à melhor campanha na primeira fase.",
+      "O gol que valeu a vaga foi de Silvio Cavalo, que chegou a 12 no ano. Lá atrás, o goleiro Jofre fez a parte dele e passou a noite sem ser vazado, garantindo que a vantagem do empate não escapasse.",
+      "Foi um jogo de muita disputa e cartões dos dois lados: Cacau, Juneco e Nicolau, de Portugal, e Marco André e Valdetaro, da Holanda, receberam amarelo, e Marcellus foi expulso. Com dois amarelos no mata-mata, Juneco está pendurado para a semifinal.",
+      "A Holanda, que tinha vencido a ida com o primeiro gol de Lattanzi no campeonato, se despede depois de dar trabalho ao vice-líder da primeira fase. Portugal segue em frente e aguarda o fim das quartas para conhecer o adversário."
+    ],
+    "destaques": [
+      "⚽ Silvio Cavalo (POR)",
+      "🧤 Jofre (POR) sem sofrer gol",
+      "🟨 Cacau, Juneco, Nicolau (POR) · Marco André, Valdetaro (HOL)",
+      "🟥 Marcellus (HOL)",
+      "Agregado: Portugal 1 × 1 Holanda (Portugal avança pela melhor campanha)"
+    ]
   }
 ];
