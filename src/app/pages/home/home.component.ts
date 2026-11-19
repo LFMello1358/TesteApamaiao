@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     { src: 'assets/img/Santiê.JPG', alt: 'Santiê' },
     { src: 'assets/img/SMS MOVEIS.png', alt: 'SMS' },
     { src: 'assets/img/Vestwin.jpg', alt: 'Vestwin' },
-    { src: 'assets/img/Xaper.png', alt: 'Xaper' },
+    { src: 'assets/img/XAPER.png', alt: 'Xaper' },
   ]);
 
   // Carrossel: 3 logos por vez no computador, 2 no tablet e 1 no celular; avança sozinho a cada 3s.
