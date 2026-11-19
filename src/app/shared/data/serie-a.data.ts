@@ -67,7 +67,7 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
           yellowCard: 1,
           redCard: 1,
           goals: 6,
-          suspensao: false,
+          suspensao: true,
           jogosSuspensao: 1
         },
         {
@@ -97,7 +97,7 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
           yellowCard: 1,
           redCard: 1,
           goals: 6,
-          suspensao: false,
+          suspensao: true,
           jogosSuspensao: 1
         },
         {

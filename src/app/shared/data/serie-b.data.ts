@@ -260,7 +260,7 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
         { name: 'Valdetaro', position: 'Volante', fouls: 0, yellowCard: 1, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'José Marcio', position: 'Meio Campo 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 18, suspensao: false, jogosSuspensao: 1 },
         { name: 'Almada', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 3, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Marcellus', position: 'Atacante', fouls: 5, yellowCard: 0, redCard: 1, goals: 5, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Marcellus', position: 'Atacante', fouls: 5, yellowCard: 0, redCard: 1, goals: 5, suspensao: true, jogosSuspensao: 3 }, // decisão da Diretoria 19/11: 1 automático + 2 adicionais, a cumprir em 2027 (17.3)
         { name: 'Marcelo Dominó', position: 'Flex 1', fouls: 12, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'Pacheco', position: 'Flex 2', fouls: 7, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Lattanzi', position: 'Flex 3', fouls: 4, yellowCard: 0, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 }
