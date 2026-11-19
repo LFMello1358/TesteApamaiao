@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, HostListener, OnDestroy, OnInit, co
 import { SharedModule } from '../../shared/shared.module';
 import { ComponetsComponent } from '../../componentes/componets/componets.component';
 import { AvisoInscricaoComponent } from '../../componentes/aviso-inscricao/aviso-inscricao.component';
+import { AvisoPeneiraComponent } from '../../componentes/aviso-peneira/aviso-peneira.component';
 import { TimeTurno } from '../../shared/models/campeonato.model';
 import { TURNO_1_SERIE_A, TURNO_2_SERIE_A, TURNO_3_SERIE_A } from '../../shared/data/serie-a.data';
 import { LINK_INSTAGRAM, LINK_YOUTUBE } from '../../shared/links';
@@ -33,7 +34,7 @@ function numerosDaTemporada(): { valor: string; rotulo: string }[] {
 
 @Component({
   selector: 'app-home',
-  imports: [SharedModule, ComponetsComponent, AvisoInscricaoComponent],
+  imports: [SharedModule, ComponetsComponent, AvisoInscricaoComponent, AvisoPeneiraComponent],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home.component.scss'

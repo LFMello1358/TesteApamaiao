@@ -1,0 +1,72 @@
+@if (ativo) {
+  <!-- FAIXA: fica no Home para reabrir o aviso -->
+  <button type="button" class="faixa" (click)="abrir()">
+    <span class="faixa-pulso" aria-hidden="true"></span>
+    <span class="faixa-texto">
+      <strong>Peneira obrigatória APAMAIÃO 2027</strong>
+      <span>{{ data }} (segunda) · Cat. B 20h · Cat. A 21h</span>
+    </span>
+    <span class="faixa-acao">Ver detalhes <mat-icon aria-hidden="true">chevron_right</mat-icon></span>
+  </button>
+
+  @if (aberto()) {
+    <div class="fundo" (click)="fechar()"></div>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="peneira-titulo">
+      <button type="button" class="fechar" (click)="fechar()" aria-label="Fechar aviso">
+        <mat-icon aria-hidden="true">close</mat-icon>
+      </button>
+
+      <header class="topo">
+        <span class="selo"><mat-icon aria-hidden="true">campaign</mat-icon> Aviso da Diretoria Geral</span>
+        <h2 id="peneira-titulo">Peneira obrigatória <span>APAMAIÃO 2027</span></h2>
+        <!-- data e horários em destaque, letras grandes e sem abreviações (pensando em quem lê com mais dificuldade) -->
+        <div class="quando" role="group" aria-label="Data e horários da peneira">
+          <p class="dia"><mat-icon aria-hidden="true">event</mat-icon> <span>Segunda-feira, <strong>30 de novembro</strong></span></p>
+          <div class="horarios">
+            <div class="horario">
+              <span class="cat">Categoria B</span>
+              <strong class="hora">20h</strong>
+            </div>
+            <div class="horario">
+              <span class="cat">Categoria A</span>
+              <strong class="hora">21h</strong>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="corpo">
+        <ul class="itens">
+          <li>
+            <mat-icon aria-hidden="true">fact_check</mat-icon>
+            <span><strong>Obrigatória</strong> para quem fez a pré-inscrição e <strong>não disputou o APAMAIÃO 2026</strong>:
+              novas inscrições (goleiros e atletas de linha), atletas que estão descendo de categoria e quem jogou edições
+              anteriores, mas não a de 2026.</span>
+          </li>
+          <li>
+            <mat-icon aria-hidden="true">info</mat-icon>
+            <span>A pré-inscrição <strong>não garante vaga</strong> em 2027. Ela dá direito à avaliação e, atendidos os
+              critérios, à lista de espera ou à efetivação conforme o regulamento, divulgado após a lista final.</span>
+          </li>
+          <li>
+            <mat-icon aria-hidden="true">warning_amber</mat-icon>
+            <span><strong>Faltar à peneira, sem exceção, cancela a pré-inscrição</strong> e tira o atleta da lista de
+              espera por essa inscrição.</span>
+          </li>
+          <li>
+            <mat-icon aria-hidden="true">schedule</mat-icon>
+            <span>Observe rigorosamente a data e o horário da sua categoria.</span>
+          </li>
+        </ul>
+
+        <div class="acoes">
+          <button type="button" class="cta" (click)="fechar()">
+            Entendi <mat-icon aria-hidden="true">check</mat-icon>
+          </button>
+        </div>
+
+        <p class="assinatura">Diretoria Geral do APAMAIÃO 2027</p>
+      </div>
+    </div>
+  }
+}
