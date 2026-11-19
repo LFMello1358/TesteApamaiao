@@ -334,11 +334,11 @@ export const ELENCO_SERIE_B: TimeElenco[] = [
       icon: 'assets/img/portugal.png',
       players: [
         { name: 'Jofre', position: 'Goleiro', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Cacau', position: 'Zagueiro', fouls: 7, yellowCard: 1, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Cacau', position: 'Zagueiro', fouls: 7, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
         { name: 'Machado', position: 'Lateral 1', fouls: 5, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
         { name: 'Juneco', position: 'Lateral 2', fouls: 3, yellowCard: 2, redCard: 0, goals: 1, suspensao: false, jogosSuspensao: 1 },
         { name: 'Nicolau', position: 'Volante', fouls: 2, yellowCard: 1, redCard: 0, goals: 6, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Juca', position: 'Meio Campo 1', fouls: 2, yellowCard: 0, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Juca', position: 'Meio Campo 1', fouls: 2, yellowCard: 1, redCard: 0, goals: 10, suspensao: false, jogosSuspensao: 1 },
         { name: 'Orelha', position: 'Meio Campo 2', fouls: 1, yellowCard: 0, redCard: 0, goals: 7, suspensao: false, jogosSuspensao: 1 },
         { name: 'Silvio Cavalo', position: 'Atacante', fouls: 1, yellowCard: 0, redCard: 0, goals: 12, suspensao: false, jogosSuspensao: 1 },
         { name: 'Junior Samary', position: 'Flex 1', fouls: 4, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },

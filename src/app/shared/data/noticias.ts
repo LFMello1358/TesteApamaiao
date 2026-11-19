@@ -447,13 +447,13 @@ export const NOTICIAS: Noticia[] = [
     "corpo": [
       "Portugal precisava vencer por qualquer placar, e foi exatamente o que fez. Na noite de 18 de novembro, bateu a Holanda por 1 a 0, empatou o agregado em 1 a 1 e avançou à semifinal da Categoria B graças à melhor campanha na primeira fase.",
       "O gol que valeu a vaga foi de Silvio Cavalo, que chegou a 12 no ano. Lá atrás, o goleiro Jofre fez a parte dele e passou a noite sem ser vazado, garantindo que a vantagem do empate não escapasse.",
-      "Foi um jogo de muita disputa e cartões dos dois lados: Cacau, Juneco e Nicolau, de Portugal, e Marco André e Valdetaro, da Holanda, receberam amarelo, e Marcellus foi expulso. Com dois amarelos no mata-mata, Juneco está pendurado para a semifinal.",
+      "Foi um jogo de muita disputa e cartões dos dois lados: Juca, Juneco e Nicolau, de Portugal, e Marco André e Valdetaro, da Holanda, receberam amarelo, e Marcellus foi expulso. Com dois amarelos no mata-mata, Juneco está pendurado para a semifinal.",
       "A Holanda, que tinha vencido a ida com o primeiro gol de Lattanzi no campeonato, se despede depois de dar trabalho ao vice-líder da primeira fase. Portugal segue em frente e aguarda o fim das quartas para conhecer o adversário."
     ],
     "destaques": [
       "⚽ Silvio Cavalo (POR)",
       "🧤 Jofre (POR) sem sofrer gol",
-      "🟨 Cacau, Juneco, Nicolau (POR) · Marco André, Valdetaro (HOL)",
+      "🟨 Juca, Juneco, Nicolau (POR) · Marco André, Valdetaro (HOL)",
       "🟥 Marcellus (HOL)",
       "Agregado: Portugal 1 × 1 Holanda (Portugal avança pela melhor campanha)"
     ]
