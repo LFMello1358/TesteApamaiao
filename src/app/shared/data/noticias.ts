@@ -494,7 +494,7 @@ export const NOTICIAS: Noticia[] = [
     "tipo": "jogo",
     "rodada": "Quartas de final · volta",
     "data": "2026-11-19",
-    "titulo": "Nove gols, três do Cristiano Motta: Espanha atropela o Brasil e segue rumo ao título",
+    "titulo": "Nove gols, três do Latini: Espanha atropela o Brasil e segue rumo ao título",
     "linhaFina": "A líder da Categoria B vence por 6 a 3, fecha o agregado em 8 a 3 e enfrenta o Uruguai na semifinal",
     "chapeu": "Quartas · volta",
     "jogo": {
@@ -505,13 +505,13 @@ export const NOTICIAS: Noticia[] = [
     },
     "corpo": [
       "Quem foi ao Abel na noite de 19 de novembro saiu com a conta de gols do mês resolvida. A Espanha, dona da melhor campanha da Categoria B, venceu o Brasil por 6 a 3, somou 8 a 3 no agregado e confirmou a vaga na semifinal sem sustos.",
-      "O nome da noite foi Cristiano Motta. Ele marcou três vezes e chegou a 16 gols na temporada. Latini, como sempre, deixou o dele e alcançou a marca de 20, vice-artilharia da categoria. Ezequiel também balançou a rede, e Slow guardou o primeiro gol dele no campeonato, daqueles que a gente lembra por muito tempo.",
+      "O nome da noite foi Latini. Ele marcou três vezes, chegou a 22 gols na temporada e se firmou como vice-artilheiro da categoria. Cristiano Motta, Ezequiel e Igor Brasil completaram a conta, cada um com o seu, e a Espanha mostrou por que terminou a primeira fase com folga na liderança.",
       "O Brasil não se entregou em momento nenhum. Alex Rangel marcou duas vezes, os primeiros gols dele no ano, e Kiko chegou a 11. A equipe se despede depois de três gols numa noite contra o líder, o que diz muito sobre o espírito do time.",
       "A Espanha agora encara o Uruguai, que passou pela Itália. A ida é em 25 de novembro e a volta em 2 de dezembro, sempre às 20h."
     ],
     "destaques": [
-      "⚽ Cristiano Motta (ESP) — 3 gols",
-      "⚽ Latini, Ezequiel, Slow (ESP)",
+      "⚽ Latini (ESP) — 3 gols",
+      "⚽ Cristiano Motta, Ezequiel, Igor Brasil (ESP)",
       "⚽ Alex Rangel (BRA) — 2 gols · Kiko (BRA)",
       "Agregado: Espanha 8 × 3 Brasil (Espanha avança)",
       "Semifinal: Espanha × Uruguai — 25/11 e 02/12, 20h"
@@ -554,13 +554,13 @@ export const NOTICIAS: Noticia[] = [
     "corpo": [
       "As quartas de final da Categoria B tiveram de tudo: classificação no detalhe da campanha, virada no agregado e goleada para fechar a rodada. México e Portugal avançaram pela vantagem do empate, o Uruguai passou pela Itália e a Espanha confirmou a força da melhor campanha diante do Brasil.",
       "As semifinais ficaram assim: Portugal × México, com ida em 24 de novembro e volta em 1º de dezembro, e Espanha × Uruguai, em 25 de novembro e 2 de dezembro. Todos os jogos às 20h.",
-      "Na artilharia, Bodinho, da Inglaterra, encerra a temporada no topo, com 29 gols. Latini, com 20, é quem ainda pode encurtar a distância nos jogos que restam. Logo atrás aparecem José Marcio e Igor Brasil, com 18."
+      "Na artilharia, Bodinho, da Inglaterra, encerra a temporada no topo, com 29 gols. Latini, com 22, é quem ainda pode encurtar a distância nos jogos que restam. Logo atrás aparecem Igor Brasil, com 19, e José Marcio, com 18."
     ],
     "destaques": [
       "Semifinal 1: Portugal × México — 24/11 e 01/12, 20h",
       "Semifinal 2: Espanha × Uruguai — 25/11 e 02/12, 20h",
       "🥇 Bodinho (ING) — 29 gols",
-      "🥈 Latini (ESP) — 20 gols"
+      "🥈 Latini (ESP) — 22 gols"
     ]
   }
 ];

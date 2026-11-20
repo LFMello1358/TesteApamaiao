@@ -354,7 +354,7 @@ export const ELENCO_SERIE_A: TimeElenco[] = [
       icon: 'assets/img/uruguai.png',
       players: [
         { name: 'Thomás', position: 'Goleiro', fouls: 12, yellowCard: 0, redCard: 0, goals: 0, suspensao: false, jogosSuspensao: 1 },
-        { name: 'Renato Tostes', position: 'Zagueiro', fouls: 3, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
+        { name: 'Renato Tostes', position: 'Zagueiro', fouls: 3, yellowCard: 1, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
         { name: 'Diego Blois', position: 'Lateral 1', fouls: 1, yellowCard: 0, redCard: 1, goals: 3, suspensao: true, jogosSuspensao: 1 },
         { name: 'Oteciano', position: 'Lateral 2', fouls: 6, yellowCard: 0, redCard: 0, goals: 15, suspensao: false, jogosSuspensao: 1 },
         { name: 'Hugo Sillero', position: 'Volante', fouls: 2, yellowCard: 0, redCard: 0, goals: 4, suspensao: false, jogosSuspensao: 1 },
