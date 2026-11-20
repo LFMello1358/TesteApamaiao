@@ -14,7 +14,7 @@ import { JOGOS_SERIE_A } from '../../shared/data/jogos-serie-a';
 import { JOGOS_SERIE_B } from '../../shared/data/jogos-serie-b';
 import { SUMULAS_SERIE_A } from '../../shared/data/sumulas-serie-a';
 import { SUMULAS_SERIE_B } from '../../shared/data/sumulas-serie-b';
-import { TRANSMISSOES } from '../../shared/data/transmissoes';
+import { CALENDARIO_MATA_MATA, DatasConfronto } from '../../shared/data/calendario-mata-mata';
 import {
   Duelo, chancesTitulo, classificacaoGeral, criarModelo, curiosidades, destaques, disciplina, historico,
   maioresAtuacoes, marcadoresDoConfronto, montarMataMata, posicao, probAvancar, probJogo, quemMaisMarcouContra, resumoTime,
@@ -114,28 +114,36 @@ export class ScoutComponent {
   ];
   // ?fase=quartas&confronto=2 (vindo do 'Estatísticas' de um confronto na página da categoria)
   private readonly faseInicial = (['quartas', 'semifinais', 'final'] as Fase[]).find(f => f === this.rota.queryParamMap.get('fase'));
-  /** Sem ?confronto na URL, o Raio-X abre no jogo do dia (ou no próximo jogo agendado) desta categoria. */
+  /** Sem ?confronto na URL, o Raio-X abre no jogo do dia (ou no próximo jogo do calendário) desta categoria. */
   private readonly jogoDoDia = this.rota.queryParamMap.has('confronto') ? null : this.acharJogoDoDia();
   readonly fase = signal<Fase>(this.faseInicial ?? this.jogoDoDia?.fase ?? 'quartas');
   readonly indice = signal(this.jogoDoDia?.indice ?? Math.max(0, Number(this.rota.queryParamMap.get('confronto')) || 0));
 
+  /**
+   * Confronto do jogo de hoje ou, se não houver, do próximo jogo pelo calendário do mata-mata
+   * (só confrontos com os dois times já definidos). Depois do último jogo, fica na fase mais adiantada.
+   */
   private acharJogoDoDia(): { fase: Fase; indice: number } | null {
     const pad = (n: number) => String(n).padStart(2, '0');
     const d = new Date();
     const hoje = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-    // hoje; se não houver jogo hoje, o próximo agendado
-    const proximas = TRANSMISSOES.filter(t => t.data >= hoje).sort((a, b) => a.data.localeCompare(b.data));
-    for (const t of proximas) {
-      const j = t.jogos.find(x => x.categoria === this.serie);
-      if (!j) continue;
-      const par = [j.mandante, j.visitante].sort().join();
-      const fases: [Fase, Duelo[]][] = [['quartas', this.mataMata.quartas], ['semifinais', this.mataMata.semifinais], ['final', [this.mataMata.final]]];
-      for (const [fase, lista] of fases) {
-        const i = lista.findIndex(x => x.timeA && x.timeB && [x.timeA.name, x.timeB.name].sort().join() === par);
-        if (i >= 0) return { fase, indice: i };
+    const cal = CALENDARIO_MATA_MATA[this.serie];
+    const fases: [Fase, Duelo[], DatasConfronto[]][] = [
+      ['quartas', this.mataMata.quartas, cal.quartas],
+      ['semifinais', this.mataMata.semifinais, cal.semifinais],
+      ['final', [this.mataMata.final], [cal.final]],
+    ];
+    let proximo: { fase: Fase; indice: number; data: string } | null = null;
+    let ultimoDefinido: { fase: Fase; indice: number } | null = null;
+    for (const [fase, duelos, datas] of fases) {
+      for (const [indice, duelo] of duelos.entries()) {
+        if (!duelo.timeA || !duelo.timeB || !datas[indice]) continue;
+        ultimoDefinido = { fase, indice };
+        const data = [datas[indice].ida, datas[indice].volta].find(x => x >= hoje);
+        if (data && (!proximo || data < proximo.data)) proximo = { fase, indice, data };
       }
     }
-    return null;
+    return proximo ?? ultimoDefinido;
   }
   /** Simulador aberto? Por padrão a página mostra só o placar oficial. */
   readonly simuladorAberto = signal(false);
