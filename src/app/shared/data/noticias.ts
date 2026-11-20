@@ -485,7 +485,7 @@ export const NOTICIAS: Noticia[] = [
       "🧠 Super Pão (ING), o estrategista da zebra",
       "⚽ Eduardo Garcia (URU)",
       "Agregado: Uruguai 2 × 4 Inglaterra (Inglaterra avança)",
-      "Semifinal: França × Inglaterra — 25/11 e 02/12, 21h"
+      "Semifinal: Inglaterra × França — 25/11 e 02/12, 21h"
     ]
   },
   {
@@ -514,7 +514,7 @@ export const NOTICIAS: Noticia[] = [
       "⚽ Cristiano Motta, Ezequiel, Igor Brasil (ESP)",
       "⚽ Alex Rangel (BRA) — 2 gols · Kiko (BRA)",
       "Agregado: Espanha 8 × 3 Brasil (Espanha avança)",
-      "Semifinal: Espanha × Uruguai — 25/11 e 02/12, 20h"
+      "Semifinal: Uruguai × Espanha — 25/11 e 02/12, 20h"
     ]
   },
   {
@@ -524,18 +524,18 @@ export const NOTICIAS: Noticia[] = [
     "rodada": "Quartas de final · volta",
     "data": "2026-11-19",
     "titulo": "Semifinais definidas: o Rei contra a zebra e o artilheiro contra a Argentina",
-    "linhaFina": "França × Inglaterra e Espanha × Argentina decidem as vagas na final; na artilharia, Caça-Rato tem 33 e Luizinho Costela, 31",
+    "linhaFina": "Inglaterra × França e Argentina × Espanha decidem as vagas na final; na artilharia, Caça-Rato tem 33 e Luizinho Costela, 31",
     "chapeu": "Quartas · panorama",
     "jogo": null,
     "corpo": [
       "As quartas de final da Categoria A terminaram com três favoritos confirmados e uma zebra das grandes. A Argentina despachou a Alemanha, a Espanha segurou o México, a França atropelou o Brasil e a Inglaterra, oitava colocada, tirou da disputa o líder Uruguai.",
-      "As semifinais ficaram assim: Espanha × Argentina, com ida em 24 de novembro e volta em 1º de dezembro, e França × Inglaterra, em 25 de novembro e 2 de dezembro. Todos os jogos às 21h.",
+      "As semifinais ficaram assim: Argentina × Espanha, com ida em 24 de novembro na casa argentina e volta em 1º de dezembro com mando espanhol, e Inglaterra × França, com ida em 25 de novembro na casa inglesa e volta em 2 de dezembro com mando francês. Quem tem a vantagem do empate decide em casa. Todos os jogos às 21h.",
       "Na artilharia, Luiz Fellipe, o Caça-Rato, recuperou a coroa com os três gols da volta e tem 33. Luizinho Costela, o meio-campista que insiste em jogar como centroavante, vem logo atrás, com 31. Os dois seguem vivos e podem decidir o título de artilheiro em campo. Allan, com 27, encerra a temporada como terceiro colocado: no ano de servir, serviu, e serviu bem.",
       "E a pergunta da semana continua de pé: com a Espanha na semifinal, será que agora sai o primeiro gol do Batata Airlines no mata-mata? O voo segue com a decolagem autorizada."
     ],
     "destaques": [
-      "Semifinal 1: Espanha × Argentina — 24/11 e 01/12, 21h",
-      "Semifinal 2: França × Inglaterra — 25/11 e 02/12, 21h",
+      "Semifinal 1: Argentina × Espanha — 24/11 e 01/12, 21h",
+      "Semifinal 2: Inglaterra × França — 25/11 e 02/12, 21h",
       "🥇 Luiz Fellipe (FRA) — 33 gols",
       "🥈 Luizinho Costela (ESP) — 31 gols",
       "🥉 Allan (ALE) — 27 gols"
@@ -553,12 +553,12 @@ export const NOTICIAS: Noticia[] = [
     "jogo": null,
     "corpo": [
       "As quartas de final da Categoria B tiveram de tudo: classificação no detalhe da campanha, virada no agregado e goleada para fechar a rodada. México e Portugal avançaram pela vantagem do empate, o Uruguai passou pela Itália e a Espanha confirmou a força da melhor campanha diante do Brasil.",
-      "As semifinais ficaram assim: Portugal × México, com ida em 24 de novembro e volta em 1º de dezembro, e Espanha × Uruguai, em 25 de novembro e 2 de dezembro. Todos os jogos às 20h.",
+      "As semifinais ficaram assim: México × Portugal, com ida em 24 de novembro na casa mexicana e volta em 1º de dezembro com mando português, e Uruguai × Espanha, com ida em 25 de novembro na casa uruguaia e volta em 2 de dezembro com mando espanhol. Quem tem a vantagem do empate decide em casa. Todos os jogos às 20h.",
       "Na artilharia, Bodinho, da Inglaterra, encerra a temporada no topo, com 29 gols. Latini, com 22, é quem ainda pode encurtar a distância nos jogos que restam. Logo atrás aparecem Igor Brasil, com 19, e José Marcio, com 18."
     ],
     "destaques": [
-      "Semifinal 1: Portugal × México — 24/11 e 01/12, 20h",
-      "Semifinal 2: Espanha × Uruguai — 25/11 e 02/12, 20h",
+      "Semifinal 1: México × Portugal — 24/11 e 01/12, 20h",
+      "Semifinal 2: Uruguai × Espanha — 25/11 e 02/12, 20h",
       "🥇 Bodinho (ING) — 29 gols",
       "🥈 Latini (ESP) — 22 gols"
     ]

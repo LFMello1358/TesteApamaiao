@@ -155,8 +155,8 @@
               </div>
             </div>
             <div class="mata-datas">
-              <span>IDA: {{ jogo.dataIda }} • 21:00</span>
-              <span>VOLTA: {{ jogo.dataVolta }} • 21:00</span>
+              <span>IDA: {{ jogo.dataIda }} • 21:00@if (jogo.timeA) { • mando: {{ jogo.timeA.name }}}</span>
+              <span>VOLTA: {{ jogo.dataVolta }} • 21:00@if (jogo.timeB) { • mando: {{ jogo.timeB.name }}}</span>
             </div>
             <div class="mata-status">
               {{ jogo.status }}
@@ -241,8 +241,8 @@
           </div>
 
           <div class="mata-datas">
-            <span>1º JOGO: 10/12/2026 • 21:00</span>
-            <span>2º JOGO: 17/12/2026 • 21:00</span>
+            <span>1º JOGO: 10/12/2026 • 21:00@if (confrontoFinal.timeA) { • mando: {{ confrontoFinal.timeA.name }}}</span>
+            <span>2º JOGO: 17/12/2026 • 21:00@if (confrontoFinal.timeB) { • mando: {{ confrontoFinal.timeB.name }}}</span>
           </div>
 
           <div class="mata-status">

@@ -488,6 +488,13 @@ export class SerieBComponent {
   private posicaoGeral(time: Team): number {
     return this.dataSourceGeral.findIndex(t => t.name === time.name);
   }
+  // Mando: na ida joga em casa quem NÃO tem a vantagem (pior colocado); na volta, quem tem.
+  // timeA = mandante da ida, timeB = mandante da volta.
+  private ordemMando(a: Team | null, b: Team | null): [Team | null, Team | null] {
+    if (!a || !b) return [a, b];
+    return this.melhorColocado(a, b) === a ? [b, a] : [a, b];
+  }
+
 
   // Equipe com maior TPG na 1ª fase (critério de vantagem no mata-mata).
   private melhorColocado(a: Team, b: Team): Team {
@@ -635,8 +642,8 @@ get confrontosQuartas() {
     return [
       // Semifinal 1 - 2º x 3º melhores colocados entre os classificados
       this.criarDuelo(
-        ordem[1],
         ordem[2],
+        ordem[1],
         this.placaresMataMata.semifinais.s1,
         '24/11/2026',
         '01/12/2026'
@@ -644,8 +651,8 @@ get confrontosQuartas() {
 
       // Semifinal 2 - Melhor colocado x pior colocado entre os classificados
       this.criarDuelo(
-        ordem[0],
         ordem[3],
+        ordem[0],
         this.placaresMataMata.semifinais.s2,
         '25/11/2026',
         '02/12/2026'
@@ -662,8 +669,7 @@ get confrontoFinal() {
   const semifinais = this.confrontosSemifinais;
 
   return this.criarDuelo(
-    semifinais[0].vencedor,
-    semifinais[1].vencedor,
+    ...this.ordemMando(semifinais[0].vencedor, semifinais[1].vencedor),
     this.placaresMataMata.final,
     '10/12/2026',
     '16/12/2026',

@@ -82,16 +82,19 @@ export function montarMataMata(geral: TimeTurno[], p: PlacaresMataMata): MataMat
     duelo(geral, '2º x 7º', g(1), g(6), p.quartas.q3),
     duelo(geral, '1º x 8º', g(0), g(7), p.quartas.q4),
   ];
-  // semifinais remontadas pelo TPG: melhor x pior (S2) e 2º x 3º (S1)
+  // semifinais remontadas pelo TPG: melhor x pior (S2) e 2º x 3º (S1); timeA = pior colocado (mando da ida)
   const classif = quartas.map(q => q.vencedor);
   const ordem: (TimeTurno | null)[] = classif.every(t => t)
     ? (classif as TimeTurno[]).sort((a, b) => posicao(geral, a.name) - posicao(geral, b.name))
     : [null, null, null, null];
   const semifinais = [
-    duelo(geral, 'Semifinal 1', ordem[1], ordem[2], p.semifinais.s1),
-    duelo(geral, 'Semifinal 2 · melhor colocado', ordem[0], ordem[3], p.semifinais.s2),
+    duelo(geral, 'Semifinal 1', ordem[2], ordem[1], p.semifinais.s1),
+    duelo(geral, 'Semifinal 2 · melhor colocado', ordem[3], ordem[0], p.semifinais.s2),
   ];
-  const final = duelo(geral, 'Final', semifinais[0].vencedor, semifinais[1].vencedor, p.final);
+  // mando: ida na casa do pior colocado (timeA), volta na casa do melhor (timeB)
+  const [f1, f2] = [semifinais[0].vencedor, semifinais[1].vencedor];
+  const [fa, fb] = f1 && f2 && posicao(geral, f1.name) < posicao(geral, f2.name) ? [f2, f1] : [f1, f2];
+  const final = duelo(geral, 'Final', fa, fb, p.final);
   return { quartas, semifinais, final };
 }
 
