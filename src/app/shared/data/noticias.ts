@@ -457,5 +457,110 @@ export const NOTICIAS: Noticia[] = [
       "🟥 Marcellus (HOL)",
       "Agregado: Portugal 1 × 1 Holanda (Portugal avança pela melhor campanha)"
     ]
+  },
+  {
+    "id": "a-q4-volta",
+    "categoria": "A",
+    "tipo": "jogo",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-19",
+    "titulo": "A zebra do Super Pão: com três do craque Ginho, Inglaterra derruba o líder Uruguai",
+    "linhaFina": "Oitava colocada da primeira fase, a Inglaterra vence por 3 a 1, fecha o agregado em 4 a 2 e tira da disputa a melhor campanha do campeonato",
+    "chapeu": "Quartas · volta",
+    "jogo": {
+      "mandante": "Uruguai",
+      "visitante": "Inglaterra",
+      "placarMandante": 1,
+      "placarVisitante": 3
+    },
+    "corpo": [
+      "Se alguém ainda duvidava de que mata-mata é outro campeonato, a noite de 19 de novembro tratou de encerrar a discussão. A Inglaterra, que entrou nas quartas como oitava colocada, venceu o Uruguai por 3 a 1, fechou o agregado em 4 a 2 e eliminou simplesmente o dono da melhor campanha da primeira fase da Categoria A: 71 pontos e 20 vitórias.",
+      "Toda zebra que se preze tem um cérebro e um craque. O cérebro é o Super Pão. Bruno Pão, o estrategista da Inglaterra, é a cabeça por trás do plano que derrubou a melhor campanha do campeonato: quem olhava a tabela via um oitavo colocado, quem olhava para ele via um time com ideia de jogo. Foi dele, aliás, o gol de cabeça do empate na ida, que manteve o confronto vivo.",
+      "O craque é o Ginho. Chamado pela narração de “o nosso craque do APAMAIÃO há 25 anos”, ele joga com mais quilometragem que a maioria da turma da Categoria A e, mesmo assim, continua sobrando em campo. Tem qualidade de sobra, visão de jogo e a calma de quem já viu de tudo. Na noite mais importante do ano, marcou os três gols ingleses e quadruplicou de uma vez a conta da temporada. Prova de que bola bem tratada não tem idade.",
+      "O Uruguai descontou com Eduardo Garcia, que chegou a 18 gols no ano, mas não encontrou o caminho para a virada. Paura sentiu uma lesão e deixou o jogo cedo: fica aqui o desejo de pronta recuperação.",
+      "O líder sai de cabeça erguida, com a campanha mais regular do ano. A Inglaterra, que chegou pela porta dos fundos, agora entra pela da frente: encara a França do Rei Caça-Rato na semifinal, com ida em 25 de novembro e volta em 2 de dezembro."
+    ],
+    "destaques": [
+      "⚽ Ginho (ING) — 3 gols",
+      "🧠 Super Pão (ING), o estrategista da zebra",
+      "⚽ Eduardo Garcia (URU)",
+      "Agregado: Uruguai 2 × 4 Inglaterra (Inglaterra avança)",
+      "Semifinal: França × Inglaterra — 25/11 e 02/12, 21h"
+    ]
+  },
+  {
+    "id": "b-q4-volta",
+    "categoria": "B",
+    "tipo": "jogo",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-19",
+    "titulo": "Nove gols, três do Cristiano Motta: Espanha atropela o Brasil e segue rumo ao título",
+    "linhaFina": "A líder da Categoria B vence por 6 a 3, fecha o agregado em 8 a 3 e enfrenta o Uruguai na semifinal",
+    "chapeu": "Quartas · volta",
+    "jogo": {
+      "mandante": "Espanha",
+      "visitante": "Brasil",
+      "placarMandante": 6,
+      "placarVisitante": 3
+    },
+    "corpo": [
+      "Quem foi ao Abel na noite de 19 de novembro saiu com a conta de gols do mês resolvida. A Espanha, dona da melhor campanha da Categoria B, venceu o Brasil por 6 a 3, somou 8 a 3 no agregado e confirmou a vaga na semifinal sem sustos.",
+      "O nome da noite foi Cristiano Motta. Ele marcou três vezes e chegou a 16 gols na temporada. Latini, como sempre, deixou o dele e alcançou a marca de 20, vice-artilharia da categoria. Ezequiel também balançou a rede, e Slow guardou o primeiro gol dele no campeonato, daqueles que a gente lembra por muito tempo.",
+      "O Brasil não se entregou em momento nenhum. Alex Rangel marcou duas vezes, os primeiros gols dele no ano, e Kiko chegou a 11. A equipe se despede depois de três gols numa noite contra o líder, o que diz muito sobre o espírito do time.",
+      "A Espanha agora encara o Uruguai, que passou pela Itália. A ida é em 25 de novembro e a volta em 2 de dezembro, sempre às 20h."
+    ],
+    "destaques": [
+      "⚽ Cristiano Motta (ESP) — 3 gols",
+      "⚽ Latini, Ezequiel, Slow (ESP)",
+      "⚽ Alex Rangel (BRA) — 2 gols · Kiko (BRA)",
+      "Agregado: Espanha 8 × 3 Brasil (Espanha avança)",
+      "Semifinal: Espanha × Uruguai — 25/11 e 02/12, 20h"
+    ]
+  },
+  {
+    "id": "a-panorama-volta",
+    "categoria": "A",
+    "tipo": "panorama",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-19",
+    "titulo": "Semifinais definidas: o Rei contra a zebra e o artilheiro contra a Argentina",
+    "linhaFina": "França × Inglaterra e Espanha × Argentina decidem as vagas na final; na artilharia, Caça-Rato tem 33 e Luizinho Costela, 31",
+    "chapeu": "Quartas · panorama",
+    "jogo": null,
+    "corpo": [
+      "As quartas de final da Categoria A terminaram com três favoritos confirmados e uma zebra das grandes. A Argentina despachou a Alemanha, a Espanha segurou o México, a França atropelou o Brasil e a Inglaterra, oitava colocada, tirou da disputa o líder Uruguai.",
+      "As semifinais ficaram assim: Espanha × Argentina, com ida em 24 de novembro e volta em 1º de dezembro, e França × Inglaterra, em 25 de novembro e 2 de dezembro. Todos os jogos às 21h.",
+      "Na artilharia, Luiz Fellipe, o Caça-Rato, recuperou a coroa com os três gols da volta e tem 33. Luizinho Costela, o meio-campista que insiste em jogar como centroavante, vem logo atrás, com 31. Os dois seguem vivos e podem decidir o título de artilheiro em campo. Allan, com 27, encerra a temporada como terceiro colocado: no ano de servir, serviu, e serviu bem.",
+      "E a pergunta da semana continua de pé: com a Espanha na semifinal, será que agora sai o primeiro gol do Batata Airlines no mata-mata? O voo segue com a decolagem autorizada."
+    ],
+    "destaques": [
+      "Semifinal 1: Espanha × Argentina — 24/11 e 01/12, 21h",
+      "Semifinal 2: França × Inglaterra — 25/11 e 02/12, 21h",
+      "🥇 Luiz Fellipe (FRA) — 33 gols",
+      "🥈 Luizinho Costela (ESP) — 31 gols",
+      "🥉 Allan (ALE) — 27 gols"
+    ]
+  },
+  {
+    "id": "b-panorama-volta",
+    "categoria": "B",
+    "tipo": "panorama",
+    "rodada": "Quartas de final · volta",
+    "data": "2026-11-19",
+    "titulo": "Semifinais definidas: Espanha encara o Uruguai, Portugal pega o México",
+    "linhaFina": "A líder Espanha segue invicta no mata-mata; Bodinho termina a temporada como artilheiro da categoria, com 29 gols",
+    "chapeu": "Quartas · panorama",
+    "jogo": null,
+    "corpo": [
+      "As quartas de final da Categoria B tiveram de tudo: classificação no detalhe da campanha, virada no agregado e goleada para fechar a rodada. México e Portugal avançaram pela vantagem do empate, o Uruguai passou pela Itália e a Espanha confirmou a força da melhor campanha diante do Brasil.",
+      "As semifinais ficaram assim: Portugal × México, com ida em 24 de novembro e volta em 1º de dezembro, e Espanha × Uruguai, em 25 de novembro e 2 de dezembro. Todos os jogos às 20h.",
+      "Na artilharia, Bodinho, da Inglaterra, encerra a temporada no topo, com 29 gols. Latini, com 20, é quem ainda pode encurtar a distância nos jogos que restam. Logo atrás aparecem José Marcio e Igor Brasil, com 18."
+    ],
+    "destaques": [
+      "Semifinal 1: Portugal × México — 24/11 e 01/12, 20h",
+      "Semifinal 2: Espanha × Uruguai — 25/11 e 02/12, 20h",
+      "🥇 Bodinho (ING) — 29 gols",
+      "🥈 Latini (ESP) — 20 gols"
+    ]
   }
 ];
