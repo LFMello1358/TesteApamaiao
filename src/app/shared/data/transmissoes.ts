@@ -39,6 +39,11 @@ export const TRANSMISSOES: Transmissao[] = [
     jogos: [{ categoria: 'B', hora: '20h', mandante: 'Portugal', visitante: 'Holanda' }, { categoria: 'A', hora: '21h', mandante: 'França', visitante: 'Brasil' }] },
   { data: '2026-11-19', inicio: '19:45', fim: '22:30', videoId: '01h45rpmdLk', titulo: 'Quartas de final · volta',
     jogos: [{ categoria: 'B', hora: '20h', mandante: 'Espanha', visitante: 'Brasil' }, { categoria: 'A', hora: '21h', mandante: 'Uruguai', visitante: 'Inglaterra' }] },
+  // semifinais · ida
+  { data: '2026-11-24', inicio: '19:45', fim: '22:30', videoId: 'fyXcpebvhPI', titulo: 'Semifinal · ida',
+    jogos: [{ categoria: 'B', hora: '20h', mandante: 'México', visitante: 'Portugal' }, { categoria: 'A', hora: '21h', mandante: 'Argentina', visitante: 'Espanha' }] },
+  { data: '2026-11-25', inicio: '19:45', fim: '22:30', videoId: '81q4Au8UvfY', titulo: 'Semifinal · ida',
+    jogos: [{ categoria: 'B', hora: '20h', mandante: 'Uruguai', visitante: 'Espanha' }, { categoria: 'A', hora: '21h', mandante: 'Inglaterra', visitante: 'França' }] },
 ];
 
 /** Escudo de cada seleção. */

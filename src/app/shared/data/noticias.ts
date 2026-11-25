@@ -562,5 +562,62 @@ export const NOTICIAS: Noticia[] = [
       "🥇 Bodinho (ING) — 29 gols",
       "🥈 Latini (ESP) — 22 gols"
     ]
+  },
+  {
+    "id": "a-s1-ida",
+    "categoria": "A",
+    "tipo": "jogo",
+    "rodada": "Semifinal · ida",
+    "data": "2026-11-24",
+    "titulo": "Dois gols em quatro minutos: Argentina vence a Espanha e leva vantagem para a volta",
+    "linhaFina": "Rafael Almeida e Alexandre decidem no começo do jogo; a Espanha, que tem a vantagem do empate, precisa vencer por dois gols em 1º de dezembro",
+    "chapeu": "Semifinal · ida",
+    "jogo": {
+      "mandante": "Argentina",
+      "visitante": "Espanha",
+      "placarMandante": 2,
+      "placarVisitante": 0
+    },
+    "corpo": [
+      "Tem jogo que se resolve no detalhe e tem jogo que se resolve antes de a torcida terminar de se acomodar na arquibancada. Na ida da semifinal da Categoria A, em 24 de novembro, a Argentina venceu a Espanha por 2 a 0 com os dois gols marcados nos primeiros oito minutos.",
+      "Rafael Almeida abriu o placar por volta dos 4 minutos e chegou a 9 gols na temporada. Pouco depois, Alexandre ampliou e foi a 7. Foram duas pancadas seguidas que deixaram a Espanha correndo atrás desde o início.",
+      "Depois do começo elétrico, o placar não mexeu mais: a Espanha passou o resto do jogo tentando diminuir, e a defesa argentina, com Somália no gol, segurou o zero até o apito final. Belladonna levou o único amarelo da partida.",
+      "A conta da volta é simples de explicar e difícil de executar: a Espanha, melhor colocada na primeira fase, joga em casa em 1º de dezembro, às 21h, e precisa vencer por dois gols de diferença para avançar pela vantagem do empate no agregado. Uma vitória por três ou mais também serve. Para a Argentina, qualquer empate ou derrota por um gol basta. E fica a pergunta que não quer calar: com a Espanha precisando de gols, será que é a vez do Batata Airlines decolar no mata-mata?"
+    ],
+    "destaques": [
+      "⚽ Rafael Almeida (ARG)",
+      "⚽ Alexandre (ARG)",
+      "🟨 Belladonna (ARG)",
+      "Volta: Espanha × Argentina — 01/12, 21h (Espanha tem a vantagem do empate)"
+    ]
+  },
+  {
+    "id": "b-s1-ida",
+    "categoria": "B",
+    "tipo": "jogo",
+    "rodada": "Semifinal · ida",
+    "data": "2026-11-24",
+    "titulo": "Goleada mexicana: México faz 4 a 0 em Portugal e encaminha a vaga na final",
+    "linhaFina": "Cupulille marca duas vezes, Léo Barbosa e Serginho completam; Portugal precisa vencer por quatro gols na volta",
+    "chapeu": "Semifinal · ida",
+    "jogo": {
+      "mandante": "México",
+      "visitante": "Portugal",
+      "placarMandante": 4,
+      "placarVisitante": 0
+    },
+    "corpo": [
+      "O México jogou a ida da semifinal da Categoria B como quem tinha pressa. Em 24 de novembro, venceu Portugal por 4 a 0, com dois gols em cada tempo, e deixou o confronto bem encaminhado para a volta.",
+      "Cupulille foi o nome da noite. Marcou duas vezes e chegou a 15 gols na temporada. Léo Barbosa, que foi a 5, e Serginho, o capitão, que chegou a 8, também deixaram o seu. O quarto gol saiu na metade final do segundo tempo, para não deixar dúvida.",
+      "Portugal, que tinha segurado a Holanda nas quartas com uma defesa firme, não conseguiu repetir a dose desta vez. O zagueiro Cacau foi expulso e desfalca a equipe na volta.",
+      "O jogo de volta é em 1º de dezembro, às 20h, com mando português. Como Portugal tem a vantagem do empate, uma vitória por quatro gols de diferença leva a equipe à final; por cinco ou mais, também. Ao México basta não perder por quatro."
+    ],
+    "destaques": [
+      "⚽ Cupulille (MEX) — 2 gols",
+      "⚽ Léo Barbosa (MEX)",
+      "⚽ Serginho (MEX)",
+      "🟥 Cacau (POR)",
+      "Volta: Portugal × México — 01/12, 20h (Portugal tem a vantagem do empate)"
+    ]
   }
 ];
