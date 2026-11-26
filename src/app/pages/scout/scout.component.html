@@ -126,6 +126,25 @@
           </div>
 
           <!-- probabilidade por jogo -->
+          @if (x.volta; as v) {
+          <div class="cartao">
+            <h3>Volta · {{ v.casa }} × {{ v.fora }}</h3>
+            <p class="nota">{{ v.ida }}.</p>
+            <ul class="precisa">
+              <li><strong>{{ v.casa }}</strong> {{ v.precisaCasa }}</li>
+              <li><strong>{{ v.fora }}</strong> {{ v.precisaFora }}</li>
+            </ul>
+            <div class="tres">
+              <div><strong>{{ v.jogo.vitoriaA | percent: '1.0-0' }}</strong><small>vitória {{ v.casa }}</small></div>
+              <div><strong>{{ v.jogo.empate | percent: '1.0-0' }}</strong><small>empate</small></div>
+              <div><strong>{{ v.jogo.vitoriaB | percent: '1.0-0' }}</strong><small>vitória {{ v.fora }}</small></div>
+            </div>
+            <p class="nota">
+              Gols esperados na volta: {{ v.jogo.golsA | number: '1.1-1' }} × {{ v.jogo.golsB | number: '1.1-1' }} ·
+              placar mais provável {{ v.jogo.placarProvavel[0] }} × {{ v.jogo.placarProvavel[1] }}
+            </p>
+          </div>
+          } @else {
           <div class="cartao">
             <h3>Cada jogo (ida ou volta)</h3>
             <div class="tres">
@@ -138,6 +157,7 @@
               placar mais provável {{ x.jogo.placarProvavel[0] }} × {{ x.jogo.placarProvavel[1] }}
             </p>
           </div>
+          }
         </div>
 
         <!-- comparativo -->
@@ -291,7 +311,7 @@
 
   <p class="rodape">
     Estimativas estatísticas, não oficiais. Modelo de Poisson com força de ataque e defesa calculada nos
-    {{ totalJogos }} jogos de 2026, 1ª fase e mata-mata (jogos mais recentes pesam um pouco mais); empate no agregado
+    {{ totalJogos }} jogos de 2026, 1ª fase e mata-mata (o 3º turno pesa mais e os jogos do mata-mata valem o dobro, pela forma atual); empate no agregado
     classifica o melhor TPG, como diz o regulamento. Valem como palpite para a resenha, não como previsão.
   </p>
 </div>

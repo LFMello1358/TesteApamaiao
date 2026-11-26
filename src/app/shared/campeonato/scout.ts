@@ -102,11 +102,13 @@ export function montarMataMata(geral: TimeTurno[], p: PlacaresMataMata): MataMat
 // Modelo de probabilidade: Poisson com força de ataque e de defesa
 // ----------------------------------------------------------------------------
 // Gols esperados de A contra B = média da série × ataque(A) × defesa(B).
-// Ataque/defesa vêm dos jogos da 1ª fase; jogos mais recentes pesam um pouco mais
-// e cada time recebe 3 "jogos médios" de amortecimento para não exagerar extremos.
+// Ataque/defesa vêm dos jogos da temporada: o 3º turno pesa mais que o 1º e os jogos do
+// mata-mata pesam o dobro (forma atual). Cada time recebe 4 "jogos médios" de amortecimento
+// para a diferença de campanha da 1ª fase não exagerar os extremos.
 
 const PESO_TURNO: Record<number, number> = { 1: 0.8, 2: 1, 3: 1.2 };
-const AMORTECIMENTO = 3;
+const PESO_MATA_MATA = 2.4;
+const AMORTECIMENTO = 4;
 const MAX_GOLS = 15;
 
 export interface Modelo {
@@ -119,7 +121,7 @@ export function criarModelo(jogos: Jogo[]): Modelo {
   const acc = new Map<string, { gp: number; gc: number; j: number }>();
   let gols = 0, pesoTotal = 0;
   for (const jg of jogos) {
-    const w = PESO_TURNO[jg.turno] ?? 1;
+    const w = jg.fase ? PESO_MATA_MATA : (PESO_TURNO[jg.turno] ?? 1);
     const [gm, gv] = jg.gols;
     for (const [time, gp, gc] of [[jg.mandante, gm, gv], [jg.visitante, gv, gm]] as const) {
       const o = acc.get(time) ?? { gp: 0, gc: 0, j: 0 };

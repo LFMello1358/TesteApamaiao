@@ -203,6 +203,7 @@ export class ScoutComponent {
       chanceA: pA,
       chanceB: 1 - pA,
       jogo: probJogo(this.modelo, a, b),
+      volta: this.situacaoDaVolta(a, b, vantagemA),
       historico: historico(this.jogosTemporada, a, b),
       marcadores: marcadores,
       ameacaParaA: quemMaisMarcouContra(this.dados.sumulas, a),
@@ -210,6 +211,35 @@ export class ScoutComponent {
       comparativo,
     };
   });
+
+  /**
+   * Depois da ida (e antes da volta): o jogo que falta, com o mandante da volta (quem tem a vantagem)
+   * à esquerda, as chances desse jogo e o que cada time precisa para avançar.
+   */
+  private situacaoDaVolta(a: string, b: string, vantagemA: boolean) {
+    const p = this.placarUsado();
+    if (p.idaA === null || p.idaB === null || (p.voltaA !== null && p.voltaB !== null)) return null;
+    const casa = vantagemA ? a : b, fora = vantagemA ? b : a;
+    const saldoA = p.idaA - p.idaB; // do ponto de vista de A
+    const precisa = (time: string) => {
+      const ehA = time === a;
+      const saldo = ehA ? saldoA : -saldoA;
+      const temVantagem = ehA ? vantagemA : !vantagemA;
+      const m = -saldo + (temVantagem ? 0 : 1); // menor diferença de gols que serve na volta
+      if (m <= -1) return `avança com empate, vitória ou até perdendo por ${-m} gol${-m > 1 ? 's' : ''}`;
+      if (m === 0) return 'avança com empate ou vitória';
+      if (m === 1) return 'precisa vencer por qualquer placar';
+      return `precisa vencer por ${m} gols de diferença`;
+    };
+    const lider = saldoA === 0 ? null : (saldoA > 0 ? a : b);
+    return {
+      casa, fora,
+      jogo: probJogo(this.modelo, casa, fora),
+      ida: lider ? `${lider} venceu a ida por ${Math.max(p.idaA, p.idaB)} a ${Math.min(p.idaA, p.idaB)}` : `A ida terminou empatada em ${p.idaA} a ${p.idaB}`,
+      precisaCasa: precisa(casa),
+      precisaFora: precisa(fora),
+    };
+  }
 
   constructor() {
     // veio de um confronto específico: rola direto até o raio-x
