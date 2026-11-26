@@ -619,5 +619,65 @@ export const NOTICIAS: Noticia[] = [
       "🟥 Cacau (POR)",
       "Volta: Portugal × México — 01/12, 20h (Portugal tem a vantagem do empate)"
     ]
+  },
+  {
+    "id": "a-s2-ida",
+    "categoria": "A",
+    "tipo": "jogo",
+    "rodada": "Semifinal · ida",
+    "data": "2026-11-25",
+    "titulo": "Mais um hat-trick do Rei: Luiz Fellipe faz três de novo, França vence a Inglaterra por 5 a 2 e põe um pé na final",
+    "linhaFina": "Segundo hat-trick seguido do Caça-Rato no mata-mata: são 7 gols em três jogos, 36 na temporada e cinco de vantagem na artilharia. A Inglaterra precisa vencer por quatro de diferença na volta",
+    "chapeu": "Semifinal · ida",
+    "jogo": {
+      "mandante": "Inglaterra",
+      "visitante": "França",
+      "placarMandante": 2,
+      "placarVisitante": 5
+    },
+    "corpo": [
+      "Tem jogador que faz gol. E tem jogador que faz história. Na ida da semifinal da Categoria A, em 25 de novembro, Luiz Fellipe, o Caça-Rato, marcou três vezes na vitória da França por 5 a 2 sobre a Inglaterra e confirmou o que o Abel inteiro já desconfiava: o campeonato tem um Rei, e ele não tem a menor intenção de devolver a coroa.",
+      "É o segundo hat-trick seguido do artilheiro no mata-mata. Na volta das quartas, contra o Brasil, ele já tinha feito três. Agora repetiu a dose fora de casa, numa semifinal. Desde o começo da fase final são 7 gols em três jogos: o de cabeça que salvou a França na ida contra o Brasil, os três da classificação e os três desta quarta-feira. Não é fase boa. É temporada de gala.",
+      "Com os três gols, o Caça-Rato chegou a 36 na temporada e abriu cinco de vantagem sobre Luizinho Costela, que tem 31 e não marcou na derrota da Espanha para a Argentina. Para quem acompanha a corrida desde o começo, vale lembrar: no início de outubro ele tinha 25 gols. De lá para cá foram 11, num ritmo que faz qualquer zagueiro da categoria dormir de luz acesa.",
+      "E o mais curioso é que o personagem combina com a história. O Caça-Rato chegou ao campeonato com cara de azarão, foi crescendo jogo a jogo, dividiu a artilharia, perdeu a ponta por um dia e voltou para buscá-la com dois hat-tricks. Levou também um amarelo, mas nada que tirasse o brilho da noite.",
+      "Mas não foi só ele. Reseck deixou o dele e chegou a 7 na temporada. Topiquinho também marcou e alcançou a marca redonda de 20 gols. O ataque francês fez 5 gols na volta das quartas e mais 5 nesta semifinal.",
+      "A Inglaterra, que tinha protagonizado a grande zebra das quartas ao eliminar o líder Uruguai, não se entregou em casa. Thiago Rangel e Bruno Pão marcaram os gols do time comandado pelo estrategista Super Pão. Thiago Rangel recebeu amarelo e agora tem dois no mata-mata.",
+      "Para a volta, em 2 de dezembro, às 21h, a França joga em casa e ainda tem a vantagem do empate no agregado. A conta para a Inglaterra é dura: vencer por quatro gols de diferença. Ninguém no Abel aposta contra o Rei hoje, mas quem viu o que os ingleses fizeram com o Uruguai sabe que, em mata-mata, só acaba quando o árbitro apita."
+    ],
+    "destaques": [
+      "⚽ Luiz Fellipe (FRA) — 3 gols (36 na temporada, 7 no mata-mata)",
+      "⚽ Reseck (FRA) · Topiquinho (FRA) — chega a 20",
+      "⚽ Thiago Rangel, Bruno Pão (ING)",
+      "🟨 Thiago Rangel (ING) · Luiz Fellipe (FRA)",
+      "🥇 Artilharia: Luiz Fellipe 36 × 31 Luizinho Costela",
+      "Volta: França × Inglaterra — 02/12, 21h (França tem a vantagem do empate)"
+    ]
+  },
+  {
+    "id": "b-s2-ida",
+    "categoria": "B",
+    "tipo": "jogo",
+    "rodada": "Semifinal · ida",
+    "data": "2026-11-25",
+    "titulo": "Shaolin, o lateral artilheiro de uma noite só: Uruguai vence a líder Espanha por 1 a 0",
+    "linhaFina": "Primeiro gol do lateral na temporada decide a ida; a Espanha joga em casa na volta e precisa vencer por qualquer placar",
+    "chapeu": "Semifinal · ida",
+    "jogo": {
+      "mandante": "Uruguai",
+      "visitante": "Espanha",
+      "placarMandante": 1,
+      "placarVisitante": 0
+    },
+    "corpo": [
+      "A Espanha chegou à semifinal da Categoria B com a melhor campanha do ano e uma linha de frente que vinha fazendo gol em quase todo jogo. Na ida, em 25 de novembro, encontrou um Uruguai organizado e saiu derrotada por 1 a 0.",
+      "O gol veio de onde ninguém esperava: Shaolin, lateral, marcou o primeiro gol dele na temporada e escolheu a hora certa para estrear. Do outro lado, a defesa uruguaia, com Braga no gol, segurou Latini, Igor Brasil e companhia sem sofrer gol.",
+      "Nos cartões, Konte e Ricardinho levaram amarelo pelo Uruguai, e Cristiano Motta pela Espanha.",
+      "A vantagem é uruguaia, mas a conta da volta favorece a Espanha: ela joga em casa em 2 de dezembro, às 20h, e tem a vantagem do empate no agregado. Qualquer vitória espanhola, por qualquer placar, leva a líder à final. Ao Uruguai, basta não perder."
+    ],
+    "destaques": [
+      "⚽ Shaolin (URU) — 1º gol na temporada",
+      "🟨 Konte, Ricardinho (URU) · Cristiano Motta (ESP)",
+      "Volta: Espanha × Uruguai — 02/12, 20h (Espanha tem a vantagem do empate)"
+    ]
   }
 ];
