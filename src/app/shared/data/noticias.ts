@@ -636,18 +636,20 @@ export const NOTICIAS: Noticia[] = [
       "placarVisitante": 5
     },
     "corpo": [
-      "Tem jogador que faz gol. E tem jogador que faz história. Na ida da semifinal da Categoria A, em 25 de novembro, Luiz Fellipe, o Caça-Rato, marcou três vezes na vitória da França por 5 a 2 sobre a Inglaterra e confirmou o que o Abel inteiro já desconfiava: o campeonato tem um Rei, e ele não tem a menor intenção de devolver a coroa.",
+      "Tem jogador que faz gol. E tem jogador que faz história. Na ida da semifinal da Categoria A, em 25 de novembro, Luiz Fellipe, o Caça-Rato, marcou três vezes na vitória da França por 5 a 2 sobre a Inglaterra e confirmou o que o Abel inteiro já desconfiava: o campeonato tem um Rei, e ele não tem a menor intenção de devolver a coroa. Os súditos já sabem o protocolo: quando a bola chega nele dentro da área, é hora de se curvar.",
       "É o segundo hat-trick seguido do artilheiro no mata-mata. Na volta das quartas, contra o Brasil, ele já tinha feito três. Agora repetiu a dose fora de casa, numa semifinal. Desde o começo da fase final são 7 gols em três jogos: o de cabeça que salvou a França na ida contra o Brasil, os três da classificação e os três desta quarta-feira. Não é fase boa. É temporada de gala.",
       "Com os três gols, o Caça-Rato chegou a 36 na temporada e abriu cinco de vantagem sobre Luizinho Costela, que tem 31 e não marcou na derrota da Espanha para a Argentina. Para quem acompanha a corrida desde o começo, vale lembrar: no início de outubro ele tinha 25 gols. De lá para cá foram 11, num ritmo que faz qualquer zagueiro da categoria dormir de luz acesa.",
       "E o mais curioso é que o personagem combina com a história. O Caça-Rato chegou ao campeonato com cara de azarão, foi crescendo jogo a jogo, dividiu a artilharia, perdeu a ponta por um dia e voltou para buscá-la com dois hat-tricks. Levou também um amarelo, mas nada que tirasse o brilho da noite.",
       "Mas não foi só ele. Reseck deixou o dele e chegou a 7 na temporada. Topiquinho também marcou e alcançou a marca redonda de 20 gols. O ataque francês fez 5 gols na volta das quartas e mais 5 nesta semifinal.",
       "A Inglaterra, que tinha protagonizado a grande zebra das quartas ao eliminar o líder Uruguai, não se entregou em casa. Thiago Rangel e Bruno Pão marcaram os gols do time comandado pelo estrategista Super Pão. Thiago Rangel recebeu amarelo e agora tem dois no mata-mata.",
+      "E aqui mora o tempero da noite. Quem acompanha os grupos de WhatsApp do campeonato sabe que Luiz Fellipe e Thiago Rangel passaram a semana trocando provocações, daquelas que fazem o celular vibrar até de madrugada. Em campo, os dois cumpriram o que prometeram: ambos marcaram e ambos levaram amarelo. Só que o Rei fez três e o Thiago fez um. No placar das provocações, Sua Majestade saiu na frente, mas a volta ainda vai ser disputada, e o Thiago já tem uma semana inteira para preparar a resposta, no grupo e no campo.",
       "Para a volta, em 2 de dezembro, às 21h, a França joga em casa e ainda tem a vantagem do empate no agregado. A conta para a Inglaterra é dura: vencer por quatro gols de diferença. Ninguém no Abel aposta contra o Rei hoje, mas quem viu o que os ingleses fizeram com o Uruguai sabe que, em mata-mata, só acaba quando o árbitro apita."
     ],
     "destaques": [
       "⚽ Luiz Fellipe (FRA) — 3 gols (36 na temporada, 7 no mata-mata)",
       "⚽ Reseck (FRA) · Topiquinho (FRA) — chega a 20",
       "⚽ Thiago Rangel, Bruno Pão (ING)",
+      "👑 Rei 3 × 1 Thiago Rangel no duelo particular (o do WhatsApp segue em aberto)",
       "🟨 Thiago Rangel (ING) · Luiz Fellipe (FRA)",
       "🥇 Artilharia: Luiz Fellipe 36 × 31 Luizinho Costela",
       "Volta: França × Inglaterra — 02/12, 21h (França tem a vantagem do empate)"
